@@ -1,0 +1,181 @@
+# UK anchor postcodes for the OZEV installer grid scrape.
+# The GOV.UK tool returns the 10 nearest installers per postcode, so we query a
+# national spread and deduplicate. One+ real anchor per postcode area; denser in
+# metros. Invalid/empty responses are skipped (non-fatal) — overlap + dedup handle
+# completeness. The scheduled refresh can widen this list over time.
+# One postcode per line. Blank lines and # comments ignored.
+
+# --- London (dense) ---
+SW1A 2AA
+EC1A 1BB
+E1 6AN
+E14 5AB
+N1 9GU
+NW1 2DB
+SE1 7PB
+SE10 9LS
+W1D 1BS
+W2 1HB
+WC2N 5DU
+SW9 8PA
+SW19 1AA
+E17 9NX
+N17 0AP
+SE18 6HZ
+NW9 5AB
+W3 6RS
+UB1 1DN
+HA0 1AB
+IG1 1AA
+RM1 1AA
+EN1 1AA
+DA1 1AA
+BR1 1AA
+CR0 1AA
+SM1 1AA
+KT1 1AA
+TW1 1AA
+
+# --- South East ---
+GU1 1AA
+RG1 1AA
+RH1 1AA
+ME1 1AA
+CT1 1AA
+TN1 1AA
+BN1 1AA
+PO1 1AA
+SO14 0AA
+RG21 4AE
+SL1 1AA
+OX1 1AA
+MK9 1AA
+HP1 1AA
+AL1 1AA
+SG1 1AA
+LU1 1AA
+PO30 1AA
+
+# --- South West ---
+BS1 1AA
+BA1 1AA
+GL1 1AA
+SN1 1AA
+SP1 1AA
+DT1 1AA
+BH1 1AA
+TA1 1AA
+EX1 1AA
+PL1 1AA
+TQ1 1AA
+TR1 1AA
+TR21 0AA
+
+# --- East of England ---
+CB1 1AA
+CO1 1AA
+CM1 1AA
+SS1 1AA
+IP1 1AA
+NR1 1AA
+PE1 1AA
+
+# --- East & West Midlands ---
+B1 1AA
+B33 8TH
+CV1 1AA
+DY1 1AA
+WS1 1AA
+WV1 1AA
+ST1 1AA
+TF1 1AA
+DE1 1AA
+LE1 1AA
+NG1 1AA
+LN1 1AA
+NN1 1AA
+WR1 1AA
+HR1 1AA
+SY1 1AA
+
+# --- Yorkshire & Humber ---
+LS1 1AA
+S1 1AA
+HD1 1AA
+HX1 1AA
+WF1 1AA
+BD1 1AA
+HG1 1AA
+YO1 1AA
+HU1 1AA
+DN1 1AA
+
+# --- North West ---
+M1 1AE
+M22 5PR
+L1 1AA
+L24 1AA
+PR1 1AA
+BB1 1AA
+BL1 1AA
+OL1 1AA
+WN1 1AA
+WA1 1AA
+SK1 1AA
+CW1 1AA
+CH1 1AA
+LA1 1AA
+CA1 1AA
+FY1 1AA
+IM1 1AA
+
+# --- North East ---
+NE1 1AA
+SR1 1AA
+DH1 1AA
+DL1 1AA
+TS1 1AA
+
+# --- Scotland ---
+EH1 1RE
+G1 1AA
+G68 9HF
+AB10 1AA
+DD1 1AA
+DG1 1AA
+FK1 1AA
+IV1 1AA
+KA1 1AA
+KW1 1AA
+KY1 1AA
+ML1 1AA
+PA1 1AA
+PH1 1AA
+TD1 1AA
+HS1 2AA
+ZE1 0AA
+
+# --- Wales ---
+CF10 1AA
+CF31 1AA
+CF47 8AA
+SA1 1AA
+SA31 1AA
+SA61 1AA
+NP10 8AA
+NP19 0AA
+LL11 1AA
+LL30 2AA
+LL57 1AA
+LD1 5AA
+SY23 1AA
+SY16 1AA
+
+# --- Northern Ireland ---
+BT1 1AA
+BT9 5AA
+BT23 4AA
+BT47 1AA
+BT48 6AA
+BT74 4AA
+BT82 8AA

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.playwright-mcp/
+data/*.log
+data/raw_snapshot.json
+.DS_Store
