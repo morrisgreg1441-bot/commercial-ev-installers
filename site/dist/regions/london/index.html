@@ -1,14 +1,15 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Commercial EV Charger Installers in London — OZEV Authorised</title>
-<meta name="description" content="110 OZEV-authorised commercial and fleet EV charging installers in London. Independent, filterable directory.">
+<meta name="description" content="110 OZEV-authorised commercial and fleet EV charging installers in London. Independent, filterable, free.">
 <link rel="canonical" href="https://commercial-ev-installers.pages.dev/regions/london/">
-<meta property="og:title" content="Commercial EV Charger Installers in London — OZEV Authorised"><meta property="og:description" content="110 OZEV-authorised commercial and fleet EV charging installers in London. Independent, filterable directory.">
+<meta property="og:title" content="Commercial EV Charger Installers in London — OZEV Authorised"><meta property="og:description" content="110 OZEV-authorised commercial and fleet EV charging installers in London. Independent, filterable, free.">
 <meta property="og:type" content="website"><meta name="robots" content="index,follow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230a0a0a'/%3E%3Ctext%20x='16'%20y='22'%20font-family='Arial'%20font-size='17'%20font-weight='bold'%20fill='%2316a34a'%20text-anchor='middle'%3EEV%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--dark:#0a0a0a;--card-d:#141414;--bd-d:#1f1f1f;--light:#f7fafc;
---card-l:#fff;--bd-l:#e8edf3;--green:#16a34a;--ink:#0a0a0a;--mut:#5b6470}
+--card-l:#fff;--bd-l:#e8edf3;--green:#16a34a;--green-d:#15803d;--ink:#0a0a0a;
+--mut:#5b6470;--mut2:#6b7280}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
 color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -21,6 +22,7 @@ border:0;cursor:pointer;transition:transform .15s}
 .btn-g{background:var(--green);color:#fff}
 .btn-d{background:#fff;color:var(--dark)}
 .btn-o{background:transparent;color:#fff;border:1px solid #2a2a2a}
+.btn-sm{padding:9px 16px;font-size:13.5px}
 .arrow{width:24px;height:24px;border-radius:9999px;background:rgba(255,255,255,.18);
 display:inline-flex;align-items:center;justify-content:center;font-size:13px}
 .btn-g .arrow,.btn-d .arrow{background:rgba(0,0,0,.12)}
@@ -29,9 +31,12 @@ backdrop-filter:blur(8px);border-bottom:1px solid var(--bd-d)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{color:#fff;font-weight:800;letter-spacing:-.5px;text-decoration:none;font-size:17px}
 .brand span{color:var(--green)}
-.nav nav{display:flex;gap:26px;align-items:center}
+.nav nav{display:flex;gap:24px;align-items:center}
 .nav nav a{color:#cfd3d8;text-decoration:none;font-size:14px;font-weight:500}
 .nav nav a:hover{color:#fff}
+.trust{background:#0e1a12;color:#9fe6b4;font-size:12.5px;text-align:center;
+padding:8px 16px;border-bottom:1px solid #15301d}
+.trust b{color:#fff}
 .hero{background:var(--dark);color:#fff;padding:84px 0 72px}
 .hero h1{font-size:52px;font-weight:800;line-height:1.04;letter-spacing:-2px;max-width:780px}
 .hero p.sub{color:#aab0b8;font-size:19px;margin:22px 0 32px;max-width:620px}
@@ -40,12 +45,12 @@ color:#4ade80;border:1px solid rgba(22,163,74,.3);padding:7px 15px;border-radius
 font-size:13px;font-weight:600;margin-bottom:26px}
 .stats{display:flex;gap:38px;margin-top:46px;flex-wrap:wrap}
 .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-1px}
-.stat span{color:#8b929b;font-size:13px}
+.stat span{color:#9aa1ab;font-size:13px}
 section{padding:64px 0}
 .sec-l{background:var(--light)}
 h2.sh{font-size:38px;font-weight:800;letter-spacing:-1px;margin-bottom:10px}
-.lead{color:var(--mut);font-size:17px;max-width:640px;margin-bottom:34px}
-.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;
+.lead{color:var(--mut);font-size:17px;max-width:660px;margin-bottom:30px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;
 background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;padding:18px}
 .filters input,.filters select{font-family:inherit;font-size:14px;padding:11px 14px;
 border:1px solid var(--bd-l);border-radius:10px;background:#fff;color:var(--ink);min-width:170px}
@@ -59,15 +64,21 @@ padding:22px;transition:transform .15s,box-shadow .15s;display:flex;flex-directi
 font-weight:700;padding:3px 10px;border-radius:9999px;margin-bottom:10px;letter-spacing:.4px}
 .card h3{font-size:18px;font-weight:700;letter-spacing:-.4px;margin-bottom:6px}
 .card h3 a{text-decoration:none}
-.card .meta{color:var(--mut);font-size:13.5px;margin-bottom:14px}
+.card .meta{color:var(--mut);font-size:13.5px;margin-bottom:6px}
+.card .dist{color:var(--green-d);font-size:12.5px;font-weight:600;margin-bottom:10px}
 .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
 .tag{font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;
 background:#eef2f7;color:#3a4452}
-.tag.c{background:rgba(22,163,74,.12);color:#15803d}
-.card .links{margin-top:auto;display:flex;gap:14px;font-size:13px;font-weight:600}
-.card .links a{color:var(--green);text-decoration:none}
+.tag.c{background:rgba(22,163,74,.12);color:var(--green-d)}
+.tag.v{background:rgba(22,163,74,.12);color:var(--green-d)}
+.card .links{margin-top:auto;display:flex;gap:14px;font-size:13px;font-weight:600;
+align-items:center;flex-wrap:wrap}
+.card .links a{color:var(--green-d);text-decoration:none}
+.sl-btn{background:#eef2f7;border:1px solid var(--bd-l);color:#3a4452;font:inherit;
+font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:9999px;cursor:pointer}
+.sl-btn[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--green)}
 .muted{color:var(--mut)}
-.note{font-size:12.5px;color:#8a93a0;margin-top:8px}
+.note{font-size:12.5px;color:var(--mut2);margin:6px 0 16px}
 .guidegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .gcard{display:block;background:var(--card-d);border:1px solid var(--bd-d);
 border-radius:16px;padding:24px;text-decoration:none;color:#fff;transition:transform .15s}
@@ -81,704 +92,966 @@ border-radius:16px;padding:24px;text-decoration:none;color:#fff;transition:trans
 .prose h1{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin-bottom:8px}
 .prose .upd{color:var(--mut);font-size:13px;margin-bottom:30px}
 .prose h2{font-size:25px;font-weight:800;letter-spacing:-.6px;margin:34px 0 12px}
+.prose h3{font-size:18px;font-weight:700;margin:22px 0 8px}
 .prose p{margin-bottom:15px;font-size:16.5px}
 .prose ul{margin:0 0 16px 22px}.prose li{margin-bottom:8px}
+.prose table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14.5px}
+.prose th,.prose td{border:1px solid var(--bd-l);padding:9px 12px;text-align:left}
+.prose th{background:var(--light);font-weight:700}
 .prose .box{background:var(--light);border:1px solid var(--bd-l);border-radius:14px;
 padding:20px 22px;margin:22px 0}
+.faq dt{font-weight:700;margin-top:18px}
+.faq dd{margin:6px 0 0;color:#33404f}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
 .disc{background:#fff8e6;border:1px solid #f0d98a;color:#7a5c00;font-size:13px;
 padding:12px 16px;border-radius:10px;margin:18px 0}
 .aff{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
 .aff a,.aff span{display:block;background:var(--card-d);border:1px dashed #3a3a3a;
 border-radius:14px;padding:20px;color:#cfd3d8;text-decoration:none;font-size:14px}
-footer{background:var(--dark);color:#8b929b;padding:54px 0;border-top:1px solid var(--bd-d)}
+.calc{background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;
+padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.calc label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#33404f}
+.calc input,.calc select{width:100%;font:inherit;font-size:15px;padding:11px 13px;
+border:1px solid var(--bd-l);border-radius:10px}
+.calc .full{grid-column:1/-1}
+.calc-out{grid-column:1/-1;background:var(--light);border-radius:12px;padding:20px;
+font-size:15px}
+.calc-out .big{font-size:30px;font-weight:800;color:var(--green-d);letter-spacing:-1px}
+.tray{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--dark);
+color:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 14px 40px rgba(0,0,0,.3);
+display:none;align-items:center;gap:14px;font-size:14px}
+.tray a{background:var(--green);color:#fff;padding:8px 14px;border-radius:9999px;
+text-decoration:none;font-weight:600;font-size:13px}
+.tray.show{display:flex}
+footer{background:var(--dark);color:#9aa1ab;padding:54px 0;border-top:1px solid var(--bd-d)}
 footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 footer a{color:#cfd3d8;text-decoration:none;font-size:14px;display:block;margin-bottom:9px}
 footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
 .crumb{font-size:13px;color:var(--mut);padding:18px 0}
-.crumb a{color:var(--green);text-decoration:none}
-@media(max-width:680px){.hero h1{font-size:36px}h2.sh{font-size:28px}
-.nav nav{display:none}.prose h1{font-size:32px}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Commercial EV charger installers in London", "numberOfItems": 110, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://commercial-ev-installers.pages.dev/installers/1cdm-ltd-w1w-7lt/", "name": "1CDM LTD"}, {"@type": "ListItem", "position": 2, "url": "https://commercial-ev-installers.pages.dev/installers/a-s-ramsay-building-contractors-ltd-se1-0lh/", "name": "A S Ramsay Building Contractors Ltd"}, {"@type": "ListItem", "position": 3, "url": "https://commercial-ev-installers.pages.dev/installers/absolute-power-ltd-se18-6sw/", "name": "Absolute Power Ltd"}, {"@type": "ListItem", "position": 4, "url": "https://commercial-ev-installers.pages.dev/installers/acm-sparks-services-ltd-sw19-8ty/", "name": "ACM Sparks Services Ltd"}, {"@type": "ListItem", "position": 5, "url": "https://commercial-ev-installers.pages.dev/installers/amber-group-limited-w1j-6he/", "name": "Amber Group Limited"}, {"@type": "ListItem", "position": 6, "url": "https://commercial-ev-installers.pages.dev/installers/amey-t-a-amey-highways-limited-ec4a-1ab/", "name": "Amey t/a Amey Highways Limited"}, {"@type": "ListItem", "position": 7, "url": "https://commercial-ev-installers.pages.dev/installers/ampire-electrical-services-ltd-e17-8nh/", "name": "Ampire Electrical Services Ltd"}, {"@type": "ListItem", "position": 8, "url": "https://commercial-ev-installers.pages.dev/installers/ara-electrical-ltd-w1w-6yt/", "name": "Ara Electrical Ltd"}, {"@type": "ListItem", "position": 9, "url": "https://commercial-ev-installers.pages.dev/installers/arc-group-london-ltd-n18-3bh/", "name": "Arc Group London Ltd"}, {"@type": "ListItem", "position": 10, "url": "https://commercial-ev-installers.pages.dev/installers/arc-renewables-ltd-sw4-7bx/", "name": "ARC Renewables Ltd"}, {"@type": "ListItem", "position": 11, "url": "https://commercial-ev-installers.pages.dev/installers/atelmec-engineering-ltd-w2-4tj/", "name": "ATELMEC ENGINEERING LTD"}, {"@type": "ListItem", "position": 12, "url": "https://commercial-ev-installers.pages.dev/installers/bedoya-electrical-ltd-sw4-7tb/", "name": "Bedoya Electrical LTD"}, {"@type": "ListItem", "position": 13, "url": "https://commercial-ev-installers.pages.dev/installers/bellsons-london-ltd-wc2a-2jr/", "name": "Bellsons London Ltd"}, {"@type": "ListItem", "position": 14, "url": "https://commercial-ev-installers.pages.dev/installers/bennet-baldwin-ltd-w1u-3pp/", "name": "Bennet Baldwin Ltd"}, {"@type": "ListItem", "position": 15, "url": "https://commercial-ev-installers.pages.dev/installers/besafe-electric-ltd-e11-3aw/", "name": "Besafe Electric Ltd"}, {"@type": "ListItem", "position": 16, "url": "https://commercial-ev-installers.pages.dev/installers/bestfix-support-2-go-ltd-e14-9ts/", "name": "Bestfix Support 2 Go Ltd"}, {"@type": "ListItem", "position": 17, "url": "https://commercial-ev-installers.pages.dev/installers/blinkey-property-solutions-ltd-e16-1uq/", "name": "Blinkey Property Solutions Ltd"}, {"@type": "ListItem", "position": 18, "url": "https://commercial-ev-installers.pages.dev/installers/bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg/", "name": "BS Electrician (UK) Limited T/A BS Electrician"}, {"@type": "ListItem", "position": 19, "url": "https://commercial-ev-installers.pages.dev/installers/certified-electricians-london-ltd-e14-3fa/", "name": "Certified Electricians London Ltd"}, {"@type": "ListItem", "position": 20, "url": "https://commercial-ev-installers.pages.dev/installers/chalfont-electrical-services-ltd-w1u-2eh/", "name": "Chalfont Electrical Services Ltd"}, {"@type": "ListItem", "position": 21, "url": "https://commercial-ev-installers.pages.dev/installers/chargepoint-ec4y-0dh/", "name": "ChargePoint"}, {"@type": "ListItem", "position": 22, "url": "https://commercial-ev-installers.pages.dev/installers/combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl/", "name": "Combat Fix Ltd T/A Redring T/A Redring Property Services"}, {"@type": "ListItem", "position": 23, "url": "https://commercial-ev-installers.pages.dev/installers/connected-kerb-w1d-4sh/", "name": "Connected Kerb"}, {"@type": "ListItem", "position": 24, "url": "https://commercial-ev-installers.pages.dev/installers/crowdhouse-energy-limited-ec1n-8le/", "name": "CrowdHouse Energy Limited"}, {"@type": "ListItem", "position": 25, "url": "https://commercial-ev-installers.pages.dev/installers/crownfield-electrical-services-ltd-e17-4nq/", "name": "Crownfield Electrical Services LTD"}, {"@type": "ListItem", "position": 26, "url": "https://commercial-ev-installers.pages.dev/installers/current-phase-electrical-ltd-sw17-9sh/", "name": "Current Phase Electrical Ltd"}, {"@type": "ListItem", "position": 27, "url": "https://commercial-ev-installers.pages.dev/installers/d-f-st-aimee-ltd-e14-3sd/", "name": "D F ST. AIMEE LTD"}, {"@type": "ListItem", "position": 28, "url": "https://commercial-ev-installers.pages.dev/installers/docklands-electrical-ltd-e14-9xq/", "name": "Docklands Electrical Ltd"}, {"@type": "ListItem", "position": 29, "url": "https://commercial-ev-installers.pages.dev/installers/dph-management-services-ltd-sw4-0je/", "name": "DPH Management Services Ltd"}, {"@type": "ListItem", "position": 30, "url": "https://commercial-ev-installers.pages.dev/installers/dpss-cabling-services-ltd-ec2a-4ne/", "name": "DPSS Cabling Services Ltd"}, {"@type": "ListItem", "position": 31, "url": "https://commercial-ev-installers.pages.dev/installers/e2-services-ltd-w1w-6dx/", "name": "E2 Services Ltd"}, {"@type": "ListItem", "position": 32, "url": "https://commercial-ev-installers.pages.dev/installers/eco-glo-n18-2bh/", "name": "Eco Glo"}, {"@type": "ListItem", "position": 33, "url": "https://commercial-ev-installers.pages.dev/installers/edf-energy-customers-ltd-w1t-4ez/", "name": "EDF Energy Customers Ltd"}, {"@type": "ListItem", "position": 34, "url": "https://commercial-ev-installers.pages.dev/installers/efficient-maintenance-limited-ec2a-4ne/", "name": "Efficient Maintenance Limited"}, {"@type": "ListItem", "position": 35, "url": "https://commercial-ev-installers.pages.dev/installers/elecplumb-ltd-se28-0fs/", "name": "Elecplumb Ltd"}, {"@type": "ListItem", "position": 36, "url": "https://commercial-ev-installers.pages.dev/installers/electric-and-fire-ltd-e12-5an/", "name": "Electric and Fire Ltd"}, {"@type": "ListItem", "position": 37, "url": "https://commercial-ev-installers.pages.dev/installers/electric-intelligence-ltd-w1w-5pf/", "name": "Electric Intelligence Ltd"}, {"@type": "ListItem", "position": 38, "url": "https://commercial-ev-installers.pages.dev/installers/electricians-on-call-ltd-w1u-2jl/", "name": "Electricians On-Call Ltd"}, {"@type": "ListItem", "position": 39, "url": "https://commercial-ev-installers.pages.dev/installers/electricians4u-ltd-e12-5rl/", "name": "electricians4u Ltd"}, {"@type": "ListItem", "position": 40, "url": "https://commercial-ev-installers.pages.dev/installers/elegant-electrical-ltd-nw9-0ag/", "name": "Elegant Electrical Ltd"}, {"@type": "ListItem", "position": 41, "url": "https://commercial-ev-installers.pages.dev/installers/equans-e-s-solutions-limited-se1-7eu/", "name": "Equans E&S Solutions Limited"}, {"@type": "ListItem", "position": 42, "url": "https://commercial-ev-installers.pages.dev/installers/ev-domestic-ltd-t-a-ev-domestic-sw17-0gl/", "name": "EV Domestic Ltd T/A EV Domestic"}, {"@type": "ListItem", "position": 43, "url": "https://commercial-ev-installers.pages.dev/installers/ev-on-group-ltd-t-a-ev-on-wc1n-3ax/", "name": "EV-ON Group Ltd t/a EV-ON"}, {"@type": "ListItem", "position": 44, "url": "https://commercial-ev-installers.pages.dev/installers/exquisite-electrical-limited-e14-3xa/", "name": "Exquisite Electrical Limited"}, {"@type": "ListItem", "position": 45, "url": "https://commercial-ev-installers.pages.dev/installers/fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne/", "name": "Fagin Enterprise Limited T/A Car Charger UK"}, {"@type": "ListItem", "position": 46, "url": "https://commercial-ev-installers.pages.dev/installers/gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh/", "name": "GDS ELECTRICS LTD T/A STAR Development Group Ltd"}, {"@type": "ListItem", "position": 47, "url": "https://commercial-ev-installers.pages.dev/installers/gem-environmental-building-services-limited-w1d-5eu/", "name": "GEM ENVIRONMENTAL BUILDING SERVICES LIMITED"}, {"@type": "ListItem", "position": 48, "url": "https://commercial-ev-installers.pages.dev/installers/glintedge-limited-nw9-5fy/", "name": "Glintedge Limited"}, {"@type": "ListItem", "position": 49, "url": "https://commercial-ev-installers.pages.dev/installers/gray-s-services-ltd-e12-6dp/", "name": "Gray's Services LTD"}, {"@type": "ListItem", "position": 50, "url": "https://commercial-ev-installers.pages.dev/installers/green-light-engineering-limited-sw19-2tj/", "name": "Green Light Engineering Limited"}, {"@type": "ListItem", "position": 51, "url": "https://commercial-ev-installers.pages.dev/installers/greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx/", "name": "Greenewables Ltd T/A Greenewables, Community EV Charging, EV for Schools"}, {"@type": "ListItem", "position": 52, "url": "https://commercial-ev-installers.pages.dev/installers/h-j-ev-solutions-ltd-e17-6pr/", "name": "H & J EV Solutions Ltd"}, {"@type": "ListItem", "position": 53, "url": "https://commercial-ev-installers.pages.dev/installers/hkg-electrical-services-t-a-hkg-services-n18-1bw/", "name": "HKG Electrical Services t/a HKG Services"}, {"@type": "ListItem", "position": 54, "url": "https://commercial-ev-installers.pages.dev/installers/ida-projects-ltd-nw9-5jx/", "name": "IDA Projects Ltd"}, {"@type": "ListItem", "position": 55, "url": "https://commercial-ev-installers.pages.dev/installers/jkv-interior-contracting-ltd-nw9-0re/", "name": "JKV Interior Contracting Ltd"}, {"@type": "ListItem", "position": 56, "url": "https://commercial-ev-installers.pages.dev/installers/lektrix-installations-ltd-sw17-0lz/", "name": "Lektrix Installations Ltd"}, {"@type": "ListItem", "position": 57, "url": "https://commercial-ev-installers.pages.dev/installers/london-city-fire-uk-ltd-sw8-4tu/", "name": "London City Fire UK Ltd"}, {"@type": "ListItem", "position": 58, "url": "https://commercial-ev-installers.pages.dev/installers/london-electrical-solutions-ltd-se10-9qf/", "name": "London Electrical Solutions Ltd"}, {"@type": "ListItem", "position": 59, "url": "https://commercial-ev-installers.pages.dev/installers/london-ev-chargers-w1w-7lt/", "name": "London EV Chargers"}, {"@type": "ListItem", "position": 60, "url": "https://commercial-ev-installers.pages.dev/installers/m-r-carter-builders-ltd-se2-9hj/", "name": "M R Carter Builders Ltd"}, {"@type": "ListItem", "position": 61, "url": "https://commercial-ev-installers.pages.dev/installers/masterfix-gb-ltd-w1h-6ay/", "name": "Masterfix GB Ltd"}, {"@type": "ListItem", "position": 62, "url": "https://commercial-ev-installers.pages.dev/installers/mba-electrical-contractor-e14-3lj/", "name": "MBA Electrical Contractor"}, {"@type": "ListItem", "position": 63, "url": "https://commercial-ev-installers.pages.dev/installers/me-services-ltd-t-a-coil-integrated-services-wc2h-9jq/", "name": "ME Services Ltd T/A Coil Integrated Services"}, {"@type": "ListItem", "position": 64, "url": "https://commercial-ev-installers.pages.dev/installers/mer-charging-uk-limited-ec2n-4bq/", "name": "MER CHARGING UK LIMITED"}, {"@type": "ListItem", "position": 65, "url": "https://commercial-ev-installers.pages.dev/installers/mjz-electrical-services-ltd-ec2y-9ae/", "name": "MJZ Electrical Services Ltd"}, {"@type": "ListItem", "position": 66, "url": "https://commercial-ev-installers.pages.dev/installers/muller-ev-t-a-andersen-ev-e1-8fa/", "name": "Muller EV t/a Andersen EV"}, {"@type": "ListItem", "position": 67, "url": "https://commercial-ev-installers.pages.dev/installers/newmay-electrical-services-ltd-n17-8dp/", "name": "Newmay Electrical Services Ltd"}, {"@type": "ListItem", "position": 68, "url": "https://commercial-ev-installers.pages.dev/installers/normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed/", "name": "Normans Electrical Contractors Ltd T/A Design Haus Energy Solutions"}, {"@type": "ListItem", "position": 69, "url": "https://commercial-ev-installers.pages.dev/installers/nu-electrical-limited-nw9-5bz/", "name": "NU Electrical Limited"}, {"@type": "ListItem", "position": 70, "url": "https://commercial-ev-installers.pages.dev/installers/od-electrics-ltd-n17-7lp/", "name": "OD Electrics Ltd"}, {"@type": "ListItem", "position": 71, "url": "https://commercial-ev-installers.pages.dev/installers/ohme-operations-uk-limited-wc2r-0ap/", "name": "Ohme Operations UK Limited"}, {"@type": "ListItem", "position": 72, "url": "https://commercial-ev-installers.pages.dev/installers/omni-heat-and-power-ltd-sw17-0jh/", "name": "OMNI Heat and Power Ltd"}, {"@type": "ListItem", "position": 73, "url": "https://commercial-ev-installers.pages.dev/installers/panther-electrical-services-ltd-wc1n-3ax/", "name": "Panther Electrical Services Ltd"}, {"@type": "ListItem", "position": 74, "url": "https://commercial-ev-installers.pages.dev/installers/pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne/", "name": "Pegasus Electrical Solutions Ltd T/A Pegasus Electrical Solutions"}, {"@type": "ListItem", "position": 75, "url": "https://commercial-ev-installers.pages.dev/installers/pj-electrics-london-ltd-t-a-sw2-2bx/", "name": "PJ Electrics London LTD T/A"}, {"@type": "ListItem", "position": 76, "url": "https://commercial-ev-installers.pages.dev/installers/plug-n-go-ltd-wc2h-9jq/", "name": "Plug 'N' Go Ltd"}, {"@type": "ListItem", "position": 77, "url": "https://commercial-ev-installers.pages.dev/installers/pod-point-wc1x-8hb/", "name": "Pod Point"}, {"@type": "ListItem", "position": 78, "url": "https://commercial-ev-installers.pages.dev/installers/pozitive-energy-ltd-e14-5ab/", "name": "Pozitive Energy Ltd"}, {"@type": "ListItem", "position": 79, "url": "https://commercial-ev-installers.pages.dev/installers/pretty-wired-limited-sw2-5tn/", "name": "Pretty Wired Limited"}, {"@type": "ListItem", "position": 80, "url": "https://commercial-ev-installers.pages.dev/installers/prime-power-electrical-limited-nw9-0ll/", "name": "Prime Power Electrical Limited"}, {"@type": "ListItem", "position": 81, "url": "https://commercial-ev-installers.pages.dev/installers/prospark-electrical-limited-w1w-7lt/", "name": "Prospark Electrical Limited"}, {"@type": "ListItem", "position": 82, "url": "https://commercial-ev-installers.pages.dev/installers/quin-tel-communications-ltd-w9-1ly/", "name": "QUIN TEL COMMUNICATIONS LTD"}, {"@type": "ListItem", "position": 83, "url": "https://commercial-ev-installers.pages.dev/installers/qvanta-limited-t-a-qvanta-wc2h-9jq/", "name": "Qvanta Limited T/A Qvanta"}, {"@type": "ListItem", "position": 84, "url": "https://commercial-ev-installers.pages.dev/installers/r-m-a-stewart-ltd-se24-0hg/", "name": "R & M A Stewart Ltd"}, {"@type": "ListItem", "position": 85, "url": "https://commercial-ev-installers.pages.dev/installers/raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at/", "name": "Raiden Charging UK Ltd t/a Charge Guru"}, {"@type": "ListItem", "position": 86, "url": "https://commercial-ev-installers.pages.dev/installers/ravenscroft-electrical-e14-7le/", "name": "Ravenscroft Electrical"}, {"@type": "ListItem", "position": 87, "url": "https://commercial-ev-installers.pages.dev/installers/rehoboth-electrical-ltd-n17-6hl/", "name": "Rehoboth Electrical LTD"}, {"@type": "ListItem", "position": 88, "url": "https://commercial-ev-installers.pages.dev/installers/rgp-electrical-limited-ec2a-4ne/", "name": "RGP Electrical Limited"}, {"@type": "ListItem", "position": 89, "url": "https://commercial-ev-installers.pages.dev/installers/rhd-electrical-e12-5qx/", "name": "RHD Electrical"}, {"@type": "ListItem", "position": 90, "url": "https://commercial-ev-installers.pages.dev/installers/sed-electrical-ltd-n1-1np/", "name": "SED Electrical Ltd"}, {"@type": "ListItem", "position": 91, "url": "https://commercial-ev-installers.pages.dev/installers/shell-ev-charging-solutions-uk-ltd-ec1n-2st/", "name": "Shell EV Charging Solutions UK Ltd"}, {"@type": "ListItem", "position": 92, "url": "https://commercial-ev-installers.pages.dev/installers/shinetech-electrical-services-se18-6sx/", "name": "ShineTech Electrical Services"}, {"@type": "ListItem", "position": 93, "url": "https://commercial-ev-installers.pages.dev/installers/sparkflow-w1w-7lt/", "name": "Sparkflow"}, {"@type": "ListItem", "position": 94, "url": "https://commercial-ev-installers.pages.dev/installers/stay-current-limited-se18-6rl/", "name": "Stay Current Limited"}, {"@type": "ListItem", "position": 95, "url": "https://commercial-ev-installers.pages.dev/installers/staywired-ltd-wc2h-9jq/", "name": "StayWired Ltd"}, {"@type": "ListItem", "position": 96, "url": "https://commercial-ev-installers.pages.dev/installers/steve-electrical-services-ltd-n7-9fa/", "name": "Steve Electrical Services Ltd"}, {"@type": "ListItem", "position": 97, "url": "https://commercial-ev-installers.pages.dev/installers/sunny-sparks-ltd-e14-9nn/", "name": "Sunny Sparks Ltd"}, {"@type": "ListItem", "position": 98, "url": "https://commercial-ev-installers.pages.dev/installers/switch-electric-services-ltd-nw9-0td/", "name": "Switch Electric Services LTD"}, {"@type": "ListItem", "position": 99, "url": "https://commercial-ev-installers.pages.dev/installers/switched-on-london-ltd-sw18-4sx/", "name": "Switched On London Ltd"}, {"@type": "ListItem", "position": 100, "url": "https://commercial-ev-installers.pages.dev/installers/sykes-son-ltd-wc2r-3jf/", "name": "Sykes & Son Ltd"}]}</script></head><body><header class="nav"><div class="wrap">
+.crumb a{color:var(--green-d);text-decoration:none}
+@media(max-width:680px){.hero h1{font-size:34px}h2.sh{font-size:26px}
+.nav nav{display:none}.prose h1{font-size:30px}.calc{grid-template-columns:1fr}
+.stats{gap:24px}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Commercial EV charger installers in London", "numberOfItems": 110, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://commercial-ev-installers.pages.dev/installers/1cdm-ltd-w1w-7lt/", "name": "1CDM LTD"}, {"@type": "ListItem", "position": 2, "url": "https://commercial-ev-installers.pages.dev/installers/a-s-ramsay-building-contractors-ltd-se1-0lh/", "name": "A S Ramsay Building Contractors Ltd"}, {"@type": "ListItem", "position": 3, "url": "https://commercial-ev-installers.pages.dev/installers/absolute-power-ltd-se18-6sw/", "name": "Absolute Power Ltd"}, {"@type": "ListItem", "position": 4, "url": "https://commercial-ev-installers.pages.dev/installers/acm-sparks-services-ltd-sw19-8ty/", "name": "ACM Sparks Services Ltd"}, {"@type": "ListItem", "position": 5, "url": "https://commercial-ev-installers.pages.dev/installers/amber-group-limited-w1j-6he/", "name": "Amber Group Limited"}, {"@type": "ListItem", "position": 6, "url": "https://commercial-ev-installers.pages.dev/installers/amey-t-a-amey-highways-limited-ec4a-1ab/", "name": "Amey t/a Amey Highways Limited"}, {"@type": "ListItem", "position": 7, "url": "https://commercial-ev-installers.pages.dev/installers/ampire-electrical-services-ltd-e17-8nh/", "name": "Ampire Electrical Services Ltd"}, {"@type": "ListItem", "position": 8, "url": "https://commercial-ev-installers.pages.dev/installers/ara-electrical-ltd-w1w-6yt/", "name": "Ara Electrical Ltd"}, {"@type": "ListItem", "position": 9, "url": "https://commercial-ev-installers.pages.dev/installers/arc-group-london-ltd-n18-3bh/", "name": "Arc Group London Ltd"}, {"@type": "ListItem", "position": 10, "url": "https://commercial-ev-installers.pages.dev/installers/arc-renewables-ltd-sw4-7bx/", "name": "ARC Renewables Ltd"}, {"@type": "ListItem", "position": 11, "url": "https://commercial-ev-installers.pages.dev/installers/atelmec-engineering-ltd-w2-4tj/", "name": "ATELMEC ENGINEERING LTD"}, {"@type": "ListItem", "position": 12, "url": "https://commercial-ev-installers.pages.dev/installers/bedoya-electrical-ltd-sw4-7tb/", "name": "Bedoya Electrical LTD"}, {"@type": "ListItem", "position": 13, "url": "https://commercial-ev-installers.pages.dev/installers/bellsons-london-ltd-wc2a-2jr/", "name": "Bellsons London Ltd"}, {"@type": "ListItem", "position": 14, "url": "https://commercial-ev-installers.pages.dev/installers/bennet-baldwin-ltd-w1u-3pp/", "name": "Bennet Baldwin Ltd"}, {"@type": "ListItem", "position": 15, "url": "https://commercial-ev-installers.pages.dev/installers/besafe-electric-ltd-e11-3aw/", "name": "Besafe Electric Ltd"}, {"@type": "ListItem", "position": 16, "url": "https://commercial-ev-installers.pages.dev/installers/bestfix-support-2-go-ltd-e14-9ts/", "name": "Bestfix Support 2 Go Ltd"}, {"@type": "ListItem", "position": 17, "url": "https://commercial-ev-installers.pages.dev/installers/blinkey-property-solutions-ltd-e16-1uq/", "name": "Blinkey Property Solutions Ltd"}, {"@type": "ListItem", "position": 18, "url": "https://commercial-ev-installers.pages.dev/installers/bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg/", "name": "BS Electrician (UK) Limited T/A BS Electrician"}, {"@type": "ListItem", "position": 19, "url": "https://commercial-ev-installers.pages.dev/installers/certified-electricians-london-ltd-e14-3fa/", "name": "Certified Electricians London Ltd"}, {"@type": "ListItem", "position": 20, "url": "https://commercial-ev-installers.pages.dev/installers/chalfont-electrical-services-ltd-w1u-2eh/", "name": "Chalfont Electrical Services Ltd"}, {"@type": "ListItem", "position": 21, "url": "https://commercial-ev-installers.pages.dev/installers/chargepoint-ec4y-0dh/", "name": "ChargePoint"}, {"@type": "ListItem", "position": 22, "url": "https://commercial-ev-installers.pages.dev/installers/combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl/", "name": "Combat Fix Ltd T/A Redring T/A Redring Property Services"}, {"@type": "ListItem", "position": 23, "url": "https://commercial-ev-installers.pages.dev/installers/connected-kerb-w1d-4sh/", "name": "Connected Kerb"}, {"@type": "ListItem", "position": 24, "url": "https://commercial-ev-installers.pages.dev/installers/crowdhouse-energy-limited-ec1n-8le/", "name": "CrowdHouse Energy Limited"}, {"@type": "ListItem", "position": 25, "url": "https://commercial-ev-installers.pages.dev/installers/crownfield-electrical-services-ltd-e17-4nq/", "name": "Crownfield Electrical Services LTD"}, {"@type": "ListItem", "position": 26, "url": "https://commercial-ev-installers.pages.dev/installers/current-phase-electrical-ltd-sw17-9sh/", "name": "Current Phase Electrical Ltd"}, {"@type": "ListItem", "position": 27, "url": "https://commercial-ev-installers.pages.dev/installers/d-f-st-aimee-ltd-e14-3sd/", "name": "D F ST. AIMEE LTD"}, {"@type": "ListItem", "position": 28, "url": "https://commercial-ev-installers.pages.dev/installers/docklands-electrical-ltd-e14-9xq/", "name": "Docklands Electrical Ltd"}, {"@type": "ListItem", "position": 29, "url": "https://commercial-ev-installers.pages.dev/installers/dph-management-services-ltd-sw4-0je/", "name": "DPH Management Services Ltd"}, {"@type": "ListItem", "position": 30, "url": "https://commercial-ev-installers.pages.dev/installers/dpss-cabling-services-ltd-ec2a-4ne/", "name": "DPSS Cabling Services Ltd"}, {"@type": "ListItem", "position": 31, "url": "https://commercial-ev-installers.pages.dev/installers/e2-services-ltd-w1w-6dx/", "name": "E2 Services Ltd"}, {"@type": "ListItem", "position": 32, "url": "https://commercial-ev-installers.pages.dev/installers/eco-glo-n18-2bh/", "name": "Eco Glo"}, {"@type": "ListItem", "position": 33, "url": "https://commercial-ev-installers.pages.dev/installers/edf-energy-customers-ltd-w1t-4ez/", "name": "EDF Energy Customers Ltd"}, {"@type": "ListItem", "position": 34, "url": "https://commercial-ev-installers.pages.dev/installers/efficient-maintenance-limited-ec2a-4ne/", "name": "Efficient Maintenance Limited"}, {"@type": "ListItem", "position": 35, "url": "https://commercial-ev-installers.pages.dev/installers/elecplumb-ltd-se28-0fs/", "name": "Elecplumb Ltd"}, {"@type": "ListItem", "position": 36, "url": "https://commercial-ev-installers.pages.dev/installers/electric-and-fire-ltd-e12-5an/", "name": "Electric and Fire Ltd"}, {"@type": "ListItem", "position": 37, "url": "https://commercial-ev-installers.pages.dev/installers/electric-intelligence-ltd-w1w-5pf/", "name": "Electric Intelligence Ltd"}, {"@type": "ListItem", "position": 38, "url": "https://commercial-ev-installers.pages.dev/installers/electricians-on-call-ltd-w1u-2jl/", "name": "Electricians On-Call Ltd"}, {"@type": "ListItem", "position": 39, "url": "https://commercial-ev-installers.pages.dev/installers/electricians4u-ltd-e12-5rl/", "name": "electricians4u Ltd"}, {"@type": "ListItem", "position": 40, "url": "https://commercial-ev-installers.pages.dev/installers/elegant-electrical-ltd-nw9-0ag/", "name": "Elegant Electrical Ltd"}, {"@type": "ListItem", "position": 41, "url": "https://commercial-ev-installers.pages.dev/installers/equans-e-s-solutions-limited-se1-7eu/", "name": "Equans E&S Solutions Limited"}, {"@type": "ListItem", "position": 42, "url": "https://commercial-ev-installers.pages.dev/installers/ev-domestic-ltd-t-a-ev-domestic-sw17-0gl/", "name": "EV Domestic Ltd T/A EV Domestic"}, {"@type": "ListItem", "position": 43, "url": "https://commercial-ev-installers.pages.dev/installers/ev-on-group-ltd-t-a-ev-on-wc1n-3ax/", "name": "EV-ON Group Ltd t/a EV-ON"}, {"@type": "ListItem", "position": 44, "url": "https://commercial-ev-installers.pages.dev/installers/exquisite-electrical-limited-e14-3xa/", "name": "Exquisite Electrical Limited"}, {"@type": "ListItem", "position": 45, "url": "https://commercial-ev-installers.pages.dev/installers/fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne/", "name": "Fagin Enterprise Limited T/A Car Charger UK"}, {"@type": "ListItem", "position": 46, "url": "https://commercial-ev-installers.pages.dev/installers/gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh/", "name": "GDS ELECTRICS LTD T/A STAR Development Group Ltd"}, {"@type": "ListItem", "position": 47, "url": "https://commercial-ev-installers.pages.dev/installers/gem-environmental-building-services-limited-w1d-5eu/", "name": "GEM ENVIRONMENTAL BUILDING SERVICES LIMITED"}, {"@type": "ListItem", "position": 48, "url": "https://commercial-ev-installers.pages.dev/installers/glintedge-limited-nw9-5fy/", "name": "Glintedge Limited"}, {"@type": "ListItem", "position": 49, "url": "https://commercial-ev-installers.pages.dev/installers/gray-s-services-ltd-e12-6dp/", "name": "Gray's Services LTD"}, {"@type": "ListItem", "position": 50, "url": "https://commercial-ev-installers.pages.dev/installers/green-light-engineering-limited-sw19-2tj/", "name": "Green Light Engineering Limited"}, {"@type": "ListItem", "position": 51, "url": "https://commercial-ev-installers.pages.dev/installers/greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx/", "name": "Greenewables Ltd T/A Greenewables, Community EV Charging, EV for Schools"}, {"@type": "ListItem", "position": 52, "url": "https://commercial-ev-installers.pages.dev/installers/h-j-ev-solutions-ltd-e17-6pr/", "name": "H & J EV Solutions Ltd"}, {"@type": "ListItem", "position": 53, "url": "https://commercial-ev-installers.pages.dev/installers/hkg-electrical-services-t-a-hkg-services-n18-1bw/", "name": "HKG Electrical Services t/a HKG Services"}, {"@type": "ListItem", "position": 54, "url": "https://commercial-ev-installers.pages.dev/installers/ida-projects-ltd-nw9-5jx/", "name": "IDA Projects Ltd"}, {"@type": "ListItem", "position": 55, "url": "https://commercial-ev-installers.pages.dev/installers/jkv-interior-contracting-ltd-nw9-0re/", "name": "JKV Interior Contracting Ltd"}, {"@type": "ListItem", "position": 56, "url": "https://commercial-ev-installers.pages.dev/installers/lektrix-installations-ltd-sw17-0lz/", "name": "Lektrix Installations Ltd"}, {"@type": "ListItem", "position": 57, "url": "https://commercial-ev-installers.pages.dev/installers/london-city-fire-uk-ltd-sw8-4tu/", "name": "London City Fire UK Ltd"}, {"@type": "ListItem", "position": 58, "url": "https://commercial-ev-installers.pages.dev/installers/london-electrical-solutions-ltd-se10-9qf/", "name": "London Electrical Solutions Ltd"}, {"@type": "ListItem", "position": 59, "url": "https://commercial-ev-installers.pages.dev/installers/london-ev-chargers-w1w-7lt/", "name": "London EV Chargers"}, {"@type": "ListItem", "position": 60, "url": "https://commercial-ev-installers.pages.dev/installers/m-r-carter-builders-ltd-se2-9hj/", "name": "M R Carter Builders Ltd"}, {"@type": "ListItem", "position": 61, "url": "https://commercial-ev-installers.pages.dev/installers/masterfix-gb-ltd-w1h-6ay/", "name": "Masterfix GB Ltd"}, {"@type": "ListItem", "position": 62, "url": "https://commercial-ev-installers.pages.dev/installers/mba-electrical-contractor-e14-3lj/", "name": "MBA Electrical Contractor"}, {"@type": "ListItem", "position": 63, "url": "https://commercial-ev-installers.pages.dev/installers/me-services-ltd-t-a-coil-integrated-services-wc2h-9jq/", "name": "ME Services Ltd T/A Coil Integrated Services"}, {"@type": "ListItem", "position": 64, "url": "https://commercial-ev-installers.pages.dev/installers/mer-charging-uk-limited-ec2n-4bq/", "name": "MER CHARGING UK LIMITED"}, {"@type": "ListItem", "position": 65, "url": "https://commercial-ev-installers.pages.dev/installers/mjz-electrical-services-ltd-ec2y-9ae/", "name": "MJZ Electrical Services Ltd"}, {"@type": "ListItem", "position": 66, "url": "https://commercial-ev-installers.pages.dev/installers/muller-ev-t-a-andersen-ev-e1-8fa/", "name": "Muller EV t/a Andersen EV"}, {"@type": "ListItem", "position": 67, "url": "https://commercial-ev-installers.pages.dev/installers/newmay-electrical-services-ltd-n17-8dp/", "name": "Newmay Electrical Services Ltd"}, {"@type": "ListItem", "position": 68, "url": "https://commercial-ev-installers.pages.dev/installers/normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed/", "name": "Normans Electrical Contractors Ltd T/A Design Haus Energy Solutions"}, {"@type": "ListItem", "position": 69, "url": "https://commercial-ev-installers.pages.dev/installers/nu-electrical-limited-nw9-5bz/", "name": "NU Electrical Limited"}, {"@type": "ListItem", "position": 70, "url": "https://commercial-ev-installers.pages.dev/installers/od-electrics-ltd-n17-7lp/", "name": "OD Electrics Ltd"}, {"@type": "ListItem", "position": 71, "url": "https://commercial-ev-installers.pages.dev/installers/ohme-operations-uk-limited-wc2r-0ap/", "name": "Ohme Operations UK Limited"}, {"@type": "ListItem", "position": 72, "url": "https://commercial-ev-installers.pages.dev/installers/omni-heat-and-power-ltd-sw17-0jh/", "name": "OMNI Heat and Power Ltd"}, {"@type": "ListItem", "position": 73, "url": "https://commercial-ev-installers.pages.dev/installers/panther-electrical-services-ltd-wc1n-3ax/", "name": "Panther Electrical Services Ltd"}, {"@type": "ListItem", "position": 74, "url": "https://commercial-ev-installers.pages.dev/installers/pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne/", "name": "Pegasus Electrical Solutions Ltd T/A Pegasus Electrical Solutions"}, {"@type": "ListItem", "position": 75, "url": "https://commercial-ev-installers.pages.dev/installers/pj-electrics-london-ltd-t-a-sw2-2bx/", "name": "PJ Electrics London LTD T/A"}, {"@type": "ListItem", "position": 76, "url": "https://commercial-ev-installers.pages.dev/installers/plug-n-go-ltd-wc2h-9jq/", "name": "Plug 'N' Go Ltd"}, {"@type": "ListItem", "position": 77, "url": "https://commercial-ev-installers.pages.dev/installers/pod-point-wc1x-8hb/", "name": "Pod Point"}, {"@type": "ListItem", "position": 78, "url": "https://commercial-ev-installers.pages.dev/installers/pozitive-energy-ltd-e14-5ab/", "name": "Pozitive Energy Ltd"}, {"@type": "ListItem", "position": 79, "url": "https://commercial-ev-installers.pages.dev/installers/pretty-wired-limited-sw2-5tn/", "name": "Pretty Wired Limited"}, {"@type": "ListItem", "position": 80, "url": "https://commercial-ev-installers.pages.dev/installers/prime-power-electrical-limited-nw9-0ll/", "name": "Prime Power Electrical Limited"}, {"@type": "ListItem", "position": 81, "url": "https://commercial-ev-installers.pages.dev/installers/prospark-electrical-limited-w1w-7lt/", "name": "Prospark Electrical Limited"}, {"@type": "ListItem", "position": 82, "url": "https://commercial-ev-installers.pages.dev/installers/quin-tel-communications-ltd-w9-1ly/", "name": "QUIN TEL COMMUNICATIONS LTD"}, {"@type": "ListItem", "position": 83, "url": "https://commercial-ev-installers.pages.dev/installers/qvanta-limited-t-a-qvanta-wc2h-9jq/", "name": "Qvanta Limited T/A Qvanta"}, {"@type": "ListItem", "position": 84, "url": "https://commercial-ev-installers.pages.dev/installers/r-m-a-stewart-ltd-se24-0hg/", "name": "R & M A Stewart Ltd"}, {"@type": "ListItem", "position": 85, "url": "https://commercial-ev-installers.pages.dev/installers/raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at/", "name": "Raiden Charging UK Ltd t/a Charge Guru"}, {"@type": "ListItem", "position": 86, "url": "https://commercial-ev-installers.pages.dev/installers/ravenscroft-electrical-e14-7le/", "name": "Ravenscroft Electrical"}, {"@type": "ListItem", "position": 87, "url": "https://commercial-ev-installers.pages.dev/installers/rehoboth-electrical-ltd-n17-6hl/", "name": "Rehoboth Electrical LTD"}, {"@type": "ListItem", "position": 88, "url": "https://commercial-ev-installers.pages.dev/installers/rgp-electrical-limited-ec2a-4ne/", "name": "RGP Electrical Limited"}, {"@type": "ListItem", "position": 89, "url": "https://commercial-ev-installers.pages.dev/installers/rhd-electrical-e12-5qx/", "name": "RHD Electrical"}, {"@type": "ListItem", "position": 90, "url": "https://commercial-ev-installers.pages.dev/installers/sed-electrical-ltd-n1-1np/", "name": "SED Electrical Ltd"}, {"@type": "ListItem", "position": 91, "url": "https://commercial-ev-installers.pages.dev/installers/shell-ev-charging-solutions-uk-ltd-ec1n-2st/", "name": "Shell EV Charging Solutions UK Ltd"}, {"@type": "ListItem", "position": 92, "url": "https://commercial-ev-installers.pages.dev/installers/shinetech-electrical-services-se18-6sx/", "name": "ShineTech Electrical Services"}, {"@type": "ListItem", "position": 93, "url": "https://commercial-ev-installers.pages.dev/installers/sparkflow-w1w-7lt/", "name": "Sparkflow"}, {"@type": "ListItem", "position": 94, "url": "https://commercial-ev-installers.pages.dev/installers/stay-current-limited-se18-6rl/", "name": "Stay Current Limited"}, {"@type": "ListItem", "position": 95, "url": "https://commercial-ev-installers.pages.dev/installers/staywired-ltd-wc2h-9jq/", "name": "StayWired Ltd"}, {"@type": "ListItem", "position": 96, "url": "https://commercial-ev-installers.pages.dev/installers/steve-electrical-services-ltd-n7-9fa/", "name": "Steve Electrical Services Ltd"}, {"@type": "ListItem", "position": 97, "url": "https://commercial-ev-installers.pages.dev/installers/sunny-sparks-ltd-e14-9nn/", "name": "Sunny Sparks Ltd"}, {"@type": "ListItem", "position": 98, "url": "https://commercial-ev-installers.pages.dev/installers/switch-electric-services-ltd-nw9-0td/", "name": "Switch Electric Services LTD"}, {"@type": "ListItem", "position": 99, "url": "https://commercial-ev-installers.pages.dev/installers/switched-on-london-ltd-sw18-4sx/", "name": "Switched On London Ltd"}, {"@type": "ListItem", "position": 100, "url": "https://commercial-ev-installers.pages.dev/installers/sykes-son-ltd-wc2r-3jf/", "name": "Sykes & Son Ltd"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Directory", "item": "https://commercial-ev-installers.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "London", "item": "https://commercial-ev-installers.pages.dev/regions/london/"}]}</script></head><body><header class="nav"><div class="wrap">
 <a class="brand" href="/">Commercial<span>EV</span>Installers</a>
-<nav><a href="/#directory">Directory</a><a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
-<a href="/guides/workplace-charging-scheme/">WCS grant</a>
-<a href="/guides/ev-infrastructure-grant/">Infrastructure grant</a></nav></div></header><div class="wrap crumb"><a href="/">Directory</a> › London</div>
+<nav><a href="/#directory">Directory</a><a href="/calculator/">Cost calculator</a>
+<a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
+<a href="/guides/workplace-charging-scheme/">WCS grant</a></nav></div></header><div class="trust">Built from <b>official GOV.UK / OZEV</b> data (Open Government Licence v3.0) · Independent · <b>Listing order is never sold</b></div><div class="wrap crumb"><a href="/">Directory</a> › London</div>
 <section style="padding-top:8px"><div class="wrap">
 <h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">Commercial EV charger installers in London</h1>
 <p class="lead" style="margin-top:14px">110 OZEV-authorised installers offering
-commercial or fleet EV charging installation in London.</p>
+commercial or fleet EV charging installation across London.</p>
+<p class="note">Towns: <a style="color:var(--green-d)" href="/towns/coleraine/">Coleraine</a> · <a style="color:var(--green-d)" href="/towns/islington/">Islington</a> · <a style="color:var(--green-d)" href="/towns/leytonstone/">Leytonstone</a> · <a style="color:var(--green-d)" href="/towns/london/">London</a> · <a style="color:var(--green-d)" href="/towns/london-south/">London South</a> · <a style="color:var(--green-d)" href="/towns/waltham-forest/">Waltham Forest</a> · <a style="color:var(--green-d)" href="/towns/walthamstow/">Walthamstow</a></p>
 <div class="grid"><article class="card " data-name="1cdm ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51846899999999" data-lon="-0.1423797">
 <h3><a href="/installers/1cdm-ltd-w1w-7lt/">1CDM LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/1cdm-ltd-w1w-7lt/">View details</a><a href="https://www.1cdm.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="a s ramsay building contractors ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/1cdm-ltd-w1w-7lt/">View details</a><a href="https://www.1cdm.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="1cdm-ltd-w1w-7lt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="a s ramsay building contractors ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.503820216470665" data-lon="-0.10034973882352947">
 <h3><a href="/installers/a-s-ramsay-building-contractors-ltd-se1-0lh/">A S Ramsay Building Contractors Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/a-s-ramsay-building-contractors-ltd-se1-0lh/">View details</a><a href="https://www.asramsay.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="absolute power ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/a-s-ramsay-building-contractors-ltd-se1-0lh/">View details</a><a href="https://www.asramsay.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="a-s-ramsay-building-contractors-ltd-se1-0lh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="absolute power ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.492226172527545" data-lon="0.07406131538461533">
 <h3><a href="/installers/absolute-power-ltd-se18-6sw/">Absolute Power Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/absolute-power-ltd-se18-6sw/">View details</a></div></article><article class="card " data-name="acm sparks services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/absolute-power-ltd-se18-6sw/">View details</a>
+<button class="sl-btn" data-sl="absolute-power-ltd-se18-6sw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="acm sparks services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.423126923255815" data-lon="-0.18780710697674416">
 <h3><a href="/installers/acm-sparks-services-ltd-sw19-8ty/">ACM Sparks Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/acm-sparks-services-ltd-sw19-8ty/">View details</a></div></article><article class="card " data-name="amber group limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/acm-sparks-services-ltd-sw19-8ty/">View details</a>
+<button class="sl-btn" data-sl="acm-sparks-services-ltd-sw19-8ty" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="amber group limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.510709" data-lon="-0.1458372">
 <h3><a href="/installers/amber-group-limited-w1j-6he/">Amber Group Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/amber-group-limited-w1j-6he/">View details</a><a href="https://www.ambergrouplimited.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="amey t/a amey highways limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/amber-group-limited-w1j-6he/">View details</a><a href="https://www.ambergrouplimited.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="amber-group-limited-w1j-6he" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="amey t/a amey highways limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51730098461538" data-lon="-0.11056136153846154">
 <h3><a href="/installers/amey-t-a-amey-highways-limited-ec4a-1ab/">Amey t/a Amey Highways Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/amey-t-a-amey-highways-limited-ec4a-1ab/">View details</a><a href="https://www.amey.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ampire electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/amey-t-a-amey-highways-limited-ec4a-1ab/">View details</a><a href="https://www.amey.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="amey-t-a-amey-highways-limited-ec4a-1ab" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ampire electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.57530628695652" data-lon="-0.01687376086956522">
 <h3><a href="/installers/ampire-electrical-services-ltd-e17-8nh/">Ampire Electrical Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ampire-electrical-services-ltd-e17-8nh/">View details</a></div></article><article class="card " data-name="ara electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ampire-electrical-services-ltd-e17-8nh/">View details</a>
+<button class="sl-btn" data-sl="ampire-electrical-services-ltd-e17-8nh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ara electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.5206491" data-lon="-0.1392206">
 <h3><a href="/installers/ara-electrical-ltd-w1w-6yt/">Ara Electrical Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ara-electrical-ltd-w1w-6yt/">View details</a></div></article><article class="card " data-name="arc group london ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ara-electrical-ltd-w1w-6yt/">View details</a>
+<button class="sl-btn" data-sl="ara-electrical-ltd-w1w-6yt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="arc group london ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.615026990816304" data-lon="-0.04442550510204082">
 <h3><a href="/installers/arc-group-london-ltd-n18-3bh/">Arc Group London Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/arc-group-london-ltd-n18-3bh/">View details</a><a href="https://www.arcgroupuk.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="arc renewables ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/arc-group-london-ltd-n18-3bh/">View details</a><a href="https://www.arcgroupuk.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="arc-group-london-ltd-n18-3bh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="arc renewables ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.45956923269232" data-lon="-0.1347364211538461">
 <h3><a href="/installers/arc-renewables-ltd-sw4-7bx/">ARC Renewables Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/arc-renewables-ltd-sw4-7bx/">View details</a></div></article><article class="card " data-name="atelmec engineering ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/arc-renewables-ltd-sw4-7bx/">View details</a>
+<button class="sl-btn" data-sl="arc-renewables-ltd-sw4-7bx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="atelmec engineering ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51282210000002" data-lon="-0.1945933930555554">
 <h3><a href="/installers/atelmec-engineering-ltd-w2-4tj/">ATELMEC ENGINEERING LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/atelmec-engineering-ltd-w2-4tj/">View details</a><a href="https://www.atelmec.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="bedoya electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/atelmec-engineering-ltd-w2-4tj/">View details</a><a href="https://www.atelmec.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="atelmec-engineering-ltd-w2-4tj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bedoya electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.462820536666676" data-lon="-0.13449359666666666">
 <h3><a href="/installers/bedoya-electrical-ltd-sw4-7tb/">Bedoya Electrical LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bedoya-electrical-ltd-sw4-7tb/">View details</a><a href="https://www.bedoyaelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="bellsons london ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bedoya-electrical-ltd-sw4-7tb/">View details</a><a href="https://www.bedoyaelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="bedoya-electrical-ltd-sw4-7tb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bellsons london ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51429118727275" data-lon="-0.11171276545454537">
 <h3><a href="/installers/bellsons-london-ltd-wc2a-2jr/">Bellsons London Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bellsons-london-ltd-wc2a-2jr/">View details</a><a href="https://www.bellsons.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="bennet baldwin ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bellsons-london-ltd-wc2a-2jr/">View details</a><a href="https://www.bellsons.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="bellsons-london-ltd-wc2a-2jr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bennet baldwin ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51659460833333" data-lon="-0.15288930833333333">
 <h3><a href="/installers/bennet-baldwin-ltd-w1u-3pp/">Bennet Baldwin Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bennet-baldwin-ltd-w1u-3pp/">View details</a><a href="https://www.bennetbaldwin.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="besafe electric ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bennet-baldwin-ltd-w1u-3pp/">View details</a><a href="https://www.bennetbaldwin.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="bennet-baldwin-ltd-w1u-3pp" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="besafe electric ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="leytonstone">
+data-town="leytonstone"
+data-lat="51.570278545588245" data-lon="0.014584220588235289">
 <h3><a href="/installers/besafe-electric-ltd-e11-3aw/">Besafe Electric Ltd</a></h3>
 <div class="meta">Leytonstone · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/besafe-electric-ltd-e11-3aw/">View details</a><a href="https://www.besafeelectric.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="bestfix support 2 go ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/besafe-electric-ltd-e11-3aw/">View details</a><a href="https://www.besafeelectric.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="besafe-electric-ltd-e11-3aw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bestfix support 2 go ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.49922382121211" data-lon="-0.012715930303030304">
 <h3><a href="/installers/bestfix-support-2-go-ltd-e14-9ts/">Bestfix Support 2 Go Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bestfix-support-2-go-ltd-e14-9ts/">View details</a><a href="https://www.bestfix.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="blinkey property solutions ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bestfix-support-2-go-ltd-e14-9ts/">View details</a><a href="https://www.bestfix.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="bestfix-support-2-go-ltd-e14-9ts" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="blinkey property solutions ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.50526101764709" data-lon="0.026730738235294118">
 <h3><a href="/installers/blinkey-property-solutions-ltd-e16-1uq/">Blinkey Property Solutions Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/blinkey-property-solutions-ltd-e16-1uq/">View details</a></div></article><article class="card " data-name="bs electrician (uk) limited t/a bs electrician"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/blinkey-property-solutions-ltd-e16-1uq/">View details</a>
+<button class="sl-btn" data-sl="blinkey-property-solutions-ltd-e16-1uq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bs electrician (uk) limited t/a bs electrician"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.48488724390245" data-lon="0.1015354268292683">
 <h3><a href="/installers/bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg/">BS Electrician (UK) Limited T/A BS Electrician</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg/">View details</a><a href="https://www.bselectricianuk.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="certified electricians london ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg/">View details</a><a href="https://www.bselectricianuk.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="bs-electrician-uk-limited-t-a-bs-electrician-se18-1lg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="certified electricians london ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.487378068181826" data-lon="-0.010380472727272728">
 <h3><a href="/installers/certified-electricians-london-ltd-e14-3fa/">Certified Electricians London Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/certified-electricians-london-ltd-e14-3fa/">View details</a><a href="https://www.certifiedelectricians.london" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="chalfont electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/certified-electricians-london-ltd-e14-3fa/">View details</a><a href="https://www.certifiedelectricians.london" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="certified-electricians-london-ltd-e14-3fa" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="chalfont electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.517252200000016" data-lon="-0.15016929999999998">
 <h3><a href="/installers/chalfont-electrical-services-ltd-w1u-2eh/">Chalfont Electrical Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/chalfont-electrical-services-ltd-w1u-2eh/">View details</a><a href="https://www.chal-lec.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="chargepoint"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/chalfont-electrical-services-ltd-w1u-2eh/">View details</a><a href="https://www.chal-lec.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="chalfont-electrical-services-ltd-w1u-2eh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="chargepoint"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.511575" data-lon="-0.104916">
 <h3><a href="/installers/chargepoint-ec4y-0dh/">ChargePoint</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/chargepoint-ec4y-0dh/">View details</a></div></article><article class="card " data-name="combat fix ltd t/a redring t/a redring property services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/chargepoint-ec4y-0dh/">View details</a>
+<button class="sl-btn" data-sl="chargepoint-ec4y-0dh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="combat fix ltd t/a redring t/a redring property services"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.46708607818182" data-lon="-0.10173598363636359">
 <h3><a href="/installers/combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl/">Combat Fix Ltd T/A Redring T/A Redring Property Services</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl/">View details</a><a href="https://www.redingwebsite.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="connected kerb"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl/">View details</a><a href="https://www.redingwebsite.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="combat-fix-ltd-t-a-redring-t-a-redring-property-services-se5-9dl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="connected kerb"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.5137178" data-lon="-0.13199369999999996">
 <h3><a href="/installers/connected-kerb-w1d-4sh/">Connected Kerb</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/connected-kerb-w1d-4sh/">View details</a><a href="https://www.connectedkerb.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="crowdhouse energy limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/connected-kerb-w1d-4sh/">View details</a><a href="https://www.connectedkerb.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="connected-kerb-w1d-4sh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="crowdhouse energy limited"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.52108647199996" data-lon="-0.10896835466666666">
 <h3><a href="/installers/crowdhouse-energy-limited-ec1n-8le/">CrowdHouse Energy Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/crowdhouse-energy-limited-ec1n-8le/">View details</a><a href="https://www.che-uk.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="crownfield electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/crowdhouse-energy-limited-ec1n-8le/">View details</a><a href="https://www.che-uk.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="crowdhouse-energy-limited-ec1n-8le" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="crownfield electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.59183486842105" data-lon="-0.015723602631578945">
 <h3><a href="/installers/crownfield-electrical-services-ltd-e17-4nq/">Crownfield Electrical Services LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/crownfield-electrical-services-ltd-e17-4nq/">View details</a><a href="https://www.crownfieldelectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="current phase electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/crownfield-electrical-services-ltd-e17-4nq/">View details</a><a href="https://www.crownfieldelectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="crownfield-electrical-services-ltd-e17-4nq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="current phase electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.423516884090915" data-lon="-0.16373662954545426">
 <h3><a href="/installers/current-phase-electrical-ltd-sw17-9sh/">Current Phase Electrical Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/current-phase-electrical-ltd-sw17-9sh/">View details</a><a href="https://www.currentphase.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="d f st. aimee ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/current-phase-electrical-ltd-sw17-9sh/">View details</a><a href="https://www.currentphase.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="current-phase-electrical-ltd-sw17-9sh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="d f st. aimee ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.49345039999996" data-lon="-0.026736700000000002">
 <h3><a href="/installers/d-f-st-aimee-ltd-e14-3sd/">D F ST. AIMEE LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/d-f-st-aimee-ltd-e14-3sd/">View details</a></div></article><article class="card " data-name="docklands electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/d-f-st-aimee-ltd-e14-3sd/">View details</a>
+<button class="sl-btn" data-sl="d-f-st-aimee-ltd-e14-3sd" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="docklands electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.501289758928586" data-lon="-0.021042755357142846">
 <h3><a href="/installers/docklands-electrical-ltd-e14-9xq/">Docklands Electrical Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/docklands-electrical-ltd-e14-9xq/">View details</a><a href="https://www.docklandselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="dph management services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/docklands-electrical-ltd-e14-9xq/">View details</a><a href="https://www.docklandselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="docklands-electrical-ltd-e14-9xq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="dph management services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.46299698" data-lon="-0.14061364">
 <h3><a href="/installers/dph-management-services-ltd-sw4-0je/">DPH Management Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/dph-management-services-ltd-sw4-0je/">View details</a><a href="https://www.dphmsl.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="dpss cabling services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/dph-management-services-ltd-sw4-0je/">View details</a><a href="https://www.dphmsl.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="dph-management-services-ltd-sw4-0je" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="dpss cabling services ltd"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.525556482978736" data-lon="-0.08361228723404251">
 <h3><a href="/installers/dpss-cabling-services-ltd-ec2a-4ne/">DPSS Cabling Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/dpss-cabling-services-ltd-ec2a-4ne/">View details</a><a href="https://www.dpsscabling.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="e2 services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/dpss-cabling-services-ltd-ec2a-4ne/">View details</a><a href="https://www.dpsscabling.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="dpss-cabling-services-ltd-ec2a-4ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="e2 services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51935709999999" data-lon="-0.14054180000000002">
 <h3><a href="/installers/e2-services-ltd-w1w-6dx/">E2 Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/e2-services-ltd-w1w-6dx/">View details</a></div></article><article class="card " data-name="eco glo"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/e2-services-ltd-w1w-6dx/">View details</a>
+<button class="sl-btn" data-sl="e2-services-ltd-w1w-6dx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="eco glo"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.609495100000004" data-lon="-0.059869126829268295">
 <h3><a href="/installers/eco-glo-n18-2bh/">Eco Glo</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/eco-glo-n18-2bh/">View details</a></div></article><article class="card " data-name="edf energy customers ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/eco-glo-n18-2bh/">View details</a>
+<button class="sl-btn" data-sl="eco-glo-n18-2bh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="edf energy customers ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.52226421818185" data-lon="-0.13698666818181815">
 <h3><a href="/installers/edf-energy-customers-ltd-w1t-4ez/">EDF Energy Customers Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/edf-energy-customers-ltd-w1t-4ez/">View details</a><a href="https://www.edfenergy.com/electric-cars" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="efficient maintenance limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/edf-energy-customers-ltd-w1t-4ez/">View details</a><a href="https://www.edfenergy.com/electric-cars" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="edf-energy-customers-ltd-w1t-4ez" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="efficient maintenance limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.525556482978736" data-lon="-0.08361228723404251">
 <h3><a href="/installers/efficient-maintenance-limited-ec2a-4ne/">Efficient Maintenance Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/efficient-maintenance-limited-ec2a-4ne/">View details</a><a href="https://www.efficientmaintenancelimited.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="elecplumb ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/efficient-maintenance-limited-ec2a-4ne/">View details</a><a href="https://www.efficientmaintenancelimited.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="efficient-maintenance-limited-ec2a-4ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="elecplumb ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.493303433333324" data-lon="0.09534220370370369">
 <h3><a href="/installers/elecplumb-ltd-se28-0fs/">Elecplumb Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/elecplumb-ltd-se28-0fs/">View details</a><a href="https://www.elecplumb.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="electric and fire ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/elecplumb-ltd-se28-0fs/">View details</a><a href="https://www.elecplumb.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="elecplumb-ltd-se28-0fs" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="electric and fire ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.55214032500001" data-lon="0.051042366666666644">
 <h3><a href="/installers/electric-and-fire-ltd-e12-5an/">Electric and Fire Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/electric-and-fire-ltd-e12-5an/">View details</a></div></article><article class="card " data-name="electric intelligence ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/electric-and-fire-ltd-e12-5an/">View details</a>
+<button class="sl-btn" data-sl="electric-and-fire-ltd-e12-5an" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="electric intelligence ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.521673400000026" data-lon="-0.14370519999999998">
 <h3><a href="/installers/electric-intelligence-ltd-w1w-5pf/">Electric Intelligence Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/electric-intelligence-ltd-w1w-5pf/">View details</a><a href="https://www.electricintelligence.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="electricians on-call ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/electric-intelligence-ltd-w1w-5pf/">View details</a><a href="https://www.electricintelligence.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="electric-intelligence-ltd-w1w-5pf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="electricians on-call ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.5178055" data-lon="-0.1510405">
 <h3><a href="/installers/electricians-on-call-ltd-w1u-2jl/">Electricians On-Call Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/electricians-on-call-ltd-w1u-2jl/">View details</a><a href="https://www.eoclondon.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="electricians4u ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/electricians-on-call-ltd-w1u-2jl/">View details</a><a href="https://www.eoclondon.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="electricians-on-call-ltd-w1u-2jl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="electricians4u ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.550812497368426" data-lon="0.06396218684210524">
 <h3><a href="/installers/electricians4u-ltd-e12-5rl/">electricians4u Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/electricians4u-ltd-e12-5rl/">View details</a></div></article><article class="card " data-name="elegant electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/electricians4u-ltd-e12-5rl/">View details</a>
+<button class="sl-btn" data-sl="electricians4u-ltd-e12-5rl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="elegant electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.58502713442622" data-lon="-0.26172559180327876">
 <h3><a href="/installers/elegant-electrical-ltd-nw9-0ag/">Elegant Electrical Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/elegant-electrical-ltd-nw9-0ag/">View details</a></div></article><article class="card " data-name="equans e&amp;s solutions limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/elegant-electrical-ltd-nw9-0ag/">View details</a>
+<button class="sl-btn" data-sl="elegant-electrical-ltd-nw9-0ag" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="equans e&amp;s solutions limited"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.49996887692306" data-lon="-0.1162463807692308">
 <h3><a href="/installers/equans-e-s-solutions-limited-se1-7eu/">Equans E&amp;S Solutions Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/equans-e-s-solutions-limited-se1-7eu/">View details</a><a href="https://www.equans.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ev domestic ltd t/a ev domestic"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/equans-e-s-solutions-limited-se1-7eu/">View details</a><a href="https://www.equans.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="equans-e-s-solutions-limited-se1-7eu" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ev domestic ltd t/a ev domestic"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.43502070000002" data-lon="-0.17528990000000008">
 <h3><a href="/installers/ev-domestic-ltd-t-a-ev-domestic-sw17-0gl/">EV Domestic Ltd T/A EV Domestic</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ev-domestic-ltd-t-a-ev-domestic-sw17-0gl/">View details</a></div></article><article class="card " data-name="ev-on group ltd t/a ev-on"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ev-domestic-ltd-t-a-ev-domestic-sw17-0gl/">View details</a>
+<button class="sl-btn" data-sl="ev-domestic-ltd-t-a-ev-domestic-sw17-0gl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ev-on group ltd t/a ev-on"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.520584" data-lon="-0.122185">
 <h3><a href="/installers/ev-on-group-ltd-t-a-ev-on-wc1n-3ax/">EV-ON Group Ltd t/a EV-ON</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ev-on-group-ltd-t-a-ev-on-wc1n-3ax/">View details</a></div></article><article class="card " data-name="exquisite electrical limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ev-on-group-ltd-t-a-ev-on-wc1n-3ax/">View details</a>
+<button class="sl-btn" data-sl="ev-on-group-ltd-t-a-ev-on-wc1n-3ax" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="exquisite electrical limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.49442349999996" data-lon="-0.005589400000000001">
 <h3><a href="/installers/exquisite-electrical-limited-e14-3xa/">Exquisite Electrical Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/exquisite-electrical-limited-e14-3xa/">View details</a></div></article><article class="card " data-name="fagin enterprise limited t/a car charger uk"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/exquisite-electrical-limited-e14-3xa/">View details</a>
+<button class="sl-btn" data-sl="exquisite-electrical-limited-e14-3xa" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="fagin enterprise limited t/a car charger uk"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.525556482978736" data-lon="-0.08361228723404251">
 <h3><a href="/installers/fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne/">Fagin Enterprise Limited T/A Car Charger UK</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne/">View details</a><a href="https://www.car-charger.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="gds electrics ltd t/a star development group ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne/">View details</a><a href="https://www.car-charger.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="fagin-enterprise-limited-t-a-car-charger-uk-ec2a-4ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="gds electrics ltd t/a star development group ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="islington">
+data-town="islington"
+data-lat="51.535511000000035" data-lon="-0.1053201000000001">
 <h3><a href="/installers/gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh/">GDS ELECTRICS LTD T/A STAR Development Group Ltd</a></h3>
 <div class="meta">Islington · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh/">View details</a><a href="https://www.stardg.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="gem environmental building services limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh/">View details</a><a href="https://www.stardg.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="gds-electrics-ltd-t-a-star-development-group-ltd-n1-0qh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="gem environmental building services limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.512674100000034" data-lon="-0.12970229999999996">
 <h3><a href="/installers/gem-environmental-building-services-limited-w1d-5eu/">GEM ENVIRONMENTAL BUILDING SERVICES LIMITED</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/gem-environmental-building-services-limited-w1d-5eu/">View details</a><a href="https://www.gemebs.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="glintedge limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/gem-environmental-building-services-limited-w1d-5eu/">View details</a><a href="https://www.gemebs.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="gem-environmental-building-services-limited-w1d-5eu" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="glintedge limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.59617590000003" data-lon="-0.24225320000000025">
 <h3><a href="/installers/glintedge-limited-nw9-5fy/">Glintedge Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/glintedge-limited-nw9-5fy/">View details</a></div></article><article class="card " data-name="gray's services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/glintedge-limited-nw9-5fy/">View details</a>
+<button class="sl-btn" data-sl="glintedge-limited-nw9-5fy" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="gray's services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.549825389393924" data-lon="0.05586375757575759">
 <h3><a href="/installers/gray-s-services-ltd-e12-6dp/">Gray's Services LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/gray-s-services-ltd-e12-6dp/">View details</a><a href="https://www.graysservices.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="green light engineering limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/gray-s-services-ltd-e12-6dp/">View details</a><a href="https://www.graysservices.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="gray-s-services-ltd-e12-6dp" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="green light engineering limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.411414229411754" data-lon="-0.18510747647058823">
 <h3><a href="/installers/green-light-engineering-limited-sw19-2tj/">Green Light Engineering Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/green-light-engineering-limited-sw19-2tj/">View details</a></div></article><article class="card " data-name="greenewables ltd t/a greenewables, community ev charging, ev for schools"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/green-light-engineering-limited-sw19-2tj/">View details</a>
+<button class="sl-btn" data-sl="green-light-engineering-limited-sw19-2tj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="greenewables ltd t/a greenewables, community ev charging, ev for schools"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.508067" data-lon="-0.1363038">
 <h3><a href="/installers/greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx/">Greenewables Ltd T/A Greenewables, Community EV Charging, EV for Schools</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx/">View details</a><a href="https://www.greenewables.net/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="h &amp; j ev solutions ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx/">View details</a><a href="https://www.greenewables.net/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="greenewables-ltd-t-a-greenewables-community-ev-charging-ev-for-schools-sw1y-6jx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="h &amp; j ev solutions ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.58692651355932" data-lon="-0.029801381355932206">
 <h3><a href="/installers/h-j-ev-solutions-ltd-e17-6pr/">H &amp; J EV Solutions Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/h-j-ev-solutions-ltd-e17-6pr/">View details</a><a href="https://www.mrcharger.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="hkg electrical services t/a hkg services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/h-j-ev-solutions-ltd-e17-6pr/">View details</a><a href="https://www.mrcharger.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="h-j-ev-solutions-ltd-e17-6pr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="hkg electrical services t/a hkg services"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.61411573913044" data-lon="-0.08553389565217392">
 <h3><a href="/installers/hkg-electrical-services-t-a-hkg-services-n18-1bw/">HKG Electrical Services t/a HKG Services</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/hkg-electrical-services-t-a-hkg-services-n18-1bw/">View details</a><a href="https://www.hkgelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ida projects ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/hkg-electrical-services-t-a-hkg-services-n18-1bw/">View details</a><a href="https://www.hkgelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="hkg-electrical-services-t-a-hkg-services-n18-1bw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ida projects ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.599494480000004" data-lon="-0.2546830828571429">
 <h3><a href="/installers/ida-projects-ltd-nw9-5jx/">IDA Projects Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ida-projects-ltd-nw9-5jx/">View details</a><a href="https://www.idaprojects.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="jkv interior contracting ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ida-projects-ltd-nw9-5jx/">View details</a><a href="https://www.idaprojects.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ida-projects-ltd-nw9-5jx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="jkv interior contracting ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.5917604" data-lon="-0.2729071727272728">
 <h3><a href="/installers/jkv-interior-contracting-ltd-nw9-0re/">JKV Interior Contracting Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/jkv-interior-contracting-ltd-nw9-0re/">View details</a></div></article><article class="card " data-name="lektrix installations ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/jkv-interior-contracting-ltd-nw9-0re/">View details</a>
+<button class="sl-btn" data-sl="jkv-interior-contracting-ltd-nw9-0re" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="lektrix installations ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.43118706901409" data-lon="-0.17599986619718308">
 <h3><a href="/installers/lektrix-installations-ltd-sw17-0lz/">Lektrix Installations Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/lektrix-installations-ltd-sw17-0lz/">View details</a></div></article><article class="card " data-name="london city fire uk ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/lektrix-installations-ltd-sw17-0lz/">View details</a>
+<button class="sl-btn" data-sl="lektrix-installations-ltd-sw17-0lz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="london city fire uk ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.47255643636363" data-lon="-0.13685977272727273">
 <h3><a href="/installers/london-city-fire-uk-ltd-sw8-4tu/">London City Fire UK Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/london-city-fire-uk-ltd-sw8-4tu/">View details</a><a href="https://www.londoncityfire.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="london electrical solutions ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/london-city-fire-uk-ltd-sw8-4tu/">View details</a><a href="https://www.londoncityfire.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="london-city-fire-uk-ltd-sw8-4tu" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="london electrical solutions ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.47882349322035" data-lon="-0.016811932203389838">
 <h3><a href="/installers/london-electrical-solutions-ltd-se10-9qf/">London Electrical Solutions Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/london-electrical-solutions-ltd-se10-9qf/">View details</a><a href="https://www.londonelectricalsolutions.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="london ev chargers"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/london-electrical-solutions-ltd-se10-9qf/">View details</a><a href="https://www.londonelectricalsolutions.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="london-electrical-solutions-ltd-se10-9qf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="london ev chargers"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51846899999999" data-lon="-0.1423797">
 <h3><a href="/installers/london-ev-chargers-w1w-7lt/">London EV Chargers</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/london-ev-chargers-w1w-7lt/">View details</a><a href="https://www.londonevchargers.com/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="m r carter builders ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/london-ev-chargers-w1w-7lt/">View details</a><a href="https://www.londonevchargers.com/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="london-ev-chargers-w1w-7lt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="m r carter builders ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.48862167894736" data-lon="0.10339778684210527">
 <h3><a href="/installers/m-r-carter-builders-ltd-se2-9hj/">M R Carter Builders Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/m-r-carter-builders-ltd-se2-9hj/">View details</a></div></article><article class="card " data-name="masterfix gb ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/m-r-carter-builders-ltd-se2-9hj/">View details</a>
+<button class="sl-btn" data-sl="m-r-carter-builders-ltd-se2-9hj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="masterfix gb ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.5145877" data-lon="-0.1557109">
 <h3><a href="/installers/masterfix-gb-ltd-w1h-6ay/">Masterfix GB Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/masterfix-gb-ltd-w1h-6ay/">View details</a><a href="https://www.master-fix.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="mba electrical contractor"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/masterfix-gb-ltd-w1h-6ay/">View details</a><a href="https://www.master-fix.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="masterfix-gb-ltd-w1h-6ay" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mba electrical contractor"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.49813329999997" data-lon="-0.011694499999999998">
 <h3><a href="/installers/mba-electrical-contractor-e14-3lj/">MBA Electrical Contractor</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mba-electrical-contractor-e14-3lj/">View details</a></div></article><article class="card " data-name="me services ltd t/a coil integrated services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mba-electrical-contractor-e14-3lj/">View details</a>
+<button class="sl-btn" data-sl="mba-electrical-contractor-e14-3lj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="me services ltd t/a coil integrated services"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/me-services-ltd-t-a-coil-integrated-services-wc2h-9jq/">ME Services Ltd T/A Coil Integrated Services</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/me-services-ltd-t-a-coil-integrated-services-wc2h-9jq/">View details</a></div></article><article class="card " data-name="mer charging uk limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/me-services-ltd-t-a-coil-integrated-services-wc2h-9jq/">View details</a>
+<button class="sl-btn" data-sl="me-services-ltd-t-a-coil-integrated-services-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mer charging uk limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51418889375001" data-lon="-0.08334494999999999">
 <h3><a href="/installers/mer-charging-uk-limited-ec2n-4bq/">MER CHARGING UK LIMITED</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mer-charging-uk-limited-ec2n-4bq/">View details</a></div></article><article class="card " data-name="mjz electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mer-charging-uk-limited-ec2n-4bq/">View details</a>
+<button class="sl-btn" data-sl="mer-charging-uk-limited-ec2n-4bq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mjz electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.518478596666675" data-lon="-0.08938193666666666">
 <h3><a href="/installers/mjz-electrical-services-ltd-ec2y-9ae/">MJZ Electrical Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mjz-electrical-services-ltd-ec2y-9ae/">View details</a></div></article><article class="card " data-name="muller ev t/a andersen ev"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mjz-electrical-services-ltd-ec2y-9ae/">View details</a>
+<button class="sl-btn" data-sl="mjz-electrical-services-ltd-ec2y-9ae" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="muller ev t/a andersen ev"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51477129673912" data-lon="-0.07209553913043487">
 <h3><a href="/installers/muller-ev-t-a-andersen-ev-e1-8fa/">Muller EV t/a Andersen EV</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/muller-ev-t-a-andersen-ev-e1-8fa/">View details</a><a href="https://www.andersen-ev.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="newmay electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/muller-ev-t-a-andersen-ev-e1-8fa/">View details</a><a href="https://www.andersen-ev.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="muller-ev-t-a-andersen-ev-e1-8fa" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="newmay electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.60561903333333" data-lon="-0.06964493666666666">
 <h3><a href="/installers/newmay-electrical-services-ltd-n17-8dp/">Newmay Electrical Services Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/newmay-electrical-services-ltd-n17-8dp/">View details</a></div></article><article class="card " data-name="normans electrical contractors ltd t/a design haus energy solutions"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/newmay-electrical-services-ltd-n17-8dp/">View details</a>
+<button class="sl-btn" data-sl="newmay-electrical-services-ltd-n17-8dp" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="normans electrical contractors ltd t/a design haus energy solutions"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.513874371698115" data-lon="-0.01776770566037736">
 <h3><a href="/installers/normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed/">Normans Electrical Contractors Ltd T/A Design Haus Energy Solutions</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed/">View details</a><a href="https://www.designhss.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="nu electrical limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed/">View details</a><a href="https://www.designhss.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="normans-electrical-contractors-ltd-t-a-design-haus-energy-solutions-e14-6ed" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="nu electrical limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.59804193225808" data-lon="-0.24952764193548377">
 <h3><a href="/installers/nu-electrical-limited-nw9-5bz/">NU Electrical Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/nu-electrical-limited-nw9-5bz/">View details</a></div></article><article class="card " data-name="od electrics ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/nu-electrical-limited-nw9-5bz/">View details</a>
+<button class="sl-btn" data-sl="nu-electrical-limited-nw9-5bz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="od electrics ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.60823819636364" data-lon="-0.08755355454545455">
 <h3><a href="/installers/od-electrics-ltd-n17-7lp/">OD Electrics Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/od-electrics-ltd-n17-7lp/">View details</a></div></article><article class="card " data-name="ohme operations uk limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/od-electrics-ltd-n17-7lp/">View details</a>
+<button class="sl-btn" data-sl="od-electrics-ltd-n17-7lp" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ohme operations uk limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51098759999999" data-lon="-0.11927980000000003">
 <h3><a href="/installers/ohme-operations-uk-limited-wc2r-0ap/">Ohme Operations UK Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ohme-operations-uk-limited-wc2r-0ap/">View details</a><a href="https://www.ohme-ev.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="omni heat and power ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ohme-operations-uk-limited-wc2r-0ap/">View details</a><a href="https://www.ohme-ev.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ohme-operations-uk-limited-wc2r-0ap" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="omni heat and power ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.43410860000001" data-lon="-0.1868919">
 <h3><a href="/installers/omni-heat-and-power-ltd-sw17-0jh/">OMNI Heat and Power Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/omni-heat-and-power-ltd-sw17-0jh/">View details</a><a href="https://www.omnihp.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="panther electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/omni-heat-and-power-ltd-sw17-0jh/">View details</a><a href="https://www.omnihp.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="omni-heat-and-power-ltd-sw17-0jh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="panther electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.520584" data-lon="-0.122185">
 <h3><a href="/installers/panther-electrical-services-ltd-wc1n-3ax/">Panther Electrical Services Ltd</a></h3>
-<div class="meta">LONDON · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/panther-electrical-services-ltd-wc1n-3ax/">View details</a></div></article><article class="card " data-name="pegasus electrical solutions ltd t/a pegasus electrical solutions"
+<div class="meta">London · London</div>
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/panther-electrical-services-ltd-wc1n-3ax/">View details</a>
+<button class="sl-btn" data-sl="panther-electrical-services-ltd-wc1n-3ax" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="pegasus electrical solutions ltd t/a pegasus electrical solutions"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.525556482978736" data-lon="-0.08361228723404251">
 <h3><a href="/installers/pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne/">Pegasus Electrical Solutions Ltd T/A Pegasus Electrical Solutions</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne/">View details</a><a href="https://www.pegasuselectricalsolutions.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="pj electrics london ltd t/a"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne/">View details</a><a href="https://www.pegasuselectricalsolutions.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="pegasus-electrical-solutions-ltd-t-a-pegasus-electrical-solutions-ec2a-4ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="pj electrics london ltd t/a"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.45123695" data-lon="-0.11760525000000004">
 <h3><a href="/installers/pj-electrics-london-ltd-t-a-sw2-2bx/">PJ Electrics London LTD T/A</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/pj-electrics-london-ltd-t-a-sw2-2bx/">View details</a><a href="https://www.pjelectrics.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="plug 'n' go ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/pj-electrics-london-ltd-t-a-sw2-2bx/">View details</a><a href="https://www.pjelectrics.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="pj-electrics-london-ltd-t-a-sw2-2bx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="plug 'n' go ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/plug-n-go-ltd-wc2h-9jq/">Plug 'N' Go Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/plug-n-go-ltd-wc2h-9jq/">View details</a><a href="https://www.plug-n-go.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="pod point"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/plug-n-go-ltd-wc2h-9jq/">View details</a><a href="https://www.plug-n-go.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="plug-n-go-ltd-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="pod point"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.52403097407415" data-lon="-0.11497635555555567">
 <h3><a href="/installers/pod-point-wc1x-8hb/">Pod Point</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/pod-point-wc1x-8hb/">View details</a><a href="https://www.pod-point.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="pozitive energy ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/pod-point-wc1x-8hb/">View details</a><a href="https://www.pod-point.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="pod-point-wc1x-8hb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="pozitive energy ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.504243275" data-lon="-0.017710725">
 <h3><a href="/installers/pozitive-energy-ltd-e14-5ab/">Pozitive Energy Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/pozitive-energy-ltd-e14-5ab/">View details</a><a href="https://www.pozitive.energy" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="pretty wired limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/pozitive-energy-ltd-e14-5ab/">View details</a><a href="https://www.pozitive.energy" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="pozitive-energy-ltd-e14-5ab" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="pretty wired limited"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.45945390757576" data-lon="-0.1235270484848485">
 <h3><a href="/installers/pretty-wired-limited-sw2-5tn/">Pretty Wired Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/pretty-wired-limited-sw2-5tn/">View details</a><a href="https://www.prettywired.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="prime power electrical limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/pretty-wired-limited-sw2-5tn/">View details</a><a href="https://www.prettywired.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="pretty-wired-limited-sw2-5tn" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="prime power electrical limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.58892336071428" data-lon="-0.25814948571428564">
 <h3><a href="/installers/prime-power-electrical-limited-nw9-0ll/">Prime Power Electrical Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/prime-power-electrical-limited-nw9-0ll/">View details</a><a href="https://www.primepowerelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="prospark electrical limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/prime-power-electrical-limited-nw9-0ll/">View details</a><a href="https://www.primepowerelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="prime-power-electrical-limited-nw9-0ll" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="prospark electrical limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51846899999999" data-lon="-0.1423797">
 <h3><a href="/installers/prospark-electrical-limited-w1w-7lt/">Prospark Electrical Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/prospark-electrical-limited-w1w-7lt/">View details</a><a href="https://www.prosparkelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="quin tel communications ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/prospark-electrical-limited-w1w-7lt/">View details</a><a href="https://www.prosparkelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="prospark-electrical-limited-w1w-7lt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="quin tel communications ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.52745747358491" data-lon="-0.18752861320754716">
 <h3><a href="/installers/quin-tel-communications-ltd-w9-1ly/">QUIN TEL COMMUNICATIONS LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/quin-tel-communications-ltd-w9-1ly/">View details</a></div></article><article class="card " data-name="qvanta limited t/a qvanta"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/quin-tel-communications-ltd-w9-1ly/">View details</a>
+<button class="sl-btn" data-sl="quin-tel-communications-ltd-w9-1ly" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="qvanta limited t/a qvanta"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/qvanta-limited-t-a-qvanta-wc2h-9jq/">Qvanta Limited T/A Qvanta</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/qvanta-limited-t-a-qvanta-wc2h-9jq/">View details</a></div></article><article class="card " data-name="r &amp; m a stewart ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/qvanta-limited-t-a-qvanta-wc2h-9jq/">View details</a>
+<button class="sl-btn" data-sl="qvanta-limited-t-a-qvanta-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="r &amp; m a stewart ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london south">
+data-town="london south"
+data-lat="51.45899530588236" data-lon="-0.10276153823529413">
 <h3><a href="/installers/r-m-a-stewart-ltd-se24-0hg/">R &amp; M A Stewart Ltd</a></h3>
 <div class="meta">London South · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/r-m-a-stewart-ltd-se24-0hg/">View details</a><a href="https://www.rmastewart.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="raiden charging uk ltd t/a charge guru"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/r-m-a-stewart-ltd-se24-0hg/">View details</a><a href="https://www.rmastewart.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="r-m-a-stewart-ltd-se24-0hg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="raiden charging uk ltd t/a charge guru"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51717807647059" data-lon="-0.10495856176470586">
 <h3><a href="/installers/raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at/">Raiden Charging UK Ltd t/a Charge Guru</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at/">View details</a><a href="https://www.chargeguru.com/uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ravenscroft electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at/">View details</a><a href="https://www.chargeguru.com/uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="raiden-charging-uk-ltd-t-a-charge-guru-ec1a-2at" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ravenscroft electrical"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.512619579999985" data-lon="-0.03243032000000002">
 <h3><a href="/installers/ravenscroft-electrical-e14-7le/">Ravenscroft Electrical</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ravenscroft-electrical-e14-7le/">View details</a></div></article><article class="card " data-name="rehoboth electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ravenscroft-electrical-e14-7le/">View details</a>
+<button class="sl-btn" data-sl="ravenscroft-electrical-e14-7le" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="rehoboth electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.595577770588235" data-lon="-0.07686349411764706">
 <h3><a href="/installers/rehoboth-electrical-ltd-n17-6hl/">Rehoboth Electrical LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/rehoboth-electrical-ltd-n17-6hl/">View details</a><a href="https://www.rehobothelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="rgp electrical limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/rehoboth-electrical-ltd-n17-6hl/">View details</a><a href="https://www.rehobothelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="rehoboth-electrical-ltd-n17-6hl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="rgp electrical limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.525556482978736" data-lon="-0.08361228723404251">
 <h3><a href="/installers/rgp-electrical-limited-ec2a-4ne/">RGP Electrical Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/rgp-electrical-limited-ec2a-4ne/">View details</a><a href="https://www.rgpelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="rhd electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/rgp-electrical-limited-ec2a-4ne/">View details</a><a href="https://www.rgpelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="rgp-electrical-limited-ec2a-4ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="rhd electrical"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.54973530000001" data-lon="0.06319340000000002">
 <h3><a href="/installers/rhd-electrical-e12-5qx/">RHD Electrical</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/rhd-electrical-e12-5qx/">View details</a></div></article><article class="card " data-name="sed electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/rhd-electrical-e12-5qx/">View details</a>
+<button class="sl-btn" data-sl="rhd-electrical-e12-5qx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sed electrical ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.544915772727265" data-lon="-0.10788074545454548">
 <h3><a href="/installers/sed-electrical-ltd-n1-1np/">SED Electrical Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sed-electrical-ltd-n1-1np/">View details</a><a href="https://www.SEDEVCHARGING.CO.UK" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="shell ev charging solutions uk ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sed-electrical-ltd-n1-1np/">View details</a><a href="https://www.sedevcharging.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="sed-electrical-ltd-n1-1np" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="shell ev charging solutions uk ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51814656999998" data-lon="-0.10949410250000005">
 <h3><a href="/installers/shell-ev-charging-solutions-uk-ltd-ec1n-2st/">Shell EV Charging Solutions UK Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/shell-ev-charging-solutions-uk-ltd-ec1n-2st/">View details</a><a href="https://www.shellrecharge.com/en-gb" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="shinetech electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/shell-ev-charging-solutions-uk-ltd-ec1n-2st/">View details</a><a href="https://www.shellrecharge.com/en-gb" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="shell-ev-charging-solutions-uk-ltd-ec1n-2st" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="shinetech electrical services"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.49164954666666" data-lon="0.07722198666666664">
 <h3><a href="/installers/shinetech-electrical-services-se18-6sx/">ShineTech Electrical Services</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/shinetech-electrical-services-se18-6sx/">View details</a></div></article><article class="card " data-name="sparkflow"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/shinetech-electrical-services-se18-6sx/">View details</a>
+<button class="sl-btn" data-sl="shinetech-electrical-services-se18-6sx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sparkflow"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51846899999999" data-lon="-0.1423797">
 <h3><a href="/installers/sparkflow-w1w-7lt/">Sparkflow</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sparkflow-w1w-7lt/">View details</a><a href="https://www.Sparkflow.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="stay current limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sparkflow-w1w-7lt/">View details</a><a href="https://www.sparkflow.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="sparkflow-w1w-7lt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="stay current limited"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.48820279999998" data-lon="0.07154909999999995">
 <h3><a href="/installers/stay-current-limited-se18-6rl/">Stay Current Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/stay-current-limited-se18-6rl/">View details</a><a href="https://www.staycurrent.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="staywired ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/stay-current-limited-se18-6rl/">View details</a><a href="https://www.staycurrent.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="stay-current-limited-se18-6rl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="staywired ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/staywired-ltd-wc2h-9jq/">StayWired Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/staywired-ltd-wc2h-9jq/">View details</a><a href="https://www.stay-wired.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="steve electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/staywired-ltd-wc2h-9jq/">View details</a><a href="https://www.stay-wired.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="staywired-ltd-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="steve electrical services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="islington">
+data-town="islington"
+data-lat="51.54809507142858" data-lon="-0.12149527142857143">
 <h3><a href="/installers/steve-electrical-services-ltd-n7-9fa/">Steve Electrical Services Ltd</a></h3>
 <div class="meta">Islington · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/steve-electrical-services-ltd-n7-9fa/">View details</a><a href="https://www.steveelectrical.squarespace.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="sunny sparks ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/steve-electrical-services-ltd-n7-9fa/">View details</a><a href="https://www.steveelectrical.squarespace.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="steve-electrical-services-ltd-n7-9fa" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sunny sparks ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.4950484043956" data-lon="-0.01816658681318678">
 <h3><a href="/installers/sunny-sparks-ltd-e14-9nn/">Sunny Sparks Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sunny-sparks-ltd-e14-9nn/">View details</a><a href="https://www.sunnysparkltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="switch electric services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sunny-sparks-ltd-e14-9nn/">View details</a><a href="https://www.sunnysparkltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="sunny-sparks-ltd-e14-9nn" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="switch electric services ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.586147329999996" data-lon="-0.25632362999999997">
 <h3><a href="/installers/switch-electric-services-ltd-nw9-0td/">Switch Electric Services LTD</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/switch-electric-services-ltd-nw9-0td/">View details</a><a href="https://www.switchelectricservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="switched on london ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/switch-electric-services-ltd-nw9-0td/">View details</a><a href="https://www.switchelectricservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="switch-electric-services-ltd-nw9-0td" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="switched on london ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.43802121764707" data-lon="-0.18654313088235297">
 <h3><a href="/installers/switched-on-london-ltd-sw18-4sx/">Switched On London Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/switched-on-london-ltd-sw18-4sx/">View details</a><a href="https://www.switchedon.london" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="sykes &amp; son ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/switched-on-london-ltd-sw18-4sx/">View details</a><a href="https://www.switchedon.london" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="switched-on-london-ltd-sw18-4sx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sykes &amp; son ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51291333636365" data-lon="-0.11289142121212119">
 <h3><a href="/installers/sykes-son-ltd-wc2r-3jf/">Sykes &amp; Son Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sykes-son-ltd-wc2r-3jf/">View details</a></div></article><article class="card " data-name="td electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sykes-son-ltd-wc2r-3jf/">View details</a>
+<button class="sl-btn" data-sl="sykes-son-ltd-wc2r-3jf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="td electrical"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.477147184444455" data-lon="0.10697485111111112">
 <h3><a href="/installers/td-electrical-se2-0nz/">TD Electrical</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/td-electrical-se2-0nz/">View details</a></div></article><article class="card " data-name="tesla electrics ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/td-electrical-se2-0nz/">View details</a>
+<button class="sl-btn" data-sl="td-electrical-se2-0nz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="tesla electrics ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.57239239199998" data-lon="-0.022428865999999995">
 <h3><a href="/installers/tesla-electrics-ltd-e17-8jf/">Tesla Electrics Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/tesla-electrics-ltd-e17-8jf/">View details</a><a href="https://www.TESLAELECTRICS.CO.UK" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="th electrics"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/tesla-electrics-ltd-e17-8jf/">View details</a><a href="https://www.teslaelectrics.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="tesla-electrics-ltd-e17-8jf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="th electrics"
 data-region="London" data-services="Commercial,Residential"
-data-town="walthamstow">
+data-town="walthamstow"
+data-lat="51.59738179215685" data-lon="-0.03927480392156862">
 <h3><a href="/installers/th-electrics-e17-5qe/">TH Electrics</a></h3>
 <div class="meta">Walthamstow · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/th-electrics-e17-5qe/">View details</a></div></article><article class="card " data-name="the digital asset group ltd t/a stay charge"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/th-electrics-e17-5qe/">View details</a>
+<button class="sl-btn" data-sl="th-electrics-e17-5qe" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="the digital asset group ltd t/a stay charge"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/the-digital-asset-group-ltd-t-a-stay-charge-wc2h-9jq/">The Digital Asset Group Ltd T/A Stay Charge</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/the-digital-asset-group-ltd-t-a-stay-charge-wc2h-9jq/">View details</a><a href="https://www.staycharging.org" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="triex ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/the-digital-asset-group-ltd-t-a-stay-charge-wc2h-9jq/">View details</a><a href="https://www.staycharging.org" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="the-digital-asset-group-ltd-t-a-stay-charge-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="triex ltd"
 data-region="London" data-services="Commercial,Residential"
-data-town="coleraine">
+data-town="coleraine"
+data-lat="51.51489425909092" data-lon="-0.12361452121212109">
 <h3><a href="/installers/triex-ltd-wc2h-9jq/">TriEX Ltd</a></h3>
 <div class="meta">Coleraine · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/triex-ltd-wc2h-9jq/">View details</a></div></article><article class="card " data-name="uk power networks services (commercial) ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/triex-ltd-wc2h-9jq/">View details</a>
+<button class="sl-btn" data-sl="triex-ltd-wc2h-9jq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="uk power networks services (commercial) ltd"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.498415147368426" data-lon="-0.09982076842105263">
 <h3><a href="/installers/uk-power-networks-services-commercial-ltd-se1-6np/">UK Power Networks Services (Commercial) Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/uk-power-networks-services-commercial-ltd-se1-6np/">View details</a><a href="https://www.ukpowernetworksservices.co.uk[ukpowernetworksservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="urban fox networks ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/uk-power-networks-services-commercial-ltd-se1-6np/">View details</a><a href="https://www.ukpowernetworksservices.co.uk[ukpowernetworksservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="uk-power-networks-services-commercial-ltd-se1-6np" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="urban fox networks ltd"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.531915600000005" data-lon="-0.1211911">
 <h3><a href="/installers/urban-fox-networks-ltd-n1-9gb/">Urban Fox Networks Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/urban-fox-networks-ltd-n1-9gb/">View details</a><a href="https://www.urbanfox.network" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="waltham forest college"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/urban-fox-networks-ltd-n1-9gb/">View details</a><a href="https://www.urbanfox.network" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="urban-fox-networks-ltd-n1-9gb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="waltham forest college"
 data-region="London" data-services="Commercial,Residential"
-data-town="waltham forest">
+data-town="waltham forest"
+data-lat="51.59144893333333" data-lon="-0.010360566666666668">
 <h3><a href="/installers/waltham-forest-college-e17-4jb/">Waltham Forest College</a></h3>
 <div class="meta">Waltham Forest · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/waltham-forest-college-e17-4jb/">View details</a></div></article><article class="card " data-name="zapcharged limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/waltham-forest-college-e17-4jb/">View details</a>
+<button class="sl-btn" data-sl="waltham-forest-college-e17-4jb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="zapcharged limited"
 data-region="London" data-services="Commercial,Residential"
-data-town="london">
+data-town="london"
+data-lat="51.51846899999999" data-lon="-0.1423797">
 <h3><a href="/installers/zapcharged-limited-w1w-7lt/">Zapcharged Limited</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/zapcharged-limited-w1w-7lt/">View details</a><a href="https://www.zapcharged.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="zolb ev t/a global ev power co ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/zapcharged-limited-w1w-7lt/">View details</a><a href="https://www.zapcharged.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="zapcharged-limited-w1w-7lt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="zolb ev t/a global ev power co ltd"
 data-region="London" data-services="Commercial"
-data-town="london">
+data-town="london"
+data-lat="51.52386704901959" data-lon="-0.11042606470588236">
 <h3><a href="/installers/zolb-ev-t-a-global-ev-power-co-ltd-ec1r-5hl/">ZOLB EV t/a Global EV Power Co Ltd</a></h3>
 <div class="meta">London · London</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/zolb-ev-t-a-global-ev-power-co-ltd-ec1r-5hl/">View details</a><a href="https://www.zolbev.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article></div>
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/zolb-ev-t-a-global-ev-power-co-ltd-ec1r-5hl/">View details</a><a href="https://www.zolbev.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="zolb-ev-t-a-global-ev-power-co-ltd-ec1r-5hl" aria-pressed="false" type="button">+ Shortlist</button></div></article></div>
 </div></section><footer><div class="wrap">
 <div><h4>Commercial EV Charger Installers UK</h4>
-<p style="max-width:320px;font-size:13px">Independent directory built from the public
-OZEV authorised-installer data (Open Government Licence v3.0). Not affiliated with OZEV
-or any installer.</p></div>
-<div><h4>Guides</h4><a href="/guides/ev-charging-for-fleets/">EV charging for fleets</a>
+<p style="max-width:330px;font-size:13px">Independent directory built from the public
+GOV.UK OZEV authorised-installer data (Open Government Licence v3.0). Not affiliated
+with OZEV or any installer. <a style="display:inline;color:#9fe6b4" href="/privacy/">Privacy &amp; data</a>.</p></div>
+<div><h4>Tools &amp; guides</h4><a href="/calculator/">Grant + cost calculator</a>
+<a href="/guides/ev-charging-for-fleets/">EV charging for fleets</a>
 <a href="/guides/workplace-charging-scheme/">Workplace Charging Scheme</a>
-<a href="/guides/ev-infrastructure-grant/">EV Infrastructure Grant</a>
 <a href="/guides/grant-deadlines/">Grant deadlines</a></div>
 <div><h4>Regions</h4><a href="/regions/london/">London</a><a href="/regions/south-east/">South East</a><a href="/regions/south-west/">South West</a><a href="/regions/east-of-england/">East of England</a><a href="/regions/west-midlands/">West Midlands</a><a href="/regions/east-midlands/">East Midlands</a><a href="/regions/yorkshire-humber/">Yorkshire &amp; Humber</a><a href="/regions/north-west/">North West</a></div></div>
 <div class="wrap" style="margin-top:34px;font-size:12.5px;border-top:1px solid #1f1f1f;padding-top:22px">
 Data source: <a href="https://www.gov.uk/electric-vehicle-chargepoint-installers" style="display:inline">GOV.UK / OZEV</a>,
-under the Open Government Licence v3.0. Last updated 2026-05-18. &copy; 2026.
-Some outbound links may be partner/affiliate links — these never affect listing order.</div></footer></body></html>
+Open Government Licence v3.0. Last refreshed 2026-05-19. &copy; 2026.
+Featured partners are labelled and shown first; outbound/affiliate links never affect
+who is listed. <a style="display:inline;color:#9fe6b4" href="/about/">About &amp; disclosure</a>.</div></footer>
+<div class="tray" id="tray"><span id="trayc">0 shortlisted</span>
+<a href="/shortlist/">View shortlist &amp; get quotes</a></div>
+<script>
+window.SL={k:'evdir_shortlist',get:function(){try{return JSON.parse(localStorage.getItem(this.k))||[]}catch(e){return[]}},
+set:function(a){localStorage.setItem(this.k,JSON.stringify(a));this.render()},
+toggle:function(s){var a=this.get(),i=a.indexOf(s);if(i>-1)a.splice(i,1);else a.push(s);this.set(a)},
+has:function(s){return this.get().indexOf(s)>-1},
+render:function(){var a=this.get(),t=document.getElementById('tray');
+if(t){document.getElementById('trayc').textContent=a.length+' shortlisted';
+t.className='tray'+(a.length?' show':'')}
+document.querySelectorAll('[data-sl]').forEach(function(b){
+var on=window.SL.has(b.getAttribute('data-sl'));
+b.setAttribute('aria-pressed',on);b.textContent=on?'\u2713 Shortlisted':'+ Shortlist';});}};
+document.addEventListener('click',function(e){var b=e.target.closest('[data-sl]');
+if(b){e.preventDefault();window.SL.toggle(b.getAttribute('data-sl'));}});
+document.addEventListener('DOMContentLoaded',function(){window.SL.render()});
+</script></body></html>

@@ -63,7 +63,7 @@ AREA_REGION = {
     "EN": "South East", "RH": "South East", "RG": "South East", "SL": "South East",
     "OX": "South East", "MK": "South East", "HP": "South East", "AL": "South East",
     "SG": "South East", "LU": "South East", "CT": "South East", "TN": "South East",
-    "BN": "South East", "PO": "South East",
+    "BN": "South East", "PO": "South East", "SO": "South East",
     # South West
     "BS": "South West", "BA": "South West", "GL": "South West", "SN": "South West",
     "SP": "South West", "DT": "South West", "BH": "South West", "TA": "South West",

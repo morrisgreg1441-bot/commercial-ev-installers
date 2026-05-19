@@ -1,14 +1,15 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Commercial EV Charger Installers in Wales — OZEV Authorised</title>
-<meta name="description" content="90 OZEV-authorised commercial and fleet EV charging installers in Wales. Independent, filterable directory.">
+<meta name="description" content="90 OZEV-authorised commercial and fleet EV charging installers in Wales. Independent, filterable, free.">
 <link rel="canonical" href="https://commercial-ev-installers.pages.dev/regions/wales/">
-<meta property="og:title" content="Commercial EV Charger Installers in Wales — OZEV Authorised"><meta property="og:description" content="90 OZEV-authorised commercial and fleet EV charging installers in Wales. Independent, filterable directory.">
+<meta property="og:title" content="Commercial EV Charger Installers in Wales — OZEV Authorised"><meta property="og:description" content="90 OZEV-authorised commercial and fleet EV charging installers in Wales. Independent, filterable, free.">
 <meta property="og:type" content="website"><meta name="robots" content="index,follow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230a0a0a'/%3E%3Ctext%20x='16'%20y='22'%20font-family='Arial'%20font-size='17'%20font-weight='bold'%20fill='%2316a34a'%20text-anchor='middle'%3EEV%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--dark:#0a0a0a;--card-d:#141414;--bd-d:#1f1f1f;--light:#f7fafc;
---card-l:#fff;--bd-l:#e8edf3;--green:#16a34a;--ink:#0a0a0a;--mut:#5b6470}
+--card-l:#fff;--bd-l:#e8edf3;--green:#16a34a;--green-d:#15803d;--ink:#0a0a0a;
+--mut:#5b6470;--mut2:#6b7280}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
 color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -21,6 +22,7 @@ border:0;cursor:pointer;transition:transform .15s}
 .btn-g{background:var(--green);color:#fff}
 .btn-d{background:#fff;color:var(--dark)}
 .btn-o{background:transparent;color:#fff;border:1px solid #2a2a2a}
+.btn-sm{padding:9px 16px;font-size:13.5px}
 .arrow{width:24px;height:24px;border-radius:9999px;background:rgba(255,255,255,.18);
 display:inline-flex;align-items:center;justify-content:center;font-size:13px}
 .btn-g .arrow,.btn-d .arrow{background:rgba(0,0,0,.12)}
@@ -29,9 +31,12 @@ backdrop-filter:blur(8px);border-bottom:1px solid var(--bd-d)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{color:#fff;font-weight:800;letter-spacing:-.5px;text-decoration:none;font-size:17px}
 .brand span{color:var(--green)}
-.nav nav{display:flex;gap:26px;align-items:center}
+.nav nav{display:flex;gap:24px;align-items:center}
 .nav nav a{color:#cfd3d8;text-decoration:none;font-size:14px;font-weight:500}
 .nav nav a:hover{color:#fff}
+.trust{background:#0e1a12;color:#9fe6b4;font-size:12.5px;text-align:center;
+padding:8px 16px;border-bottom:1px solid #15301d}
+.trust b{color:#fff}
 .hero{background:var(--dark);color:#fff;padding:84px 0 72px}
 .hero h1{font-size:52px;font-weight:800;line-height:1.04;letter-spacing:-2px;max-width:780px}
 .hero p.sub{color:#aab0b8;font-size:19px;margin:22px 0 32px;max-width:620px}
@@ -40,12 +45,12 @@ color:#4ade80;border:1px solid rgba(22,163,74,.3);padding:7px 15px;border-radius
 font-size:13px;font-weight:600;margin-bottom:26px}
 .stats{display:flex;gap:38px;margin-top:46px;flex-wrap:wrap}
 .stat b{display:block;font-size:30px;font-weight:800;letter-spacing:-1px}
-.stat span{color:#8b929b;font-size:13px}
+.stat span{color:#9aa1ab;font-size:13px}
 section{padding:64px 0}
 .sec-l{background:var(--light)}
 h2.sh{font-size:38px;font-weight:800;letter-spacing:-1px;margin-bottom:10px}
-.lead{color:var(--mut);font-size:17px;max-width:640px;margin-bottom:34px}
-.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;
+.lead{color:var(--mut);font-size:17px;max-width:660px;margin-bottom:30px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;
 background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;padding:18px}
 .filters input,.filters select{font-family:inherit;font-size:14px;padding:11px 14px;
 border:1px solid var(--bd-l);border-radius:10px;background:#fff;color:var(--ink);min-width:170px}
@@ -59,15 +64,21 @@ padding:22px;transition:transform .15s,box-shadow .15s;display:flex;flex-directi
 font-weight:700;padding:3px 10px;border-radius:9999px;margin-bottom:10px;letter-spacing:.4px}
 .card h3{font-size:18px;font-weight:700;letter-spacing:-.4px;margin-bottom:6px}
 .card h3 a{text-decoration:none}
-.card .meta{color:var(--mut);font-size:13.5px;margin-bottom:14px}
+.card .meta{color:var(--mut);font-size:13.5px;margin-bottom:6px}
+.card .dist{color:var(--green-d);font-size:12.5px;font-weight:600;margin-bottom:10px}
 .tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
 .tag{font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:9999px;
 background:#eef2f7;color:#3a4452}
-.tag.c{background:rgba(22,163,74,.12);color:#15803d}
-.card .links{margin-top:auto;display:flex;gap:14px;font-size:13px;font-weight:600}
-.card .links a{color:var(--green);text-decoration:none}
+.tag.c{background:rgba(22,163,74,.12);color:var(--green-d)}
+.tag.v{background:rgba(22,163,74,.12);color:var(--green-d)}
+.card .links{margin-top:auto;display:flex;gap:14px;font-size:13px;font-weight:600;
+align-items:center;flex-wrap:wrap}
+.card .links a{color:var(--green-d);text-decoration:none}
+.sl-btn{background:#eef2f7;border:1px solid var(--bd-l);color:#3a4452;font:inherit;
+font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:9999px;cursor:pointer}
+.sl-btn[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--green)}
 .muted{color:var(--mut)}
-.note{font-size:12.5px;color:#8a93a0;margin-top:8px}
+.note{font-size:12.5px;color:var(--mut2);margin:6px 0 16px}
 .guidegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .gcard{display:block;background:var(--card-d);border:1px solid var(--bd-d);
 border-radius:16px;padding:24px;text-decoration:none;color:#fff;transition:transform .15s}
@@ -81,584 +92,806 @@ border-radius:16px;padding:24px;text-decoration:none;color:#fff;transition:trans
 .prose h1{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin-bottom:8px}
 .prose .upd{color:var(--mut);font-size:13px;margin-bottom:30px}
 .prose h2{font-size:25px;font-weight:800;letter-spacing:-.6px;margin:34px 0 12px}
+.prose h3{font-size:18px;font-weight:700;margin:22px 0 8px}
 .prose p{margin-bottom:15px;font-size:16.5px}
 .prose ul{margin:0 0 16px 22px}.prose li{margin-bottom:8px}
+.prose table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14.5px}
+.prose th,.prose td{border:1px solid var(--bd-l);padding:9px 12px;text-align:left}
+.prose th{background:var(--light);font-weight:700}
 .prose .box{background:var(--light);border:1px solid var(--bd-l);border-radius:14px;
 padding:20px 22px;margin:22px 0}
+.faq dt{font-weight:700;margin-top:18px}
+.faq dd{margin:6px 0 0;color:#33404f}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
 .disc{background:#fff8e6;border:1px solid #f0d98a;color:#7a5c00;font-size:13px;
 padding:12px 16px;border-radius:10px;margin:18px 0}
 .aff{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
 .aff a,.aff span{display:block;background:var(--card-d);border:1px dashed #3a3a3a;
 border-radius:14px;padding:20px;color:#cfd3d8;text-decoration:none;font-size:14px}
-footer{background:var(--dark);color:#8b929b;padding:54px 0;border-top:1px solid var(--bd-d)}
+.calc{background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;
+padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.calc label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#33404f}
+.calc input,.calc select{width:100%;font:inherit;font-size:15px;padding:11px 13px;
+border:1px solid var(--bd-l);border-radius:10px}
+.calc .full{grid-column:1/-1}
+.calc-out{grid-column:1/-1;background:var(--light);border-radius:12px;padding:20px;
+font-size:15px}
+.calc-out .big{font-size:30px;font-weight:800;color:var(--green-d);letter-spacing:-1px}
+.tray{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--dark);
+color:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 14px 40px rgba(0,0,0,.3);
+display:none;align-items:center;gap:14px;font-size:14px}
+.tray a{background:var(--green);color:#fff;padding:8px 14px;border-radius:9999px;
+text-decoration:none;font-weight:600;font-size:13px}
+.tray.show{display:flex}
+footer{background:var(--dark);color:#9aa1ab;padding:54px 0;border-top:1px solid var(--bd-d)}
 footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 footer a{color:#cfd3d8;text-decoration:none;font-size:14px;display:block;margin-bottom:9px}
 footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
 .crumb{font-size:13px;color:var(--mut);padding:18px 0}
-.crumb a{color:var(--green);text-decoration:none}
-@media(max-width:680px){.hero h1{font-size:36px}h2.sh{font-size:28px}
-.nav nav{display:none}.prose h1{font-size:32px}}
-</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Commercial EV charger installers in Wales", "numberOfItems": 90, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://commercial-ev-installers.pages.dev/installers/1-call-electrical-handyman-services-sa73-2sh/", "name": "1 Call Electrical & Handyman Services"}, {"@type": "ListItem", "position": 2, "url": "https://commercial-ev-installers.pages.dev/installers/24-7-energy-services-limited-ll28-5hf/", "name": "24-7 Energy Services Limited"}, {"@type": "ListItem", "position": 3, "url": "https://commercial-ev-installers.pages.dev/installers/ac-electrical-north-wales-ltd-ll31-9ry/", "name": "AC Electrical (North Wales) Ltd"}, {"@type": "ListItem", "position": 4, "url": "https://commercial-ev-installers.pages.dev/installers/ace-electrics-sa17-4he/", "name": "Ace Electrics"}, {"@type": "ListItem", "position": 5, "url": "https://commercial-ev-installers.pages.dev/installers/acp-electrical-ltd-cf48-3be/", "name": "ACP Electrical Ltd"}, {"@type": "ListItem", "position": 6, "url": "https://commercial-ev-installers.pages.dev/installers/act-electrical-nw-ltd-ll30-1sn/", "name": "ACT Electrical NW Ltd"}, {"@type": "ListItem", "position": 7, "url": "https://commercial-ev-installers.pages.dev/installers/alex-hillman-cf10-4eb/", "name": "Alex Hillman"}, {"@type": "ListItem", "position": 8, "url": "https://commercial-ev-installers.pages.dev/installers/amp-electrical-wales-cf48-1bf/", "name": "AMP Electrical Wales"}, {"@type": "ListItem", "position": 9, "url": "https://commercial-ev-installers.pages.dev/installers/amroc-heating-services-ltd-sa6-8qe/", "name": "Amroc Heating Services Ltd"}, {"@type": "ListItem", "position": 10, "url": "https://commercial-ev-installers.pages.dev/installers/ask-mr-jones-electrical-contractors-ltd-ll11-1pf/", "name": "Ask Mr Jones Electrical Contractors Ltd"}, {"@type": "ListItem", "position": 11, "url": "https://commercial-ev-installers.pages.dev/installers/avu-control-np20-4gj/", "name": "AVU Control"}, {"@type": "ListItem", "position": 12, "url": "https://commercial-ev-installers.pages.dev/installers/be-assured-electrical-cf11-9lj/", "name": "Be Assured Electrical"}, {"@type": "ListItem", "position": 13, "url": "https://commercial-ev-installers.pages.dev/installers/beacon-cymru-group-ltd-sa1-1nw/", "name": "Beacon Cymru Group Ltd"}, {"@type": "ListItem", "position": 14, "url": "https://commercial-ev-installers.pages.dev/installers/bright-electrical-contractors-n-w-ltd-ll11-4yu/", "name": "Bright Electrical Contractors N.W Ltd"}, {"@type": "ListItem", "position": 15, "url": "https://commercial-ev-installers.pages.dev/installers/brolec-electrical-services-ltd-sa31-3hx/", "name": "Brolec Electrical Services Ltd"}, {"@type": "ListItem", "position": 16, "url": "https://commercial-ev-installers.pages.dev/installers/c-c-wales-electrical-solutions-ltd-ll31-9pr/", "name": "C & C Wales Electrical Solutions Ltd"}, {"@type": "ListItem", "position": 17, "url": "https://commercial-ev-installers.pages.dev/installers/carter-sustainable-construction-ltd-cf31-1jz/", "name": "Carter Sustainable Construction Ltd"}, {"@type": "ListItem", "position": 18, "url": "https://commercial-ev-installers.pages.dev/installers/celtic-process-control-ltd-np19-4pt/", "name": "Celtic Process Control Ltd"}, {"@type": "ListItem", "position": 19, "url": "https://commercial-ev-installers.pages.dev/installers/centre-great-ltd-cf31-2ad/", "name": "Centre Great Ltd"}, {"@type": "ListItem", "position": 20, "url": "https://commercial-ev-installers.pages.dev/installers/city-county-of-swansea-sa5-8ld/", "name": "City & County of Swansea"}, {"@type": "ListItem", "position": 21, "url": "https://commercial-ev-installers.pages.dev/installers/city-energy-network-ltd-cf10-5ee/", "name": "City Energy Network LTD"}, {"@type": "ListItem", "position": 22, "url": "https://commercial-ev-installers.pages.dev/installers/clement-walker-electrical-and-mechanical-solutions-cf48-4dr/", "name": "Clement Walker Electrical and Mechanical Solutions"}, {"@type": "ListItem", "position": 23, "url": "https://commercial-ev-installers.pages.dev/installers/connect-electrical-energy-services-ltd-cf48-3te/", "name": "Connect Electrical & Energy Services Ltd"}, {"@type": "ListItem", "position": 24, "url": "https://commercial-ev-installers.pages.dev/installers/development-plus-ltd-np19-0lw/", "name": "Development Plus Ltd"}, {"@type": "ListItem", "position": 25, "url": "https://commercial-ev-installers.pages.dev/installers/domestic-electrical-services-ltd-t-a-domelec-ll11-4yl/", "name": "Domestic Electrical Services Ltd T/A DomElec"}, {"@type": "ListItem", "position": 26, "url": "https://commercial-ev-installers.pages.dev/installers/dragon-security-electrical-ltd-ll28-5hn/", "name": "Dragon Security & Electrical Ltd"}, {"@type": "ListItem", "position": 27, "url": "https://commercial-ev-installers.pages.dev/installers/drs-fm-services-ltd-sa7-9fg/", "name": "DRS FM Services Ltd"}, {"@type": "ListItem", "position": 28, "url": "https://commercial-ev-installers.pages.dev/installers/efs-systems-uk-ltd-cf48-2sr/", "name": "EFS Systems (UK) Ltd"}, {"@type": "ListItem", "position": 29, "url": "https://commercial-ev-installers.pages.dev/installers/electrify-wales-ltd-sa73-2ru/", "name": "Electrify Wales Ltd"}, {"@type": "ListItem", "position": 30, "url": "https://commercial-ev-installers.pages.dev/installers/energise-ev-ltd-sa17-4ss/", "name": "Energise EV Ltd"}, {"@type": "ListItem", "position": 31, "url": "https://commercial-ev-installers.pages.dev/installers/eureka-north-wales-ltd-ll28-5bs/", "name": "Eureka North Wales Ltd"}, {"@type": "ListItem", "position": 32, "url": "https://commercial-ev-installers.pages.dev/installers/evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed/", "name": "EVChargeandGo Ltd t/a Urban Evolution"}, {"@type": "ListItem", "position": 33, "url": "https://commercial-ev-installers.pages.dev/installers/flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb/", "name": "Flow Electrical Services T/A Flow Electrical Services Wales Ltd"}, {"@type": "ListItem", "position": 34, "url": "https://commercial-ev-installers.pages.dev/installers/four-shires-electrical-engineering-ll12-8ag/", "name": "Four Shires Electrical Engineering"}, {"@type": "ListItem", "position": 35, "url": "https://commercial-ev-installers.pages.dev/installers/fse-group-ltd-cf24-5pj/", "name": "FSE Group LTD"}, {"@type": "ListItem", "position": 36, "url": "https://commercial-ev-installers.pages.dev/installers/fsr-electrical-ltd-sa31-3ne/", "name": "FSR Electrical Ltd"}, {"@type": "ListItem", "position": 37, "url": "https://commercial-ev-installers.pages.dev/installers/g-r-d-electrical-sa17-4su/", "name": "G.R.D Electrical"}, {"@type": "ListItem", "position": 38, "url": "https://commercial-ev-installers.pages.dev/installers/gower-renewables-limited-sa7-9fg/", "name": "Gower Renewables Limited"}, {"@type": "ListItem", "position": 39, "url": "https://commercial-ev-installers.pages.dev/installers/green-warmth-ltd-sa62-4bs/", "name": "Green Warmth Ltd"}, {"@type": "ListItem", "position": 40, "url": "https://commercial-ev-installers.pages.dev/installers/greener-home-heating-ltd-sa62-5ph/", "name": "Greener Home Heating Ltd"}, {"@type": "ListItem", "position": 41, "url": "https://commercial-ev-installers.pages.dev/installers/greg-palmer-electrical-services-ld1-5nq/", "name": "Greg Palmer Electrical Services"}, {"@type": "ListItem", "position": 42, "url": "https://commercial-ev-installers.pages.dev/installers/hannaby-jones-ltd-ll13-7qq/", "name": "Hannaby & Jones LTD"}, {"@type": "ListItem", "position": 43, "url": "https://commercial-ev-installers.pages.dev/installers/hd-electrical-bridgend-cf31-4tj/", "name": "HD Electrical (Bridgend)"}, {"@type": "ListItem", "position": 44, "url": "https://commercial-ev-installers.pages.dev/installers/heywood-electrical-sa61-2pu/", "name": "Heywood Electrical"}, {"@type": "ListItem", "position": 45, "url": "https://commercial-ev-installers.pages.dev/installers/hjec-limited-cf31-1jz/", "name": "HJEC Limited"}, {"@type": "ListItem", "position": 46, "url": "https://commercial-ev-installers.pages.dev/installers/hjt-electrical-ll59-5ln/", "name": "HJT Electrical"}, {"@type": "ListItem", "position": 47, "url": "https://commercial-ev-installers.pages.dev/installers/huw-field-electrical-services-ltd-ld3-0yj/", "name": "Huw Field Electrical Services Ltd"}, {"@type": "ListItem", "position": 48, "url": "https://commercial-ev-installers.pages.dev/installers/ian-ellis-electrical-services-ll12-7ap/", "name": "Ian Ellis Electrical Services"}, {"@type": "ListItem", "position": 49, "url": "https://commercial-ev-installers.pages.dev/installers/iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty/", "name": "IWEC International Ltd t/a IWEC Electrical Services"}, {"@type": "ListItem", "position": 50, "url": "https://commercial-ev-installers.pages.dev/installers/j3-electrical-services-limited-sa1-8hh/", "name": "J3 electrical services limited"}, {"@type": "ListItem", "position": 51, "url": "https://commercial-ev-installers.pages.dev/installers/jellyfish-ev-ltd-np20-2pe/", "name": "Jellyfish EV Ltd"}, {"@type": "ListItem", "position": 52, "url": "https://commercial-ev-installers.pages.dev/installers/jones-whitehead-ltd-ll57-4au/", "name": "Jones & Whitehead Ltd"}, {"@type": "ListItem", "position": 53, "url": "https://commercial-ev-installers.pages.dev/installers/lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr/", "name": "Lighting Solutions (Wales) Ltd t/a Lightning Solutions"}, {"@type": "ListItem", "position": 54, "url": "https://commercial-ev-installers.pages.dev/installers/lynn-edwards-electrical-contractors-ll57-2sz/", "name": "Lynn Edwards Electrical Contractors"}, {"@type": "ListItem", "position": 55, "url": "https://commercial-ev-installers.pages.dev/installers/mark-jones-electrical-ll59-5lg/", "name": "Mark Jones Electrical"}, {"@type": "ListItem", "position": 56, "url": "https://commercial-ev-installers.pages.dev/installers/mdt-electrical-ltd-cf11-8eq/", "name": "MDT Electrical Ltd"}, {"@type": "ListItem", "position": 57, "url": "https://commercial-ev-installers.pages.dev/installers/mike-morgan-sons-electrical-ld1-5na/", "name": "Mike Morgan & Sons Electrical"}, {"@type": "ListItem", "position": 58, "url": "https://commercial-ev-installers.pages.dev/installers/nw-electrical-installations-ltd-ll28-5ef/", "name": "NW Electrical Installations Ltd"}, {"@type": "ListItem", "position": 59, "url": "https://commercial-ev-installers.pages.dev/installers/oleco-ll59-5lf/", "name": "Oleco"}, {"@type": "ListItem", "position": 60, "url": "https://commercial-ev-installers.pages.dev/installers/osprey-engineering-ltd-sa6-8ra/", "name": "Osprey Engineering Ltd"}, {"@type": "ListItem", "position": 61, "url": "https://commercial-ev-installers.pages.dev/installers/paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la/", "name": "Paul Edwards Ymgymerwr Trydannol (Electrical Contractor)"}, {"@type": "ListItem", "position": 62, "url": "https://commercial-ev-installers.pages.dev/installers/phillips-services-wales-ltd-sa1-2jt/", "name": "Phillips Services (Wales) Ltd"}, {"@type": "ListItem", "position": 63, "url": "https://commercial-ev-installers.pages.dev/installers/power-solutions-electrical-contractors-cf48-4dr/", "name": "Power Solutions Electrical Contractors"}, {"@type": "ListItem", "position": 64, "url": "https://commercial-ev-installers.pages.dev/installers/provolt-engineering-services-cf31-3ln/", "name": "Provolt Engineering Services"}, {"@type": "ListItem", "position": 65, "url": "https://commercial-ev-installers.pages.dev/installers/purdie-electrical-ll11-6tq/", "name": "Purdie Electrical"}, {"@type": "ListItem", "position": 66, "url": "https://commercial-ev-installers.pages.dev/installers/r-lyons-electrical-ltd-ll30-1nq/", "name": "R Lyons Electrical Ltd"}, {"@type": "ListItem", "position": 67, "url": "https://commercial-ev-installers.pages.dev/installers/r-e-electrical-services-ld1-5bx/", "name": "R.E Electrical services"}, {"@type": "ListItem", "position": 68, "url": "https://commercial-ev-installers.pages.dev/installers/range-ev-ltd-t-a-range-cf31-3aq/", "name": "Range EV Ltd T/A Range"}, {"@type": "ListItem", "position": 69, "url": "https://commercial-ev-installers.pages.dev/installers/rlw-electrical-solar-limited-sa17-4tr/", "name": "RLW Electrical & Solar Limited"}, {"@type": "ListItem", "position": 70, "url": "https://commercial-ev-installers.pages.dev/installers/rr-electrical-services-wrexham-ll11-4tj/", "name": "RR Electrical Services (Wrexham)"}, {"@type": "ListItem", "position": 71, "url": "https://commercial-ev-installers.pages.dev/installers/s-h-m-electrical-services-wales-ltd-sa62-6jf/", "name": "S.H.M Electrical Services (WALES) Ltd"}, {"@type": "ListItem", "position": 72, "url": "https://commercial-ev-installers.pages.dev/installers/s-m-s-electrical-services-sa6-6ee/", "name": "S.M.S. Electrical Services"}, {"@type": "ListItem", "position": 73, "url": "https://commercial-ev-installers.pages.dev/installers/safesparks-electrical-ltd-np19-0ff/", "name": "Safesparks Electrical Ltd"}, {"@type": "ListItem", "position": 74, "url": "https://commercial-ev-installers.pages.dev/installers/sean-ltd-sa1-7er/", "name": "Sean Ltd"}, {"@type": "ListItem", "position": 75, "url": "https://commercial-ev-installers.pages.dev/installers/serennia-engineering-and-design-ltd-np19-7hy/", "name": "Serennia Engineering and Design Ltd"}, {"@type": "ListItem", "position": 76, "url": "https://commercial-ev-installers.pages.dev/installers/seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp/", "name": "Seron Electrical Services EV Energiser & Roberts Charging Systems"}, {"@type": "ListItem", "position": 77, "url": "https://commercial-ev-installers.pages.dev/installers/sunbeams-electrical-services-ltd-ld1-6sj/", "name": "Sunbeams Electrical Services Ltd"}, {"@type": "ListItem", "position": 78, "url": "https://commercial-ev-installers.pages.dev/installers/surge-cf31-1jz/", "name": "Surge"}, {"@type": "ListItem", "position": 79, "url": "https://commercial-ev-installers.pages.dev/installers/switched-on-electrical-services-sa62-5db/", "name": "Switched On Electrical Services"}, {"@type": "ListItem", "position": 80, "url": "https://commercial-ev-installers.pages.dev/installers/t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr/", "name": "T P Pearson & Son Electrical Contractors T/A T P Pearson & Son"}, {"@type": "ListItem", "position": 81, "url": "https://commercial-ev-installers.pages.dev/installers/tbarton-electrical-ltd-ll57-3eb/", "name": "TBarton Electrical Ltd"}, {"@type": "ListItem", "position": 82, "url": "https://commercial-ev-installers.pages.dev/installers/tjb-electricals-ltd-sa63-4ux/", "name": "TJB Electricals LTD"}, {"@type": "ListItem", "position": 83, "url": "https://commercial-ev-installers.pages.dev/installers/tlporter-electrical-contractor-ltd-sa14-6hf/", "name": "TLPorter Electrical Contractor Ltd"}, {"@type": "ListItem", "position": 84, "url": "https://commercial-ev-installers.pages.dev/installers/tony-price-builders-ld1-6ea/", "name": "Tony Price Builders"}, {"@type": "ListItem", "position": 85, "url": "https://commercial-ev-installers.pages.dev/installers/urban-solar-ltd-cf24-3lq/", "name": "Urban Solar Ltd"}, {"@type": "ListItem", "position": 86, "url": "https://commercial-ev-installers.pages.dev/installers/vri-electrical-ltd-np20-6wg/", "name": "VRI Electrical Ltd"}, {"@type": "ListItem", "position": 87, "url": "https://commercial-ev-installers.pages.dev/installers/watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr/", "name": "Watts Electrical Engineering Ltd T/A Watts EV Charging"}, {"@type": "ListItem", "position": 88, "url": "https://commercial-ev-installers.pages.dev/installers/whitehead-building-services-ltd-np20-2dw/", "name": "Whitehead Building Services Ltd"}, {"@type": "ListItem", "position": 89, "url": "https://commercial-ev-installers.pages.dev/installers/wtw-electrical-ll31-9ez/", "name": "WTW Electrical"}, {"@type": "ListItem", "position": 90, "url": "https://commercial-ev-installers.pages.dev/installers/zone-electrical-ltd-cf47-0sx/", "name": "Zone Electrical Ltd"}]}</script></head><body><header class="nav"><div class="wrap">
+.crumb a{color:var(--green-d);text-decoration:none}
+@media(max-width:680px){.hero h1{font-size:34px}h2.sh{font-size:26px}
+.nav nav{display:none}.prose h1{font-size:30px}.calc{grid-template-columns:1fr}
+.stats{gap:24px}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Commercial EV charger installers in Wales", "numberOfItems": 90, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://commercial-ev-installers.pages.dev/installers/1-call-electrical-handyman-services-sa73-2sh/", "name": "1 Call Electrical & Handyman Services"}, {"@type": "ListItem", "position": 2, "url": "https://commercial-ev-installers.pages.dev/installers/24-7-energy-services-limited-ll28-5hf/", "name": "24-7 Energy Services Limited"}, {"@type": "ListItem", "position": 3, "url": "https://commercial-ev-installers.pages.dev/installers/ac-electrical-north-wales-ltd-ll31-9ry/", "name": "AC Electrical (North Wales) Ltd"}, {"@type": "ListItem", "position": 4, "url": "https://commercial-ev-installers.pages.dev/installers/ace-electrics-sa17-4he/", "name": "Ace Electrics"}, {"@type": "ListItem", "position": 5, "url": "https://commercial-ev-installers.pages.dev/installers/acp-electrical-ltd-cf48-3be/", "name": "ACP Electrical Ltd"}, {"@type": "ListItem", "position": 6, "url": "https://commercial-ev-installers.pages.dev/installers/act-electrical-nw-ltd-ll30-1sn/", "name": "ACT Electrical NW Ltd"}, {"@type": "ListItem", "position": 7, "url": "https://commercial-ev-installers.pages.dev/installers/alex-hillman-cf10-4eb/", "name": "Alex Hillman"}, {"@type": "ListItem", "position": 8, "url": "https://commercial-ev-installers.pages.dev/installers/amp-electrical-wales-cf48-1bf/", "name": "AMP Electrical Wales"}, {"@type": "ListItem", "position": 9, "url": "https://commercial-ev-installers.pages.dev/installers/amroc-heating-services-ltd-sa6-8qe/", "name": "Amroc Heating Services Ltd"}, {"@type": "ListItem", "position": 10, "url": "https://commercial-ev-installers.pages.dev/installers/ask-mr-jones-electrical-contractors-ltd-ll11-1pf/", "name": "Ask Mr Jones Electrical Contractors Ltd"}, {"@type": "ListItem", "position": 11, "url": "https://commercial-ev-installers.pages.dev/installers/avu-control-np20-4gj/", "name": "AVU Control"}, {"@type": "ListItem", "position": 12, "url": "https://commercial-ev-installers.pages.dev/installers/be-assured-electrical-cf11-9lj/", "name": "Be Assured Electrical"}, {"@type": "ListItem", "position": 13, "url": "https://commercial-ev-installers.pages.dev/installers/beacon-cymru-group-ltd-sa1-1nw/", "name": "Beacon Cymru Group Ltd"}, {"@type": "ListItem", "position": 14, "url": "https://commercial-ev-installers.pages.dev/installers/bright-electrical-contractors-n-w-ltd-ll11-4yu/", "name": "Bright Electrical Contractors N.W Ltd"}, {"@type": "ListItem", "position": 15, "url": "https://commercial-ev-installers.pages.dev/installers/brolec-electrical-services-ltd-sa31-3hx/", "name": "Brolec Electrical Services Ltd"}, {"@type": "ListItem", "position": 16, "url": "https://commercial-ev-installers.pages.dev/installers/c-c-wales-electrical-solutions-ltd-ll31-9pr/", "name": "C & C Wales Electrical Solutions Ltd"}, {"@type": "ListItem", "position": 17, "url": "https://commercial-ev-installers.pages.dev/installers/carter-sustainable-construction-ltd-cf31-1jz/", "name": "Carter Sustainable Construction Ltd"}, {"@type": "ListItem", "position": 18, "url": "https://commercial-ev-installers.pages.dev/installers/celtic-process-control-ltd-np19-4pt/", "name": "Celtic Process Control Ltd"}, {"@type": "ListItem", "position": 19, "url": "https://commercial-ev-installers.pages.dev/installers/centre-great-ltd-cf31-2ad/", "name": "Centre Great Ltd"}, {"@type": "ListItem", "position": 20, "url": "https://commercial-ev-installers.pages.dev/installers/city-county-of-swansea-sa5-8ld/", "name": "City & County of Swansea"}, {"@type": "ListItem", "position": 21, "url": "https://commercial-ev-installers.pages.dev/installers/city-energy-network-ltd-cf10-5ee/", "name": "City Energy Network LTD"}, {"@type": "ListItem", "position": 22, "url": "https://commercial-ev-installers.pages.dev/installers/clement-walker-electrical-and-mechanical-solutions-cf48-4dr/", "name": "Clement Walker Electrical and Mechanical Solutions"}, {"@type": "ListItem", "position": 23, "url": "https://commercial-ev-installers.pages.dev/installers/connect-electrical-energy-services-ltd-cf48-3te/", "name": "Connect Electrical & Energy Services Ltd"}, {"@type": "ListItem", "position": 24, "url": "https://commercial-ev-installers.pages.dev/installers/development-plus-ltd-np19-0lw/", "name": "Development Plus Ltd"}, {"@type": "ListItem", "position": 25, "url": "https://commercial-ev-installers.pages.dev/installers/domestic-electrical-services-ltd-t-a-domelec-ll11-4yl/", "name": "Domestic Electrical Services Ltd T/A DomElec"}, {"@type": "ListItem", "position": 26, "url": "https://commercial-ev-installers.pages.dev/installers/dragon-security-electrical-ltd-ll28-5hn/", "name": "Dragon Security & Electrical Ltd"}, {"@type": "ListItem", "position": 27, "url": "https://commercial-ev-installers.pages.dev/installers/drs-fm-services-ltd-sa7-9fg/", "name": "DRS FM Services Ltd"}, {"@type": "ListItem", "position": 28, "url": "https://commercial-ev-installers.pages.dev/installers/efs-systems-uk-ltd-cf48-2sr/", "name": "EFS Systems (UK) Ltd"}, {"@type": "ListItem", "position": 29, "url": "https://commercial-ev-installers.pages.dev/installers/electrify-wales-ltd-sa73-2ru/", "name": "Electrify Wales Ltd"}, {"@type": "ListItem", "position": 30, "url": "https://commercial-ev-installers.pages.dev/installers/energise-ev-ltd-sa17-4ss/", "name": "Energise EV Ltd"}, {"@type": "ListItem", "position": 31, "url": "https://commercial-ev-installers.pages.dev/installers/eureka-north-wales-ltd-ll28-5bs/", "name": "Eureka North Wales Ltd"}, {"@type": "ListItem", "position": 32, "url": "https://commercial-ev-installers.pages.dev/installers/evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed/", "name": "EVChargeandGo Ltd t/a Urban Evolution"}, {"@type": "ListItem", "position": 33, "url": "https://commercial-ev-installers.pages.dev/installers/flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb/", "name": "Flow Electrical Services T/A Flow Electrical Services Wales Ltd"}, {"@type": "ListItem", "position": 34, "url": "https://commercial-ev-installers.pages.dev/installers/four-shires-electrical-engineering-ll12-8ag/", "name": "Four Shires Electrical Engineering"}, {"@type": "ListItem", "position": 35, "url": "https://commercial-ev-installers.pages.dev/installers/fse-group-ltd-cf24-5pj/", "name": "FSE Group LTD"}, {"@type": "ListItem", "position": 36, "url": "https://commercial-ev-installers.pages.dev/installers/fsr-electrical-ltd-sa31-3ne/", "name": "FSR Electrical Ltd"}, {"@type": "ListItem", "position": 37, "url": "https://commercial-ev-installers.pages.dev/installers/g-r-d-electrical-sa17-4su/", "name": "G.R.D Electrical"}, {"@type": "ListItem", "position": 38, "url": "https://commercial-ev-installers.pages.dev/installers/gower-renewables-limited-sa7-9fg/", "name": "Gower Renewables Limited"}, {"@type": "ListItem", "position": 39, "url": "https://commercial-ev-installers.pages.dev/installers/green-warmth-ltd-sa62-4bs/", "name": "Green Warmth Ltd"}, {"@type": "ListItem", "position": 40, "url": "https://commercial-ev-installers.pages.dev/installers/greener-home-heating-ltd-sa62-5ph/", "name": "Greener Home Heating Ltd"}, {"@type": "ListItem", "position": 41, "url": "https://commercial-ev-installers.pages.dev/installers/greg-palmer-electrical-services-ld1-5nq/", "name": "Greg Palmer Electrical Services"}, {"@type": "ListItem", "position": 42, "url": "https://commercial-ev-installers.pages.dev/installers/hannaby-jones-ltd-ll13-7qq/", "name": "Hannaby & Jones LTD"}, {"@type": "ListItem", "position": 43, "url": "https://commercial-ev-installers.pages.dev/installers/hd-electrical-bridgend-cf31-4tj/", "name": "HD Electrical (Bridgend)"}, {"@type": "ListItem", "position": 44, "url": "https://commercial-ev-installers.pages.dev/installers/heywood-electrical-sa61-2pu/", "name": "Heywood Electrical"}, {"@type": "ListItem", "position": 45, "url": "https://commercial-ev-installers.pages.dev/installers/hjec-limited-cf31-1jz/", "name": "HJEC Limited"}, {"@type": "ListItem", "position": 46, "url": "https://commercial-ev-installers.pages.dev/installers/hjt-electrical-ll59-5ln/", "name": "HJT Electrical"}, {"@type": "ListItem", "position": 47, "url": "https://commercial-ev-installers.pages.dev/installers/huw-field-electrical-services-ltd-ld3-0yj/", "name": "Huw Field Electrical Services Ltd"}, {"@type": "ListItem", "position": 48, "url": "https://commercial-ev-installers.pages.dev/installers/ian-ellis-electrical-services-ll12-7ap/", "name": "Ian Ellis Electrical Services"}, {"@type": "ListItem", "position": 49, "url": "https://commercial-ev-installers.pages.dev/installers/iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty/", "name": "IWEC International Ltd t/a IWEC Electrical Services"}, {"@type": "ListItem", "position": 50, "url": "https://commercial-ev-installers.pages.dev/installers/j3-electrical-services-limited-sa1-8hh/", "name": "J3 electrical services limited"}, {"@type": "ListItem", "position": 51, "url": "https://commercial-ev-installers.pages.dev/installers/jellyfish-ev-ltd-np20-2pe/", "name": "Jellyfish EV Ltd"}, {"@type": "ListItem", "position": 52, "url": "https://commercial-ev-installers.pages.dev/installers/jones-whitehead-ltd-ll57-4au/", "name": "Jones & Whitehead Ltd"}, {"@type": "ListItem", "position": 53, "url": "https://commercial-ev-installers.pages.dev/installers/lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr/", "name": "Lighting Solutions (Wales) Ltd t/a Lightning Solutions"}, {"@type": "ListItem", "position": 54, "url": "https://commercial-ev-installers.pages.dev/installers/lynn-edwards-electrical-contractors-ll57-2sz/", "name": "Lynn Edwards Electrical Contractors"}, {"@type": "ListItem", "position": 55, "url": "https://commercial-ev-installers.pages.dev/installers/mark-jones-electrical-ll59-5lg/", "name": "Mark Jones Electrical"}, {"@type": "ListItem", "position": 56, "url": "https://commercial-ev-installers.pages.dev/installers/mdt-electrical-ltd-cf11-8eq/", "name": "MDT Electrical Ltd"}, {"@type": "ListItem", "position": 57, "url": "https://commercial-ev-installers.pages.dev/installers/mike-morgan-sons-electrical-ld1-5na/", "name": "Mike Morgan & Sons Electrical"}, {"@type": "ListItem", "position": 58, "url": "https://commercial-ev-installers.pages.dev/installers/nw-electrical-installations-ltd-ll28-5ef/", "name": "NW Electrical Installations Ltd"}, {"@type": "ListItem", "position": 59, "url": "https://commercial-ev-installers.pages.dev/installers/oleco-ll59-5lf/", "name": "Oleco"}, {"@type": "ListItem", "position": 60, "url": "https://commercial-ev-installers.pages.dev/installers/osprey-engineering-ltd-sa6-8ra/", "name": "Osprey Engineering Ltd"}, {"@type": "ListItem", "position": 61, "url": "https://commercial-ev-installers.pages.dev/installers/paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la/", "name": "Paul Edwards Ymgymerwr Trydannol (Electrical Contractor)"}, {"@type": "ListItem", "position": 62, "url": "https://commercial-ev-installers.pages.dev/installers/phillips-services-wales-ltd-sa1-2jt/", "name": "Phillips Services (Wales) Ltd"}, {"@type": "ListItem", "position": 63, "url": "https://commercial-ev-installers.pages.dev/installers/power-solutions-electrical-contractors-cf48-4dr/", "name": "Power Solutions Electrical Contractors"}, {"@type": "ListItem", "position": 64, "url": "https://commercial-ev-installers.pages.dev/installers/provolt-engineering-services-cf31-3ln/", "name": "Provolt Engineering Services"}, {"@type": "ListItem", "position": 65, "url": "https://commercial-ev-installers.pages.dev/installers/purdie-electrical-ll11-6tq/", "name": "Purdie Electrical"}, {"@type": "ListItem", "position": 66, "url": "https://commercial-ev-installers.pages.dev/installers/r-lyons-electrical-ltd-ll30-1nq/", "name": "R Lyons Electrical Ltd"}, {"@type": "ListItem", "position": 67, "url": "https://commercial-ev-installers.pages.dev/installers/r-e-electrical-services-ld1-5bx/", "name": "R.E Electrical services"}, {"@type": "ListItem", "position": 68, "url": "https://commercial-ev-installers.pages.dev/installers/range-ev-ltd-t-a-range-cf31-3aq/", "name": "Range EV Ltd T/A Range"}, {"@type": "ListItem", "position": 69, "url": "https://commercial-ev-installers.pages.dev/installers/rlw-electrical-solar-limited-sa17-4tr/", "name": "RLW Electrical & Solar Limited"}, {"@type": "ListItem", "position": 70, "url": "https://commercial-ev-installers.pages.dev/installers/rr-electrical-services-wrexham-ll11-4tj/", "name": "RR Electrical Services (Wrexham)"}, {"@type": "ListItem", "position": 71, "url": "https://commercial-ev-installers.pages.dev/installers/s-h-m-electrical-services-wales-ltd-sa62-6jf/", "name": "S.H.M Electrical Services (WALES) Ltd"}, {"@type": "ListItem", "position": 72, "url": "https://commercial-ev-installers.pages.dev/installers/s-m-s-electrical-services-sa6-6ee/", "name": "S.M.S. Electrical Services"}, {"@type": "ListItem", "position": 73, "url": "https://commercial-ev-installers.pages.dev/installers/safesparks-electrical-ltd-np19-0ff/", "name": "Safesparks Electrical Ltd"}, {"@type": "ListItem", "position": 74, "url": "https://commercial-ev-installers.pages.dev/installers/sean-ltd-sa1-7er/", "name": "Sean Ltd"}, {"@type": "ListItem", "position": 75, "url": "https://commercial-ev-installers.pages.dev/installers/serennia-engineering-and-design-ltd-np19-7hy/", "name": "Serennia Engineering and Design Ltd"}, {"@type": "ListItem", "position": 76, "url": "https://commercial-ev-installers.pages.dev/installers/seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp/", "name": "Seron Electrical Services EV Energiser & Roberts Charging Systems"}, {"@type": "ListItem", "position": 77, "url": "https://commercial-ev-installers.pages.dev/installers/sunbeams-electrical-services-ltd-ld1-6sj/", "name": "Sunbeams Electrical Services Ltd"}, {"@type": "ListItem", "position": 78, "url": "https://commercial-ev-installers.pages.dev/installers/surge-cf31-1jz/", "name": "Surge"}, {"@type": "ListItem", "position": 79, "url": "https://commercial-ev-installers.pages.dev/installers/switched-on-electrical-services-sa62-5db/", "name": "Switched On Electrical Services"}, {"@type": "ListItem", "position": 80, "url": "https://commercial-ev-installers.pages.dev/installers/t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr/", "name": "T P Pearson & Son Electrical Contractors T/A T P Pearson & Son"}, {"@type": "ListItem", "position": 81, "url": "https://commercial-ev-installers.pages.dev/installers/tbarton-electrical-ltd-ll57-3eb/", "name": "TBarton Electrical Ltd"}, {"@type": "ListItem", "position": 82, "url": "https://commercial-ev-installers.pages.dev/installers/tjb-electricals-ltd-sa63-4ux/", "name": "TJB Electricals LTD"}, {"@type": "ListItem", "position": 83, "url": "https://commercial-ev-installers.pages.dev/installers/tlporter-electrical-contractor-ltd-sa14-6hf/", "name": "TLPorter Electrical Contractor Ltd"}, {"@type": "ListItem", "position": 84, "url": "https://commercial-ev-installers.pages.dev/installers/tony-price-builders-ld1-6ea/", "name": "Tony Price Builders"}, {"@type": "ListItem", "position": 85, "url": "https://commercial-ev-installers.pages.dev/installers/urban-solar-ltd-cf24-3lq/", "name": "Urban Solar Ltd"}, {"@type": "ListItem", "position": 86, "url": "https://commercial-ev-installers.pages.dev/installers/vri-electrical-ltd-np20-6wg/", "name": "VRI Electrical Ltd"}, {"@type": "ListItem", "position": 87, "url": "https://commercial-ev-installers.pages.dev/installers/watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr/", "name": "Watts Electrical Engineering Ltd T/A Watts EV Charging"}, {"@type": "ListItem", "position": 88, "url": "https://commercial-ev-installers.pages.dev/installers/whitehead-building-services-ltd-np20-2dw/", "name": "Whitehead Building Services Ltd"}, {"@type": "ListItem", "position": 89, "url": "https://commercial-ev-installers.pages.dev/installers/wtw-electrical-ll31-9ez/", "name": "WTW Electrical"}, {"@type": "ListItem", "position": 90, "url": "https://commercial-ev-installers.pages.dev/installers/zone-electrical-ltd-cf47-0sx/", "name": "Zone Electrical Ltd"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Directory", "item": "https://commercial-ev-installers.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "Wales", "item": "https://commercial-ev-installers.pages.dev/regions/wales/"}]}</script></head><body><header class="nav"><div class="wrap">
 <a class="brand" href="/">Commercial<span>EV</span>Installers</a>
-<nav><a href="/#directory">Directory</a><a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
-<a href="/guides/workplace-charging-scheme/">WCS grant</a>
-<a href="/guides/ev-infrastructure-grant/">Infrastructure grant</a></nav></div></header><div class="wrap crumb"><a href="/">Directory</a> › Wales</div>
+<nav><a href="/#directory">Directory</a><a href="/calculator/">Cost calculator</a>
+<a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
+<a href="/guides/workplace-charging-scheme/">WCS grant</a></nav></div></header><div class="trust">Built from <b>official GOV.UK / OZEV</b> data (Open Government Licence v3.0) · Independent · <b>Listing order is never sold</b></div><div class="wrap crumb"><a href="/">Directory</a> › Wales</div>
 <section style="padding-top:8px"><div class="wrap">
 <h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">Commercial EV charger installers in Wales</h1>
 <p class="lead" style="margin-top:14px">90 OZEV-authorised installers offering
-commercial or fleet EV charging installation in Wales.</p>
+commercial or fleet EV charging installation across Wales.</p>
+<p class="note">Towns: <a style="color:var(--green-d)" href="/towns/angelsey/">Angelsey</a> · <a style="color:var(--green-d)" href="/towns/bangor/">Bangor</a> · <a style="color:var(--green-d)" href="/towns/bethesda/">Bethesda</a> · <a style="color:var(--green-d)" href="/towns/brecon/">Brecon</a> · <a style="color:var(--green-d)" href="/towns/bridgend/">Bridgend</a> · <a style="color:var(--green-d)" href="/towns/cardiff/">Cardiff</a> · <a style="color:var(--green-d)" href="/towns/cardiff-bay/">Cardiff Bay</a> · <a style="color:var(--green-d)" href="/towns/carmarthen/">Carmarthen</a> · <a style="color:var(--green-d)" href="/towns/carmarthenshire/">Carmarthenshire</a> · <a style="color:var(--green-d)" href="/towns/colwyn-bay/">Colwyn Bay</a> · <a style="color:var(--green-d)" href="/towns/conwy/">Conwy</a> · <a style="color:var(--green-d)" href="/towns/deganwy/">Deganwy</a> · <a style="color:var(--green-d)" href="/towns/haverfordwest/">Haverfordwest</a> · <a style="color:var(--green-d)" href="/towns/kidwelly/">Kidwelly</a> · <a style="color:var(--green-d)" href="/towns/llandrindod-wells/">Llandrindod Wells</a> · <a style="color:var(--green-d)" href="/towns/llandudno/">Llandudno</a> · <a style="color:var(--green-d)" href="/towns/llandudno-junction/">Llandudno Junction</a> · <a style="color:var(--green-d)" href="/towns/llanelli/">Llanelli</a> · <a style="color:var(--green-d)" href="/towns/menai-bridge/">Menai Bridge</a> · <a style="color:var(--green-d)" href="/towns/merthyr-tydfil/">Merthyr Tydfil</a> · <a style="color:var(--green-d)" href="/towns/milford-haven/">Milford Haven</a> · <a style="color:var(--green-d)" href="/towns/mochdre/">Mochdre</a> · <a style="color:var(--green-d)" href="/towns/newport/">Newport</a> · <a style="color:var(--green-d)" href="/towns/pembrokeshire/">Pembrokeshire</a> · <a style="color:var(--green-d)" href="/towns/powys/">Powys</a> · <a style="color:var(--green-d)" href="/towns/swansea/">Swansea</a> · <a style="color:var(--green-d)" href="/towns/wales/">Wales</a> · <a style="color:var(--green-d)" href="/towns/wrexham/">Wrexham</a></p>
 <div class="grid"><article class="card " data-name="1 call electrical &amp; handyman services"
 data-region="Wales" data-services="Commercial"
-data-town="milford haven">
+data-town="milford haven"
+data-lat="51.72196155" data-lon="-5.0252471">
 <h3><a href="/installers/1-call-electrical-handyman-services-sa73-2sh/">1 Call Electrical &amp; Handyman Services</a></h3>
 <div class="meta">Milford Haven · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/1-call-electrical-handyman-services-sa73-2sh/">View details</a></div></article><article class="card " data-name="24-7 energy services limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/1-call-electrical-handyman-services-sa73-2sh/">View details</a>
+<button class="sl-btn" data-sl="1-call-electrical-handyman-services-sa73-2sh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="24-7 energy services limited"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="colwyn bay">
+data-town="colwyn bay"
+data-lat="53.28956150526316" data-lon="-3.7655091315789475">
 <h3><a href="/installers/24-7-energy-services-limited-ll28-5hf/">24-7 Energy Services Limited</a></h3>
 <div class="meta">Colwyn Bay · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/24-7-energy-services-limited-ll28-5hf/">View details</a><a href="https://www.24-7group.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ac electrical (north wales) ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/24-7-energy-services-limited-ll28-5hf/">View details</a><a href="https://www.24-7group.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="24-7-energy-services-limited-ll28-5hf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ac electrical (north wales) ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="conwy">
+data-town="conwy"
+data-lat="53.28453505" data-lon="-3.81641355">
 <h3><a href="/installers/ac-electrical-north-wales-ltd-ll31-9ry/">AC Electrical (North Wales) Ltd</a></h3>
 <div class="meta">Conwy · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ac-electrical-north-wales-ltd-ll31-9ry/">View details</a><a href="https://www.acelectrical-ltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ace electrics"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ac-electrical-north-wales-ltd-ll31-9ry/">View details</a><a href="https://www.acelectrical-ltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ac-electrical-north-wales-ltd-ll31-9ry" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ace electrics"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="kidwelly">
+data-town="kidwelly"
+data-lat="51.73739690714285" data-lon="-4.229723264285714">
 <h3><a href="/installers/ace-electrics-sa17-4he/">Ace Electrics</a></h3>
 <div class="meta">Kidwelly · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ace-electrics-sa17-4he/">View details</a><a href="https://www.aceelectrics.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="acp electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ace-electrics-sa17-4he/">View details</a><a href="https://www.aceelectrics.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ace-electrics-sa17-4he" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="acp electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.76149352307693" data-lon="-3.359573261538461">
 <h3><a href="/installers/acp-electrical-ltd-cf48-3be/">ACP Electrical Ltd</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/acp-electrical-ltd-cf48-3be/">View details</a></div></article><article class="card " data-name="act electrical nw ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/acp-electrical-ltd-cf48-3be/">View details</a>
+<button class="sl-btn" data-sl="acp-electrical-ltd-cf48-3be" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="act electrical nw ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandudno">
+data-town="llandudno"
+data-lat="53.30417407826088" data-lon="-3.8167564434782615">
 <h3><a href="/installers/act-electrical-nw-ltd-ll30-1sn/">ACT Electrical NW Ltd</a></h3>
 <div class="meta">Llandudno · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/act-electrical-nw-ltd-ll30-1sn/">View details</a><a href="https://www.sctelectricals.business.site" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="alex hillman"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/act-electrical-nw-ltd-ll30-1sn/">View details</a><a href="https://www.sctelectricals.business.site" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="act-electrical-nw-ltd-ll30-1sn" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="alex hillman"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff bay">
+data-town="cardiff bay"
+data-lat="51.471620569387724" data-lon="-3.163641657142858">
 <h3><a href="/installers/alex-hillman-cf10-4eb/">Alex Hillman</a></h3>
 <div class="meta">Cardiff Bay · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/alex-hillman-cf10-4eb/">View details</a></div></article><article class="card " data-name="amp electrical wales"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/alex-hillman-cf10-4eb/">View details</a>
+<button class="sl-btn" data-sl="alex-hillman-cf10-4eb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="amp electrical wales"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.746128458333345" data-lon="-3.4107713666666664">
 <h3><a href="/installers/amp-electrical-wales-cf48-1bf/">AMP Electrical Wales</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/amp-electrical-wales-cf48-1bf/">View details</a><a href="https://www.ampelectrical.wales" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="amroc heating services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/amp-electrical-wales-cf48-1bf/">View details</a><a href="https://www.ampelectrical.wales" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="amp-electrical-wales-cf48-1bf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="amroc heating services ltd"
 data-region="Wales" data-services="Commercial"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.659646571428574" data-lon="-3.913462614285714">
 <h3><a href="/installers/amroc-heating-services-ltd-sa6-8qe/">Amroc Heating Services Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/amroc-heating-services-ltd-sa6-8qe/">View details</a><a href="https://www.amrocheating.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="ask mr jones electrical contractors ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/amroc-heating-services-ltd-sa6-8qe/">View details</a><a href="https://www.amrocheating.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="amroc-heating-services-ltd-sa6-8qe" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ask mr jones electrical contractors ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.04860595000001" data-lon="-3.0006905388888896">
 <h3><a href="/installers/ask-mr-jones-electrical-contractors-ltd-ll11-1pf/">Ask Mr Jones Electrical Contractors Ltd</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ask-mr-jones-electrical-contractors-ltd-ll11-1pf/">View details</a><a href="https://www.askmrjones.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="avu control"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ask-mr-jones-electrical-contractors-ltd-ll11-1pf/">View details</a><a href="https://www.askmrjones.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ask-mr-jones-electrical-contractors-ltd-ll11-1pf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="avu control"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.58477692105263" data-lon="-2.9993889710526322">
 <h3><a href="/installers/avu-control-np20-4gj/">AVU Control</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/avu-control-np20-4gj/">View details</a><a href="https://www.avucontrol.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="be assured electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/avu-control-np20-4gj/">View details</a><a href="https://www.avucontrol.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="avu-control-np20-4gj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="be assured electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.483701455384626" data-lon="-3.1908937923076914">
 <h3><a href="/installers/be-assured-electrical-cf11-9lj/">Be Assured Electrical</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/be-assured-electrical-cf11-9lj/">View details</a><a href="https://www.beassuredelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="beacon cymru group ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/be-assured-electrical-cf11-9lj/">View details</a><a href="https://www.beassuredelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="be-assured-electrical-cf11-9lj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="beacon cymru group ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.6233148" data-lon="-3.94162512">
 <h3><a href="/installers/beacon-cymru-group-ltd-sa1-1nw/">Beacon Cymru Group Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/beacon-cymru-group-ltd-sa1-1nw/">View details</a></div></article><article class="card " data-name="bright electrical contractors n.w ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/beacon-cymru-group-ltd-sa1-1nw/">View details</a>
+<button class="sl-btn" data-sl="beacon-cymru-group-ltd-sa1-1nw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="bright electrical contractors n.w ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.06511987636364" data-lon="-3.018364358181817">
 <h3><a href="/installers/bright-electrical-contractors-n-w-ltd-ll11-4yu/">Bright Electrical Contractors N.W Ltd</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/bright-electrical-contractors-n-w-ltd-ll11-4yu/">View details</a></div></article><article class="card " data-name="brolec electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/bright-electrical-contractors-n-w-ltd-ll11-4yu/">View details</a>
+<button class="sl-btn" data-sl="bright-electrical-contractors-n-w-ltd-ll11-4yu" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="brolec electrical services ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="carmarthenshire">
+data-town="carmarthenshire"
+data-lat="51.8530630876923" data-lon="-4.329851198461538">
 <h3><a href="/installers/brolec-electrical-services-ltd-sa31-3hx/">Brolec Electrical Services Ltd</a></h3>
 <div class="meta">Carmarthenshire · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/brolec-electrical-services-ltd-sa31-3hx/">View details</a></div></article><article class="card " data-name="c &amp; c wales electrical solutions ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/brolec-electrical-services-ltd-sa31-3hx/">View details</a>
+<button class="sl-btn" data-sl="brolec-electrical-services-ltd-sa31-3hx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="c &amp; c wales electrical solutions ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="conwy">
+data-town="conwy"
+data-lat="53.28832966666667" data-lon="-3.8144957">
 <h3><a href="/installers/c-c-wales-electrical-solutions-ltd-ll31-9pr/">C &amp; C Wales Electrical Solutions Ltd</a></h3>
 <div class="meta">Conwy · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/c-c-wales-electrical-solutions-ltd-ll31-9pr/">View details</a><a href="https://www.candcwaleselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="carter sustainable construction ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/c-c-wales-electrical-solutions-ltd-ll31-9pr/">View details</a><a href="https://www.candcwaleselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="c-c-wales-electrical-solutions-ltd-ll31-9pr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="carter sustainable construction ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.51457314102564" data-lon="-3.580799430769231">
 <h3><a href="/installers/carter-sustainable-construction-ltd-cf31-1jz/">Carter Sustainable Construction Ltd</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/carter-sustainable-construction-ltd-cf31-1jz/">View details</a></div></article><article class="card " data-name="celtic process control ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/carter-sustainable-construction-ltd-cf31-1jz/">View details</a>
+<button class="sl-btn" data-sl="carter-sustainable-construction-ltd-cf31-1jz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="celtic process control ltd"
 data-region="Wales" data-services="Commercial"
-data-town="newport">
+data-town="newport"
+data-lat="51.57258333999998" data-lon="-2.9640420485714287">
 <h3><a href="/installers/celtic-process-control-ltd-np19-4pt/">Celtic Process Control Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/celtic-process-control-ltd-np19-4pt/">View details</a><a href="https://www.celticprocesscontrol.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="centre great ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/celtic-process-control-ltd-np19-4pt/">View details</a><a href="https://www.celticprocesscontrol.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="celtic-process-control-ltd-np19-4pt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="centre great ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.51828846666666" data-lon="-3.5576103999999997">
 <h3><a href="/installers/centre-great-ltd-cf31-2ad/">Centre Great Ltd</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/centre-great-ltd-cf31-2ad/">View details</a><a href="https://www.centregreat.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="city &amp; county of swansea"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/centre-great-ltd-cf31-2ad/">View details</a><a href="https://www.centregreat.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="centre-great-ltd-cf31-2ad" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="city &amp; county of swansea"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.63437869565218" data-lon="-3.959230447826087">
 <h3><a href="/installers/city-county-of-swansea-sa5-8ld/">City &amp; County of Swansea</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/city-county-of-swansea-sa5-8ld/">View details</a><a href="https://www.swansea.gov.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="city energy network ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/city-county-of-swansea-sa5-8ld/">View details</a><a href="https://www.swansea.gov.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="city-county-of-swansea-sa5-8ld" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="city energy network ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.46507114925376" data-lon="-3.1675809641791046">
 <h3><a href="/installers/city-energy-network-ltd-cf10-5ee/">City Energy Network LTD</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/city-energy-network-ltd-cf10-5ee/">View details</a></div></article><article class="card " data-name="clement walker electrical and mechanical solutions"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/city-energy-network-ltd-cf10-5ee/">View details</a>
+<button class="sl-btn" data-sl="city-energy-network-ltd-cf10-5ee" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="clement walker electrical and mechanical solutions"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.72011305333332" data-lon="-3.3556039033333334">
 <h3><a href="/installers/clement-walker-electrical-and-mechanical-solutions-cf48-4dr/">Clement Walker Electrical and Mechanical Solutions</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/clement-walker-electrical-and-mechanical-solutions-cf48-4dr/">View details</a></div></article><article class="card " data-name="connect electrical &amp; energy services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/clement-walker-electrical-and-mechanical-solutions-cf48-4dr/">View details</a>
+<button class="sl-btn" data-sl="clement-walker-electrical-and-mechanical-solutions-cf48-4dr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="connect electrical &amp; energy services ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.75691829375" data-lon="-3.3601265812500003">
 <h3><a href="/installers/connect-electrical-energy-services-ltd-cf48-3te/">Connect Electrical &amp; Energy Services Ltd</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/connect-electrical-energy-services-ltd-cf48-3te/">View details</a><a href="https://www.connectelectricaluk.com/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="development plus ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/connect-electrical-energy-services-ltd-cf48-3te/">View details</a><a href="https://www.connectelectricaluk.com/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="connect-electrical-energy-services-ltd-cf48-3te" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="development plus ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.585816106382985" data-lon="-2.972791308510638">
 <h3><a href="/installers/development-plus-ltd-np19-0lw/">Development Plus Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/development-plus-ltd-np19-0lw/">View details</a></div></article><article class="card " data-name="domestic electrical services ltd t/a domelec"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/development-plus-ltd-np19-0lw/">View details</a>
+<button class="sl-btn" data-sl="development-plus-ltd-np19-0lw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="domestic electrical services ltd t/a domelec"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.06510066037737" data-lon="-3.0045805132075465">
 <h3><a href="/installers/domestic-electrical-services-ltd-t-a-domelec-ll11-4yl/">Domestic Electrical Services Ltd T/A DomElec</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/domestic-electrical-services-ltd-t-a-domelec-ll11-4yl/">View details</a><a href="https://www.domelec.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="dragon security &amp; electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/domestic-electrical-services-ltd-t-a-domelec-ll11-4yl/">View details</a><a href="https://www.domelec.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="domestic-electrical-services-ltd-t-a-domelec-ll11-4yl" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="dragon security &amp; electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="mochdre">
+data-town="mochdre"
+data-lat="53.28864962173914" data-lon="-3.7655395086956527">
 <h3><a href="/installers/dragon-security-electrical-ltd-ll28-5hn/">Dragon Security &amp; Electrical Ltd</a></h3>
 <div class="meta">Mochdre · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/dragon-security-electrical-ltd-ll28-5hn/">View details</a><a href="https://www.dragonse.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="drs fm services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/dragon-security-electrical-ltd-ll28-5hn/">View details</a><a href="https://www.dragonse.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="dragon-security-electrical-ltd-ll28-5hn" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="drs fm services ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.65572534107143" data-lon="-3.9083314624999974">
 <h3><a href="/installers/drs-fm-services-ltd-sa7-9fg/">DRS FM Services Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/drs-fm-services-ltd-sa7-9fg/">View details</a><a href="https://www.drsfmservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="efs systems (uk) ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/drs-fm-services-ltd-sa7-9fg/">View details</a><a href="https://www.drsfmservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="drs-fm-services-ltd-sa7-9fg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="efs systems (uk) ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.76854607594937" data-lon="-3.3630890797468354">
 <h3><a href="/installers/efs-systems-uk-ltd-cf48-2sr/">EFS Systems (UK) Ltd</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/efs-systems-uk-ltd-cf48-2sr/">View details</a></div></article><article class="card " data-name="electrify wales ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/efs-systems-uk-ltd-cf48-2sr/">View details</a>
+<button class="sl-btn" data-sl="efs-systems-uk-ltd-cf48-2sr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="electrify wales ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="pembrokeshire">
+data-town="pembrokeshire"
+data-lat="51.72712465333333" data-lon="-5.0289217">
 <h3><a href="/installers/electrify-wales-ltd-sa73-2ru/">Electrify Wales Ltd</a></h3>
 <div class="meta">Pembrokeshire · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/electrify-wales-ltd-sa73-2ru/">View details</a><a href="https://www.electrify.wales/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="energise ev ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/electrify-wales-ltd-sa73-2ru/">View details</a><a href="https://www.electrify.wales/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="electrify-wales-ltd-sa73-2ru" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="energise ev ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wales">
+data-town="wales"
+data-lat="51.740334975" data-lon="-4.294908575">
 <h3><a href="/installers/energise-ev-ltd-sa17-4ss/">Energise EV Ltd</a></h3>
 <div class="meta">Wales · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/energise-ev-ltd-sa17-4ss/">View details</a></div></article><article class="card " data-name="eureka north wales ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/energise-ev-ltd-sa17-4ss/">View details</a>
+<button class="sl-btn" data-sl="energise-ev-ltd-sa17-4ss" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="eureka north wales ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="conwy">
+data-town="conwy"
+data-lat="53.29865906923079" data-lon="-3.7633163980769266">
 <h3><a href="/installers/eureka-north-wales-ltd-ll28-5bs/">Eureka North Wales Ltd</a></h3>
 <div class="meta">Conwy · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/eureka-north-wales-ltd-ll28-5bs/">View details</a></div></article><article class="card " data-name="evchargeandgo ltd t/a urban evolution"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/eureka-north-wales-ltd-ll28-5bs/">View details</a>
+<button class="sl-btn" data-sl="eureka-north-wales-ltd-ll28-5bs" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="evchargeandgo ltd t/a urban evolution"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wales">
+data-town="wales"
+data-lat="51.48272137500004" data-lon="-3.1671217705882366">
 <h3><a href="/installers/evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed/">EVChargeandGo Ltd t/a Urban Evolution</a></h3>
 <div class="meta">Wales · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed/">View details</a><a href="https://www.urbanevolution.io" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="flow electrical services t/a flow electrical services wales ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed/">View details</a><a href="https://www.urbanevolution.io" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="evchargeandgo-ltd-t-a-urban-evolution-cf24-0ed" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="flow electrical services t/a flow electrical services wales ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.747058700000004" data-lon="-3.3650865578947373">
 <h3><a href="/installers/flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb/">Flow Electrical Services T/A Flow Electrical Services Wales Ltd</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb/">View details</a><a href="https://www.flowelectricalservices.com/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="four shires electrical engineering"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb/">View details</a><a href="https://www.flowelectricalservices.com/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="flow-electrical-services-t-a-flow-electrical-services-wales-ltd-cf47-0jb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="four shires electrical engineering"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.06762938333333" data-lon="-2.986333138888889">
 <h3><a href="/installers/four-shires-electrical-engineering-ll12-8ag/">Four Shires Electrical Engineering</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/four-shires-electrical-engineering-ll12-8ag/">View details</a><a href="https://www.fourshireselectrical.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="fse group ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/four-shires-electrical-engineering-ll12-8ag/">View details</a><a href="https://www.fourshireselectrical.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="four-shires-electrical-engineering-ll12-8ag" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="fse group ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.47422181269838" data-lon="-3.152991238095238">
 <h3><a href="/installers/fse-group-ltd-cf24-5pj/">FSE Group LTD</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/fse-group-ltd-cf24-5pj/">View details</a><a href="https://www.fsegroupltd.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="fsr electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/fse-group-ltd-cf24-5pj/">View details</a><a href="https://www.fsegroupltd.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="fse-group-ltd-cf24-5pj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="fsr electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="carmarthen">
+data-town="carmarthen"
+data-lat="51.849293629999956" data-lon="-4.3274545625000025">
 <h3><a href="/installers/fsr-electrical-ltd-sa31-3ne/">FSR Electrical Ltd</a></h3>
 <div class="meta">Carmarthen · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/fsr-electrical-ltd-sa31-3ne/">View details</a><a href="https://www.fsrelectrical.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="g.r.d electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/fsr-electrical-ltd-sa31-3ne/">View details</a><a href="https://www.fsrelectrical.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="fsr-electrical-ltd-sa31-3ne" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="g.r.d electrical"
 data-region="Wales" data-services="Commercial"
-data-town="kidwelly">
+data-town="kidwelly"
+data-lat="51.735706732075485" data-lon="-4.306403803773586">
 <h3><a href="/installers/g-r-d-electrical-sa17-4su/">G.R.D Electrical</a></h3>
 <div class="meta">Kidwelly · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/g-r-d-electrical-sa17-4su/">View details</a></div></article><article class="card " data-name="gower renewables limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/g-r-d-electrical-sa17-4su/">View details</a>
+<button class="sl-btn" data-sl="g-r-d-electrical-sa17-4su" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="gower renewables limited"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.65572534107143" data-lon="-3.9083314624999974">
 <h3><a href="/installers/gower-renewables-limited-sa7-9fg/">Gower Renewables Limited</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/gower-renewables-limited-sa7-9fg/">View details</a><a href="https://www.gowerrenewables.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="green warmth ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/gower-renewables-limited-sa7-9fg/">View details</a><a href="https://www.gowerrenewables.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="gower-renewables-limited-sa7-9fg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="green warmth ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="haverfordwest">
+data-town="haverfordwest"
+data-lat="51.82534261276597" data-lon="-4.958701863829788">
 <h3><a href="/installers/green-warmth-ltd-sa62-4bs/">Green Warmth Ltd</a></h3>
 <div class="meta">Haverfordwest · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/green-warmth-ltd-sa62-4bs/">View details</a></div></article><article class="card " data-name="greener home heating ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/green-warmth-ltd-sa62-4bs/">View details</a>
+<button class="sl-btn" data-sl="green-warmth-ltd-sa62-4bs" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="greener home heating ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="haverfordwest">
+data-town="haverfordwest"
+data-lat="51.874105965" data-lon="-4.969519720000001">
 <h3><a href="/installers/greener-home-heating-ltd-sa62-5ph/">Greener Home Heating Ltd</a></h3>
 <div class="meta">Haverfordwest · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/greener-home-heating-ltd-sa62-5ph/">View details</a><a href="https://www.grennerhomeheating.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="greg palmer electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/greener-home-heating-ltd-sa62-5ph/">View details</a><a href="https://www.grennerhomeheating.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="greener-home-heating-ltd-sa62-5ph" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="greg palmer electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandrindod wells">
+data-town="llandrindod wells"
+data-lat="52.232020635000005" data-lon="-3.3813707750000006">
 <h3><a href="/installers/greg-palmer-electrical-services-ld1-5nq/">Greg Palmer Electrical Services</a></h3>
 <div class="meta">Llandrindod Wells · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/greg-palmer-electrical-services-ld1-5nq/">View details</a></div></article><article class="card " data-name="hannaby &amp; jones ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/greg-palmer-electrical-services-ld1-5nq/">View details</a>
+<button class="sl-btn" data-sl="greg-palmer-electrical-services-ld1-5nq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="hannaby &amp; jones ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.03511817199999" data-lon="-2.99694125">
 <h3><a href="/installers/hannaby-jones-ltd-ll13-7qq/">Hannaby &amp; Jones LTD</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/hannaby-jones-ltd-ll13-7qq/">View details</a><a href="https://www.hannabyandjones.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="hd electrical (bridgend)"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/hannaby-jones-ltd-ll13-7qq/">View details</a><a href="https://www.hannabyandjones.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="hannaby-jones-ltd-ll13-7qq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="hd electrical (bridgend)"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.51687023103448" data-lon="-3.601575948275862">
 <h3><a href="/installers/hd-electrical-bridgend-cf31-4tj/">HD Electrical (Bridgend)</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/hd-electrical-bridgend-cf31-4tj/">View details</a></div></article><article class="card " data-name="heywood electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/hd-electrical-bridgend-cf31-4tj/">View details</a>
+<button class="sl-btn" data-sl="hd-electrical-bridgend-cf31-4tj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="heywood electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="haverfordwest">
+data-town="haverfordwest"
+data-lat="51.810074786666654" data-lon="-4.963694433333334">
 <h3><a href="/installers/heywood-electrical-sa61-2pu/">Heywood Electrical</a></h3>
 <div class="meta">Haverfordwest · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/heywood-electrical-sa61-2pu/">View details</a></div></article><article class="card " data-name="hjec limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/heywood-electrical-sa61-2pu/">View details</a>
+<button class="sl-btn" data-sl="heywood-electrical-sa61-2pu" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="hjec limited"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.51457314102564" data-lon="-3.580799430769231">
 <h3><a href="/installers/hjec-limited-cf31-1jz/">HJEC Limited</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/hjec-limited-cf31-1jz/">View details</a></div></article><article class="card " data-name="hjt electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/hjec-limited-cf31-1jz/">View details</a>
+<button class="sl-btn" data-sl="hjec-limited-cf31-1jz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="hjt electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="menai bridge">
+data-town="menai bridge"
+data-lat="53.2309899081081" data-lon="-4.172632729729729">
 <h3><a href="/installers/hjt-electrical-ll59-5ln/">HJT Electrical</a></h3>
 <div class="meta">Menai Bridge · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/hjt-electrical-ll59-5ln/">View details</a><a href="https://www.hjtelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="huw field electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/hjt-electrical-ll59-5ln/">View details</a><a href="https://www.hjtelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="hjt-electrical-ll59-5ln" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="huw field electrical services ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="brecon">
+data-town="brecon"
+data-lat="52.039949150819666" data-lon="-3.269418163934426">
 <h3><a href="/installers/huw-field-electrical-services-ltd-ld3-0yj/">Huw Field Electrical Services Ltd</a></h3>
 <div class="meta">Brecon · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/huw-field-electrical-services-ltd-ld3-0yj/">View details</a></div></article><article class="card " data-name="ian ellis electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/huw-field-electrical-services-ltd-ld3-0yj/">View details</a>
+<button class="sl-btn" data-sl="huw-field-electrical-services-ltd-ld3-0yj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="ian ellis electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.05227883043477" data-lon="-2.988385286956522">
 <h3><a href="/installers/ian-ellis-electrical-services-ll12-7ap/">Ian Ellis Electrical Services</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/ian-ellis-electrical-services-ll12-7ap/">View details</a><a href="https://www.ianelliselectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="iwec international ltd t/a iwec electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/ian-ellis-electrical-services-ll12-7ap/">View details</a><a href="https://www.ianelliselectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="ian-ellis-electrical-services-ll12-7ap" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="iwec international ltd t/a iwec electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="kidwelly">
+data-town="kidwelly"
+data-lat="51.73877818461539" data-lon="-4.299256917307692">
 <h3><a href="/installers/iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty/">IWEC International Ltd t/a IWEC Electrical Services</a></h3>
 <div class="meta">Kidwelly · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty/">View details</a></div></article><article class="card " data-name="j3 electrical services limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty/">View details</a>
+<button class="sl-btn" data-sl="iwec-international-ltd-t-a-iwec-electrical-services-sa17-4ty" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="j3 electrical services limited"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.6231675975" data-lon="-3.9234601049999993">
 <h3><a href="/installers/j3-electrical-services-limited-sa1-8hh/">J3 electrical services limited</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/j3-electrical-services-limited-sa1-8hh/">View details</a><a href="https://www.J3electricsco.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="jellyfish ev ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/j3-electrical-services-limited-sa1-8hh/">View details</a><a href="https://www.j3electricsco.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="j3-electrical-services-limited-sa1-8hh" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="jellyfish ev ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.580020931250004" data-lon="-2.9903969541666666">
 <h3><a href="/installers/jellyfish-ev-ltd-np20-2pe/">Jellyfish EV Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/jellyfish-ev-ltd-np20-2pe/">View details</a><a href="https://www.jellyfishev.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="jones &amp; whitehead ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/jellyfish-ev-ltd-np20-2pe/">View details</a><a href="https://www.jellyfishev.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="jellyfish-ev-ltd-np20-2pe" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="jones &amp; whitehead ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bangor">
+data-town="bangor"
+data-lat="53.19027025" data-lon="-4.093729675">
 <h3><a href="/installers/jones-whitehead-ltd-ll57-4au/">Jones &amp; Whitehead Ltd</a></h3>
 <div class="meta">Bangor · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/jones-whitehead-ltd-ll57-4au/">View details</a></div></article><article class="card " data-name="lighting solutions (wales) ltd t/a lightning solutions"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/jones-whitehead-ltd-ll57-4au/">View details</a>
+<button class="sl-btn" data-sl="jones-whitehead-ltd-ll57-4au" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="lighting solutions (wales) ltd t/a lightning solutions"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.76854607594937" data-lon="-3.3630890797468354">
 <h3><a href="/installers/lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr/">Lighting Solutions (Wales) Ltd t/a Lightning Solutions</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr/">View details</a><a href="https://www.lsuk.org.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="lynn edwards electrical contractors"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr/">View details</a><a href="https://www.lsuk.org.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="lighting-solutions-wales-ltd-t-a-lightning-solutions-cf48-2sr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="lynn edwards electrical contractors"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bangor">
+data-town="bangor"
+data-lat="53.234404903999994" data-lon="-4.1219142620000015">
 <h3><a href="/installers/lynn-edwards-electrical-contractors-ll57-2sz/">Lynn Edwards Electrical Contractors</a></h3>
 <div class="meta">Bangor · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/lynn-edwards-electrical-contractors-ll57-2sz/">View details</a></div></article><article class="card " data-name="mark jones electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/lynn-edwards-electrical-contractors-ll57-2sz/">View details</a>
+<button class="sl-btn" data-sl="lynn-edwards-electrical-contractors-ll57-2sz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mark jones electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="angelsey">
+data-town="angelsey"
+data-lat="53.22949864583333" data-lon="-4.176082195833334">
 <h3><a href="/installers/mark-jones-electrical-ll59-5lg/">Mark Jones Electrical</a></h3>
 <div class="meta">Angelsey · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mark-jones-electrical-ll59-5lg/">View details</a></div></article><article class="card " data-name="mdt electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mark-jones-electrical-ll59-5lg/">View details</a>
+<button class="sl-btn" data-sl="mark-jones-electrical-ll59-5lg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mdt electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.46214715365853" data-lon="-3.1965917146341467">
 <h3><a href="/installers/mdt-electrical-ltd-cf11-8eq/">MDT Electrical Ltd</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mdt-electrical-ltd-cf11-8eq/">View details</a><a href="https://www.mdtelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="mike morgan &amp; sons electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mdt-electrical-ltd-cf11-8eq/">View details</a><a href="https://www.mdtelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="mdt-electrical-ltd-cf11-8eq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="mike morgan &amp; sons electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandrindod wells">
+data-town="llandrindod wells"
+data-lat="52.23402679722223" data-lon="-3.378992383333334">
 <h3><a href="/installers/mike-morgan-sons-electrical-ld1-5na/">Mike Morgan &amp; Sons Electrical</a></h3>
 <div class="meta">Llandrindod Wells · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/mike-morgan-sons-electrical-ld1-5na/">View details</a></div></article><article class="card " data-name="nw electrical installations ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/mike-morgan-sons-electrical-ld1-5na/">View details</a>
+<button class="sl-btn" data-sl="mike-morgan-sons-electrical-ld1-5na" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="nw electrical installations ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="mochdre">
+data-town="mochdre"
+data-lat="53.291757680769216" data-lon="-3.765751998076923">
 <h3><a href="/installers/nw-electrical-installations-ltd-ll28-5ef/">NW Electrical Installations Ltd</a></h3>
 <div class="meta">Mochdre · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/nw-electrical-installations-ltd-ll28-5ef/">View details</a></div></article><article class="card " data-name="oleco"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/nw-electrical-installations-ltd-ll28-5ef/">View details</a>
+<button class="sl-btn" data-sl="nw-electrical-installations-ltd-ll28-5ef" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="oleco"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="menai bridge">
+data-town="menai bridge"
+data-lat="53.22996071578948" data-lon="-4.173393578947368">
 <h3><a href="/installers/oleco-ll59-5lf/">Oleco</a></h3>
 <div class="meta">Menai Bridge · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/oleco-ll59-5lf/">View details</a><a href="https://www.oleco.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="osprey engineering ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/oleco-ll59-5lf/">View details</a><a href="https://www.oleco.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="oleco-ll59-5lf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="osprey engineering ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.655957119047635" data-lon="-3.9191223666666666">
 <h3><a href="/installers/osprey-engineering-ltd-sa6-8ra/">Osprey Engineering Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/osprey-engineering-ltd-sa6-8ra/">View details</a><a href="https://www.ospreyengineering.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="paul edwards ymgymerwr trydannol (electrical contractor)"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/osprey-engineering-ltd-sa6-8ra/">View details</a><a href="https://www.ospreyengineering.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="osprey-engineering-ltd-sa6-8ra" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="paul edwards ymgymerwr trydannol (electrical contractor)"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bangor">
+data-town="bangor"
+data-lat="53.21973719534885" data-lon="-4.149285104651162">
 <h3><a href="/installers/paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la/">Paul Edwards Ymgymerwr Trydannol (Electrical Contractor)</a></h3>
 <div class="meta">Bangor · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la/">View details</a></div></article><article class="card " data-name="phillips services (wales) ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la/">View details</a>
+<button class="sl-btn" data-sl="paul-edwards-ymgymerwr-trydannol-electrical-contractor-ll57-2la" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="phillips services (wales) ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.64129569111109" data-lon="-3.937971822222223">
 <h3><a href="/installers/phillips-services-wales-ltd-sa1-2jt/">Phillips Services (Wales) Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/phillips-services-wales-ltd-sa1-2jt/">View details</a><a href="https://www.phillips-services.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="power solutions electrical contractors"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/phillips-services-wales-ltd-sa1-2jt/">View details</a><a href="https://www.phillips-services.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="phillips-services-wales-ltd-sa1-2jt" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="power solutions electrical contractors"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.72011305333332" data-lon="-3.3556039033333334">
 <h3><a href="/installers/power-solutions-electrical-contractors-cf48-4dr/">Power Solutions Electrical Contractors</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/power-solutions-electrical-contractors-cf48-4dr/">View details</a><a href="https://www.powersolutionselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="provolt engineering services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/power-solutions-electrical-contractors-cf48-4dr/">View details</a><a href="https://www.powersolutionselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="power-solutions-electrical-contractors-cf48-4dr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="provolt engineering services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.494496016666666" data-lon="-3.576819479166667">
 <h3><a href="/installers/provolt-engineering-services-cf31-3ln/">Provolt Engineering Services</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/provolt-engineering-services-cf31-3ln/">View details</a><a href="https://www.provoltengineering.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="purdie electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/provolt-engineering-services-cf31-3ln/">View details</a><a href="https://www.provoltengineering.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="provolt-engineering-services-cf31-3ln" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="purdie electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.05279638333334" data-lon="-3.026836">
 <h3><a href="/installers/purdie-electrical-ll11-6tq/">Purdie Electrical</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/purdie-electrical-ll11-6tq/">View details</a></div></article><article class="card " data-name="r lyons electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/purdie-electrical-ll11-6tq/">View details</a>
+<button class="sl-btn" data-sl="purdie-electrical-ll11-6tq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="r lyons electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandudno">
+data-town="llandudno"
+data-lat="53.31270640200001" data-lon="-3.816484876000002">
 <h3><a href="/installers/r-lyons-electrical-ltd-ll30-1nq/">R Lyons Electrical Ltd</a></h3>
 <div class="meta">Llandudno · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/r-lyons-electrical-ltd-ll30-1nq/">View details</a><a href="https://www.rlyonselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="r.e electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/r-lyons-electrical-ltd-ll30-1nq/">View details</a><a href="https://www.rlyonselectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="r-lyons-electrical-ltd-ll30-1nq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="r.e electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="powys">
+data-town="powys"
+data-lat="52.25219628648649" data-lon="-3.373179581081081">
 <h3><a href="/installers/r-e-electrical-services-ld1-5bx/">R.E Electrical services</a></h3>
 <div class="meta">Powys · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/r-e-electrical-services-ld1-5bx/">View details</a><a href="https://www.reelectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="range ev ltd t/a range"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/r-e-electrical-services-ld1-5bx/">View details</a><a href="https://www.reelectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="r-e-electrical-services-ld1-5bx" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="range ev ltd t/a range"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.50182882" data-lon="-3.561876914999999">
 <h3><a href="/installers/range-ev-ltd-t-a-range-cf31-3aq/">Range EV Ltd T/A Range</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/range-ev-ltd-t-a-range-cf31-3aq/">View details</a><a href="https://www.range-ev.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="rlw electrical &amp; solar limited"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/range-ev-ltd-t-a-range-cf31-3aq/">View details</a><a href="https://www.range-ev.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="range-ev-ltd-t-a-range-cf31-3aq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="rlw electrical &amp; solar limited"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="kidwelly">
+data-town="kidwelly"
+data-lat="51.73723812307692" data-lon="-4.302544223076925">
 <h3><a href="/installers/rlw-electrical-solar-limited-sa17-4tr/">RLW Electrical &amp; Solar Limited</a></h3>
 <div class="meta">Kidwelly · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/rlw-electrical-solar-limited-sa17-4tr/">View details</a><a href="https://www.rlwelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="rr electrical services (wrexham)"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/rlw-electrical-solar-limited-sa17-4tr/">View details</a><a href="https://www.rlwelectrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="rlw-electrical-solar-limited-sa17-4tr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="rr electrical services (wrexham)"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="wrexham">
+data-town="wrexham"
+data-lat="53.066009587804864" data-lon="-3.0194117951219517">
 <h3><a href="/installers/rr-electrical-services-wrexham-ll11-4tj/">RR Electrical Services (Wrexham)</a></h3>
 <div class="meta">Wrexham · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/rr-electrical-services-wrexham-ll11-4tj/">View details</a></div></article><article class="card " data-name="s.h.m electrical services (wales) ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/rr-electrical-services-wrexham-ll11-4tj/">View details</a>
+<button class="sl-btn" data-sl="rr-electrical-services-wrexham-ll11-4tj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="s.h.m electrical services (wales) ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="haverfordwest">
+data-town="haverfordwest"
+data-lat="51.843427851351365" data-lon="-5.009963791891892">
 <h3><a href="/installers/s-h-m-electrical-services-wales-ltd-sa62-6jf/">S.H.M Electrical Services (WALES) Ltd</a></h3>
 <div class="meta">Haverfordwest · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/s-h-m-electrical-services-wales-ltd-sa62-6jf/">View details</a></div></article><article class="card " data-name="s.m.s. electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/s-h-m-electrical-services-wales-ltd-sa62-6jf/">View details</a>
+<button class="sl-btn" data-sl="s-h-m-electrical-services-wales-ltd-sa62-6jf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="s.m.s. electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.67138891428573" data-lon="-3.9283662214285715">
 <h3><a href="/installers/s-m-s-electrical-services-sa6-6ee/">S.M.S. Electrical Services</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/s-m-s-electrical-services-sa6-6ee/">View details</a><a href="https://www.smselectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="safesparks electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/s-m-s-electrical-services-sa6-6ee/">View details</a><a href="https://www.smselectricalservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="s-m-s-electrical-services-sa6-6ee" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="safesparks electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.5849620111111" data-lon="-2.9760404793650803">
 <h3><a href="/installers/safesparks-electrical-ltd-np19-0ff/">Safesparks Electrical Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/safesparks-electrical-ltd-np19-0ff/">View details</a></div></article><article class="card " data-name="sean ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/safesparks-electrical-ltd-np19-0ff/">View details</a>
+<button class="sl-btn" data-sl="safesparks-electrical-ltd-np19-0ff" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sean ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="swansea">
+data-town="swansea"
+data-lat="51.6550635425" data-lon="-3.900977069999999">
 <h3><a href="/installers/sean-ltd-sa1-7er/">Sean Ltd</a></h3>
 <div class="meta">Swansea · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sean-ltd-sa1-7er/">View details</a><a href="https://www.seanltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="serennia engineering and design ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sean-ltd-sa1-7er/">View details</a><a href="https://www.seanltd.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="sean-ltd-sa1-7er" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="serennia engineering and design ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.604542753125" data-lon="-2.978746325000001">
 <h3><a href="/installers/serennia-engineering-and-design-ltd-np19-7hy/">Serennia Engineering and Design Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/serennia-engineering-and-design-ltd-np19-7hy/">View details</a><a href="https://www.serennia.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="seron electrical services ev energiser &amp; roberts charging systems"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/serennia-engineering-and-design-ltd-np19-7hy/">View details</a><a href="https://www.serennia.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="serennia-engineering-and-design-ltd-np19-7hy" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="seron electrical services ev energiser &amp; roberts charging systems"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="deganwy">
+data-town="deganwy"
+data-lat="53.301947190909075" data-lon="-3.8369809500000005">
 <h3><a href="/installers/seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp/">Seron Electrical Services EV Energiser &amp; Roberts Charging Systems</a></h3>
 <div class="meta">Deganwy · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp/">View details</a><a href="https://www.seron.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="sunbeams electrical services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp/">View details</a><a href="https://www.seron.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="seron-electrical-services-ev-energiser-roberts-charging-systems-ll31-9dp" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="sunbeams electrical services ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandrindod wells">
+data-town="llandrindod wells"
+data-lat="52.309732849999996" data-lon="-3.310039683333333">
 <h3><a href="/installers/sunbeams-electrical-services-ltd-ld1-6sj/">Sunbeams Electrical Services Ltd</a></h3>
 <div class="meta">Llandrindod Wells · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/sunbeams-electrical-services-ltd-ld1-6sj/">View details</a></div></article><article class="card " data-name="surge"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/sunbeams-electrical-services-ltd-ld1-6sj/">View details</a>
+<button class="sl-btn" data-sl="sunbeams-electrical-services-ltd-ld1-6sj" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="surge"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bridgend">
+data-town="bridgend"
+data-lat="51.51457314102564" data-lon="-3.580799430769231">
 <h3><a href="/installers/surge-cf31-1jz/">Surge</a></h3>
 <div class="meta">Bridgend · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/surge-cf31-1jz/">View details</a><a href="https://www.surge-electrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="switched on electrical services"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/surge-cf31-1jz/">View details</a><a href="https://www.surge-electrical.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="surge-cf31-1jz" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="switched on electrical services"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="pembrokeshire">
+data-town="pembrokeshire"
+data-lat="51.871853859999995" data-lon="-4.95152994">
 <h3><a href="/installers/switched-on-electrical-services-sa62-5db/">Switched On Electrical Services</a></h3>
 <div class="meta">Pembrokeshire · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/switched-on-electrical-services-sa62-5db/">View details</a></div></article><article class="card " data-name="t p pearson &amp; son electrical contractors t/a t p pearson &amp; son"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/switched-on-electrical-services-sa62-5db/">View details</a>
+<button class="sl-btn" data-sl="switched-on-electrical-services-sa62-5db" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="t p pearson &amp; son electrical contractors t/a t p pearson &amp; son"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.47799188749997" data-lon="-3.2025241724999987">
 <h3><a href="/installers/t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr/">T P Pearson &amp; Son Electrical Contractors T/A T P Pearson &amp; Son</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr/">View details</a></div></article><article class="card " data-name="tbarton electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr/">View details</a>
+<button class="sl-btn" data-sl="t-p-pearson-son-electrical-contractors-t-a-t-p-pearson-son-cf11-6hr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="tbarton electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="bethesda">
+data-town="bethesda"
+data-lat="53.190368199999995" data-lon="-4.06240155">
 <h3><a href="/installers/tbarton-electrical-ltd-ll57-3eb/">TBarton Electrical Ltd</a></h3>
 <div class="meta">Bethesda · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/tbarton-electrical-ltd-ll57-3eb/">View details</a><a href="https://www.tbartonelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="tjb electricals ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/tbarton-electrical-ltd-ll57-3eb/">View details</a><a href="https://www.tbartonelectrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="tbarton-electrical-ltd-ll57-3eb" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="tjb electricals ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="pembrokeshire">
+data-town="pembrokeshire"
+data-lat="51.84866308518519" data-lon="-4.880097381481481">
 <h3><a href="/installers/tjb-electricals-ltd-sa63-4ux/">TJB Electricals LTD</a></h3>
 <div class="meta">Pembrokeshire · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/tjb-electricals-ltd-sa63-4ux/">View details</a></div></article><article class="card " data-name="tlporter electrical contractor ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/tjb-electricals-ltd-sa63-4ux/">View details</a>
+<button class="sl-btn" data-sl="tjb-electricals-ltd-sa63-4ux" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="tlporter electrical contractor ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llanelli">
+data-town="llanelli"
+data-lat="51.7922402473684" data-lon="-4.129849605263158">
 <h3><a href="/installers/tlporter-electrical-contractor-ltd-sa14-6hf/">TLPorter Electrical Contractor Ltd</a></h3>
-<div class="meta">LLanelli · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/tlporter-electrical-contractor-ltd-sa14-6hf/">View details</a><a href="https://www.tlporterelectrical.com/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="tony price builders"
+<div class="meta">Llanelli · Wales</div>
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/tlporter-electrical-contractor-ltd-sa14-6hf/">View details</a><a href="https://www.tlporterelectrical.com/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="tlporter-electrical-contractor-ltd-sa14-6hf" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="tony price builders"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandrindod wells">
+data-town="llandrindod wells"
+data-lat="52.25745156279069" data-lon="-3.401766274418604">
 <h3><a href="/installers/tony-price-builders-ld1-6ea/">Tony Price Builders</a></h3>
 <div class="meta">Llandrindod Wells · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/tony-price-builders-ld1-6ea/">View details</a></div></article><article class="card " data-name="urban solar ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/tony-price-builders-ld1-6ea/">View details</a>
+<button class="sl-btn" data-sl="tony-price-builders-ld1-6ea" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="urban solar ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="cardiff">
+data-town="cardiff"
+data-lat="51.495363911999995" data-lon="-3.1665369940000003">
 <h3><a href="/installers/urban-solar-ltd-cf24-3lq/">Urban Solar Ltd</a></h3>
 <div class="meta">Cardiff · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/urban-solar-ltd-cf24-3lq/">View details</a><a href="https://www.urbansolar.org.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="vri electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/urban-solar-ltd-cf24-3lq/">View details</a><a href="https://www.urbansolar.org.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="urban-solar-ltd-cf24-3lq" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="vri electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.6107813090909" data-lon="-3.002155603030303">
 <h3><a href="/installers/vri-electrical-ltd-np20-6wg/">VRI Electrical Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/vri-electrical-ltd-np20-6wg/">View details</a></div></article><article class="card " data-name="watts electrical engineering ltd t/a watts ev charging"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/vri-electrical-ltd-np20-6wg/">View details</a>
+<button class="sl-btn" data-sl="vri-electrical-ltd-np20-6wg" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="watts electrical engineering ltd t/a watts ev charging"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="newport">
+data-town="newport"
+data-lat="51.57776131666666" data-lon="-2.9868877166666667">
 <h3><a href="/installers/watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr/">Watts Electrical Engineering Ltd T/A Watts EV Charging</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr/">View details</a></div></article><article class="card " data-name="whitehead building services ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr/">View details</a>
+<button class="sl-btn" data-sl="watts-electrical-engineering-ltd-t-a-watts-ev-charging-np20-2dr" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="whitehead building services ltd"
 data-region="Wales" data-services="Commercial"
-data-town="newport">
+data-town="newport"
+data-lat="51.58174392333333" data-lon="-2.9862273899999994">
 <h3><a href="/installers/whitehead-building-services-ltd-np20-2dw/">Whitehead Building Services Ltd</a></h3>
 <div class="meta">Newport · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/whitehead-building-services-ltd-np20-2dw/">View details</a><a href="https://www.whiteheadbuildingservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="wtw electrical"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/whitehead-building-services-ltd-np20-2dw/">View details</a><a href="https://www.whiteheadbuildingservices.co.uk" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="whitehead-building-services-ltd-np20-2dw" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="wtw electrical"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="llandudno junction">
+data-town="llandudno junction"
+data-lat="53.291263241071455" data-lon="-3.809184471428572">
 <h3><a href="/installers/wtw-electrical-ll31-9ez/">WTW Electrical</a></h3>
 <div class="meta">Llandudno Junction · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/wtw-electrical-ll31-9ez/">View details</a><a href="https://www.wtw-electrical.com" target="_blank" rel="nofollow noopener">Visit website →</a></div></article><article class="card " data-name="zone electrical ltd"
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/wtw-electrical-ll31-9ez/">View details</a><a href="https://www.wtw-electrical.com" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="wtw-electrical-ll31-9ez" aria-pressed="false" type="button">+ Shortlist</button></div></article><article class="card " data-name="zone electrical ltd"
 data-region="Wales" data-services="Commercial,Residential"
-data-town="merthyr tydfil">
+data-town="merthyr tydfil"
+data-lat="51.75390676666667" data-lon="-3.368607566666667">
 <h3><a href="/installers/zone-electrical-ltd-cf47-0sx/">Zone Electrical Ltd</a></h3>
 <div class="meta">Merthyr Tydfil · Wales</div>
-<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag">OZEV authorised</span></div>
-<div class="links"><a href="/installers/zone-electrical-ltd-cf47-0sx/">View details</a><a href="https://www.zoneelectrical.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a></div></article></div>
+<div class="tags"><span class="tag c">Commercial</span><span class="tag">Residential</span><span class="tag v">✓ OZEV authorised</span></div>
+<div class="links"><a href="/installers/zone-electrical-ltd-cf47-0sx/">View details</a><a href="https://www.zoneelectrical.co.uk/" target="_blank" rel="nofollow noopener">Visit website →</a>
+<button class="sl-btn" data-sl="zone-electrical-ltd-cf47-0sx" aria-pressed="false" type="button">+ Shortlist</button></div></article></div>
 </div></section><footer><div class="wrap">
 <div><h4>Commercial EV Charger Installers UK</h4>
-<p style="max-width:320px;font-size:13px">Independent directory built from the public
-OZEV authorised-installer data (Open Government Licence v3.0). Not affiliated with OZEV
-or any installer.</p></div>
-<div><h4>Guides</h4><a href="/guides/ev-charging-for-fleets/">EV charging for fleets</a>
+<p style="max-width:330px;font-size:13px">Independent directory built from the public
+GOV.UK OZEV authorised-installer data (Open Government Licence v3.0). Not affiliated
+with OZEV or any installer. <a style="display:inline;color:#9fe6b4" href="/privacy/">Privacy &amp; data</a>.</p></div>
+<div><h4>Tools &amp; guides</h4><a href="/calculator/">Grant + cost calculator</a>
+<a href="/guides/ev-charging-for-fleets/">EV charging for fleets</a>
 <a href="/guides/workplace-charging-scheme/">Workplace Charging Scheme</a>
-<a href="/guides/ev-infrastructure-grant/">EV Infrastructure Grant</a>
 <a href="/guides/grant-deadlines/">Grant deadlines</a></div>
 <div><h4>Regions</h4><a href="/regions/london/">London</a><a href="/regions/south-east/">South East</a><a href="/regions/south-west/">South West</a><a href="/regions/east-of-england/">East of England</a><a href="/regions/west-midlands/">West Midlands</a><a href="/regions/east-midlands/">East Midlands</a><a href="/regions/yorkshire-humber/">Yorkshire &amp; Humber</a><a href="/regions/north-west/">North West</a></div></div>
 <div class="wrap" style="margin-top:34px;font-size:12.5px;border-top:1px solid #1f1f1f;padding-top:22px">
 Data source: <a href="https://www.gov.uk/electric-vehicle-chargepoint-installers" style="display:inline">GOV.UK / OZEV</a>,
-under the Open Government Licence v3.0. Last updated 2026-05-18. &copy; 2026.
-Some outbound links may be partner/affiliate links — these never affect listing order.</div></footer></body></html>
+Open Government Licence v3.0. Last refreshed 2026-05-19. &copy; 2026.
+Featured partners are labelled and shown first; outbound/affiliate links never affect
+who is listed. <a style="display:inline;color:#9fe6b4" href="/about/">About &amp; disclosure</a>.</div></footer>
+<div class="tray" id="tray"><span id="trayc">0 shortlisted</span>
+<a href="/shortlist/">View shortlist &amp; get quotes</a></div>
+<script>
+window.SL={k:'evdir_shortlist',get:function(){try{return JSON.parse(localStorage.getItem(this.k))||[]}catch(e){return[]}},
+set:function(a){localStorage.setItem(this.k,JSON.stringify(a));this.render()},
+toggle:function(s){var a=this.get(),i=a.indexOf(s);if(i>-1)a.splice(i,1);else a.push(s);this.set(a)},
+has:function(s){return this.get().indexOf(s)>-1},
+render:function(){var a=this.get(),t=document.getElementById('tray');
+if(t){document.getElementById('trayc').textContent=a.length+' shortlisted';
+t.className='tray'+(a.length?' show':'')}
+document.querySelectorAll('[data-sl]').forEach(function(b){
+var on=window.SL.has(b.getAttribute('data-sl'));
+b.setAttribute('aria-pressed',on);b.textContent=on?'\u2713 Shortlisted':'+ Shortlist';});}};
+document.addEventListener('click',function(e){var b=e.target.closest('[data-sl]');
+if(b){e.preventDefault();window.SL.toggle(b.getAttribute('data-sl'));}});
+document.addEventListener('DOMContentLoaded',function(){window.SL.render()});
+</script></body></html>
