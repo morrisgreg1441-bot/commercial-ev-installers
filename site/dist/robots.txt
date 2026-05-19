@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /shortlist/
-Disallow: /project-pack/
-Sitemap: https://commercial-ev-installers.pages.dev/sitemap.xml

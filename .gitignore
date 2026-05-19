@@ -5,4 +5,5 @@ data/*.log
 data/raw_snapshot.json
 data/contacts_private.csv
 data/installers.csv
+site/dist/
 .DS_Store
