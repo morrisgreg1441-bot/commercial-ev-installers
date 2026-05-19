@@ -129,12 +129,47 @@ footer a{color:#cfd3d8;text-decoration:none;font-size:14px;display:block;margin-
 footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
 .crumb{font-size:13px;color:var(--mut);padding:18px 0}
 .crumb a{color:var(--green-d);text-decoration:none}
+#map{height:620px;border:1px solid var(--bd-l);border-radius:16px}
+.minimap{height:340px;border:1px solid var(--bd-l);border-radius:14px;margin:18px 0}
+.leaflet-popup-content{font-family:'Inter',sans-serif;font-size:13.5px}
+.leaflet-popup-content a{color:var(--green-d);font-weight:600}
+.leaflet-popup-content .sl-btn{margin-top:8px}
+.bars{margin:18px 0}.bars svg{width:100%;height:auto}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:14px;margin:22px 0}
+.statbox{background:var(--light);border:1px solid var(--bd-l);border-radius:14px;padding:18px}
+.statbox b{display:block;font-size:28px;font-weight:800;letter-spacing:-1px;color:var(--green-d)}
+.statbox span{font-size:12.5px;color:var(--mut)}
+.cite{background:#0e1a12;border:1px solid #15301d;color:#cfe9d6;border-radius:12px;
+padding:16px 18px;font-size:13.5px;margin:22px 0}
+.cite code{display:block;background:#06100a;padding:10px 12px;border-radius:8px;
+margin-top:8px;color:#9fe6b4;font-size:12.5px;white-space:pre-wrap}
+.sharebar{background:#0e1a12;border:1px solid #15301d;color:#cfe9d6;border-radius:12px;
+padding:14px 16px;margin:16px 0;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sharebar button{font:inherit;font-size:13px;font-weight:600;padding:7px 14px;
+border-radius:9999px;border:0;cursor:pointer;background:var(--green);color:#fff}
+.pp-sheet{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--bd-l);
+border-radius:14px;padding:40px}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;font-size:14px;margin:18px 0}
+.pp-grid div{border-bottom:1px solid var(--bd-l);padding:7px 0}
+.pp-grid b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut)}
+.pp-q{margin:14px 0 0 20px}.pp-q li{margin-bottom:9px;font-size:14.5px}
+.pp-ed{border:1px dashed var(--bd-l);border-radius:8px;padding:10px 12px;font:inherit;
+width:100%;margin:4px 0}
+.recent{font-size:13px;color:var(--mut);border-top:1px solid var(--bd-l);
+margin-top:30px;padding-top:16px}
+.recent a{color:var(--green-d);text-decoration:none;font-weight:600}
 @media(max-width:680px){.hero h1{font-size:34px}h2.sh{font-size:26px}
 .nav nav{display:none}.prose h1{font-size:30px}.calc{grid-template-columns:1fr}
-.stats{gap:24px}}
+.stats{gap:24px}.pp-grid{grid-template-columns:1fr}#map{height:460px}}
+@media print{header.nav,.trust,footer,.tray,.no-print,.btn,.sharebar{display:none!important}
+body{background:#fff;color:#000;font-size:12pt}.wrap{max-width:none;padding:0}
+.pp-sheet{box-shadow:none;border:0;padding:0}.pp-sheet h1{font-size:20pt}
+table,.pp-q li{page-break-inside:avoid}a[href]:after{content:""}@page{margin:18mm}}
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Telford Electrical Services Ltd", "description": "OZEV-authorised commercial EV chargepoint installer. Commercial and residential installations", "areaServed": "West Midlands", "address": {"@type": "PostalAddress", "addressCountry": "GB", "addressLocality": "Telford", "postalCode": "TF5 0PJ", "streetAddress": "11 Constabel Drive,Shawbirch"}, "geo": {"@type": "GeoCoordinates", "latitude": "52.718655196296304", "longitude": "-2.536950296296297"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Directory", "item": "https://commercial-ev-installers.pages.dev/"}, {"@type": "ListItem", "position": 2, "name": "West Midlands", "item": "https://commercial-ev-installers.pages.dev/regions/west-midlands/"}, {"@type": "ListItem", "position": 3, "name": "Telford Electrical Services Ltd", "item": "https://commercial-ev-installers.pages.dev/installers/telford-electrical-services-ltd-tf5-0pj/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Telford Electrical Services Ltd OZEV-authorised for commercial work?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Telford Electrical Services Ltd appears on the official GOV.UK OZEV authorised installer list for commercial/fleet installations as of 2026-05-18. Always confirm current status directly before contracting."}}, {"@type": "Question", "name": "Can I get a grant towards this installation?", "acceptedAnswer": {"@type": "Answer", "text": "Commercial and fleet installs are frequently part-funded by the Workplace Charging Scheme (up to \u00a3500/socket from 1 April 2026) and the EV Infrastructure Grant. The installer applies these for you."}}, {"@type": "Question", "name": "How do I get a quote from Telford Electrical Services Ltd?", "acceptedAnswer": {"@type": "Answer", "text": "Use the \u201cRequest a quote\u201d button on this page, or add them to your shortlist and request quotes from several installers at once."}}]}</script></head><body><header class="nav"><div class="wrap">
 <a class="brand" href="/">Commercial<span>EV</span>Installers</a>
-<nav><a href="/#directory">Directory</a><a href="/calculator/">Cost calculator</a>
+<nav><a href="/#directory">Directory</a><a href="/map/">Map</a>
+<a href="/calculator/">Calculator</a><a href="/data/uk-ev-installer-landscape/">Data</a>
 <a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
 <a href="/guides/workplace-charging-scheme/">WCS grant</a></nav></div></header><div class="trust">Built from <b>official GOV.UK / OZEV</b> data (Open Government Licence v3.0) · Independent · <b>Listing order is never sold</b></div><div class="wrap crumb"><a href="/">Directory</a> ›
 <a href="/regions/west-midlands/">West Midlands</a> › Telford Electrical Services Ltd</div>

@@ -218,6 +218,95 @@ def build_towns(installers):
     return towns
 
 
+def map_data_js(installers):
+    """Slim {slug:[lat,lon,name,town]} payload — one shared file, like
+    shortlist-data.js. Skips bad coords defensively."""
+    pts = {}
+    for i in installers:
+        try:
+            la, lo = round(float(i["lat"]), 5), round(float(i["lon"]), 5)
+        except (TypeError, ValueError, KeyError):
+            continue
+        pts[i["_slug"]] = [la, lo, i["name"], i.get("town", "")]
+    return ("window.__MAP=" + json.dumps(pts, ensure_ascii=False,
+                                         separators=(",", ":")) + ";")
+
+
+# ONS mid-2022 regional population estimates (millions) — public, stable.
+REGION_POP = {
+    "London": 8.87, "South East": 9.38, "South West": 5.76,
+    "East of England": 6.40, "West Midlands": 6.02, "East Midlands": 4.95,
+    "Yorkshire & Humber": 5.54, "North West": 7.52, "North East": 2.65,
+    "Scotland": 5.48, "Wales": 3.13, "Northern Ireland": 1.91,
+}
+
+
+def parse_refresh_report():
+    """Pull added/removed/date from the pipeline's report. Safe if missing —
+    must never break the unattended build."""
+    f = DATA / "refresh_report.md"
+    out = {"added": None, "removed": None, "date": None}
+    try:
+        txt = f.read_text(encoding="utf-8")
+        for key, pat in (("added", r"Added since last run:\s*(\d+)"),
+                         ("removed", r"Removed since last run:\s*(\d+)"),
+                         ("date", r"Refresh report\s*[—-]\s*([\d-]+)")):
+            m = re.search(pat, txt)
+            if m:
+                out[key] = m.group(1)
+    except (OSError, UnicodeDecodeError):
+        pass
+    return out
+
+
+def build_stats(installers):
+    from collections import Counter
+    n = len(installers)
+    by_region = Counter(i["region"] for i in installers if i["region"] != "N/A")
+    by_town = Counter(i["town"] for i in installers
+                      if i.get("town") not in ("N/A", None))
+    density = []
+    for r, c in by_region.items():
+        pop = REGION_POP.get(r)
+        if pop:
+            density.append((r, round(c / pop, 1)))
+    density.sort(key=lambda x: -x[1])
+    has_web = sum(1 for i in installers
+                  if i.get("website") not in ("N/A", None))
+    also_res = sum(1 for i in installers if "Residential" in i.get("services", []))
+    return {
+        "total": n,
+        "regions": sorted(by_region.items(), key=lambda x: -x[1]),
+        "density": density,
+        "towns_covered": len(by_town),
+        "single_towns": sum(1 for _, c in by_town.items() if c == 1),
+        "top_towns": by_town.most_common(10),
+        "web_pct": round(has_web / n * 100) if n else 0,
+        "also_res_pct": round(also_res / n * 100) if n else 0,
+        "growth": parse_refresh_report(),
+    }
+
+
+def svg_bar(rows, unit="", w=680, bar_h=26, gap=8):
+    """Static inline-SVG horizontal bar chart — no JS, prints cleanly."""
+    if not rows:
+        return ""
+    mx = max(v for _, v in rows) or 1
+    h = len(rows) * (bar_h + gap)
+    out = [f'<svg viewBox="0 0 {w} {h}" role="img" '
+           f'style="width:100%;height:auto;font-family:Inter,sans-serif">']
+    for n, (lab, v) in enumerate(rows):
+        y = n * (bar_h + gap)
+        bw = int((v / mx) * (w - 250))
+        out.append(
+            f'<text x="0" y="{y+bar_h*0.7:.0f}" font-size="13" fill="#5b6470">{esc(lab)}</text>'
+            f'<rect x="155" y="{y}" width="{max(bw,2)}" height="{bar_h}" rx="4" fill="#16a34a"/>'
+            f'<text x="{165+max(bw,2)}" y="{y+bar_h*0.7:.0f}" font-size="13" '
+            f'font-weight="700" fill="#0a0a0a">{v}{unit}</text>')
+    out.append("</svg>")
+    return "".join(out)
+
+
 # ---------------------------------------------------------------- styling ----
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}
@@ -343,9 +432,43 @@ footer a{color:#cfd3d8;text-decoration:none;font-size:14px;display:block;margin-
 footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
 .crumb{font-size:13px;color:var(--mut);padding:18px 0}
 .crumb a{color:var(--green-d);text-decoration:none}
+#map{height:620px;border:1px solid var(--bd-l);border-radius:16px}
+.minimap{height:340px;border:1px solid var(--bd-l);border-radius:14px;margin:18px 0}
+.leaflet-popup-content{font-family:'Inter',sans-serif;font-size:13.5px}
+.leaflet-popup-content a{color:var(--green-d);font-weight:600}
+.leaflet-popup-content .sl-btn{margin-top:8px}
+.bars{margin:18px 0}.bars svg{width:100%;height:auto}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:14px;margin:22px 0}
+.statbox{background:var(--light);border:1px solid var(--bd-l);border-radius:14px;padding:18px}
+.statbox b{display:block;font-size:28px;font-weight:800;letter-spacing:-1px;color:var(--green-d)}
+.statbox span{font-size:12.5px;color:var(--mut)}
+.cite{background:#0e1a12;border:1px solid #15301d;color:#cfe9d6;border-radius:12px;
+padding:16px 18px;font-size:13.5px;margin:22px 0}
+.cite code{display:block;background:#06100a;padding:10px 12px;border-radius:8px;
+margin-top:8px;color:#9fe6b4;font-size:12.5px;white-space:pre-wrap}
+.sharebar{background:#0e1a12;border:1px solid #15301d;color:#cfe9d6;border-radius:12px;
+padding:14px 16px;margin:16px 0;font-size:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sharebar button{font:inherit;font-size:13px;font-weight:600;padding:7px 14px;
+border-radius:9999px;border:0;cursor:pointer;background:var(--green);color:#fff}
+.pp-sheet{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--bd-l);
+border-radius:14px;padding:40px}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;font-size:14px;margin:18px 0}
+.pp-grid div{border-bottom:1px solid var(--bd-l);padding:7px 0}
+.pp-grid b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut)}
+.pp-q{margin:14px 0 0 20px}.pp-q li{margin-bottom:9px;font-size:14.5px}
+.pp-ed{border:1px dashed var(--bd-l);border-radius:8px;padding:10px 12px;font:inherit;
+width:100%;margin:4px 0}
+.recent{font-size:13px;color:var(--mut);border-top:1px solid var(--bd-l);
+margin-top:30px;padding-top:16px}
+.recent a{color:var(--green-d);text-decoration:none;font-weight:600}
 @media(max-width:680px){.hero h1{font-size:34px}h2.sh{font-size:26px}
 .nav nav{display:none}.prose h1{font-size:30px}.calc{grid-template-columns:1fr}
-.stats{gap:24px}}
+.stats{gap:24px}.pp-grid{grid-template-columns:1fr}#map{height:460px}}
+@media print{header.nav,.trust,footer,.tray,.no-print,.btn,.sharebar{display:none!important}
+body{background:#fff;color:#000;font-size:12pt}.wrap{max-width:none;padding:0}
+.pp-sheet{box-shadow:none;border:0;padding:0}.pp-sheet h1{font-size:20pt}
+table,.pp-q li{page-break-inside:avoid}a[href]:after{content:""}@page{margin:18mm}}
 """
 
 FAVICON = (
@@ -380,6 +503,37 @@ if(b){e.preventDefault();window.SL.toggle(b.getAttribute('data-sl'));}});
 document.addEventListener('DOMContentLoaded',function(){window.SL.render()});
 </script>"""
 
+# Leaflet + markercluster from CDN (runtime only — generate.py never fetches
+# these, so the unattended rebuild is unaffected). Leaflet has official SRI;
+# markercluster degrades gracefully to plain pins via the try/catch in the JS.
+LEAFLET_HEAD = (
+    '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" '
+    'integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">'
+    '<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="">'
+    '<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="">'
+)
+LEAFLET_JS = (
+    '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" '
+    'integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>'
+    '<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>'
+)
+
+# Share-a-shortlist via URL hash (#s=slug,slug). Same-device localStorage is the
+# baseline; this lets a colleague open the same shortlist. Loaded on /shortlist/.
+SHARE_JS = """<script>
+(function(){var h=location.hash;if(h.indexOf('#s=')===0){var ids=h.slice(3).split(',')
+.filter(Boolean);var D=window.__SLD||{};ids=ids.filter(function(s){return D[s]});
+if(ids.length){var cur=window.SL.get();var add=ids.filter(function(s){return cur.indexOf(s)<0});
+if(add.length){var bn=document.createElement('div');bn.className='sharebar';
+bn.innerHTML='A colleague shared '+ids.length+' installer'+(ids.length>1?'s':'')+
+'. <button id="shadd">Add to my shortlist</button><button id="sharep" '+
+'style="background:#26323f">Replace mine</button>';
+var a=document.querySelector('.prose');if(a)a.insertBefore(bn,a.children[2]||null);
+document.getElementById('shadd').onclick=function(){window.SL.set(cur.concat(add));location.hash='';location.reload()};
+document.getElementById('sharep').onclick=function(){window.SL.set(ids);location.hash='';location.reload()};}}
+history.replaceState(null,'',location.pathname);}})();
+</script>"""
+
 
 def head(title, desc, canonical, jsonld="", noindex=False):
     robots = "noindex,follow" if noindex else "index,follow"
@@ -402,7 +556,8 @@ def trust_strip():
 def navbar():
     return f"""<header class="nav"><div class="wrap">
 <a class="brand" href="/">Commercial<span>EV</span>Installers</a>
-<nav><a href="/#directory">Directory</a><a href="/calculator/">Cost calculator</a>
+<nav><a href="/#directory">Directory</a><a href="/map/">Map</a>
+<a href="/calculator/">Calculator</a><a href="/data/uk-ev-installer-landscape/">Data</a>
 <a href="/guides/ev-charging-for-fleets/">Fleet guide</a>
 <a href="/guides/workplace-charging-scheme/">WCS grant</a></nav></div></header>""" + trust_strip()
 
@@ -849,6 +1004,8 @@ def page_calculator():
 fleet EV charging install and the grant you could claim. Numbers are public UK
 ranges — get itemised quotes before you commit.</p>
 <div class="calc">
+<div class="full"><label for="pc">Site postcode (optional — used for your project pack)</label>
+<input id="pc" type="text" maxlength="8" placeholder="e.g. M1 4AB" style="text-transform:uppercase"></div>
 <div><label for="sk">Number of charge sockets</label>
 <input id="sk" type="number" min="1" max="200" value="6"></div>
 <div><label for="ct">Charger type</label><select id="ct">
@@ -868,13 +1025,17 @@ ranges — get itemised quotes before you commit.</p>
 advice. WCS: up to £350/socket now, £500/socket from 1 Apr 2026, ≤75% of cost, max
 40 sockets, scheme ends 31 Mar 2027. Always confirm on
 <a style="color:var(--green-d)" href="https://www.gov.uk/government/publications/workplace-charging-scheme-guidance-for-applicants">GOV.UK</a>.</p>
-<div class="cta-row"><a class="btn btn-g" href="/#directory">See OZEV installers who can quote this <span class="arrow">→</span></a></div>
+<div class="cta-row"><a class="btn btn-g" href="/#directory">See OZEV installers who can quote this <span class="arrow">→</span></a>
+<a class="btn btn-d" href="/project-pack/">Turn this into a project pack →</a></div>
 <div class="prose" style="margin-top:40px">{faq_html(faqs)}</div>
 </div></section>""" + footer() + SHORTLIST_JS
         + """<script>
-(function(){var sk=document.getElementById('sk'),ct=document.getElementById('ct'),
-st=document.getElementById('st'),gr=document.getElementById('gr'),
-out=document.getElementById('out');
+(function(){var pc=document.getElementById('pc'),sk=document.getElementById('sk'),
+ct=document.getElementById('ct'),st=document.getElementById('st'),
+gr=document.getElementById('gr'),out=document.getElementById('out');
+try{var sv=JSON.parse(localStorage.getItem('evdir_project'));if(sv){
+if(sv.pc)pc.value=sv.pc;if(sv.sk)sk.value=sv.sk;if(sv.ct)ct.value=sv.ct;
+if(sv.st)st.value=sv.st;if(sv.gr!=null)gr.value=sv.gr;}}catch(e){}
 var band={fast:[1200,3000],rapid:[12000,35000],ultra:[35000,80000]};
 var civ={wp:[600,2500],depot:[1500,9000],dest:[800,3000]};
 function money(n){return '£'+Math.round(n).toLocaleString('en-GB');}
@@ -893,8 +1054,12 @@ out.innerHTML='<div>Estimated install (before grant)</div>'+
 '<div style=\"margin-top:6px\">Estimated net cost</div>'+
 '<div class=big>'+money(nlo)+' – '+money(nhi)+'</div>':
 '<div style=\"margin-top:10px\" class=muted>No WCS applied. Eligible workplaces can claim up to '+rate+'/socket.</div>')+
-'<div style=\"margin-top:12px;font-size:12.5px\" class=muted>Plus possible DNO/grid upgrade (£4,500–£50,000+ for higher-power sites) and £10–£50/charger/month for management software. Indicative only.</div>';}
-[sk,ct,st,gr].forEach(function(e){e.addEventListener('input',calc);e.addEventListener('change',calc);});
+'<div style=\"margin-top:12px;font-size:12.5px\" class=muted>Plus possible DNO/grid upgrade (£4,500–£50,000+ for higher-power sites) and £10–£50/charger/month for management software. Indicative only.</div>';
+try{localStorage.setItem('evdir_project',JSON.stringify({
+pc:(pc.value||'').trim().toUpperCase(),sk:n,ct:ct.value,st:st.value,gr:gr.value,
+lo:lo,hi:hi,grant:grant,nlo:nlo,nhi:nhi,rate:rate,sock:sock,
+ts:new Date().toISOString().slice(0,10)}));}catch(e){}}
+[pc,sk,ct,st,gr].forEach(function(e){e.addEventListener('input',calc);e.addEventListener('change',calc);});
 calc();})();
 </script></body></html>"""
     )
@@ -915,7 +1080,9 @@ def page_shortlist():
 <div id="empty" class="muted">Your shortlist is empty. Browse the
 <a style="color:var(--green-d)" href="/#directory">directory</a> and tap “+ Shortlist”.</div>
 <div id="act" class="cta-row" style="display:none">
-<button class="btn btn-g" id="brief" type="button">Copy a quote-request brief</button></div>
+<a class="btn btn-g" href="/project-pack/">Build my project pack (printable RFQ) →</a>
+<button class="btn btn-d" id="brief" type="button">Copy a quote brief</button>
+<button class="btn btn-d" id="share" type="button">Copy share link</button></div>
 <p class="note" id="msg"></p>
 <div class="box" style="margin-top:24px"><strong>How to get quotes:</strong> open each
 installer below, hit “Request a quote” (a pre-filled email opens), and paste the brief.
@@ -938,7 +1105,187 @@ document.getElementById('brief').addEventListener('click',function(){
 navigator.clipboard.writeText(brief).then(function(){
 msg.textContent='Brief copied — paste it into each installer\\'s quote email.';},
 function(){msg.textContent=brief;});});
+document.getElementById('share').addEventListener('click',function(){
+var u=location.origin+'/shortlist/#s='+window.SL.get().join(',');
+navigator.clipboard.writeText(u).then(function(){
+msg.textContent='Share link copied — send it to a colleague to open the same shortlist.';},
+function(){msg.textContent=u;});});
 window.SL.render();})();
+</script>""" + SHARE_JS + "</body></html>"
+    )
+
+
+def page_map():
+    url = f"{BASE_URL}/map/"
+    return (
+        head("UK Map of OZEV Commercial EV Charger Installers",
+             "Interactive map of every OZEV-authorised commercial & fleet EV charger installer in the UK. Click a pin for details and to shortlist.",
+             url, LEAFLET_HEAD)
+        + navbar()
+        + """<div class="wrap crumb"><a href="/">Directory</a> › Map</div>
+<section style="padding-top:8px"><div class="wrap">
+<h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">UK installer map</h1>
+<p class="lead" style="margin-top:14px">Every OZEV-authorised commercial installer in
+the directory, mapped. Click a pin for details and to add to your shortlist.</p>
+<div id="map"></div>
+<p class="note">Map data © OpenStreetMap contributors. Pin positions are approximate
+(based on installer-supplied postcodes).</p>
+</div></section>""" + footer() + SHORTLIST_JS + LEAFLET_JS
+        + '<script src="/map-data.js"></script><script>'
+        + """(function(){if(!window.L){return;}
+var m=L.map('map',{scrollWheelZoom:false}).setView([54.5,-3.0],6);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(m);
+var D=window.__MAP||{},layer;
+try{layer=L.markerClusterGroup({chunkedLoading:true});}
+catch(e){layer=L.layerGroup();}
+Object.keys(D).forEach(function(s){var d=D[s];
+var mk=L.marker([d[0],d[1]]);
+mk.bindPopup('<strong>'+d[2]+'</strong><br>'+(d[3]||'')+
+'<br><a href="/installers/'+s+'/">View details &rarr;</a><br>'+
+'<button class="sl-btn" data-sl="'+s+'" type="button">+ Shortlist</button>');
+layer.addLayer(mk);});
+m.addLayer(layer);
+m.on('popupopen',function(){window.SL.render();});})();
+</script></body></html>"""
+    )
+
+
+def page_data_landscape(installers, stats):
+    url = f"{BASE_URL}/data/uk-ev-installer-landscape/"
+    g = stats["growth"]
+    growth_line = ""
+    if g["added"] is not None:
+        growth_line = (f'<p><strong>Latest refresh ({esc(g.get("date") or TODAY)}):'
+                       f'</strong> +{g["added"]} added, −{g["removed"] or 0} removed '
+                       f'since the previous update. The dataset rebuilds weekly.</p>')
+    region_rows = [(r, c) for r, c in stats["regions"]]
+    dens_rows = [(r, v) for r, v in stats["density"]]
+    top_rows = "".join(
+        f"<tr><td>{esc(t)}</td><td>{c}</td></tr>" for t, c in stats["top_towns"])
+    citation = (f"{SITE_NAME}. UK commercial EV charger installer landscape, "
+                f"{TODAY}. Derived from GOV.UK OZEV data under the Open "
+                f"Government Licence v3.0. {url}")
+    jl = {"@context": "https://schema.org", "@type": "Dataset",
+          "name": "UK commercial EV charger installer landscape",
+          "description": "Counts and density of OZEV-authorised commercial EV "
+                         "charger installers across the UK, by region and town.",
+          "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+          "creator": {"@type": "Organization", "name": SITE_NAME},
+          "temporalCoverage": TODAY, "url": url,
+          "isAccessibleForFree": True}
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl)
+              + "</script>"
+              + breadcrumb_jsonld([("Directory", "/"),
+                                   ("Data", "/data/uk-ev-installer-landscape/")]))
+    return (
+        head("The State of UK Commercial EV Charging Installers (2026 Data)",
+             f"How many OZEV-authorised commercial EV charger installers are in the UK and where: {stats['total']} installers across {len(stats['regions'])} regions, density per capita, best-served and underserved areas. Free, OGL-licensed data.",
+             url, jsonld)
+        + navbar()
+        + f"""<div class="wrap crumb"><a href="/">Directory</a> › Data</div>
+<section style="padding-top:8px"><div class="wrap prose">
+<h1>The state of UK commercial EV charging installers</h1>
+<p class="upd">Updated {TODAY} · derived from official GOV.UK / OZEV data (OGL v3.0)</p>
+<p>This is the picture the official OZEV tool doesn't give you: how many
+authorised <strong>commercial &amp; fleet</strong> EV charger installers operate
+in the UK, and how unevenly they're spread. {growth_line}</p>
+<div class="statgrid">
+<div class="statbox"><b>{stats['total']}</b><span>OZEV commercial installers</span></div>
+<div class="statbox"><b>{len(stats['regions'])}</b><span>UK regions covered</span></div>
+<div class="statbox"><b>{stats['towns_covered']}</b><span>towns with ≥1 installer</span></div>
+<div class="statbox"><b>{stats['web_pct']}%</b><span>have a working website</span></div></div>
+<h2>Installers by region</h2>
+<div class="bars">{svg_bar(region_rows)}</div>
+<h2>Installers per million people (the real coverage picture)</h2>
+<p>Raw counts favour big regions. Per-capita density shows where commercial EV
+buyers actually have the least choice — the “installer deserts”.</p>
+<div class="bars">{svg_bar(dens_rows, unit="")}</div>
+<h2>Best-served towns</h2>
+<table><tr><th>Town</th><th>OZEV commercial installers</th></tr>{top_rows}</table>
+<p>{stats['single_towns']} towns have only a single listed installer — thin
+coverage where buyer choice is limited. {stats['also_res_pct']}% of commercial
+installers also offer residential work.</p>
+<div class="cite">Free to reuse with attribution (data under the Open Government
+Licence v3.0). Suggested citation:<code>{esc(citation)}</code></div>
+<div class="cta-row"><a class="btn btn-g" href="/#directory">Browse the directory</a>
+<a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/methodology/">How this data is built</a></div>
+</div></section>""" + footer() + SHORTLIST_JS + "</body></html>"
+    )
+
+
+def page_project_pack():
+    url = f"{BASE_URL}/project-pack/"
+    return (
+        head("Your EV charging project pack (printable RFQ)",
+             "Turn your calculator estimate and shortlist into a printable request-for-quote brief to send to installers.",
+             url, "", noindex=True)
+        + navbar()
+        + """<div class="wrap crumb"><a href="/">Directory</a> › Project pack</div>
+<section style="padding-top:8px"><div class="wrap">
+<div class="no-print" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+<button class="btn btn-g" onclick="window.print()" type="button">Print / Save as PDF</button>
+<a class="btn btn-d" href="/calculator/">Edit on the calculator</a>
+<a class="btn btn-d" href="/shortlist/">Edit shortlist</a></div>
+<div id="pp-empty" class="prose" style="display:none"><p class="muted">Nothing to
+build a pack from yet. Use the <a style="color:var(--green-d)" href="/calculator/">cost
+calculator</a> and <a style="color:var(--green-d)" href="/#directory">shortlist a few
+installers</a> first — your project pack assembles automatically from this device.</p></div>
+<div class="pp-sheet" id="pp">
+<h1 style="font-size:26px;font-weight:800;letter-spacing:-1px">EV charging — request for quotation</h1>
+<p class="note" id="pp-date"></p>
+<div class="pp-grid">
+<div><b>Your company</b><input class="pp-ed" id="ed-co" placeholder="Company name"></div>
+<div><b>Contact</b><input class="pp-ed" id="ed-ct" placeholder="Name / email"></div>
+<div><b>Quotes due by</b><input class="pp-ed" id="ed-due" placeholder="e.g. in 2 weeks"></div>
+<div><b>Notes</b><input class="pp-ed" id="ed-nt" placeholder="Anything else"></div></div>
+<h2 style="font-size:18px;margin:24px 0 8px">Project specification</h2>
+<div class="pp-grid" id="pp-spec"></div>
+<h2 style="font-size:18px;margin:24px 0 8px">Shortlisted installers</h2>
+<div id="pp-firms"></div>
+<h2 style="font-size:18px;margin:24px 0 8px">Questions to ask every installer</h2>
+<ol class="pp-q">
+<li>Itemised fixed quote, or day-rate? What's included/excluded?</li>
+<li>Is the DNO / grid-connection application included, and who manages it?</li>
+<li>Who applies for the Workplace Charging Scheme and EV Infrastructure Grant?</li>
+<li>Load management and headroom for future expansion?</li>
+<li>Warranty, SLA and fault response time?</li>
+<li>Back-office/charge-point software cost and contract length?</li>
+<li>OZEV authorisation reference and recent comparable installs?</li>
+<li>Site survey lead time and overall programme?</li>
+<li>Ownership model — capex, or charging-as-a-service?</li></ol>
+<p class="note">Indicative project brief — not a quote or financial advice.
+Built on this device from your calculator inputs and shortlist.</p>
+</div></div></section>""" + footer() + SHORTLIST_JS
+        + """<script src="/shortlist-data.js"></script><script>
+(function(){var P;try{P=JSON.parse(localStorage.getItem('evdir_project'))}catch(e){}
+var ids=window.SL.get(),D=window.__SLD||{};
+if(!P&&!ids.length){document.getElementById('pp-empty').style.display='';
+document.getElementById('pp').style.display='none';return;}
+var ctL={fast:'Fast AC 7–22 kW',rapid:'Rapid DC 50–100 kW',ultra:'Ultra-rapid 100 kW+'};
+var stL={wp:'Workplace car park',depot:'Fleet depot',dest:'Destination / customer'};
+function m(n){return '£'+Math.round(n).toLocaleString('en-GB');}
+document.getElementById('pp-date').textContent='Prepared '+(new Date().toLocaleDateString('en-GB'))+
+(P&&P.ts?' · estimate dated '+P.ts:'');
+if(P){var g=[['Site postcode',P.pc||'—'],['Sockets',P.sk],
+['Charger type',ctL[P.ct]||P.ct],['Site type',stL[P.st]||P.st],
+['Indicative install (before grant)',m(P.lo)+' – '+m(P.hi)],
+['WCS grant assumption',P.gr=='1'?(P.rate+'/socket × '+P.sock):'not applied'],
+['Indicative net cost',m(P.nlo)+' – '+m(P.nhi)]];
+document.getElementById('pp-spec').innerHTML=g.map(function(x){
+return '<div><b>'+x[0]+'</b>'+x[1]+'</div>';}).join('');}
+else{document.getElementById('pp-spec').innerHTML='<div><b>Spec</b>Open the calculator to add your project spec</div>';}
+var fb=document.getElementById('pp-firms');
+if(ids.length){fb.innerHTML='<table><tr><th>Installer</th><th>Area</th><th>Listing</th></tr>'+
+ids.map(function(s){var d=D[s];if(!d)return '';
+return '<tr><td>'+d.n+'</td><td>'+(d.t||'')+(d.r?', '+d.r:'')+
+'</td><td>'+location.origin+'/installers/'+s+'/</td></tr>';}).join('')+'</table>';}
+else{fb.innerHTML='<p class=muted>No installers shortlisted yet — add some from the directory.</p>';}
+['co','ct','due','nt'].forEach(function(k){var el=document.getElementById('ed-'+k);
+if(P&&P['f_'+k])el.value=P['f_'+k];
+el.addEventListener('input',function(){var Q;try{Q=JSON.parse(localStorage.getItem('evdir_project'))||{}}catch(e){Q={}}
+Q['f_'+k]=el.value;localStorage.setItem('evdir_project',JSON.stringify(Q));});});
+})();
 </script></body></html>"""
     )
 
@@ -1222,10 +1569,17 @@ def main() -> int:
             shutil.rmtree(ch, ignore_errors=True) if ch.is_dir() else ch.unlink()
     DIST.mkdir(parents=True, exist_ok=True)
 
-    urls = ["/", "/calculator/", "/about/", "/contact/", "/privacy/"]
+    stats = build_stats(installers)
+    urls = ["/", "/calculator/", "/map/", "/data/uk-ev-installer-landscape/",
+            "/about/", "/contact/", "/privacy/", "/methodology/"]
     write(DIST / "index.html", page_index(installers))
     write(DIST / "calculator" / "index.html", page_calculator())
+    write(DIST / "map" / "index.html", page_map())
+    write(DIST / "map-data.js", map_data_js(installers))
+    write(DIST / "data" / "uk-ev-installer-landscape" / "index.html",
+          page_data_landscape(installers, stats))
     write(DIST / "shortlist" / "index.html", page_shortlist())
+    write(DIST / "project-pack" / "index.html", page_project_pack())
     # tiny lookup so the shortlist page can show names without shipping all data
     sld = {i["_slug"]: {"n": i["name"], "t": i.get("town", ""),
                         "r": i.get("region", "")} for i in installers}
@@ -1285,6 +1639,30 @@ limited, already-public nature of the data.</p>
 or removed, no questions asked, via <a style="color:var(--green-d)"
 href="/contact/">the contact page</a>. Requests are actioned on the next rebuild.</p>"""))
 
+    write(DIST / "methodology" / "index.html", page_simple(
+        "Methodology & Data Transparency",
+        "Exactly how this OZEV commercial EV installer dataset is built, refreshed, deduplicated and licensed.",
+        "methodology",
+        f"""<p>Transparency about how the numbers on the
+<a style="color:var(--green-d)" href="/data/uk-ev-installer-landscape/">data page</a>
+and directory are produced.</p>
+<h2>Source</h2><p>The public GOV.UK “find an EV chargepoint installer” / OZEV
+authorised-installer tool, reused under the Open Government Licence v3.0.</p>
+<h2>Collection</h2><p>The tool is queried across a UK-wide postcode grid; only
+installers offering <strong>commercial</strong> work are kept. Requests are
+rate-limited and polite. Re-run automatically every week.</p>
+<h2>Deduplication</h2><p>Records are de-duplicated on a normalised
+name + postcode key; collision-safe page slugs are assigned at build.</p>
+<h2>What we deliberately exclude</h2><p>Scraped personal (firstname.lastname)
+and free-webmail email addresses are not published as links — a privacy choice,
+documented on the <a style="color:var(--green-d)" href="/privacy/">privacy page</a>.</p>
+<h2>Accuracy</h2><p>Fields that aren't in the source are shown as “Not listed”,
+never guessed. Data reflects the source on the last refresh date shown; always
+confirm with the installer before contracting.</p>
+<h2>Reuse</h2><p>The derived statistics are free to reuse with attribution under
+the OGL v3.0. A suggested citation is on the
+<a style="color:var(--green-d)" href="/data/uk-ev-installer-landscape/">data page</a>.</p>"""))
+
     write(DIST / "contact" / "index.html", page_simple(
         "Contact / Request a Correction",
         "Contact the directory to correct or remove a listing.",
@@ -1300,10 +1678,11 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
-        if u.startswith(("/shortlist", "/contact")):
+        if u.startswith(("/shortlist", "/contact", "/project-pack")):
             continue  # noindex/interactive — keep out of sitemap
         pr = ("1.0" if u == "/" else
-              "0.9" if u in ("/calculator/",) else
+              "0.9" if u in ("/calculator/", "/map/",
+                             "/data/uk-ev-installer-landscape/") else
               "0.8" if u.startswith(("/guides", "/towns")) else "0.6")
         sm.append(f"<url><loc>{BASE_URL}{u}</loc><lastmod>{now}</lastmod>"
                   f"<priority>{pr}</priority></url>")
@@ -1311,6 +1690,7 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
     write(DIST / "sitemap.xml", "\n".join(sm))
     write(DIST / "robots.txt",
           f"User-agent: *\nAllow: /\nDisallow: /shortlist/\n"
+          f"Disallow: /project-pack/\n"
           f"Sitemap: {BASE_URL}/sitemap.xml\n")
     write(DIST / "404.html",
           head("Not found", "Page not found", BASE_URL + "/404", noindex=True)
