@@ -48,6 +48,9 @@ BASE_URL = os.environ.get(
 ).rstrip("/")
 DEFAULT_BASE = "https://commercial-ev-installers.pages.dev"
 CONTACT_EMAIL = os.environ.get("SITE_CONTACT_EMAIL", "hello@example.com")
+# Google Search Console HTML-tag verification (set SITE_GSC_TOKEN as a deploy
+# env var). Lets a .pages.dev site verify without DNS access. Empty = omitted.
+GSC_TOKEN = os.environ.get("SITE_GSC_TOKEN", "").strip()
 TODAY = datetime.date.today().isoformat()
 TOWN_MIN = 3  # min installers for a town to get its own page (anti-thin-content)
 
@@ -537,13 +540,15 @@ history.replaceState(null,'',location.pathname);}})();
 
 def head(title, desc, canonical, jsonld="", noindex=False):
     robots = "noindex,follow" if noindex else "index,follow"
+    gsc = (f'<meta name="google-site-verification" content="{esc(GSC_TOKEN)}">'
+           if GSC_TOKEN else "")
     return f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canonical}">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}">
-<meta property="og:type" content="website"><meta name="robots" content="{robots}">
+<meta property="og:type" content="website"><meta name="robots" content="{robots}">{gsc}
 {FAVICON}{FONT}<style>{CSS}</style>{jsonld}</head><body>"""
 
 
