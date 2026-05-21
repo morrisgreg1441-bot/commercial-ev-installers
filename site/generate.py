@@ -713,7 +713,9 @@ with OZEV or any installer. <a style="display:inline;color:#9fe6b4" href="/priva
 <div><h4>Tools &amp; guides</h4><a href="/calculator/">Grant + cost calculator</a>
 <a href="/guides/ev-charging-for-fleets/">EV charging for fleets</a>
 <a href="/guides/workplace-charging-scheme/">Workplace Charging Scheme</a>
-<a href="/guides/grant-deadlines/">Grant deadlines</a></div>
+<a href="/guides/grant-deadlines/">Grant deadlines</a>
+<a href="/glossary/">Glossary (UK EV charging terms)</a>
+<a href="/methodology/">Methodology &amp; data</a></div>
 <div><h4>Regions</h4>{reg}</div></div>
 <div class="wrap" style="margin-top:34px;font-size:12.5px;border-top:1px solid #1f1f1f;padding-top:22px">
 Data source: <a href="https://www.gov.uk/electric-vehicle-chargepoint-installers" style="display:inline">GOV.UK / OZEV</a>,
@@ -768,7 +770,14 @@ def page_index(installers):
              f"Find OZEV-authorised commercial & fleet EV charging point installers across the UK. {n} verified installers, filterable by region, service and distance. Free, independent.",
              BASE_URL + "/", jsonld)
         + navbar()
-        + f"""<section class="hero"><div class="wrap">
+        + f"""<aside style="background:#fff7d6;border-bottom:1px solid #f1e6a8;
+color:#3a2f00;font-size:14px;text-align:center;padding:10px 16px">
+<strong>New:</strong>
+<a style="color:#15803d;font-weight:700;text-decoration:underline"
+   href="/data/{SNAPSHOT_SLUG}/">May 2026 UK Installer Landscape — open data
+   snapshot</a> ({n} installers, regional + postcode-area breakdown, OGL v3.0).
+</aside>
+<section class="hero"><div class="wrap">
 <span class="pill">● {n} OZEV-authorised commercial installers · all 12 UK regions</span>
 <h1>Find a commercial EV charging installer that can actually do the job.</h1>
 <p class="sub">{esc(SITE_TAGLINE)}. Every installer is authorised by the Office for
@@ -819,6 +828,8 @@ and grant before you talk to anyone.</p>
 <p>Answer 6 quick questions — see which UK 2026 grant(s) you qualify for.</p></a>
 <a class="gcard" href="/tools/ev-charger-cost-calculator/"><h3>Cost &amp; grant calculator</h3>
 <p>Indicative hardware, civils and DNO cost — plus WCS &amp; Depot Charging Scheme — for your project.</p></a>
+<a class="gcard" href="/glossary/"><h3>Glossary</h3>
+<p>OZEV, WCS, G99, OCPP, CCS2, kVA — every UK commercial EV charging term, defined plainly.</p></a>
 </div></div></section>
 
 <section class="sec-l"><div class="wrap">
@@ -838,6 +849,31 @@ that matches your project type.</p>
 <a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
  href="/services/public-car-park-ev-installers/"><h3 style="color:var(--ink)">Public car-park installers</h3>
 <p style="color:var(--mut)">Retail, hospitality, council. Commercial / charging-as-a-service.</p></a>
+</div></div></section>
+
+<section class="sec-l" id="industries"><div class="wrap">
+<h2 class="sh">Find installers by industry</h2>
+<p class="lead">Same OZEV-authorised pool, viewed through a sector lens —
+pick the page that matches who you are buying for.</p>
+<div class="guidegrid" style="margin-top:24px">
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/hotels-hospitality/"><h3 style="color:var(--ink)">Hotels &amp; hospitality</h3>
+<p style="color:var(--mut)">Destination charging for guest car parks. WCS limits and CaaS realities.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/logistics-haulage/"><h3 style="color:var(--ink)">Logistics &amp; haulage</h3>
+<p style="color:var(--mut)">Fleet depots, HGV charging. Depot Charging Scheme (70%, up to £1m).</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/local-authority-public-sector/"><h3 style="color:var(--ink)">Local authority &amp; public sector</h3>
+<p style="color:var(--mut)">LEVI Fund, RM6213 framework, on-street and council car parks.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/property-management-multi-tenant/"><h3 style="color:var(--ink)">Property &amp; multi-tenant</h3>
+<p style="color:var(--mut)">Landlords, MUDs, multi-let estates. Approved Document S (Building Regs Part S).</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/car-dealerships/"><h3 style="color:var(--ink)">Car dealerships</h3>
+<p style="color:var(--mut)">Customer test-drive bays + workshop dwell + staff fleet. Brand-spec realities.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/industries/nhs-healthcare/"><h3 style="color:var(--ink)">NHS &amp; healthcare</h3>
+<p style="color:var(--mut)">Greener NHS targets, staff parking, blue-light fleets, hospital resilience.</p></a>
 </div></div></section>"""
         + footer() + SHORTLIST_JS
         + """<script>
@@ -1493,6 +1529,371 @@ Licence v3.0). Suggested citation:<code>{esc(citation)}</code></div>
 <a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/methodology/">How this data is built</a></div>
 </div></section>""" + footer() + SHORTLIST_JS + "</body></html>"
     )
+
+
+# ---- May 2026 dated snapshot: a separate, link-bait data-journalism page ----
+SNAPSHOT_SLUG = "uk-ev-installer-landscape-may-2026"
+SNAPSHOT_TITLE = ("UK OZEV-Authorised Commercial Installer Landscape — "
+                  "May 2026 Snapshot")
+
+
+def _snapshot_compute(installers, towns):
+    from collections import Counter
+    n = len(installers)
+    by_region = Counter(i["region"] for i in installers
+                        if i.get("region") not in ("N/A", None, ""))
+    by_pc_area: Counter = Counter()
+    pc_area_dominant_town: dict[str, Counter] = {}
+    for i in installers:
+        pc = (i.get("postcode") or "").strip().upper()
+        m = re.match(r"^([A-Z]+)", pc)
+        if not m:
+            continue
+        a = m.group(1)
+        by_pc_area[a] += 1
+        t = i.get("town")
+        if t and t not in ("N/A", "", None):
+            pc_area_dominant_town.setdefault(a, Counter())[t] += 1
+    town_to_slug = {t["town"]: slug for slug, t in towns.items()}
+    top_pc = []
+    for area, count in by_pc_area.most_common(10):
+        link_slug = None
+        link_town = None
+        if area in pc_area_dominant_town:
+            for town, _ in pc_area_dominant_town[area].most_common():
+                if town in town_to_slug:
+                    link_slug = town_to_slug[town]
+                    link_town = town
+                    break
+        top_pc.append({"area": area, "count": count,
+                       "link_slug": link_slug, "link_town": link_town})
+    commercial_only = sum(
+        1 for i in installers
+        if "Commercial" in i.get("services", [])
+        and "Residential" not in i.get("services", []))
+    commercial_and_res = sum(
+        1 for i in installers
+        if "Commercial" in i.get("services", [])
+        and "Residential" in i.get("services", []))
+    region_ranked = sorted(by_region.items(), key=lambda x: -x[1])
+    bottom3 = region_ranked[-3:][::-1] if len(region_ranked) >= 3 else region_ranked
+    return {
+        "total": n,
+        "regions_ranked": region_ranked,
+        "top_pc_areas": top_pc,
+        "bottom_regions": bottom3,
+        "commercial_only": commercial_only,
+        "commercial_and_res": commercial_and_res,
+    }
+
+
+def _snapshot_svg_table(rows, caption, value_label, label_label="Region"):
+    if not rows:
+        return ""
+    svg = svg_bar(rows)
+    svg = svg.replace(
+        '<svg ',
+        f'<svg aria-hidden="true" focusable="false" aria-label="{esc(caption)}" ', 1)
+    body = "".join(
+        f"<tr><td>{esc(str(lab))}</td><td>{v}</td></tr>" for lab, v in rows)
+    return (
+        f'<figure class="bars" role="group" aria-label="{esc(caption)}">'
+        f'{svg}'
+        f'<figcaption class="sr-fb"><table class="snap-tbl">'
+        f'<caption>{esc(caption)}</caption>'
+        f'<tr><th>{esc(label_label)}</th><th>{esc(value_label)}</th></tr>'
+        f'{body}</table></figcaption></figure>'
+    )
+
+
+def page_data_landscape_snapshot(installers, towns):
+    s = _snapshot_compute(installers, towns)
+    url = f"{BASE_URL}/data/{SNAPSHOT_SLUG}/"
+    json_url = f"{BASE_URL}/data/installers.json"
+    csv_url = f"{BASE_URL}/data/installers.csv"
+    title = SNAPSHOT_TITLE
+    desc = (
+        f"May 2026 snapshot: {s['total']} OZEV-authorised commercial EV "
+        f"charger installers across the UK, ranked by region and postcode "
+        f"area, with coverage-gap analysis. Open data under OGL v3.0."
+    )
+
+    region_rows_chart = list(s["regions_ranked"])
+    region_table_rows = "".join(
+        f'<tr><td><a href="/regions/{slugify(r)}/">{esc(r)}</a></td>'
+        f"<td>{c}</td>"
+        f"<td>{c / s['total'] * 100:.1f}%</td></tr>"
+        for r, c in s["regions_ranked"]
+    )
+    region_chart_html = _snapshot_svg_table(
+        region_rows_chart,
+        "Installers per UK region (raw count)",
+        "Installers", "Region")
+
+    pc_table_rows = []
+    pc_chart_rows = []
+    for row in s["top_pc_areas"]:
+        a, c = row["area"], row["count"]
+        if row["link_slug"]:
+            label = (f'<a href="/towns/{row["link_slug"]}/">{esc(a)} — '
+                     f'{esc(row["link_town"])}</a>')
+        elif row["link_town"]:
+            label = f'{esc(a)} — {esc(row["link_town"])}'
+        else:
+            label = esc(a)
+        pc_table_rows.append(f"<tr><td>{label}</td><td>{c}</td></tr>")
+        pc_chart_rows.append((a, c))
+    pc_chart_html = _snapshot_svg_table(
+        pc_chart_rows,
+        "Top 10 UK postcode areas by OZEV commercial installer count",
+        "Installers", "Postcode area")
+
+    gap_rows = "".join(
+        f'<tr><td><a href="/regions/{slugify(r)}/">{esc(r)}</a></td>'
+        f"<td>{c}</td></tr>"
+        for r, c in s["bottom_regions"]
+    )
+
+    ts_rows = [
+        ("Commercial only", s["commercial_only"]),
+        ("Commercial + Residential", s["commercial_and_res"]),
+    ]
+    ts_chart_html = _snapshot_svg_table(
+        ts_rows,
+        "Trading status: commercial-only vs commercial+residential",
+        "Installers", "Trading status")
+
+    citation = (
+        f"{SITE_NAME}. UK OZEV-Authorised Commercial Installer Landscape — "
+        f"May 2026 Snapshot. Published {TODAY}. Derived from the GOV.UK / "
+        f"OZEV register under the Open Government Licence v3.0. {url}"
+    )
+
+    dataset_jl = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": title, "description": desc,
+        "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+        "creator": {"@type": "Organization", "name": SITE_NAME, "url": BASE_URL},
+        "publisher": {"@type": "Organization", "name": SITE_NAME, "url": BASE_URL},
+        "url": url, "isAccessibleForFree": True,
+        "dateModified": TODAY, "datePublished": TODAY,
+        "temporalCoverage": f"2026-05/{TODAY}",
+        "keywords": ["OZEV", "EV charging", "UK", "commercial installers",
+                     "open data"],
+        "distribution": [
+            {"@type": "DataDownload", "encodingFormat": "application/json",
+             "contentUrl": json_url},
+            {"@type": "DataDownload", "encodingFormat": "text/csv",
+             "contentUrl": csv_url},
+        ],
+    }
+    article_jl = {
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": title,
+        "author": {"@type": "Organization", "name": SITE_NAME},
+        "publisher": {"@type": "Organization", "name": SITE_NAME,
+                      "url": BASE_URL},
+        "datePublished": TODAY, "dateModified": TODAY,
+        "mainEntityOfPage": url, "url": url,
+    }
+    jsonld = (
+        '<script type="application/ld+json">' + json.dumps(dataset_jl)
+        + '</script>'
+        '<script type="application/ld+json">' + json.dumps(article_jl)
+        + '</script>'
+        + breadcrumb_jsonld([
+            ("Directory", "/"),
+            ("Data", "/data/uk-ev-installer-landscape/"),
+            ("May 2026 snapshot", f"/data/{SNAPSHOT_SLUG}/"),
+        ])
+    )
+
+    og_meta = (
+        f'<meta property="og:url" content="{url}">'
+        f'<meta property="og:site_name" content="{esc(SITE_NAME)}">'
+        f'<meta name="twitter:card" content="summary_large_image">'
+        f'<meta name="twitter:title" content="{esc(title)}">'
+        f'<meta name="twitter:description" content="{esc(desc)}">'
+        f'<meta name="article:published_time" content="{TODAY}">'
+        f'<meta name="article:modified_time" content="{TODAY}">'
+    )
+    jsonld = og_meta + jsonld
+
+    extra_css = """<style>
+.snap-wrap .lede{font-size:18px;color:var(--mut);max-width:720px;margin:8px 0 28px}
+.snap-wrap h2{margin-top:42px;font-size:26px;letter-spacing:-.5px}
+.snap-wrap h3{margin-top:22px;font-size:18px}
+.snap-wrap table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14.5px}
+.snap-wrap th,.snap-wrap td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--bd-l)}
+.snap-wrap th{background:#f3f6fa;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}
+.snap-wrap .sr-fb{margin:8px 0 0}
+.snap-wrap .sr-fb caption{caption-side:top;text-align:left;font-size:12.5px;color:var(--mut);padding:4px 0}
+.snap-wrap .snap-tbl{font-size:13.5px}
+.snap-wrap .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:18px 0 26px}
+.snap-wrap .statbox{background:#fff;border:1px solid var(--bd-l);border-radius:10px;padding:16px}
+.snap-wrap .statbox b{display:block;font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--ink)}
+.snap-wrap .statbox span{color:var(--mut);font-size:13px}
+.snap-wrap .callout{background:#f7fafc;border-left:3px solid var(--green);padding:14px 18px;border-radius:0 6px 6px 0;margin:18px 0;font-size:14.5px;color:var(--ink)}
+.snap-wrap .cite{background:#0a0a0a;color:#e7ecef;padding:18px;border-radius:10px;margin:22px 0;font-size:14px}
+.snap-wrap .cite code{display:block;background:rgba(255,255,255,.06);padding:10px 12px;border-radius:6px;margin-top:8px;color:#9fe6b4;font-size:13px;word-break:break-word;white-space:normal}
+.snap-wrap .use{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.snap-wrap .use a{background:#fff;border:1px solid var(--bd-l);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px}
+.snap-wrap .use a:hover{border-color:var(--green);color:var(--green-d)}
+.snap-wrap .caveat{font-size:14.5px;color:var(--mut)}
+.snap-wrap .caveat li{margin:6px 0}
+.snap-wrap .upd{color:var(--mut);font-size:13.5px}
+</style>"""
+
+    body = f"""<div class="wrap crumb"><a href="/">Directory</a> ›
+<a href="/data/uk-ev-installer-landscape/">Data</a> › May 2026 snapshot</div>
+<section style="padding-top:8px"><div class="wrap prose snap-wrap">
+<h1>{esc(title)}</h1>
+<p class="upd">Published {TODAY} · derived from GOV.UK / OZEV data
+(Open Government Licence v3.0)</p>
+<p class="lede">A dated, citation-ready snapshot of the OZEV-authorised
+commercial EV charger installer landscape across the UK. Every figure below
+is computed from the public OZEV register at build time; the underlying
+dataset is available as JSON and CSV.</p>
+
+<div class="statgrid">
+  <div class="statbox"><b>{s['total']}</b>
+    <span>OZEV-authorised commercial installers (UK total)</span></div>
+  <div class="statbox"><b>{len(s['regions_ranked'])}</b>
+    <span>UK regions with at least one installer</span></div>
+  <div class="statbox"><b>{s['commercial_only']}</b>
+    <span>Commercial-only firms (no residential)</span></div>
+  <div class="statbox"><b>{s['commercial_and_res']}</b>
+    <span>Commercial &amp; residential firms</span></div>
+</div>
+
+<h2>1 — Installers by UK region</h2>
+<p>Every region of the UK is represented in the OZEV register, but the
+distribution is highly uneven. Each region links to the regional directory
+page.</p>
+{region_chart_html}
+<table>
+  <tr><th>Region</th><th>OZEV commercial installers</th><th>Share of UK total</th></tr>
+  {region_table_rows}
+</table>
+
+<h2>2 — Top 10 postcode areas by installer count</h2>
+<p>Postcode areas are the alpha prefix of the outward code (for example,
+<code>SW</code>, <code>M</code>, <code>B</code>). Where the dominant town for
+a postcode area has a directory page, the row links to that page.</p>
+{pc_chart_html}
+<table>
+  <tr><th>Postcode area</th><th>OZEV commercial installers</th></tr>
+  {''.join(pc_table_rows)}
+</table>
+
+<h2>3 — Coverage gap: the three regions with the fewest installers</h2>
+<div class="callout"><strong>Honesty note:</strong> this is a <em>raw count</em>
+ranking, not a per-capita one. We do not publish a per-capita figure here
+because we are not republishing an official ONS population table verbatim on
+this page. The raw bottom-three is still the cleanest defensible signal of
+where buyer choice is thinnest.</div>
+<table>
+  <tr><th>Region (bottom 3 by raw count)</th><th>Installers</th></tr>
+  {gap_rows}
+</table>
+
+<h2>4 — Trading status: commercial-only vs commercial + residential</h2>
+<p>From the <code>services</code> field on each OZEV record. A firm is counted
+as &ldquo;commercial-only&rdquo; when its OZEV entry lists commercial work
+but not residential.</p>
+{ts_chart_html}
+<table>
+  <tr><th>Trading status</th><th>Installers</th><th>Share</th></tr>
+  <tr><td>Commercial only</td><td>{s['commercial_only']}</td>
+      <td>{s['commercial_only'] / s['total'] * 100:.1f}%</td></tr>
+  <tr><td>Commercial + Residential</td><td>{s['commercial_and_res']}</td>
+      <td>{s['commercial_and_res'] / s['total'] * 100:.1f}%</td></tr>
+</table>
+
+<h2>5 — Methodology</h2>
+<p>The dataset is the public GOV.UK OZEV authorised-installer register,
+queried across a UK-wide postcode grid and de-duplicated on a normalised
+name + postcode key. Records keep only installers that list commercial
+work. Full pipeline and refresh cadence on the
+<a href="/methodology/">methodology page</a>. The raw JSON used to build
+this page is at
+<a href="/data/installers.json"><code>/data/installers.json</code></a>.</p>
+
+<h2>6 — Caveats &amp; known limitations of the OZEV register</h2>
+<ul class="caveat">
+  <li>The OZEV register is a list of <em>authorised</em> installers — it
+      does not certify capacity, current trading status or recent project
+      history.</li>
+  <li>Region is taken from each installer's listed postcode. A national
+      installer with a single registered office appears once, in that
+      office's region, even if they work UK-wide.</li>
+  <li>Postcode-area counts measure where installers are <em>registered</em>,
+      not where they have completed installations.</li>
+  <li>The register is refreshed by GOV.UK on its own cadence; this snapshot
+      reflects what was visible on the date stamped above.</li>
+  <li>&ldquo;Commercial-only&rdquo; vs &ldquo;commercial + residential&rdquo;
+      reflects what each firm has elected to advertise via OZEV, not the
+      actual mix of work delivered.</li>
+</ul>
+
+<h2>7 — Use this data</h2>
+<p>All derived statistics on this page are free to reuse with attribution
+under the Open Government Licence v3.0.</p>
+<div class="use">
+  <a href="/data/installers.json">Download JSON →</a>
+  <a href="/data/installers.csv">Download CSV →</a>
+  <a href="/methodology/">Methodology →</a>
+</div>
+
+<h2>Cite this snapshot</h2>
+<div class="cite">Suggested citation (Open Government Licence v3.0):
+  <code>{esc(citation)}</code></div>
+
+<div class="cta-row">
+  <a class="btn btn-g" href="/#directory">Browse the directory</a>
+  <a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a"
+     href="/data/uk-ev-installer-landscape/">Evergreen landscape page →</a>
+</div>
+
+</div></section>"""
+
+    return (
+        head(title, desc, url, extra_css + jsonld)
+        + navbar()
+        + body
+        + footer()
+        + SHORTLIST_JS
+        + "</body></html>"
+    )
+
+
+def _write_public_open_data(installers):
+    """Emit publication-safe JSON + CSV under dist/data/ so the snapshot
+    page's 'use this data' links resolve. CSV is a clean public-friendly
+    subset (no scraped personal emails)."""
+    out_dir = DIST / "data"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    src = (DATA / "installers.json").read_text(encoding="utf-8")
+    (out_dir / "installers.json").write_text(src, encoding="utf-8")
+    with (out_dir / "installers.csv").open("w", newline="",
+                                           encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["name", "town", "region", "postcode", "services",
+                    "website", "phone", "lat", "lon", "last_verified"])
+        for i in installers:
+            w.writerow([
+                i.get("name", ""),
+                i.get("town", ""),
+                i.get("region", ""),
+                i.get("postcode", ""),
+                "; ".join(i.get("services", []) or []),
+                i.get("website", "") if i.get("website") not in ("N/A", None) else "",
+                i.get("phone", "") if i.get("phone") not in ("N/A", None) else "",
+                i.get("lat", ""),
+                i.get("lon", ""),
+                i.get("last_verified", ""),
+            ])
 
 
 def page_project_pack():
@@ -2360,6 +2761,7 @@ order.</p>
 {top_regions_html}
 {faq_html(spec['faqs'])}
 </div>
+{industries_block_for_service(slug)}
 <div class="cta-row" style="margin-top:22px">
 <a class="btn btn-g" href="/calculator/">Estimate cost + grant</a>
 <a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/#directory">All UK installers</a>
@@ -2914,6 +3316,402 @@ guidance for changes from 1 April 2026. Depot Charging Scheme: GOV.UK
     )
 
 
+GLOSSARY_TERMS = [
+    # (id, term, acronym/expansion or None, category, definition_html)
+    # Grants & compliance
+    ("wcs", "WCS", "Workplace Charging Scheme", "Grants & compliance",
+     'A UK government voucher scheme administered by OZEV that contributes up to '
+     '£500 per socket (raised from £350 on 1 April 2026) toward the up-front cost '
+     'of EV charging sockets at workplaces, capped at 75% of project cost and 40 '
+     'sockets per applicant. Closes to new applications on 31 March 2027. '
+     'Applications must be made through an OZEV-authorised installer. '
+     'See the <a href="/guides/workplace-charging-scheme/">WCS guide</a>.'),
+    ("depot-charging-scheme", "Depot Charging Scheme", None, "Grants & compliance",
+     'The 2026 successor scheme to the EV Infrastructure Grant, intended for '
+     'commercial vehicle depots (vans, HGVs, buses). Funds up to 70% of eligible '
+     'depot charging infrastructure costs. Applicants apply through an '
+     'OZEV-authorised installer. See the <a href="/guides/ev-infrastructure-grant/">'
+     'EV Infrastructure Grant / Depot Charging Scheme guide</a>.'),
+    ("ev-infrastructure-grant", "EV Infrastructure Grant", None, "Grants & compliance",
+     'A grant funding up to 75% of the cost of infrastructure works (cabling, '
+     'groundworks) to support EV chargepoints for small and medium-sized businesses. '
+     'Closed to new applicants on 31 March 2026 and superseded by the Depot Charging '
+     'Scheme. See the <a href="/guides/ev-infrastructure-grant/">infrastructure '
+     'grant guide</a>.'),
+    ("ozev", "OZEV", "Office for Zero Emission Vehicles", "Grants & compliance",
+     'The cross-Whitehall UK government team (sitting jointly within DfT and DESNZ) '
+     'responsible for EV and ultra-low-emission vehicle policy and grant schemes. '
+     'OZEV authorises installers for grant work, runs the WCS and Depot Charging '
+     'Scheme, and publishes the public installer register this directory is built '
+     'from.'),
+    ("ozev-authorised-installer", "OZEV-authorised installer", None,
+     "Grants & compliance",
+     'A company on the public OZEV register, permitted to carry out grant-funded '
+     'commercial EV chargepoint installations. Authorisation is a prerequisite for '
+     'claiming WCS and Depot Charging Scheme funding. Every business listed in '
+     'this directory is an OZEV-authorised installer.'),
+    ("plug-in-van-grant", "Plug-in Van Grant", None, "Grants & compliance",
+     'A separate vehicle-side grant (not a chargepoint grant) that reduces the '
+     'purchase price of eligible electric vans and small trucks. Relevant to '
+     'depot operators because van procurement and depot charging are usually '
+     'planned together.'),
+    ("part-s", "Building Regulations Part S", None, "Grants & compliance",
+     'The section of the Building Regulations for England (in force since June '
+     '2022) requiring EV chargepoint provision in new and materially-renovated '
+     'buildings, including most new non-residential buildings with associated '
+     'parking. Drives a large share of new commercial install demand.'),
+    ("ev-ready", "EV-ready", None, "Grants & compliance",
+     'An informal term for a car park or site where ducting, cable routes and '
+     'spare electrical capacity have been installed so future EV chargepoints '
+     'can be added without civils works. Often cheapest done at the time of an '
+     'unrelated resurface or build, before <a href="#part-s">Part S</a> forces it.'),
+    # Hardware
+    ("ac-charger", "AC charger", None, "Hardware",
+     'A chargepoint that delivers alternating current to the vehicle; the '
+     'vehicle\'s onboard charger converts it to DC for the battery. Typical '
+     'commercial AC units are 7 kW (single-phase) or 22 kW (three-phase). '
+     'Cheaper, slower, and the workhorse of '
+     '<a href="#workplace">workplace</a> and <a href="#destination-charging">'
+     'destination</a> charging.'),
+    ("dc-rapid", "DC rapid", None, "Hardware",
+     'A chargepoint that supplies direct current straight to the battery, '
+     'bypassing the vehicle\'s small onboard AC charger. Typically 50–150 kW. '
+     'Used where dwell time is short — depot turn-around, en-route, taxi ranks.'),
+    ("dc-ultra-rapid", "DC ultra-rapid", None, "Hardware",
+     '150 kW and above DC chargepoints, increasingly 300–400 kW for HGVs and '
+     'long-distance cars. Requires substantial grid capacity and almost always '
+     'triggers a <a href="#g99">G99</a> DNO application.'),
+    ("ccs2", "CCS2", "Combined Charging System (Type 2)", "Hardware",
+     'The standard DC fast/rapid connector used in Europe and the UK, combining '
+     'a Type 2 AC inlet with two extra DC pins. Effectively the default DC '
+     'connector on new commercial rapid chargers.'),
+    ("chademo", "CHAdeMO", None, "Hardware",
+     'An older Japanese DC rapid charging standard, still found on some Nissan '
+     'and Mitsubishi vehicles. New commercial sites usually fit CCS2 as '
+     'default and CHAdeMO only if the user mix demands it.'),
+    ("type-2", "Type 2", "IEC 62196-2", "Hardware",
+     'The standard AC connector used across the UK and EU for AC charging at '
+     '3–22 kW. Tethered Type 2 cables are common on workplace units; untethered '
+     '(socketed) Type 2 lets drivers use their own cable.'),
+    ("tethered", "Tethered vs untethered", None, "Hardware",
+     'Tethered chargers have a captive cable; untethered (socketed) chargers '
+     'require the driver to bring their own. Workplace and fleet sites often '
+     'prefer tethered for user simplicity; public-access and shared bays often '
+     'prefer untethered to handle mixed vehicles and reduce vandalism.'),
+    ("ocpp", "OCPP", "Open Charge Point Protocol", "Hardware",
+     'An open communication standard between chargepoints and back-office '
+     'management software. OCPP 1.6 is widely deployed; 2.0.1 adds smart '
+     'charging and ISO 15118 support. Specifying OCPP means a site is not '
+     'locked into one back-office vendor.'),
+    ("iso-15118", "ISO 15118", None, "Hardware",
+     'An international standard covering vehicle-to-charger communication, '
+     'including Plug & Charge (automatic identification and billing on plug-in) '
+     'and vehicle-to-grid (V2G). Underpins smart-charging features on newer '
+     'commercial hardware.'),
+    ("smart-charging", "Smart charging", None, "Hardware",
+     'Controlling when and how fast each vehicle charges based on grid signals, '
+     'tariffs, on-site generation or user need. Mandatory in the UK for most '
+     'new chargepoints under the Smart Charge Point Regulations 2021. Essential '
+     'for depot economics and grid headroom.'),
+    ("load-balancing", "Load balancing", None, "Hardware",
+     'Dynamically sharing a fixed electrical supply between multiple chargers '
+     'so the site never exceeds its grid limit. Lets a site install more sockets '
+     'than its raw kVA would suggest — central to depot design and often the '
+     'difference between needing or avoiding a <a href="#g99">G99</a> upgrade.'),
+    ("rfid", "RFID", "Radio-Frequency Identification", "Hardware",
+     'Card or fob-based driver authentication on a chargepoint, linking a '
+     'session to a user or fleet account in the back-office. The cheap, '
+     'reliable access-control default for workplace and depot sites.'),
+    ("mode-3", "Mode 3", None, "Hardware",
+     'The IEC 61851 charging mode covering AC chargepoints with a dedicated '
+     'control pilot circuit — i.e. every standard Type 2 commercial AC charger. '
+     'Distinguished from Mode 1/2 (domestic socket adaptors, not used commercially).'),
+    ("mode-4", "Mode 4", None, "Hardware",
+     'The IEC 61851 charging mode covering DC rapid/ultra-rapid charging, where '
+     'the charger itself contains the AC-to-DC rectifier and communicates digitally '
+     'with the vehicle. All commercial DC chargers are Mode 4.'),
+    # Electrical / civils
+    ("dno", "DNO", "Distribution Network Operator", "Electrical & civils",
+     'The regional company that owns and operates the local electricity '
+     'distribution network — UK Power Networks, SSEN, National Grid Electricity '
+     'Distribution, NIE, etc. Any meaningful commercial EV install requires a '
+     'DNO notification (<a href="#g98">G98</a>) or application '
+     '(<a href="#g99">G99</a>).'),
+    ("g99", "G99", None, "Electrical & civils",
+     'The Energy Networks Association Engineering Recommendation governing the '
+     'connection of generation and larger demand (including most rapid/ultra-rapid '
+     'chargepoints) to the distribution network. G99 applications can take '
+     'weeks to months and may trigger reinforcement costs — they are the most '
+     'common cause of commercial install delay.'),
+    ("g98", "G98", None, "Electrical & civils",
+     'The lighter-touch ENA recommendation for small connections — typically '
+     'up to 16 A per phase per site. Most single AC workplace chargers fall '
+     'under G98 and need only a notification rather than a full application.'),
+    ("kva", "kVA", "kilovolt-ampere", "Electrical & civils",
+     'The unit of apparent electrical power used when specifying supplies and '
+     'transformer capacity. A site\'s available kVA, minus existing demand, sets '
+     'the ceiling on how much charging it can host without a fuse upgrade or '
+     '<a href="#g99">G99</a> application.'),
+    ("three-phase", "Three-phase", None, "Electrical & civils",
+     'A 400 V supply delivered over three live conductors, standard for '
+     'commercial sites. Required for 22 kW AC and most DC chargers; lets a site '
+     'host higher-power charging in the same footprint as a single-phase install.'),
+    ("single-phase", "Single-phase", None, "Electrical & civils",
+     'A 230 V supply over one live conductor, standard at most homes and small '
+     'shops. Caps AC charging at around 7 kW per socket. Many small commercial '
+     'sites are single-phase, which constrains charger choice.'),
+    ("load-study", "Load study", None, "Electrical & civils",
+     'A measurement and modelling exercise — usually a few weeks of half-hourly '
+     'metering — that establishes a site\'s real available capacity and '
+     'utilisation pattern before specifying chargers. Often pays for itself by '
+     'avoiding an unnecessary DNO upgrade.'),
+    ("lv-hv", "LV / HV", "Low Voltage / High Voltage", "Electrical & civils",
+     'In UK distribution, LV usually means up to 1 kV (the standard 400/230 V '
+     'mains seen at most sites); HV is 1 kV–132 kV. Larger depots, hub sites '
+     'and ultra-rapid installations may require an HV connection or a private '
+     'substation.'),
+    ("fuse-upgrade", "Fuse upgrade", None, "Electrical & civils",
+     'Replacing the main service fuse on an LV connection with a higher-rated '
+     'one (e.g. 60 A to 100 A), increasing the site\'s import capacity. Carried '
+     'out by the DNO, often at modest cost — the cheapest route to more charging '
+     'capacity when it is available.'),
+    ("mpan", "MPAN", "Meter Point Administration Number", "Electrical & civils",
+     'The 13-digit reference identifying an electricity supply point. Required '
+     'for every DNO application, tariff change and back-office configuration. '
+     'A single site may have several MPANs (one per metered supply).'),
+    ("half-hourly-metering", "Half-hourly (HH) metering", None,
+     "Electrical & civils",
+     'Electricity metering that records consumption in 30-minute blocks, '
+     'mandatory above 100 kW maximum demand and optional below. Underpins '
+     'time-of-use tariffs, smart-charging optimisation and accurate site '
+     'load studies.'),
+    ("civils", "Civils", None, "Electrical & civils",
+     'Trenching, ducting, bay marking, surfacing reinstatement and bollard '
+     'fitting — i.e. the groundworks portion of an EV install, as distinct '
+     'from electrical and chargepoint hardware. Routinely 20–40% of total '
+     'project cost and the line most likely to surprise.'),
+    ("ducting", "Ducting", None, "Electrical & civils",
+     'The plastic conduit buried during civils to carry cabling between the '
+     'incoming supply, sub-distribution and each chargepoint. Over-specifying '
+     'duct count at first install is the cheapest way to make a site '
+     '<a href="#ev-ready">EV-ready</a> for future expansion.'),
+    ("bollard-protection", "Bollard protection", None, "Electrical & civils",
+     'Steel bollards (or wheel stops + integrated unit) protecting pedestal '
+     'chargepoints from vehicle impact. Effectively mandatory under most '
+     'site insurance terms and good-practice guidance for commercial bays.'),
+    # Commercial
+    ("cpo", "CPO", "Charge Point Operator", "Commercial",
+     'A business that operates and maintains chargepoints day-to-day — '
+     'monitoring uptime, handling driver payments, resolving faults. A site '
+     'owner may be their own CPO, or contract a third-party CPO under '
+     'concession or charging-as-a-service.'),
+    ("back-office", "Back-office", None, "Commercial",
+     'The cloud software that monitors chargepoints, authenticates users, '
+     'meters sessions, calculates billing and surfaces fault data. Choice of '
+     'back-office is at least as important as choice of hardware — and '
+     '<a href="#ocpp">OCPP</a> compliance lets the two be chosen independently.'),
+    ("tariff", "Tariff", None, "Commercial",
+     'The pricing structure a CPO charges drivers (or a site charges users): '
+     'pence per kWh, time-based, idle-fees, or a hybrid. For depot fleets, '
+     'the relevant tariff is usually the wholesale electricity tariff plus '
+     'time-of-use shaping rather than a public CPO tariff.'),
+    ("fleet-operator", "Fleet operator", None, "Commercial",
+     'A business running its own vehicles — vans, HGVs, company cars, taxis. '
+     'Typically charges at a depot overnight and tops up en-route. See the '
+     '<a href="/services/fleet-charging-installers/">fleet charging installers</a> '
+     'list and the <a href="/guides/ev-charging-for-fleets/">fleet guide</a>.'),
+    ("depot", "Depot", None, "Commercial",
+     'A site where commercial vehicles return to base — typical of logistics, '
+     'bus, taxi, council and trade fleets. Optimal for cheap overnight '
+     'charging with <a href="#load-balancing">load balancing</a>, and the '
+     'core target of the <a href="#depot-charging-scheme">Depot Charging Scheme</a>.'),
+    ("workplace", "Workplace charging", None, "Commercial",
+     'Chargepoints provided in staff or visitor car parks. Eligible for '
+     'the <a href="#wcs">WCS</a> at up to £500 per socket. See '
+     '<a href="/services/workplace-charging-installers/">workplace installers</a>.'),
+    ("destination-charging", "Destination charging", None, "Commercial",
+     'Chargepoints at places people stop for a non-charging reason — hotels, '
+     'retail, leisure, hospitality — where the vehicle is parked for hours. '
+     'AC 7–22 kW is usually the right fit; ultra-rapid is wasted on a '
+     'two-hour dwell.'),
+    ("en-route", "En-route charging", None, "Commercial",
+     'High-power public DC charging on or near strategic roads, used during '
+     'a journey. Dwell time is 10–40 minutes; ultra-rapid DC and strong grid '
+     'capacity are essential.'),
+    ("dwell-time", "Dwell time", None, "Commercial",
+     'How long a vehicle is parked at a chargepoint. The single most important '
+     'input into specifying charger power: long dwell = AC; short dwell = DC '
+     'rapid; very short dwell = DC ultra-rapid.'),
+    ("utilisation-rate", "Utilisation rate", None, "Commercial",
+     'The proportion of a chargepoint\'s available hours during which it is '
+     'delivering energy. Drives the payback on any public or commercial '
+     'install — typical break-even on rapid DC sits in the 12–25% range '
+     'depending on tariff and capex.'),
+    ("payback-period", "Payback period", None, "Commercial",
+     'The years until net savings (fuel + grant + chargepoint revenue) equal '
+     'the project capex. Depot retrofits often pay back in 3–6 years on '
+     'fuel saving alone; public installs depend heavily on '
+     '<a href="#utilisation-rate">utilisation</a>. The '
+     '<a href="/tools/ev-charger-cost-calculator/">cost calculator</a> '
+     'gives an indicative figure.'),
+]
+
+
+def page_glossary():
+    """Comprehensive UK commercial EV-charging glossary.
+
+    Doubles as a strong internal-linking hub: each entry can link to the
+    relevant guide, service or industry page. Emits DefinedTermSet JSON-LD
+    plus a BreadcrumbList for discoverability.
+    """
+    url = f"{BASE_URL}/glossary/"
+    title = ("EV Charging Glossary (UK, 2026) — Grants, Hardware, "
+             "Electrical & Commercial Terms")
+    desc = ("Plain-English UK commercial EV charging glossary: OZEV, WCS, "
+            "Depot Charging Scheme, G99, OCPP, CCS2, kVA, load balancing, "
+            "CPO and more — defined with links to the relevant guides.")
+
+    # Build alphabetical jump-nav
+    by_letter: dict[str, list] = {}
+    for entry in GLOSSARY_TERMS:
+        first = entry[1][0].upper()
+        by_letter.setdefault(first, []).append(entry)
+    letters_present = sorted(by_letter.keys())
+    jump_nav = " ".join(
+        f'<a href="#letter-{l}" style="display:inline-block;padding:4px 9px;'
+        f'margin:2px;border:1px solid var(--bd-l);border-radius:6px;'
+        f'color:var(--green-d);font-weight:700;font-size:14px">{l}</a>'
+        for l in letters_present
+    )
+    # All A-Z letters (faded if absent) for a complete bar
+    all_letters_bar = " ".join(
+        (f'<a href="#letter-{l}" style="display:inline-block;padding:4px 9px;'
+         f'margin:2px;border:1px solid var(--bd-l);border-radius:6px;'
+         f'color:var(--green-d);font-weight:700;font-size:14px;text-decoration:none">{l}</a>'
+         if l in by_letter else
+         f'<span style="display:inline-block;padding:4px 9px;margin:2px;'
+         f'border:1px solid var(--bd-l);border-radius:6px;color:#bbb;'
+         f'font-weight:700;font-size:14px">{l}</span>')
+        for l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    )
+
+    # Group by category for readable presentation
+    cats: dict[str, list] = {}
+    for entry in GLOSSARY_TERMS:
+        cats.setdefault(entry[3], []).append(entry)
+    cat_order = ["Grants & compliance", "Hardware", "Electrical & civils",
+                 "Commercial"]
+
+    sections = []
+    seen_letters = set()
+    for cat in cat_order:
+        items = cats.get(cat, [])
+        if not items:
+            continue
+        # Sort within category alphabetically by term
+        items_sorted = sorted(items, key=lambda e: e[1].lower())
+        dts = []
+        for tid, term, acronym, _, defn in items_sorted:
+            first_letter = term[0].upper()
+            anchor_extra = ""
+            if first_letter not in seen_letters:
+                anchor_extra = f'<span id="letter-{first_letter}"></span>'
+                seen_letters.add(first_letter)
+            acro_html = (f' <span style="color:var(--mut);font-weight:500;'
+                         f'font-size:15px">— {esc(acronym)}</span>'
+                         if acronym else "")
+            dts.append(
+                f'{anchor_extra}<dt id="{tid}" style="font-weight:800;'
+                f'font-size:18px;margin-top:18px;scroll-margin-top:80px">'
+                f'<a href="#{tid}" style="color:var(--ink);text-decoration:none">'
+                f'{esc(term)}</a>{acro_html}</dt>'
+                f'<dd style="margin:6px 0 0;color:var(--ink);font-size:16px;'
+                f'line-height:1.55">{defn}</dd>'
+            )
+        sections.append(
+            f'<h2 id="cat-{slugify(cat)}">{esc(cat)}</h2>'
+            f'<dl style="margin:0 0 30px 0">{"".join(dts)}</dl>'
+        )
+
+    # DefinedTermSet JSON-LD
+    defined_terms = [
+        {
+            "@type": "DefinedTerm",
+            "@id": f"{BASE_URL}/glossary/#{tid}",
+            "name": term + (f" ({acronym})" if acronym else ""),
+            "description": _strip_tags(defn),
+            "inDefinedTermSet": f"{BASE_URL}/glossary/",
+            "termCode": tid,
+        }
+        for (tid, term, acronym, _cat, defn) in GLOSSARY_TERMS
+    ]
+    jsonld = ('<script type="application/ld+json">' + json.dumps({
+        "@context": "https://schema.org",
+        "@type": "DefinedTermSet",
+        "@id": f"{BASE_URL}/glossary/",
+        "name": "UK Commercial EV Charging Glossary",
+        "url": url,
+        "inLanguage": "en-GB",
+        "publisher": {"@type": "Organization", "name": SITE_NAME,
+                      "url": BASE_URL},
+        "hasDefinedTerm": defined_terms,
+    }) + "</script>") + breadcrumb_jsonld([
+        ("Home", "/"),
+        ("Glossary", "/glossary/"),
+    ])
+
+    intro = f"""
+<p class="upd">UK commercial EV charging terms, plain-English. Last updated {TODAY}.</p>
+<p>If you're scoping a workplace, depot or destination EV charging project for the
+first time, the acronyms come at you fast — OZEV, WCS, G99, OCPP, CCS2, kVA. This
+glossary defines the {len(GLOSSARY_TERMS)} terms you'll meet in installer quotes,
+DNO correspondence and grant paperwork, with links through to the relevant
+<a href="/guides/ev-charging-for-fleets/">guides</a> and
+<a href="/#directory">installer directory</a>.</p>
+
+<div class="box" style="margin:18px 0 24px 0">
+<strong>Jump to a letter:</strong><br>
+<div style="margin-top:8px">{all_letters_bar}</div>
+</div>
+
+<p style="font-size:14px;color:var(--mut)"><strong>Categories:</strong>
+<a href="#cat-grants-compliance" style="color:var(--green-d)">Grants &amp; compliance</a> ·
+<a href="#cat-hardware" style="color:var(--green-d)">Hardware</a> ·
+<a href="#cat-electrical-civils" style="color:var(--green-d)">Electrical &amp; civils</a> ·
+<a href="#cat-commercial" style="color:var(--green-d)">Commercial</a></p>
+"""
+
+    body = intro + "".join(sections) + (
+        '<h2>See also</h2><ul>'
+        '<li><a href="/guides/ev-charging-for-fleets/" style="color:var(--green-d)">'
+        'EV charging for fleets — buyer\'s guide</a></li>'
+        '<li><a href="/guides/workplace-charging-scheme/" style="color:var(--green-d)">'
+        'Workplace Charging Scheme guide</a></li>'
+        '<li><a href="/guides/ev-infrastructure-grant/" style="color:var(--green-d)">'
+        'EV Infrastructure Grant / Depot Charging Scheme</a></li>'
+        '<li><a href="/guides/grant-deadlines/" style="color:var(--green-d)">'
+        'UK EV grant deadlines</a></li>'
+        '<li><a href="/tools/ev-charger-cost-calculator/" style="color:var(--green-d)">'
+        'Cost &amp; grant calculator</a></li>'
+        '<li><a href="/methodology/" style="color:var(--green-d)">'
+        'How this directory is built (methodology)</a></li>'
+        '</ul>'
+    )
+
+    return (head(title, desc, url, jsonld) + navbar()
+            + '<section style="padding-top:30px"><div class="wrap prose">'
+            + f'<h1>UK Commercial EV Charging Glossary</h1>'
+            + body
+            + '</div></section>'
+            + footer() + SHORTLIST_JS + "</body></html>")
+
+
+def _strip_tags(html: str) -> str:
+    """Very small HTML-tag stripper used for JSON-LD descriptions."""
+    import re as _re
+    return _re.sub(r"<[^>]+>", "", html).replace("&amp;", "&").strip()
+
+
 def write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -2976,7 +3774,8 @@ def main() -> int:
 
     stats = build_stats(installers)
     urls = ["/", "/calculator/", "/map/", "/data/uk-ev-installer-landscape/",
-            "/about/", "/contact/", "/privacy/", "/methodology/"]
+            "/about/", "/contact/", "/privacy/", "/methodology/",
+            "/glossary/"]
     write(DIST / "index.html", page_index(installers))
     write(DIST / "calculator" / "index.html", page_calculator())
     write(DIST / "tools" / "uk-ev-grant-eligibility" / "index.html",
@@ -2989,6 +3788,13 @@ def main() -> int:
     write(DIST / "map-data.js", map_data_js(installers))
     write(DIST / "data" / "uk-ev-installer-landscape" / "index.html",
           page_data_landscape(installers, stats))
+    # Dated May 2026 snapshot — pitchable to trade press, separate URL.
+    write(DIST / "data" / SNAPSHOT_SLUG / "index.html",
+          page_data_landscape_snapshot(installers, towns))
+    urls.append(f"/data/{SNAPSHOT_SLUG}/")
+    # Open-data downloads referenced by the snapshot page's "use this data".
+    _write_public_open_data(installers)
+    write(DIST / "glossary" / "index.html", page_glossary())
     write(DIST / "shortlist" / "index.html", page_shortlist())
     write(DIST / "project-pack" / "index.html", page_project_pack())
     # tiny lookup so the shortlist page can show names without shipping all data
@@ -3020,6 +3826,11 @@ def main() -> int:
         write(DIST / "services" / slug / "index.html",
               page_service(slug, spec, installers))
         urls.append(f"/services/{slug}/")
+
+    for slug, spec in INDUSTRIES.items():
+        write(DIST / "industries" / slug / "index.html",
+              page_industry(slug, spec, installers))
+        urls.append(f"/industries/{slug}/")
 
     write(DIST / "about" / "index.html", page_simple(
         "About & Affiliate Disclosure",
@@ -3055,29 +3866,211 @@ limited, already-public nature of the data.</p>
 or removed, no questions asked, via <a style="color:var(--green-d)"
 href="/contact/">the contact page</a>. Requests are actioned on the next rebuild.</p>"""))
 
-    write(DIST / "methodology" / "index.html", page_simple(
-        "Methodology & Data Transparency",
-        "Exactly how this OZEV commercial EV installer dataset is built, refreshed, deduplicated and licensed.",
-        "methodology",
-        f"""<p>Transparency about how the numbers on the
-<a style="color:var(--green-d)" href="/data/uk-ev-installer-landscape/">data page</a>
-and directory are produced.</p>
-<h2>Source</h2><p>The public GOV.UK “find an EV chargepoint installer” / OZEV
-authorised-installer tool, reused under the Open Government Licence v3.0.</p>
-<h2>Collection</h2><p>The tool is queried across a UK-wide postcode grid; only
-installers offering <strong>commercial</strong> work are kept. Requests are
-rate-limited and polite. Re-run automatically every week.</p>
-<h2>Deduplication</h2><p>Records are de-duplicated on a normalised
-name + postcode key; collision-safe page slugs are assigned at build.</p>
-<h2>What we deliberately exclude</h2><p>Scraped personal (firstname.lastname)
-and free-webmail email addresses are not published as links — a privacy choice,
-documented on the <a style="color:var(--green-d)" href="/privacy/">privacy page</a>.</p>
-<h2>Accuracy</h2><p>Fields that aren't in the source are shown as “Not listed”,
-never guessed. Data reflects the source on the last refresh date shown; always
-confirm with the installer before contracting.</p>
-<h2>Reuse</h2><p>The derived statistics are free to reuse with attribution under
-the OGL v3.0. A suggested citation is on the
-<a style="color:var(--green-d)" href="/data/uk-ev-installer-landscape/">data page</a>.</p>"""))
+    methodology_jsonld = (
+        '<script type="application/ld+json">' + json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "name": "UK OZEV-Authorised Commercial EV Charger Installers",
+            "description": (
+                "Directory of OZEV-authorised installers offering commercial / "
+                "fleet electric vehicle chargepoint installations across the UK, "
+                "derived from the public GOV.UK OZEV authorised-installer tool."),
+            "url": f"{BASE_URL}/data/uk-ev-installer-landscape/",
+            "isAccessibleForFree": True,
+            "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+            "creator": {"@type": "Organization", "name": SITE_NAME,
+                        "url": BASE_URL},
+            "publisher": {"@type": "Organization", "name": SITE_NAME,
+                          "url": BASE_URL},
+            "sourceOrganization": {
+                "@type": "GovernmentOrganization",
+                "name": "Office for Zero Emission Vehicles (OZEV) / GOV.UK",
+                "url": "https://www.gov.uk/electric-vehicle-chargepoint-installers",
+            },
+            "version": TODAY,
+            "dateModified": TODAY,
+            "spatialCoverage": {"@type": "Place", "name": "United Kingdom"},
+            "inLanguage": "en-GB",
+            "keywords": ["EV charging", "OZEV", "commercial installers",
+                         "fleet charging", "UK", "OGL v3.0"],
+            "distribution": [
+                {
+                    "@type": "DataDownload",
+                    "encodingFormat": "application/json",
+                    "contentUrl": f"{BASE_URL}/data/installers.json",
+                    "name": "Installers JSON",
+                },
+            ],
+        }, ensure_ascii=False) + "</script>"
+        + breadcrumb_jsonld([("Home", "/"),
+                             ("Methodology", "/methodology/")])
+    )
+
+    # Hand-built methodology page (avoid page_simple so we can inject the
+    # Dataset JSON-LD into <head>).
+    methodology_body = f"""<p class="upd">Last refreshed <strong>{TODAY}</strong>
+· Source: <a style="color:var(--green-d)"
+href="https://www.gov.uk/electric-vehicle-chargepoint-installers">GOV.UK OZEV
+authorised-installer tool</a>.</p>
+
+<p>This page documents — for journalists, sponsors, partner installers and any
+researcher reusing our derived statistics — exactly how the {len(installers)}
+listings and the figures on the <a style="color:var(--green-d)"
+href="/data/uk-ev-installer-landscape/">UK EV installer landscape</a> page are
+produced. If anything below is wrong or unclear, please
+<a style="color:var(--green-d)" href="/contact/">tell us</a> and we will fix it
+on the next rebuild.</p>
+
+<h2>1. Where the installer list comes from</h2>
+<p>The single upstream source is the public GOV.UK / Office for Zero Emission
+Vehicles (OZEV) authorised-installer tool:
+<a style="color:var(--green-d)"
+href="https://www.gov.uk/electric-vehicle-chargepoint-installers">
+https://www.gov.uk/electric-vehicle-chargepoint-installers</a>. Every business
+on this site is an OZEV-authorised installer that has self-declared (to OZEV) a
+willingness to carry out commercial installations. We do not include any
+installer that is not on that register.</p>
+
+<h2>2. Last refresh date</h2>
+<p>The data underpinning this build was last refreshed on
+<strong>{TODAY}</strong>. A refresh date is also stamped into the footer of
+every page and into the <code>generated_at</code> field of
+<a style="color:var(--green-d)" href="/data/installers.json">installers.json</a>.</p>
+
+<h2>3. Collection</h2>
+<p>The OZEV tool is queried across a UK-wide postcode grid (covering all 12
+nations / English regions). Requests are rate-limited and respectful (the
+collection runs at a fraction of the throughput a human user would generate)
+and use a UA string identifying this project so OZEV / GDS can contact us if
+needed.</p>
+
+<h2>4. Normalisation</h2>
+<p>Raw OZEV records are normalised at build time:</p>
+<ul>
+<li>Trading name is collapsed to a single canonical string (whitespace, casing,
+trailing &quot;Ltd&quot; / &quot;Limited&quot; variations).</li>
+<li>Postcodes are uppercased and re-spaced to the standard UK format.</li>
+<li>Towns are mapped to one of 12 UK regions using ONS region boundaries; an
+installer whose postcode does not resolve is flagged <code>N/A</code> rather
+than guessed.</li>
+<li>Phone numbers are E.164-normalised and the primary contact number is
+preferred over fax / personal mobile where multiple are present.</li>
+<li>A stable, collision-safe URL slug is assigned per installer and reused
+across rebuilds.</li>
+<li>Records are de-duplicated on a (normalised name + postcode) key.</li>
+</ul>
+
+<h2>5. Accuracy rule — no fabrication</h2>
+<p>If a field is not present in the OZEV source, it is shown as
+&quot;Not listed&quot; or omitted entirely. We never infer, guess or fill in a
+missing website, phone number or service category. Stats and counts shown on
+the data landscape page are computed directly from the normalised dataset and
+nowhere else.</p>
+
+<h2>6. How updates happen</h2>
+<p>The pipeline (<code>pipeline/extract.py</code> → <code>site/generate.py</code>)
+runs automatically on a <strong>weekly</strong> cadence. Each run regenerates
+<code>data/installers.json</code> and rebuilds every page from scratch — no
+manual editing of listings is possible after publish. The refresh date in the
+footer is set programmatically from the build clock.</p>
+
+<h2>7. Known limitations</h2>
+<ul>
+<li><strong>OZEV does not sub-categorise commercial installers.</strong> The
+register flags whether an installer offers commercial work, but does not split
+that into &quot;fleet depot&quot; vs &quot;workplace&quot; vs &quot;public
+destination&quot;. Our service-pages (e.g. <a style="color:var(--green-d)"
+href="/services/fleet-charging-installers/">fleet charging installers</a>) all
+draw from the same single commercial-flagged pool. Buyers should still confirm
+suitability with each installer directly.</li>
+<li>OZEV authorisation reflects what an installer is permitted to do, not
+their current workload, project portfolio or geographic operating area. A
+small installer on the register may not actually serve every postcode in their
+nominal region.</li>
+<li>The OZEV register is itself self-declared (with light spot-checking).
+Where a listing looks inaccurate we accept correction requests via the
+<a style="color:var(--green-d)" href="/contact/">contact page</a>; we do not
+overwrite OZEV's data, but we can suppress an entry.</li>
+<li>Cost figures and grant rates quoted in our guides come from GOV.UK / OZEV /
+Ofgem / IET publications and are cited inline; they are not derived from this
+dataset.</li>
+</ul>
+
+<h2>8. Reporting an error</h2>
+<p>Spot a mistake — wrong town, dead website, listing that shouldn&apos;t be
+here? Email
+<a style="color:var(--green-d)" href="mailto:{esc(CONTACT_EMAIL)}">
+{esc(CONTACT_EMAIL)}</a> or use the
+<a style="color:var(--green-d)" href="/contact/">contact page</a>. Corrections
+and removals are actioned on the next rebuild, with no questions asked.</p>
+
+<h2>9. Data licence</h2>
+<p>The upstream OZEV data is reused under the
+<a style="color:var(--green-d)"
+href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">
+Open Government Licence v3.0</a>. Our derived statistics, normalisations and
+counts (everything on this site that is not the raw OZEV record) are released
+under the same OGL v3.0 — free to reuse with attribution. Suggested citation:
+&quot;{esc(SITE_NAME)}, derived from GOV.UK OZEV authorised-installer data
+under OGL v3.0, refreshed {TODAY}&quot;.</p>
+
+<h2>10. Privacy stance</h2>
+<p>We deliberately do <strong>not</strong> publish scraped personal
+(<code>firstname.lastname@</code>) or free-webmail email addresses as
+clickable links — a privacy choice taken under UK GDPR (lawful basis:
+legitimate interests, balanced against the limited and already-public nature
+of the OZEV business data) and PECR. Where only a personal email exists in the
+source, we route enquiries via a generic &quot;request a quote&quot; flow
+instead. Full detail is on the
+<a style="color:var(--green-d)" href="/privacy/">privacy &amp; data page</a>.</p>
+
+<h2>11. Data schema</h2>
+<p>The public dataset is published as JSON at
+<a style="color:var(--green-d)" href="/data/installers.json">
+/data/installers.json</a>. The per-record shape is:</p>
+<pre style="background:var(--light);border:1px solid var(--bd-l);
+border-radius:10px;padding:14px;overflow-x:auto;font-size:13px;line-height:1.5">{{
+  "name":      "Example EV Installations Ltd",
+  "town":      "Manchester",
+  "region":    "North West",
+  "postcode":  "M1 1AA",
+  "website":   "https://example.com",
+  "phone":     "+441611234567",
+  "email":     "info@example.com",          // generic mailbox only
+  "services":  ["Commercial", "Residential"],
+  "featured":  false,
+  "_slug":     "example-ev-installations-m1"
+}}</pre>
+<p>Top-level payload also includes <code>count</code>,
+<code>generated_at</code> (ISO 8601) and <code>licence</code>.</p>
+
+<h2>12. Downloads</h2>
+<ul>
+<li><a style="color:var(--green-d)" href="/data/installers.json">
+installers.json</a> — full public dataset (UTF-8, ~{len(installers)} records,
+OGL v3.0).</li>
+<li><a style="color:var(--green-d)" href="/sitemap.xml">sitemap.xml</a> —
+every public URL on this site.</li>
+</ul>
+
+<p style="font-size:13px;color:var(--mut);margin-top:34px">
+Methodology version: {TODAY}. Pipeline source: <code>pipeline/extract.py</code>,
+<code>site/generate.py</code>. This page is rebuilt automatically on each
+refresh — any inaccuracy is fixable; please flag it.</p>"""
+
+    write(DIST / "methodology" / "index.html",
+          head("Methodology & Data Transparency",
+               "Exactly how this OZEV commercial EV installer dataset is "
+               "built, refreshed, normalised, licensed (OGL v3.0) and "
+               "published — including the data schema and known limitations.",
+               f"{BASE_URL}/methodology/",
+               methodology_jsonld)
+          + navbar()
+          + '<section style="padding-top:30px"><div class="wrap prose">'
+          + '<h1>Methodology &amp; Data Transparency</h1>'
+          + methodology_body
+          + '</div></section>'
+          + footer() + SHORTLIST_JS + "</body></html>")
 
     write(DIST / "contact" / "index.html", page_simple(
         "Contact / Request a Correction",
@@ -3098,9 +4091,11 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
             continue  # noindex/interactive — keep out of sitemap
         pr = ("1.0" if u == "/" else
               "0.9" if u in ("/calculator/", "/map/",
-                             "/data/uk-ev-installer-landscape/") else
-              "0.85" if u.startswith("/services") else
-              "0.8" if u.startswith(("/guides", "/towns")) else "0.6")
+                             "/data/uk-ev-installer-landscape/",
+                             f"/data/{SNAPSHOT_SLUG}/") else
+              "0.85" if u.startswith(("/services", "/industries")) else
+              "0.8" if u.startswith(("/guides", "/towns")) else
+              "0.7" if u == "/glossary/" else "0.6")
         sm.append(f"<url><loc>{BASE_URL}{u}</loc><lastmod>{now}</lastmod>"
                   f"<priority>{pr}</priority></url>")
     sm.append("</urlset>")
@@ -3118,6 +4113,799 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
 
     print(f"[generate] DONE — {len(urls)} pages, {len(towns)} town pages → {DIST}")
     return 0
+
+
+# ---------------------------------------------------------------------------
+# Industry-vertical landing pages. Same OZEV-authorised commercial pool as
+# /services/* — OZEV has no per-vertical sub-tag in its source data, so each
+# industry page is honest about that and filters by Commercial only. Every
+# external figure (Building Regs Part S in-force date, Greener NHS net-zero
+# years, framework codes, scheme rates) is checked against public GOV.UK /
+# regulator sources; no figure is invented for a vertical.
+# ---------------------------------------------------------------------------
+INDUSTRIES = {
+    "hotels-hospitality": {
+        "h1": "EV Charger Installers for UK Hotels & Hospitality",
+        "audience": "hotels, restaurants, pubs with rooms and leisure venues",
+        "title": "EV Charger Installers for UK Hotels — Verified Commercial Providers",
+        "card_blurb": "Destination charging for guest car parks. WCS limits and CaaS realities, honestly.",
+        "meta_desc": ("OZEV-authorised UK installers for hotel and hospitality "
+                      "EV charging — destination charging for guests, with "
+                      "Public Charge Point Regulations 2023 context. {n} "
+                      "verified commercial installers."),
+        "intro_html": (
+            "<p>Hotel and hospitality EV charging is destination charging by "
+            "another name: a guest plugs in at check-in and leaves charged at "
+            "check-out. Dwell time is long (8–14 hours overnight, 1–3 hours at "
+            "a restaurant or spa), which lets you specify cheaper AC hardware "
+            "rather than rapid DC and still send the car away full. The "
+            "commercial question is whether the bays are a guest amenity, a "
+            "small revenue line, or both.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not publish a hospitality "
+            "sub-tag, so this page is filtered to every commercial "
+            "OZEV-authorised installer; the right next step is to ask three "
+            "shortlisted installers for a recent hotel or hospitality "
+            "reference of similar scale.</p>"
+            "<h2>Typical hotel and hospitality scope</h2>"
+            "<ul>"
+            "<li><strong>Destination AC, 7–22 kW</strong> — for overnight "
+            "guests. 7 kW is usually plenty for a full charge over a stay; "
+            "11 or 22 kW only helps where dwell time is shorter (lunch, "
+            "spa-day, conferences).</li>"
+            "<li><strong>A small number of 50 kW rapid bays</strong> — at "
+            "roadside hotels and motorway-adjacent sites where the bays "
+            "double as a coffee-stop revenue line for non-guests.</li>"
+            "<li><strong>Branded EV-friendly listing</strong> — Tesla "
+            "Destination, Zap-Map, hotel-chain apps. The installer scope "
+            "should include how the bays appear in third-party apps if you "
+            "want non-guest traffic.</li>"
+            "</ul>"
+            "<h2>The grant picture is awkward — be honest about it</h2>"
+            "<p>The Workplace Charging Scheme (WCS) is restricted to "
+            "<em>off-street staff and fleet parking</em>. Guest parking is "
+            "explicitly not eligible. Some hotels qualify for WCS on the "
+            "subset of bays reserved for staff (housekeeping, kitchen, "
+            "duty managers) — but the customer-facing bays are commercially "
+            "funded. The Depot Charging Scheme funds fleet depots, not "
+            "hospitality. So for most hotels the project is a mix of "
+            "capex and <em>charging-as-a-service</em> (CPO funds the "
+            "hardware, shares revenue) — see the "
+            "<a style=\"color:var(--green-d)\" "
+            "href=\"/guides/ev-charger-installation-costs-uk/\">commercial "
+            "EV charger installation costs</a> guide for what the maths "
+            "actually looks like.</p>"
+            "<h2>Buying questions a hotel should ask</h2>"
+            "<ul>"
+            "<li>Are the staff bays separable so we can claim WCS on those, "
+            "and the guest bays sit under a separate commercial contract?</li>"
+            "<li>Capex or charging-as-a-service? If CaaS, what is the "
+            "revenue share, the term, and what happens at break clause?</li>"
+            "<li>Will the bays accept contactless payment as required by the "
+            "Public Charge Point Regulations 2023 for any public-access "
+            "point of 8 kW or above?</li>"
+            "<li>How are guest charges handled — folio billing, free with "
+            "stay, or pay-as-you-go via the CPO app?</li>"
+            "<li>Planning permission: is the site a listed building or in a "
+            "conservation area, and is the bay layout within "
+            "permitted-development rights?</li>"
+            "</ul>"
+            "<h2>Common pitfalls</h2>"
+            "<ul>"
+            "<li>Specifying 22 kW everywhere when a 14-hour overnight stay "
+            "charges fine on 7 kW. Over-spec drives capex without "
+            "improving guest experience.</li>"
+            "<li>Putting all the bays in one row at the far end of the car "
+            "park because that's where the supply is. Guests will not walk "
+            "past 60 empty unbranded spaces to reach the EV bay; siting "
+            "matters more than power.</li>"
+            "<li>Signing a CaaS contract with a long exclusivity clause and "
+            "no break, then losing flexibility when guest charging patterns "
+            "change.</li>"
+            "</ul>"),
+        "faqs": [
+            ("Can a hotel claim the Workplace Charging Scheme?",
+             "Only for off-street bays reserved for staff and fleet — not for guest parking. Guest-facing bays are explicitly excluded from the WCS, which is restricted to staff and fleet parking under the scheme rules. Many hotels split the project so staff bays claim the grant and guest bays sit under a separate commercial contract."),
+            ("Will I need planning permission for a hotel car-park installation?",
+             "Most ground-mounted chargepoints in an existing off-street car park are covered by permitted development in England under The Town and Country Planning (General Permitted Development) (England) Order, subject to height and siting limits. Listed buildings, conservation areas and any upstand over the permitted height typically need a full application. A reputable installer scopes this before quoting."),
+            ("Should we offer guest charging free with the room, or pay-per-use?",
+             "Both are common. Free-with-stay is simpler operationally and avoids the Public Charge Point Regulations 2023 contactless requirement, because the bays are no longer public-access for payment purposes. Pay-per-use opens you to non-guest revenue but brings the regulations into scope at any point 8 kW or above."),
+            ("What hardware fits a typical UK hotel car park?",
+             "For overnight stays, 7 kW AC is usually sufficient and cheapest per socket. 22 kW AC is worth it only where dwell time is shorter (lunch, spa-day, daytime conferences). One or two 50 kW DC rapid bays are common at roadside or motorway-adjacent hotels for non-guest passing trade."),
+            ("Is charging-as-a-service or capex better for a hotel?",
+             "Depends on cost of capital, forecast utilisation and whether EV charging is core to the proposition. Capex retains the revenue and the asset; CaaS gives you no upfront cost in exchange for a revenue share and contract term. Many independent hotels go CaaS for guest bays and capex for staff bays."),
+            ("How are EV bays reflected in third-party apps and booking sites?",
+             "Listing in Zap-Map, the National Chargepoint Registry and the CPO's own app is normally part of the CaaS contract. Tesla Destination listing is separate and depends on installing Tesla wall connectors alongside any open AC bays."),
+        ],
+        "related_services": [
+            "public-car-park-ev-installers",
+            "workplace-charging-installers",
+            "fleet-charging-installers",
+        ],
+    },
+    "logistics-haulage": {
+        "h1": "EV Charger Installers for UK Logistics & Haulage Depots",
+        "audience": "logistics operators, haulage firms, parcel and last-mile fleets",
+        "title": "EV Charger Installers for UK Logistics & Haulage — Verified Commercial Providers",
+        "card_blurb": "Fleet depots and HGV charging. Depot Charging Scheme (70%, up to £1m) front-and-centre.",
+        "meta_desc": ("OZEV-authorised UK installers for logistics and haulage "
+                      "depot EV charging. Depot Charging Scheme (70% funded, "
+                      "up to £1m) front-and-centre. {n} verified commercial "
+                      "installers."),
+        "intro_html": (
+            "<p>Logistics and haulage depots are where the Depot Charging "
+            "Scheme was aimed: zero-emission HGVs, vans and coaches charging "
+            "between duty cycles, on private land, with electrical demand "
+            "that makes the DNO connection the single biggest project risk. "
+            "The maths only works if grant claim, supply scoping and "
+            "operational duty cycles are designed together — not bolted "
+            "together afterwards.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not publish a depot or HGV "
+            "sub-tag, so the right next step is to ask each shortlisted "
+            "installer for a recent depot reference of similar power and "
+            "socket count.</p>"
+            "<h2>Typical logistics depot scope</h2>"
+            "<ul>"
+            "<li><strong>AC overnight bays, 7–22 kW</strong> — for vans and "
+            "smaller commercial vehicles returning to base on a single duty "
+            "cycle. Load management is essential: 30 vans at 11 kW unmanaged "
+            "is 330 kW of peak demand.</li>"
+            "<li><strong>DC rapid bays, 50–150 kW</strong> — for HGVs, "
+            "coaches and back-to-back van duty cycles. Almost always "
+            "triggers a G99 connection application and DNO reinforcement.</li>"
+            "<li><strong>HV connection and transformer compound</strong> — "
+            "anything above ~200 kW of installed capacity usually means a "
+            "new 11 kV supply, transformer pad and metered substation.</li>"
+            "</ul>"
+            "<h2>Depot Charging Scheme — the headline rules</h2>"
+            "<ul>"
+            "<li>70% of <strong>chargepoint and civil costs</strong> "
+            "(trenching, cabling, electrical upgrades), capped at £1m per "
+            "organisation.</li>"
+            "<li>First application window: <strong>25 March – 30 June "
+            "2026</strong>. Works to be completed by 31 March 2027.</li>"
+            "<li>Aimed at fleets adopting <strong>zero-emission HGVs, vans "
+            "and coaches</strong> — not the vehicles themselves, and not "
+            "the DNO's own deep network reinforcement.</li>"
+            "<li>See the "
+            "<a style=\"color:var(--green-d)\" "
+            "href=\"/guides/ev-infrastructure-grant/\">grant guide</a> for "
+            "the full mechanics.</li>"
+            "</ul>"
+            "<h2>How rapid DC sizing relates to operational duty cycles</h2>"
+            "<p>Power per bay should be sized backwards from the duty cycle, "
+            "not forwards from the spec sheet. A 44-tonne tractor unit "
+            "doing one daily run with an 11-hour rest takes a 50 kW bay; a "
+            "multi-drop van fleet with 90-minute charge windows between "
+            "loops needs 150 kW. Over-spec wastes capex on the unit and "
+            "drives a larger DNO connection that you then pay for. "
+            "Under-spec strands a vehicle. A credible depot installer asks "
+            "for the duty-cycle data first and quotes hardware second.</p>"
+            "<h2>The DNO problem is the project</h2>"
+            "<p>Under Ofgem's Access SCR rules (April 2023) the DNO absorbs "
+            "deep network reinforcement cost — but the customer still pays "
+            "the connection works and the assets to the meter. A documented "
+            "case (Fleet News) saw a £640k connection drop to around £130k "
+            "under the new rules. Many quotes still don't reflect this. A "
+            "credible depot installer scopes the DNO position before "
+            "quoting hardware. See the "
+            "<a style=\"color:var(--green-d)\" "
+            "href=\"/guides/ev-charger-installation-costs-uk/\">costs "
+            "guide</a> for worked depot numbers.</p>"
+            "<h2>Buying questions a logistics operator should ask</h2>"
+            "<ul>"
+            "<li>Can you show a redacted recent G99 application and "
+            "connection offer letter for a comparable site?</li>"
+            "<li>Is the Depot Charging Scheme 70% line shown explicitly on "
+            "the quote, with a separate budget for the DNO works?</li>"
+            "<li>Is dynamic load management baked in, or a paid add-on?</li>"
+            "<li>Are you proposing an Independent Connection Provider (ICP) "
+            "for the contestable works, and why or why not?</li>"
+            "<li>What uptime SLA applies to the rapid units, and what is "
+            "the on-site response time?</li>"
+            "</ul>"),
+        "faqs": [
+            ("Is the Depot Charging Scheme the right grant for a haulage depot?",
+             "Yes for fleets adopting zero-emission HGVs, vans or coaches. It funds 70% of chargepoint and civil costs (trenching, cabling, electrical upgrades) up to £1m per organisation. First window 25 March – 30 June 2026; works completed by 31 March 2027."),
+            ("How does depot DC rapid sizing relate to operational duty cycles?",
+             "Size the bay from the rest window backwards. An 11-hour overnight rest charges a 44-tonne tractor unit at 50 kW; a 90-minute mid-shift window in a parcel-delivery loop needs 150 kW. Over-spec drives a larger DNO connection you then pay for. Under-spec strands a vehicle."),
+            ("Can a logistics depot also claim the Workplace Charging Scheme?",
+             "Only for off-street staff and pool-car bays — not for HGV or operational fleet bays at a depot moving zero-emission HGVs, vans or coaches, which are the Depot Charging Scheme's territory. Mixed-use sites split the application by use case."),
+            ("What is the typical lead time for a depot rapid project?",
+             "6–18 months end-to-end. The hardware install is short (8–12 weeks); the long pole is the DNO connection offer, acceptance, reinforcement and energisation."),
+            ("Do I need an Independent Connection Provider (ICP)?",
+             "Optional. Contestable works on the connection can be done by an ICP rather than the DNO, often quicker. A good installer either has ICP capability in-house or partners with one and explains the trade-off in the quote."),
+            ("Does the Depot Charging Scheme cover the vehicles themselves?",
+             "No. The scheme funds chargepoint hardware and the customer-side civil works only. Vehicles are funded separately — historically through the Plug-in Truck Grant (check the Department for Transport for current status) or through commercial leasing."),
+        ],
+        "related_services": [
+            "depot-rapid-charging-installers",
+            "fleet-charging-installers",
+            "workplace-charging-installers",
+        ],
+    },
+    "local-authority-public-sector": {
+        "h1": "EV Charger Installers for UK Local Authorities & Public Sector",
+        "audience": "councils, public-sector bodies and government estate teams",
+        "title": "EV Charger Installers for UK Local Authorities — Verified Commercial Providers",
+        "card_blurb": "Council and public-sector procurement. LEVI Fund, RM6213 framework, on-street and residents.",
+        "meta_desc": ("OZEV-authorised UK installers for local authority and "
+                      "public-sector EV charging — LEVI Fund, on-street and "
+                      "council car parks, residents without driveways. {n} "
+                      "verified commercial installers."),
+        "intro_html": (
+            "<p>Local authority EV charging is a different procurement "
+            "exercise from a private fleet project. Spend goes through "
+            "frameworks, the residents-without-driveways case is political "
+            "as much as technical, and the funding route is usually the "
+            "Local EV Infrastructure (LEVI) Fund rather than the OZEV "
+            "Workplace Charging Scheme. The installer's value-add shifts "
+            "from cheapest capex to demonstrable framework experience and "
+            "long-horizon operations.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not flag framework participation "
+            "in its source data — so this page filters by commercial only, "
+            "and the right next step is to verify framework membership "
+            "directly with each shortlisted installer.</p>"
+            "<h2>Procurement routes councils use</h2>"
+            "<ul>"
+            "<li><strong>Crown Commercial Service RM6213 — Vehicle Charging "
+            "Infrastructure Solutions</strong>. A pan-public agreement for "
+            "chargepoint hardware, installation and operation. Many "
+            "councils default to it.</li>"
+            "<li><strong>Regional procurement consortia</strong> (ESPO, YPO "
+            "and others) — frequently used for smaller council car-park "
+            "projects.</li>"
+            "<li><strong>LEVI capital and capability funding</strong> — "
+            "administered by the Office for Zero Emission Vehicles, "
+            "delivered to local authorities for residents without "
+            "off-street parking. LEVI capability funding pays for the "
+            "in-house officers; LEVI capital funds the infrastructure.</li>"
+            "</ul>"
+            "<h2>Typical local-authority scope</h2>"
+            "<ul>"
+            "<li><strong>On-street residential AC, 7–22 kW</strong> — for "
+            "residents without driveways. Lamp-column or kerbside units; "
+            "civils dominated by trenching and pavement reinstatement.</li>"
+            "<li><strong>Council car-park bays, mixed AC and DC</strong> — "
+            "Park &amp; Ride, leisure-centre, town-centre parking. "
+            "Public-access and revenue-generating.</li>"
+            "<li><strong>Council fleet bays</strong> — refuse vehicles, "
+            "social-care vans, grey-fleet pool. Workplace Charging Scheme "
+            "may apply to off-street staff bays; the Depot Charging Scheme "
+            "applies where a council fleet depot operates zero-emission "
+            "HGVs.</li>"
+            "</ul>"
+            "<h2>Common pitfalls</h2>"
+            "<ul>"
+            "<li>Specifying the same bay everywhere when "
+            "residents-without-driveways need different siting and tariff "
+            "design than Park &amp; Ride.</li>"
+            "<li>Underestimating ongoing operational cost — back-office, "
+            "maintenance and contactless-payment compliance under the "
+            "Public Charge Point Regulations 2023 add a per-charger annual "
+            "cost that needs a budget line beyond the LEVI capital.</li>"
+            "<li>Concession structures that leave the council carrying "
+            "stranded-asset risk in year seven when hardware ages out.</li>"
+            "</ul>"
+            "<h2>Buying questions a council should ask</h2>"
+            "<ul>"
+            "<li>Which framework are you bidding under, and can you show "
+            "two recent council references at similar scale?</li>"
+            "<li>How does your proposal meet the Public Charge Point "
+            "Regulations 2023 — contactless payment, 99% uptime on rapid "
+            "units, published pricing, open-data feeds to the National "
+            "Chargepoint Registry?</li>"
+            "<li>Is the proposal capex, concession or revenue-share — and "
+            "what is the asset position in year 10?</li>"
+            "<li>How does the back-office handle on-street resident tariff "
+            "design (cap on overnight cost, off-peak windows)?</li>"
+            "<li>What is the LEVI capital draw schedule, and how does it "
+            "phase with delivery milestones?</li>"
+            "</ul>"),
+        "faqs": [
+            ("Which framework do councils typically buy EV charging through?",
+             "Crown Commercial Service RM6213 (Vehicle Charging Infrastructure Solutions) is the main pan-public agreement. Regional consortia like ESPO and YPO are also widely used. A council can also tender directly under the Public Contracts Regulations 2015 (as amended) where the value or scope makes that preferable."),
+            ("What is the LEVI Fund and how does a council apply?",
+             "The Local Electric Vehicle Infrastructure Fund is administered by the Office for Zero Emission Vehicles. It provides capital funding for local authorities to deliver on-street and residential charging for residents without off-street parking, plus capability funding for the officers running the programme. Allocations are made by region; the local authority leads delivery."),
+            ("Are on-street resident chargepoints subject to the Public Charge Point Regulations 2023?",
+             "Yes for any unit 8 kW or above. The regulations require contactless or open-payment systems on public-access points of that size, published pricing, 99% rapid-charger uptime, and open-data feeds to the National Chargepoint Registry."),
+            ("Can a council claim the Workplace Charging Scheme for its own fleet?",
+             "Yes — the WCS is open to public-sector bodies for off-street staff and fleet parking, up to 40 sockets per applicant at up to £500 per socket (the rate in force since 1 April 2026), capped at 75% of cost. The voucher is redeemed through an OZEV-authorised installer."),
+            ("What ongoing operational costs does a council need to budget?",
+             "Back-office software (£10–£50 per charger per month), maintenance and SLA, electricity, payment-acquiring fees on contactless, and periodic hardware refresh. LEVI capital does not fund these — capability funding helps with the staffing, but ongoing costs sit in the operational budget."),
+            ("What is the typical concession term for an on-street charging contract?",
+             "Commonly 8–15 years, with the operator funding the hardware in exchange for revenue share or fixed payments. Term length is the key risk variable: too long and the council is locked in past a hardware refresh; too short and the operator can't underwrite the deployment."),
+        ],
+        "related_services": [
+            "public-car-park-ev-installers",
+            "workplace-charging-installers",
+            "fleet-charging-installers",
+        ],
+    },
+    "property-management-multi-tenant": {
+        "h1": "EV Charger Installers for UK Property Management & Multi-Tenant Buildings",
+        "audience": "landlords, managing agents and multi-tenant building operators",
+        "title": "EV Charger Installers for UK Property & Multi-Tenant Buildings — Verified Providers",
+        "card_blurb": "Landlords, MUDs and multi-let estates. Approved Document S (EV-ready Building Regs Part S).",
+        "meta_desc": ("OZEV-authorised UK installers for property management "
+                      "and multi-tenant EV charging — Approved Document S "
+                      "(EV-ready Building Regs Part S), landlord–tenant cost "
+                      "split, common-area metering. {n} verified commercial "
+                      "installers."),
+        "intro_html": (
+            "<p>Multi-tenant EV charging — apartment blocks, mixed-use "
+            "developments, leasehold flats with shared parking, multi-let "
+            "industrial estates — is mostly a wiring-and-billing problem "
+            "with an EV charger on the end of it. Who pays for the supply "
+            "upgrade, who owns the bay, how is electricity billed back to "
+            "the tenant who used it, and how does the project sit inside "
+            "Approved Document S of the Building Regulations? These are "
+            "the questions that move quotes from indicative to real.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not publish a multi-tenant or "
+            "MUD (multi-unit-dwelling) sub-tag — so this page filters to "
+            "every commercial OZEV-authorised installer; ask three "
+            "shortlisted installers for a recent MUD or multi-let "
+            "reference.</p>"
+            "<h2>Approved Document S — Building Regs Part S</h2>"
+            "<p>Since 15 June 2022, Approved Document S of the Building "
+            "Regulations (England) has required EV charging provision in "
+            "new buildings and certain major renovations. In summary:</p>"
+            "<ul>"
+            "<li><strong>New residential buildings with associated parking</strong>"
+            " — every dwelling with a parking space gets a charge point; "
+            "where the residential development has more than 10 parking "
+            "spaces, additional cable routes are required for spaces not "
+            "directly served.</li>"
+            "<li><strong>New non-residential buildings with more than 10 "
+            "parking spaces</strong> — at least one charge point, plus "
+            "cable routes (passive provision) for one in five remaining "
+            "spaces.</li>"
+            "<li><strong>Major renovations creating &gt;10 parking spaces</strong>"
+            " — equivalent provision applies where the parking is being "
+            "altered. The regulations apply to England; Wales, Scotland "
+            "and Northern Ireland have separate but broadly similar "
+            "regimes.</li>"
+            "</ul>"
+            "<p>Approved Document S applies to <em>new build and major "
+            "renovation</em>, not to existing untouched stock. For an "
+            "existing apartment block adding EV charging today, Part S "
+            "is the design reference rather than a legal requirement.</p>"
+            "<h2>Typical multi-tenant scope</h2>"
+            "<ul>"
+            "<li><strong>Shared 7–22 kW AC bays in a common car park</strong>"
+            " — billed through a CPO back-office, RFID or app-based.</li>"
+            "<li><strong>Allocated bay charging</strong> — one bay per "
+            "leaseholder, each socket on a sub-meter; electricity billed "
+            "to the tenant directly.</li>"
+            "<li><strong>Landlord master supply + DNO upgrade</strong> — "
+            "where the existing supply can't take 10–40 sockets, the "
+            "landlord may need a new connection. Whether that cost sits "
+            "with the freeholder, leaseholder service charge, or the CPO "
+            "concession is a legal and commercial question, not a "
+            "technical one.</li>"
+            "</ul>"
+            "<h2>The grant picture</h2>"
+            "<ul>"
+            "<li>The <strong>EV Chargepoint Grant for landlords</strong> "
+            "supports landlords installing chargepoints in residential "
+            "rental properties — check the live OZEV pages for the "
+            "current cap, per-applicant ceiling and eligibility before "
+            "applying.</li>"
+            "<li>The <strong>Workplace Charging Scheme</strong> applies "
+            "where the parking serves a workplace tenant — including "
+            "multi-let industrial estates where each tenant is itself a "
+            "business with eligible off-street staff parking.</li>"
+            "</ul>"
+            "<h2>Buying questions a landlord should ask</h2>"
+            "<ul>"
+            "<li>Who owns the asset on day one and on day 3,650 — the "
+            "freeholder, the management company, or the CPO?</li>"
+            "<li>Is electricity sub-metered per socket, and how does "
+            "billback to the tenant work in practice?</li>"
+            "<li>Is the landlord supply already adequate, or does the "
+            "project trigger a DNO upgrade — and where does that cost "
+            "sit in the service charge?</li>"
+            "<li>How is consent from leaseholders managed where the lease "
+            "is silent on common-area alterations?</li>"
+            "<li>Does the design meet Approved Document S where the "
+            "building is in scope?</li>"
+            "</ul>"),
+        "faqs": [
+            ("What is Approved Document S and does it apply to my building?",
+             "Approved Document S of the Building Regulations (England) sets EV-ready provision standards for new build and major renovation. In force since 15 June 2022, it requires charge points and cable routes in new residential and non-residential buildings with associated parking, scaled to the number of parking spaces. It does not retrospectively apply to existing untouched buildings."),
+            ("Who pays for the supply upgrade in a multi-tenant block?",
+             "There is no single statutory answer. Costs typically sit with the freeholder/management company, are recovered through the service charge, or are funded by a CPO concession in exchange for revenue. The right answer depends on the lease terms and what the leaseholders consent to — get legal advice before signing."),
+            ("Can leaseholders install their own charger on a private bay?",
+             "Often yes, with landlord/management-company consent, where the lease and physical layout permit it. Many leases require formal consent for any common-area alteration; some require a deed of variation. The EV Chargepoint Grant for landlords and renters/flat-owners has historically supported this — check the current OZEV rules before quoting tenants a grant amount."),
+            ("How is electricity billed back to the tenant who used it?",
+             "Either through a CPO back-office (RFID or app-based; the CPO bills the user and remits a revenue share) or through per-socket sub-metering tied to the leaseholder's own electricity account. Sub-metering is simpler legally but more expensive at install."),
+            ("Does the Workplace Charging Scheme apply in a multi-let industrial estate?",
+             "Yes for the tenants — each tenant business with eligible off-street staff or fleet parking can apply in its own right, up to 40 sockets at up to £500 per socket (the rate in force since 1 April 2026), capped at 75% of cost. The landlord typically provides the infrastructure and tenants claim individually."),
+            ("What's the most common pitfall on multi-tenant projects?",
+             "Quoting capex before scoping who owns the asset, who pays for the DNO upgrade and how electricity is billed. A technically perfect install with no agreed billing route or no leaseholder consent stalls at energisation."),
+        ],
+        "related_services": [
+            "workplace-charging-installers",
+            "public-car-park-ev-installers",
+            "fleet-charging-installers",
+        ],
+    },
+    "car-dealerships": {
+        "h1": "EV Charger Installers for UK Car Dealerships",
+        "audience": "franchised dealers, used-car forecourts and aftersales workshops",
+        "title": "EV Charger Installers for UK Car Dealerships — Verified Commercial Providers",
+        "card_blurb": "Customer test-drive bays + workshop dwell + staff fleet. Brand-spec realities.",
+        "meta_desc": ("OZEV-authorised UK installers for car dealership EV "
+                      "charging — customer test-drive bays, workshop "
+                      "diagnostics, brand-mandated standards. {n} verified "
+                      "commercial installers."),
+        "intro_html": (
+            "<p>Car dealerships have an unusual EV charging profile: two "
+            "distinct demand sources sharing a site, plus a manufacturer "
+            "specification that often dictates the hardware. Customer "
+            "test-drive and handover bays need rapid throughput; the "
+            "workshop needs slower, longer-duration bays for diagnostics "
+            "and battery conditioning. Get either wrong and the site "
+            "either over-spends or under-serves.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not publish a dealership "
+            "sub-tag, and manufacturer-approved-installer lists are "
+            "separate and brand-specific — so the right next step is to "
+            "cross-check this directory against your brand's approved "
+            "list, where one exists, before shortlisting.</p>"
+            "<h2>Typical dealership scope</h2>"
+            "<ul>"
+            "<li><strong>Customer-facing rapid DC, 50–150 kW</strong> — "
+            "for test-drive returns, pre-handover top-ups and customer "
+            "courtesy charges. Visibility from the showroom matters; "
+            "siting is part of the sales proposition.</li>"
+            "<li><strong>Workshop AC, 7–22 kW</strong> — multiple slow "
+            "bays for diagnostic dwell, battery conditioning, "
+            "pre-delivery inspection (PDI). Hardware is straightforward; "
+            "what matters is socket count.</li>"
+            "<li><strong>Staff and fleet AC, 7 kW</strong> — Workplace "
+            "Charging Scheme eligible off-street parking. Often the "
+            "easiest grant claim on site.</li>"
+            "</ul>"
+            "<h2>Brand-mandated standards</h2>"
+            "<p>Most franchised dealers receive a brand specification from "
+            "the manufacturer — required hardware, branding, signage, "
+            "minimum socket count per dealership and sometimes a preferred "
+            "installer list. The commercial reality is that the "
+            "manufacturer contract usually overrides choosing on price "
+            "alone. The installer's value-add is delivering the brand "
+            "spec inside the time window the brand has mandated.</p>"
+            "<h2>The grant picture</h2>"
+            "<ul>"
+            "<li><strong>Workplace Charging Scheme</strong> applies to "
+            "staff and dealer-fleet off-street parking — up to £500 per "
+            "socket (the rate in force since 1 April 2026), 75% cap, "
+            "40-socket cap per applicant. Demonstrator and customer "
+            "test-drive bays are public-facing and usually outside scope.</li>"
+            "<li>Customer-facing rapid bays are commercially funded, "
+            "though some manufacturers contribute to brand-spec hardware "
+            "as part of the franchise agreement. Confirm with your area "
+            "manager what the brand pays for.</li>"
+            "</ul>"
+            "<h2>Common pitfalls</h2>"
+            "<ul>"
+            "<li>Specifying customer rapid bays at the back of the lot "
+            "because that's where the supply is. Customers won't walk; "
+            "siting visible from the showroom is part of the sale.</li>"
+            "<li>Forgetting workshop dwell bays in the design — a 5-bay "
+            "EV workshop running PDI on new cars needs 5 sockets, not "
+            "one shared rapid.</li>"
+            "<li>Signing manufacturer-spec hardware without checking the "
+            "back-office is OCPP-open. Some brand specs lock you into "
+            "proprietary software; year-five contract review is harder.</li>"
+            "</ul>"
+            "<h2>Buying questions a dealer principal should ask</h2>"
+            "<ul>"
+            "<li>Are you on our brand's approved installer list, and "
+            "what's your current lead time for a site of this size?</li>"
+            "<li>How are customer bays and staff bays separated for the "
+            "WCS claim, and what's the staff-bay socket count?</li>"
+            "<li>Is the workshop dwell-bay count designed around "
+            "year-three EV throughput, not year-one?</li>"
+            "<li>Is the back-office OCPP-compliant so we can change "
+            "CPMS in year five without re-cabling?</li>"
+            "</ul>"),
+        "faqs": [
+            ("Do car dealerships need brand-approved installers?",
+             "Most franchised manufacturers operate their own approved-installer or preferred-supplier lists for dealership EV infrastructure. The OZEV authorised list (which this directory is built from) is a separate, broader pool. Cross-check both — being on the OZEV list is a baseline for grant work; being on the brand list is what the franchise contract usually requires."),
+            ("Can a dealership claim the Workplace Charging Scheme?",
+             "Yes for off-street staff and fleet bays — up to £500 per socket (the rate in force since 1 April 2026), capped at 75% of cost and 40 sockets per applicant. Customer test-drive and demonstrator bays sit outside the WCS because they are not staff/fleet parking."),
+            ("How many bays does a typical dealership need?",
+             "Highly brand- and volume-dependent. A franchised dealer pushing an EV-heavy line-up commonly specifies one or two customer-facing rapid DC bays (50–150 kW), 4–8 workshop dwell bays (7–22 kW AC) and a handful of staff/fleet bays. Brand spec usually sets minimums."),
+            ("Should customer-facing chargers be free or paid?",
+             "Free during test-drive and handover is normal — the cost is part of the sale. Free indefinitely as a customer amenity is harder to justify once EV mix is mainstream. Many dealers move to pay-per-use via an open-payment terminal once free-charging volumes get material; the Public Charge Point Regulations 2023 apply if you take payment at 8 kW or above."),
+            ("Do dealer service workshops need DC or AC chargers?",
+             "Mostly AC. Workshop dwell is long (PDI, software updates, conditioning), so 7–22 kW AC is sufficient and cheaper per socket. A single DC bay can be useful for diagnostics requiring fast charge cycles, but it shouldn't dominate the spec."),
+            ("Does the manufacturer pay for the chargepoints?",
+             "Sometimes partially. Some manufacturers contribute to brand-spec hardware or co-fund flagship visible bays as part of the franchise agreement. Confirm directly with your area manager what is funded; do not assume."),
+        ],
+        "related_services": [
+            "workplace-charging-installers",
+            "public-car-park-ev-installers",
+            "fleet-charging-installers",
+        ],
+    },
+    "nhs-healthcare": {
+        "h1": "EV Charger Installers for UK NHS & Healthcare Sites",
+        "audience": "NHS trusts, primary-care networks and private healthcare estate teams",
+        "title": "EV Charger Installers for UK NHS & Healthcare — Verified Commercial Providers",
+        "card_blurb": "NHS trusts and healthcare estates. Greener NHS targets, staff parking, blue-light fleets.",
+        "meta_desc": ("OZEV-authorised UK installers for NHS and healthcare "
+                      "EV charging — fleet vans, staff parking, blue-light "
+                      "vehicles, Greener NHS net-zero targets. {n} verified "
+                      "commercial installers."),
+        "intro_html": (
+            "<p>NHS and healthcare EV charging sits inside a broader "
+            "net-zero obligation. Under the Health and Care Act 2022, the "
+            "NHS in England has statutory net-zero duties; the Greener NHS "
+            "programme commits to net-zero for the emissions the NHS "
+            "directly controls (the NHS Carbon Footprint) by 2040, and for "
+            "the wider NHS Carbon Footprint Plus by 2045. Fleet "
+            "electrification is one of the more measurable contributions — "
+            "community-nursing vans, patient-transport vehicles, estates "
+            "fleet and staff commuting all sit in scope.</p>"
+            "<p>The {n} installers on this page are all "
+            "<strong>OZEV-authorised for commercial work</strong> on the "
+            "public GOV.UK list. OZEV does not publish a healthcare "
+            "sub-tag, and there is no NHS-specific OZEV grant scheme — "
+            "trusts typically procure through public-sector frameworks "
+            "and apply for the same general OZEV schemes as any other "
+            "public-sector body.</p>"
+            "<h2>Typical NHS / healthcare scope</h2>"
+            "<ul>"
+            "<li><strong>Estates fleet AC, 7–22 kW</strong> — "
+            "community-nursing vans, estates and facilities, social-care "
+            "vehicles. WCS-eligible off-street parking in most cases.</li>"
+            "<li><strong>Staff car-park AC, 7 kW</strong> — high "
+            "socket-count, low-power. Staff commuting is a large share of "
+            "NHS Carbon Footprint Plus emissions.</li>"
+            "<li><strong>Patient and visitor bays, mixed AC + DC</strong> — "
+            "public-access and revenue-generating; subject to the Public "
+            "Charge Point Regulations 2023 at 8 kW and above.</li>"
+            "<li><strong>Blue-light / ambulance trust depots</strong> — "
+            "rapid DC for vehicle turnaround between shifts. Closer to a "
+            "logistics depot than a typical hospital car park.</li>"
+            "</ul>"
+            "<h2>Procurement and grants</h2>"
+            "<ul>"
+            "<li><strong>NHS Shared Business Services frameworks and Crown "
+            "Commercial Service RM6213</strong> are the main routes. "
+            "Trusts can also tender directly under the Public Contracts "
+            "Regulations 2015 (as amended).</li>"
+            "<li><strong>Workplace Charging Scheme</strong> is open to "
+            "public-sector bodies for off-street staff and fleet parking "
+            "— up to £500 per socket (the rate in force since 1 April "
+            "2026), capped at 75% of cost and 40 sockets per applicant. "
+            "The voucher is redeemed through an OZEV-authorised "
+            "installer.</li>"
+            "<li><strong>Depot Charging Scheme</strong> applies where an "
+            "NHS depot operates zero-emission HGVs, vans or coaches — "
+            "ambulance, patient transport and large estates fleets can "
+            "qualify. 70% of chargepoint and civil costs, capped at £1m "
+            "per organisation; first window 25 March – 30 June 2026, "
+            "works completed by 31 March 2027.</li>"
+            "</ul>"
+            "<p>There is no NHS-specific OZEV grant beyond these general "
+            "schemes. Some trusts have funded EV-adjacent work through "
+            "the Public Sector Decarbonisation Scheme (PSDS) where it "
+            "forms part of a wider heat-decarbonisation business case, "
+            "but PSDS is not primarily an EV scheme — check the current "
+            "Salix rules before assuming eligibility.</p>"
+            "<h2>Specific considerations for hospital sites</h2>"
+            "<ul>"
+            "<li><strong>Resilience and back-up generation</strong> — "
+            "hospital sites are critical infrastructure. Where the EV "
+            "load is material, the installer must coordinate with the "
+            "estate's standby generation and load-shedding strategy.</li>"
+            "<li><strong>Existing power constraints</strong> — older "
+            "hospital sites often have constrained supplies already. A "
+            "DNO upgrade for EV may unlock other estate decarbonisation "
+            "work (heat pumps, theatre ventilation) and should be scoped "
+            "jointly.</li>"
+            "<li><strong>Public-access compliance</strong> — patient and "
+            "visitor bays at 8 kW or above must accept contactless "
+            "payment and publish pricing under the Public Charge Point "
+            "Regulations 2023.</li>"
+            "</ul>"
+            "<h2>Buying questions a trust should ask</h2>"
+            "<ul>"
+            "<li>Which framework are you bidding under, and can you show "
+            "two recent NHS or public-sector references at similar scale?</li>"
+            "<li>How does the design interact with the site's existing "
+            "standby generation and resilience strategy?</li>"
+            "<li>How are staff, patient/visitor and fleet bays separated "
+            "in the WCS and Depot Charging Scheme claims?</li>"
+            "<li>Does the back-office report energy and emissions in a "
+            "format that maps to the Greener NHS reporting framework?</li>"
+            "<li>What ongoing operational cost (back-office, maintenance, "
+            "payment fees) sits with the trust beyond the capital project?</li>"
+            "</ul>"),
+        "faqs": [
+            ("Is there an NHS-specific EV charging grant?",
+             "No. NHS trusts apply for the same OZEV schemes as any other public-sector body — the Workplace Charging Scheme for staff/fleet bays and the Depot Charging Scheme for fleet depots operating zero-emission HGVs, vans or coaches. There is no separate NHS or healthcare top-up grant under OZEV."),
+            ("Does the Greener NHS net-zero target require EV charging?",
+             "Indirectly. The Greener NHS programme commits to net-zero for direct NHS emissions (NHS Carbon Footprint) by 2040, and for the wider NHS Carbon Footprint Plus (including staff commuting and visitor travel) by 2045. Fleet electrification and staff EV provision are among the more measurable contributions; there is no specific charger-per-site mandate."),
+            ("Which framework do NHS trusts buy EV charging through?",
+             "NHS Shared Business Services frameworks and Crown Commercial Service RM6213 (Vehicle Charging Infrastructure Solutions) are the most common routes. Trusts can also tender directly under the Public Contracts Regulations 2015 (as amended)."),
+            ("How does the Depot Charging Scheme apply to an ambulance trust?",
+             "Ambulance and patient-transport depots operating zero-emission vans or larger vehicles can apply for 70% of chargepoint and civil costs, capped at £1m per organisation. First application window 25 March – 30 June 2026; works completed by 31 March 2027."),
+            ("Can patient and visitor bays be public-access and paid?",
+             "Yes — most acute hospital sites operate visitor parking commercially. Any public-access charge point at 8 kW or above must accept contactless payment, publish pricing, and meet 99% uptime (rapid units) under the Public Charge Point Regulations 2023."),
+            ("What about resilience — what if the grid goes down?",
+             "Hospital sites are critical infrastructure with standby generation. EV charging load needs to be either non-essential (sheds first on a loss of supply) or specifically backed up; the installer must coordinate with the trust's estate engineering and emergency-planning team. This is usually scoped at design stage, not retrofitted later."),
+        ],
+        "related_services": [
+            "fleet-charging-installers",
+            "workplace-charging-installers",
+            "depot-rapid-charging-installers",
+        ],
+    },
+}
+
+
+def page_industry(slug, spec, installers):
+    """Build an industry-vertical landing page. Like /services/*, the OZEV
+    source has no per-vertical sub-tag, so the eligible pool is every
+    commercial OZEV-authorised installer. The intro surfaces this honestly."""
+    url = f"{BASE_URL}/industries/{slug}/"
+    eligible = [i for i in installers if "Commercial" in i.get("services", [])]
+    feat = [i for i in eligible if i.get("featured")]
+    rest = sorted([i for i in eligible if not i.get("featured")],
+                  key=lambda x: x["name"].lower())
+    ordered = feat + rest
+    n = len(ordered)
+    coverage_note = ""
+    if n < 5:
+        coverage_note = ('<p class="note">Coverage growing — the directory '
+                         'rebuilds weekly from the official OZEV list.</p>')
+
+    cards = "".join(card(i) for i in ordered)
+
+    region_counts: dict[str, int] = {}
+    for i in eligible:
+        r = i.get("region")
+        if r and r != "N/A":
+            region_counts[r] = region_counts.get(r, 0) + 1
+    top_regions = sorted(region_counts.items(), key=lambda kv: -kv[1])[:5]
+    region_items = "".join(
+        f'<li><a style="color:var(--green-d)" href="/regions/{slugify(r)}/">'
+        f'{esc(r)}</a> — {c} OZEV-authorised commercial installer'
+        f'{"s" if c != 1 else ""}</li>'
+        for r, c in top_regions)
+    top_regions_html = ""
+    if region_items:
+        top_regions_html = (
+            '<h2>Top 5 regions for this vertical</h2>'
+            f'<ul style="margin:12px 0 0 22px;line-height:1.7">{region_items}</ul>')
+
+    svc_labels = {
+        "fleet-charging-installers": ("Fleet charging installers",
+                                      "Vans, HGVs, company cars. WCS + Depot Charging Scheme grant routes."),
+        "workplace-charging-installers": ("Workplace charging installers",
+                                          "Staff and office car parks. Up to £500/socket under the WCS."),
+        "depot-rapid-charging-installers": ("Depot rapid DC installers",
+                                            "Logistics, bus and coach depots. 70% Depot Charging Scheme funding."),
+        "public-car-park-ev-installers": ("Public car-park installers",
+                                          "Retail, hospitality, council. Commercial / charging-as-a-service."),
+    }
+    rel_cards = "".join(
+        f'<a class="gcard" style="background:#fff;border-color:var(--bd-l);'
+        f'color:var(--ink)" href="/services/{s}/">'
+        f'<h3 style="color:var(--ink)">{esc(svc_labels[s][0])}</h3>'
+        f'<p style="color:var(--mut)">{esc(svc_labels[s][1])}</p></a>'
+        for s in spec["related_services"] if s in svc_labels
+    )
+    rel_cards += (
+        '<a class="gcard" style="background:#fff;border-color:var(--bd-l);'
+        'color:var(--ink)" href="/tools/ev-charger-cost-calculator/">'
+        '<h3 style="color:var(--ink)">Cost &amp; grant calculator</h3>'
+        '<p style="color:var(--mut)">Indicative hardware, civils and DNO '
+        'cost — plus WCS &amp; Depot Charging Scheme — for your project.</p></a>'
+        '<a class="gcard" style="background:#fff;border-color:var(--bd-l);'
+        'color:var(--ink)" href="/tools/uk-ev-grant-eligibility/">'
+        '<h3 style="color:var(--ink)">Grant eligibility wizard</h3>'
+        '<p style="color:var(--mut)">Answer 6 quick questions — see which '
+        'UK 2026 grant(s) you qualify for.</p></a>'
+    )
+
+    jl_list = {
+        "@context": "https://schema.org", "@type": "ItemList",
+        "name": spec["h1"], "numberOfItems": n,
+        "itemListElement": [
+            {"@type": "ListItem", "position": idx + 1,
+             "url": f"{BASE_URL}/installers/{i['_slug']}/",
+             "name": i["name"]}
+            for idx, i in enumerate(ordered[:100])]}
+    trail = [("Directory", "/"), ("Industries", "/#industries"),
+             (spec["h1"], f"/industries/{slug}/")]
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl_list)
+              + "</script>" + breadcrumb_jsonld(trail)
+              + faq_jsonld(spec["faqs"]))
+
+    title = spec["title"]
+    desc = spec["meta_desc"].format(n=n)
+    intro = spec["intro_html"].format(n=n)
+
+    return (
+        head(title, desc, url, jsonld)
+        + navbar()
+        + f"""<div class="wrap crumb"><a href="/">Directory</a> ›
+<a href="/#industries">Industries</a> › {esc(spec['h1'])}</div>
+<section style="padding-top:8px"><div class="wrap">
+<h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">{esc(spec['h1'])}</h1>
+<p class="lead" style="margin-top:14px;max-width:760px">For {esc(spec['audience'])}.
+{n} OZEV-authorised commercial EV charging installers on the official GOV.UK
+list, filtered to those offering commercial work. OZEV does not publish a
+per-vertical sub-tag, so the eligible pool is every commercial installer —
+shortlist three and ask each for a recent reference in this sector.</p>
+<div class="prose" style="max-width:760px">{intro}</div>
+{coverage_note}
+<h2 class="sh" style="margin-top:40px">The installers</h2>
+<p class="note">{n} OZEV-authorised commercial installer{'s' if n != 1 else ''}
+shown. Featured partners are labelled and shown first; nothing else affects
+order.</p>
+<div class="grid">{cards or '<p class=muted>None indexed yet — coverage widens each refresh.</p>'}</div>
+<div class="prose" style="max-width:760px;margin-top:40px">
+{top_regions_html}
+{faq_html(spec['faqs'])}
+</div>
+<h2 class="sh" style="margin-top:40px">Related services &amp; tools</h2>
+<div class="guidegrid" style="margin-top:14px">{rel_cards}</div>
+<div class="cta-row" style="margin-top:22px">
+<a class="btn btn-g" href="/calculator/">Estimate cost + grant</a>
+<a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/#directory">All UK installers</a>
+</div>
+<p class="note" style="margin-top:24px">
+<a style="color:var(--green-d)" href="/">Back to home</a> ·
+<a style="color:var(--green-d)" href="/sitemap.xml">Sitemap</a>
+</p>
+</div></section>""" + footer() + SHORTLIST_JS + "</body></html>"
+    )
+
+
+# Map from /services/<slug> → list of /industries/<slug> most relevant to that
+# service. Built by inverting INDUSTRIES[*].related_services. Used by the
+# small "Related industries" block injected into each /services/* page.
+SERVICE_TO_INDUSTRIES: dict[str, list[str]] = {}
+for _islug, _ispec in INDUSTRIES.items():
+    for _svc in _ispec["related_services"]:
+        SERVICE_TO_INDUSTRIES.setdefault(_svc, []).append(_islug)
+
+
+def industries_block_for_service(service_slug: str) -> str:
+    """Small 'Related industries' block injected at the bottom of each
+    /services/* page. Falls back to an empty string if the service has no
+    industry cross-links yet (so it is safe to call on any service slug)."""
+    inds = SERVICE_TO_INDUSTRIES.get(service_slug, [])[:4]
+    if not inds:
+        return ""
+    cards_html = "".join(
+        f'<a class="gcard" style="background:#fff;border-color:var(--bd-l);'
+        f'color:var(--ink)" href="/industries/{i}/">'
+        f'<h3 style="color:var(--ink)">{esc(INDUSTRIES[i]["h1"].replace("EV Charger Installers for UK ", ""))}</h3>'
+        f'<p style="color:var(--mut)">{esc(INDUSTRIES[i]["card_blurb"])}</p></a>'
+        for i in inds if i in INDUSTRIES
+    )
+    return (
+        '<h2 class="sh" style="margin-top:40px">Related industries</h2>'
+        '<p class="lead" style="max-width:760px">Same commercial OZEV pool, '
+        'viewed through a sector lens — pick the page that matches who you '
+        'are buying for.</p>'
+        f'<div class="guidegrid" style="margin-top:14px">{cards_html}</div>'
+    )
 
 
 if __name__ == "__main__":
