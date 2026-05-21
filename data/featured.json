@@ -1,0 +1,4 @@
+{
+  "_README": "Edit via sales/mark_featured.py — do not hand-edit. Each entry: slug=installer _slug (or whatever field generate.py uses for the URL slug); tier=founder|standard; order=integer (lower=higher priority among featured); since=ISO date; until=ISO date; paid_pence=integer.",
+  "featured": []
+}

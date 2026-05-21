@@ -51,6 +51,12 @@ CONTACT_EMAIL = os.environ.get("SITE_CONTACT_EMAIL", "hello@example.com")
 # Google Search Console HTML-tag verification (set SITE_GSC_TOKEN as a deploy
 # env var). Lets a .pages.dev site verify without DNS access. Empty = omitted.
 GSC_TOKEN = os.environ.get("SITE_GSC_TOKEN", "").strip()
+# Monetization env vars — set in Cloudflare Pages Production env. Defaults to '#'
+# render disabled CTAs with a yellow warning banner, so the build doesn't fail
+# in local dev and the operator sees exactly what's missing on the live site.
+STRIPE_FEATURED_FOUNDER_URL = os.environ.get("STRIPE_FEATURED_FOUNDER_URL", "#")
+STRIPE_FEATURED_STANDARD_URL = os.environ.get("STRIPE_FEATURED_STANDARD_URL", "#")
+STUDIO_CONTACT_EMAIL = os.environ.get("STUDIO_CONTACT_EMAIL", CONTACT_EMAIL)
 TODAY = datetime.date.today().isoformat()
 TOWN_MIN = 3  # min installers for a town to get its own page (anti-thin-content)
 
@@ -196,6 +202,29 @@ def normalize(installers: list[dict]) -> list[dict]:
         else:
             seen_slugs[base] = 1
         inst["_slug"] = base
+    # === FEATURED_FLAG_MERGE START ===
+    # Stamp Featured metadata onto installers from data/featured.json, then
+    # re-sort so featured rows come first (by _featured_order, then name) and
+    # everyone else follows in alphabetical order — matches what page_index /
+    # page_region / page_town already expect.
+    _featured_map = load_featured()
+    for _inst in installers:
+        _meta = _featured_map.get(_inst.get("_slug"))
+        if _meta:
+            _inst["featured"] = True
+            _inst["_featured_tier"] = _meta.get("tier", "standard")
+            _inst["_featured_order"] = _meta.get("order", 999)
+            _inst["_featured_since"] = _meta.get("since")
+            _inst["_featured_until"] = _meta.get("until")
+            _inst["_featured_paid_pence"] = _meta.get("paid_pence", 0)
+        else:
+            _inst.setdefault("featured", False)
+    installers.sort(key=lambda i: (
+        0 if i.get("featured") else 1,
+        i.get("_featured_order", 999) if i.get("featured") else 0,
+        (i.get("name") or "").lower(),
+    ))
+    # === FEATURED_FLAG_MERGE END ===
     return installers
 
 
@@ -3910,6 +3939,585 @@ def _strip_tags(html: str) -> str:
     return _re.sub(r"<[^>]+>", "", html).replace("&amp;", "&").strip()
 
 
+def page_studio() -> str:
+    """Sales page for the directory-build-as-a-service offering.
+
+    Lives at /studio/. noindex=True because this targets named B2B trade-body
+    and publisher decision-makers via outreach, not organic search. The live
+    EV directory itself is the proof artefact — every claim on this page is
+    backed by something already shipped on the same domain.
+    """
+    import os as _os
+    from urllib.parse import quote as _q
+    contact = _os.environ.get("STUDIO_CONTACT_EMAIL", "studio@example.com")
+    url = f"{BASE_URL}/studio/"
+    title = "Directory-build studio — niche UK directories from £750"
+    desc = ("I build niche UK directories for trade bodies and B2B publishers "
+            "from £750. Same engine as the live Commercial EV Installers "
+            "directory. Three weeks, your domain, you own the output.")
+    subj = _q("Directory build enquiry")
+    body = _q(
+        "Hi Greg,\n\n"
+        "I'd like to discuss a directory build. A few details:\n\n"
+        "- Target audience (who would use the directory):\n"
+        "- Data source I have in mind (public dataset, CSV, register, etc.):\n"
+        "- Rough timeline / target go-live:\n\n"
+        "Thanks,\n"
+    )
+    mailto = f"mailto:{esc(contact)}?subject={subj}&body={body}"
+    jsonld = breadcrumb_jsonld([("Home", "/"), ("Studio", "/studio/")])
+
+    hero = f"""
+<section class="hero"><div class="wrap">
+<span class="pill">Directory-build studio · taking 5 briefs in 2026</span>
+<h1>I build niche UK directories that pay for themselves.</h1>
+<p class="sub">From data sources you already trust, in three weeks, on your
+domain. From £750. Same engine that built
+<a href="/" style="color:#4ade80;text-decoration:underline">Commercial EV Installers UK</a>
+— 1,132 OZEV-authorised firms, 132 town pages, live since May 2026.</p>
+<div class="cta-row">
+<a class="btn btn-g" href="{mailto}">Start a build <span class="arrow">→</span></a>
+<a class="btn btn-o" href="/">See the EV directory →</a>
+</div>
+<div class="stats">
+<div class="stat"><b>1,132</b><span>records indexed</span></div>
+<div class="stat"><b>132</b><span>town pages</span></div>
+<div class="stat"><b>Built-in</b><span>Schema.org + sitemap</span></div>
+<div class="stat"><b>May 2026</b><span>live since</span></div>
+</div>
+</div></section>"""
+
+    proof_note = """
+<section class="sec-l"><div class="wrap">
+<p class="lead" style="margin:0">Built from official OZEV data under
+Open Government Licence v3.0. Your build runs on whichever public/private
+dataset you bring.</p>
+</div></section>"""
+
+    items = [
+        "Scoped data extraction from your nominated public source",
+        "1,000+ pages generated from one dataset (location × category × FAQ combinations)",
+        "Schema.org markup, sitemap.xml, Open Graph cards — out of the box",
+        "Hosted on your domain via Cloudflare Pages or GitHub Pages (free tier)",
+        "You keep the source code, the data, and the .com — no platform lock-in",
+    ]
+    what_items = "".join(
+        f'<li style="list-style:none;padding:12px 0;border-bottom:1px solid var(--bd-l);'
+        f'font-size:16px"><span style="color:var(--green-d);font-weight:800;'
+        f'margin-right:10px">✓</span>{esc(t)}</li>'
+        for t in items
+    )
+    what = f"""
+<section><div class="wrap">
+<h2 class="sh">What you get</h2>
+<p class="lead">A static, fast, indexable directory site — not a CMS, not a SaaS subscription.</p>
+<ul style="max-width:760px;padding:0;margin:0">{what_items}</ul>
+</div></section>"""
+
+    case = f"""
+<section class="sec-d"><div class="wrap">
+<h2 class="sh">Worked example</h2>
+<p class="lead">A fully public case study you can read end-to-end before you commit.</p>
+<div class="guidegrid">
+<a class="gcard" href="/data/uk-ev-installer-landscape-may-2026/">
+<h3>UK EV installer landscape, May 2026 →</h3>
+<p>I took the OZEV authorised-installer register (a ~350-row HTML table with
+no filters) and turned it into a 1,304-page indexed directory in under two
+weeks. Headline finds included: 94.8% of OZEV-authorised commercial
+installers also do residential work; only 59 are commercial-only.</p>
+</a>
+</div>
+</div></section>"""
+
+    custom_mailto = f"mailto:{esc(contact)}?subject={_q('Directory build enquiry — custom quote')}&body={body}"
+    pricing = f"""
+<section class="sec-l"><div class="wrap">
+<h2 class="sh">Pricing</h2>
+<p class="lead">Fixed price. No discovery phase, no T&amp;M creep.</p>
+<div class="guidegrid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+<div class="gcard" style="background:#fff;color:var(--ink);border-color:var(--bd-l)">
+<h3 style="color:var(--ink)">Starter — £750</h3>
+<p style="color:var(--mut)">Single data source. ≤500 records, ≤500 generated
+pages. Schema markup, sitemap, your domain. <b style="color:var(--ink)">3 weeks</b> delivery.</p>
+</div>
+<div class="gcard" style="background:#fff;color:var(--ink);border-color:var(--green);box-shadow:0 0 0 1px var(--green) inset">
+<h3 style="color:var(--ink)">Standard — £1,500</h3>
+<p style="color:var(--mut)">Multi-source merge. ≤2,000 records, ≤2,000 pages.
+Custom programmatic SEO, light editorial templates, your hosting.
+<b style="color:var(--ink)">4 weeks</b>.</p>
+</div>
+<div class="gcard" style="background:#fff;color:var(--ink);border-color:var(--bd-l)">
+<h3 style="color:var(--ink)">Custom — by quote</h3>
+<p style="color:var(--mut)">Larger datasets, multi-language, ingestion
+pipelines, light backend. <a href="{custom_mailto}" style="color:var(--green-d);font-weight:600">Email for a quote →</a></p>
+</div>
+</div>
+<p class="note" style="margin-top:18px">Fixed-price, 50% upfront, balance on
+go-live. No retainer, no upsells.</p>
+</div></section>"""
+
+    faqs = [
+        ("How is this different from hiring a developer?",
+         "A developer builds you a CMS and bills 80 hours. I bring a pipeline "
+         "that already exists and adapt it to your data. The reason it's "
+         "£750–£1,500 instead of £8,000 is that 80% of the code is reused."),
+        ("What data sources can you use?",
+         "Any public dataset (gov.uk OGL, ONS, Companies House, sector "
+         "registers), any CSV/Excel you already own, or a polite scrape of a "
+         "public source within ToS. I do not buy data and I do not scrape "
+         "behind logins."),
+        ("Who owns the output?",
+         "You do. Source code, data, and domain. Delivered as a GitHub repo "
+         "you control. I keep no admin access after handover."),
+        ("What's not included?",
+         "Ongoing content writing, ongoing SEO outreach, paid ads, a logo, "
+         "and a database backend. The build is a static site by design — "
+         "faster, cheaper, harder to break."),
+        ("Why so cheap?",
+         "Honest answer: I'm pricing for proof. I want 5 case studies by the "
+         "end of 2026 more than I want margin. After that the rate goes up. "
+         "Lock the current rate while it's here."),
+        ("Refunds?",
+         "If at any point before go-live you decide to cancel, I refund the "
+         "deposit minus any third-party costs incurred (typically £0–£20). "
+         "After go-live, no refunds — the deliverable is yours."),
+    ]
+    faq_items = "".join(
+        f"<dt>{esc(q)}</dt><dd>{esc(a)}</dd>" for q, a in faqs
+    )
+    faq_sec = f"""
+<section><div class="wrap prose" style="max-width:820px">
+<h2 class="sh">Frequently asked questions</h2>
+<dl class="faq">{faq_items}</dl>
+</div></section>"""
+
+    final = f"""
+<section class="sec-d"><div class="wrap" style="text-align:center">
+<h2 class="sh" style="max-width:780px;margin:0 auto 14px">If you have a list,
+I can turn it into a directory.</h2>
+<p class="lead" style="margin:0 auto 24px">Reply with one paragraph describing
+what you'd want indexed. I'll come back in 24 hours with a yes, a no, or three
+clarifying questions.</p>
+<div class="cta-row" style="justify-content:center">
+<a class="btn btn-g" href="{mailto}">Start a build <span class="arrow">→</span></a>
+</div>
+<p style="color:#9aa1ab;font-size:13px;margin:32px auto 0;max-width:560px;padding-top:18px;border-top:1px solid #1f2937">
+Are you an installer (not a trade body)?
+<a style="color:#9fe6b4;display:inline" href="/featured/">See Featured Listing →</a>
+</p>
+</div></section>"""
+
+    return (
+        head(title, desc, url, jsonld, noindex=True)
+        + navbar()
+        + '<div class="wrap crumb"><a href="/">Home</a> › Studio</div>'
+        + hero
+        + proof_note
+        + what
+        + case
+        + pricing
+        + faq_sec
+        + final
+        + footer() + SHORTLIST_JS + "</body></html>"
+    )
+
+
+def load_featured() -> dict:
+    """Read data/featured.json and return {slug: {tier, order, since, until,
+    paid_pence}}. Tolerates missing file / malformed JSON / missing key by
+    returning {} with a single stderr warning. Pure stdlib."""
+    import sys as _sys
+    path = DATA / "featured.json"
+    if not path.exists():
+        return {}
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"[generate] WARNING: could not read data/featured.json ({exc}); "
+              "no installers will be marked featured.", file=_sys.stderr)
+        return {}
+    entries = raw.get("featured") if isinstance(raw, dict) else None
+    if not isinstance(entries, list):
+        print("[generate] WARNING: data/featured.json missing 'featured' list; "
+              "no installers will be marked featured.", file=_sys.stderr)
+        return {}
+    out: dict = {}
+    for e in entries:
+        if not isinstance(e, dict):
+            continue
+        slug = e.get("slug")
+        if not slug:
+            continue
+        out[slug] = {
+            "tier": e.get("tier", "standard"),
+            "order": e.get("order", 999),
+            "since": e.get("since"),
+            "until": e.get("until"),
+            "paid_pence": e.get("paid_pence", 0),
+        }
+    return out
+
+
+def page_featured(installers=None) -> str:
+    """Sales page for the Featured Listing upgrade at /featured/.
+
+    £99/yr founder rate, one-time annual payment via Stripe (no subscription,
+    no auto-renew). Wireframe: dark hero, mock card, why-now stats, what-you-
+    get list, free-vs-featured comparison, risk-reversal box, trust strip,
+    8-entry objection-led FAQ, dark final CTA.
+    """
+    import os as _os
+    STRIPE_FOUNDER_URL = _os.environ.get("STRIPE_FEATURED_FOUNDER_URL", "#")
+    STRIPE_STANDARD_URL = _os.environ.get("STRIPE_FEATURED_STANDARD_URL", "#")
+    stripe_disabled = STRIPE_FOUNDER_URL == "#"
+    cta_style = ' style="opacity:.5;pointer-events:none"' if stripe_disabled else ""
+    stripe_warn = ""
+    if stripe_disabled:
+        stripe_warn = (
+            '<div class="disc" style="background:#3a2f00;border-color:#7a6500;'
+            'color:#f0d96b;margin-bottom:18px">⚠ Stripe link not yet configured '
+            '— set STRIPE_FEATURED_FOUNDER_URL in Cloudflare env vars to enable '
+            'checkout.</div>'
+        )
+
+    _count = 0
+    try:
+        if installers is not None:
+            _count = len(installers)
+        else:
+            with open(DATA / "installers.json", "r", encoding="utf-8") as _fh:
+                _count = len(json.load(_fh))
+    except Exception:
+        _count = 0
+
+    url = f"{BASE_URL}/featured/"
+
+    mock_card = (
+        '<article class="card feat" data-name="phase 2 phase electrical ltd" '
+        'data-region="North West" data-services="Commercial,Residential" '
+        'data-town="crewe" data-lat="N/A" data-lon="N/A">'
+        '<span class="ftag">FEATURED PARTNER</span>'
+        '<h3><a href="/featured/">Phase 2 Phase Electrical Ltd</a></h3>'
+        '<div class="meta">Crewe · North West</div>'
+        '<div class="tags">'
+        '<span class="tag c">Commercial</span>'
+        '<span class="tag">Residential</span>'
+        '<span class="tag v">✓ OZEV authorised</span>'
+        '</div>'
+        '<div class="links"><a href="/featured/">View details</a>'
+        '<a href="#" rel="nofollow noopener">Visit website →</a></div>'
+        '</article>'
+    )
+
+    what_rows = [
+        "Pinned to the top of your town and region pages, above the alphabetical roll",
+        '"FEATURED PARTNER" badge in every appearance (homepage, search, service pages)',
+        "Quote-request CTA goes direct to your phone & email",
+        "Listed first on service and industry pages (e.g. /services/fleet-charging-installers/)",
+        "Founder rate £99/yr locked for life — standard rate from 1 July 2026 is £199/yr",
+    ]
+    what_html = "".join(
+        f'<li style="margin:8px 0"><span style="color:var(--green-d);font-weight:700">✓</span> {esc(r)}</li>'
+        for r in what_rows
+    )
+
+    comp_rows = [
+        ("Position on town page", "Alphabetical", "<strong>#1, pinned</strong>"),
+        ('"FEATURED PARTNER" badge', "—", "<strong>✓</strong>"),
+        ("Pinned on region pages", "—", "<strong>✓</strong>"),
+        ("Pinned on relevant service pages", "—", "<strong>✓</strong>"),
+        ("Logo / company photo upload", "—", "<strong>✓</strong>"),
+        ("Direct phone &amp; web link CTA", "✓", "✓ (highlighted)"),
+        ("OZEV badge", "✓", "✓"),
+        ("Price", "Free, forever", "£99/year founder rate"),
+    ]
+    comp_body = "".join(
+        f'<tr><td style="padding:9px 12px;border-bottom:1px solid var(--bd-l);vertical-align:top">{label}</td>'
+        f'<td style="padding:9px 12px;border-bottom:1px solid var(--bd-l);vertical-align:top">{free}</td>'
+        f'<td style="padding:9px 12px;border-bottom:1px solid var(--bd-l);vertical-align:top">{feat}</td></tr>'
+        for label, free, feat in comp_rows
+    )
+    comp_html = (
+        '<table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px">'
+        '<thead><tr style="background:#f5f7f5">'
+        '<th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd-l)">&nbsp;</th>'
+        '<th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd-l)">Free Listing</th>'
+        '<th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd-l)">Featured Listing</th>'
+        '</tr></thead><tbody>' + comp_body + '</tbody></table>'
+    )
+
+    faqs = [
+        ("You're new — do you have any traffic yet?",
+         "Honestly, no — not yet. The directory launched in May 2026. The 30-day "
+         "click-based refund exists precisely for this. You pay £99, if you don't "
+         "see 5+ outbound clicks to your listing in 30 days, you get every penny "
+         "back. We track clicks server-side. The founder rate is £99 because of "
+         "this newness; once SEO matures the rate goes to £199 and the refund "
+         "offer goes away."),
+        ("How does Featured ranking work?",
+         "Featured installers appear at the top of every relevant page (town, "
+         "region, service, industry) above the alphabetical free listings. "
+         "Multiple Featured installers in the same area are ordered by signup "
+         "date (earlier = higher). We pin a maximum of 3 Featured per town to "
+         "keep results useful for buyers."),
+        ("What if I'm already listed for free?",
+         "You stay listed for free, forever. Featured is purely an upgrade — "
+         "same listing, top slot, badge, photos. If you stop being Featured, "
+         "you return to the free alphabetical list. No bait-and-switch."),
+        ("Can I feature in more than one region?",
+         "Yes — one purchase covers every region and town page where your "
+         "installer record appears (based on your OZEV service area). If you "
+         "want priority over other Featured installers in a specific town, ask "
+         "about the £199 Standard tier."),
+        ("How quickly does it go live?",
+         "Within 24 hours. After payment, we email you to confirm your directory "
+         "slug and any logo/photo you want included. Next scheduled rebuild "
+         "flips you live — those run nightly."),
+        ("What if I want to cancel?",
+         "Email us. We remove the Featured badge and revert your listing to "
+         "free on the next rebuild. Refunds within 30 days under the click-based "
+         "guarantee above. After 30 days, no refunds — but you keep the slot "
+         "until your year is up."),
+        ("Is this OZEV-affiliated?",
+         "No. The directory is built from OZEV's public authorised-installer "
+         "register under Open Government Licence v3.0, but it's an independent "
+         "project. We're not endorsed by OZEV, DfT, or any government body."),
+        ("What about the £199 Standard tier?",
+         "£199/year buys you the same Featured slot plus priority among Featured "
+         "installers in your chosen town (alphabetical tiebreak overridden). "
+         "It's only worth it if there are already 2+ Featured installers in a "
+         "competitive town like Manchester or Birmingham. Email us first to "
+         "check — we'll only recommend it if it actually helps you."),
+    ]
+
+    trail = [("Directory", "/"), ("Featured Listing", "/featured/")]
+    offer_jl = {
+        "@context": "https://schema.org", "@type": "Product",
+        "name": "Featured Listing — Commercial EV Installers Directory",
+        "description": "Top-of-page pinned listing with FEATURED PARTNER badge "
+                       "across town, region and service pages of the UK OZEV "
+                       "commercial EV installer directory. 12-month founder rate.",
+        "offers": {"@type": "Offer", "price": "99",
+                   "priceCurrency": "GBP",
+                   "availability": "https://schema.org/InStock",
+                   "url": url},
+    }
+    jsonld = (
+        '<script type="application/ld+json">' + json.dumps(offer_jl) + '</script>'
+        + breadcrumb_jsonld(trail) + faq_jsonld(faqs)
+    )
+
+    hero = f"""<section class="hero"><div class="wrap">
+{stripe_warn}<span class="pill">● Founder rate — locked until 30 June 2026 or first 25 sales, whichever comes first.</span>
+<h1>Be the installer customers see first.</h1>
+<p class="sub">A Featured Listing pins your company to the top of your town and
+region pages on the UK's only OGL-sourced commercial EV installer directory.
+£99 for 12 months. One job pays for it.</p>
+<a class="btn btn-g" href="{esc(STRIPE_FOUNDER_URL)}"{cta_style}>Claim Featured Listing — £99 <span class="arrow">→</span></a>
+<p class="note" style="margin-top:14px;color:#9aa1ab;font-size:13px">One-time payment via Stripe. No subscription. No auto-renewal.</p>
+</div></section>"""
+
+    mock_section = f"""<section class="sec-l"><div class="wrap" style="max-width:760px">
+<p class="note" style="margin-bottom:10px;font-weight:600;color:var(--ink)">What your listing looks like:</p>
+<div class="grid" style="grid-template-columns:1fr">{mock_card}</div>
+<p class="muted" style="margin-top:10px;font-size:13px">Illustrative example only — sample data.</p>
+</div></section>"""
+
+    whynow = f"""<section><div class="wrap">
+<h2 class="sh">Why now</h2>
+<div class="stats" style="margin-top:18px">
+<div class="stat"><b>{_count}</b><span>OZEV-authorised installers indexed</span></div>
+<div class="stat"><b>132</b><span>town pages live</span></div>
+<div class="stat"><b>Live since</b><span>May 2026</span></div>
+<div class="stat"><b>Founder rate</b><span>£99 → £199</span></div>
+</div>
+<p class="lead" style="margin-top:20px">We're new. That's the point: lock the #1
+slot in your town before competitors do, at a price that exists once.</p>
+</div></section>"""
+
+    what_section = f"""<section class="sec-l"><div class="wrap prose" style="max-width:820px">
+<h2>What you get</h2>
+<ul style="list-style:none;padding:0;margin:14px 0 0 0;font-size:15.5px">{what_html}</ul>
+</div></section>"""
+
+    comp_section = f"""<section><div class="wrap prose" style="max-width:820px">
+<h2>Free vs Featured</h2>
+{comp_html}
+</div></section>"""
+
+    risk = """<section class="sec-l"><div class="wrap" style="max-width:820px">
+<div class="box">
+<p><strong>30-day click-based refund</strong> — if your Featured listing doesn't
+receive at least 5 outbound clicks in 30 days, full refund, no forms. We track
+clicks via the link-out and will share the number on request.</p>
+<p><strong>No auto-renewal</strong> — annual plan, renewal is manual. You decide each year.</p>
+<p><strong>No commission, ever</strong> — leads land in your phone and email. We don't touch the money.</p>
+</div></div></section>"""
+
+    trust = """<section class="sec-l"><div class="wrap" style="max-width:820px">
+<p class="note">Built on official OZEV authorised-installer data (Open Government
+Licence v3.0). <a style="color:var(--green-d)" href="/methodology/">Methodology →</a></p>
+<p class="note">Run by a UK-registered sole trader. Postal address and ICO
+registration: <a style="color:var(--green-d)" href="/privacy/">Privacy &amp; contact →</a></p>
+</div></section>"""
+
+    faq_section = f"""<section><div class="wrap prose" style="max-width:820px">
+{faq_html(faqs)}
+</div></section>"""
+
+    final_cta = f"""<section class="sec-d"><div class="wrap" style="text-align:center;max-width:760px">
+<div style="font-size:64px;font-weight:800;letter-spacing:-2px;color:#fff;line-height:1;margin-bottom:6px">£99</div>
+<p style="color:#9aa1ab;font-size:14px;margin:0 0 22px">for 12 months · founder rate · one-time payment</p>
+<h2 style="color:#fff;font-size:34px;font-weight:800;letter-spacing:-1px">Be one of the first 25.</h2>
+<p style="color:#9aa1ab;font-size:17px;margin:12px auto 24px;max-width:600px">Founder
+rate £99 ends after the first 25 Featured listings sell or 30 June 2026,
+whichever comes first.</p>
+<a class="btn btn-g" href="{esc(STRIPE_FOUNDER_URL)}"{cta_style}>Claim Featured Listing — £99 <span class="arrow">→</span></a>
+<p style="color:#9aa1ab;font-size:13px;margin-top:18px">Questions? Email
+<a style="color:#9fe6b4;display:inline" href="mailto:{esc(CONTACT_EMAIL)}">{esc(CONTACT_EMAIL)}</a>.</p>
+<p style="color:#9aa1ab;font-size:13px;margin-top:26px;padding-top:18px;border-top:1px solid #1f2937">
+Run a trade association? Could you use a directory like this?
+<a style="color:#9fe6b4;display:inline" href="/studio/">See Studio →</a>
+</p>
+</div></section>"""
+
+    return (
+        head("Featured Listing — Commercial EV Installer Directory (£99 founder rate)",
+             "Pin your OZEV-authorised commercial EV installer company to the top of "
+             "town and region pages on the UK's independent OGL-sourced directory. "
+             "£99 for 12 months, founder rate, no subscription, 30-day click-based refund.",
+             url, jsonld)
+        + navbar()
+        + '<div class="wrap crumb"><a href="/">Directory</a> › Featured Listing</div>'
+        + hero
+        + mock_section
+        + whynow
+        + what_section
+        + comp_section
+        + risk
+        + trust
+        + faq_section
+        + final_cta
+        + footer() + SHORTLIST_JS + "</body></html>"
+    )
+
+
+def page_featured_thanks() -> str:
+    """Stripe success redirect at /featured/thanks/. noindex."""
+    url = f"{BASE_URL}/featured/thanks/"
+    faqs = [
+        ("Where's my receipt?",
+         "It's in your Stripe email — search your inbox for 'Stripe'."),
+        ("Can I change my listing details later?",
+         "Yes, anytime — email us."),
+        ("What if I change my mind?",
+         "The 30-day click-based refund still applies — if your Featured "
+         "listing doesn't receive at least 5 outbound clicks in 30 days, "
+         "full refund."),
+    ]
+    body = f"""<section style="padding-top:40px"><div class="wrap prose" style="max-width:720px">
+<div class="box" style="text-align:left">
+<h1 style="margin-top:0">Payment received. Welcome aboard.</h1>
+<p>Thanks — your Featured Listing is in the queue. Here's what happens next:</p>
+<ol style="line-height:1.7">
+<li>Within 24 hours, we'll email you (at the address on your Stripe receipt) to
+confirm: your directory slug, your preferred logo/photo (optional, up to 3 PNG/JPGs),
+and any service-area corrections.</li>
+<li>We update <code>data/featured.json</code> with your slug and tier.</li>
+<li>The next nightly rebuild (typically completes by 02:00 UK time) flips your
+listing live with the FEATURED PARTNER badge and top-of-page placement on every
+relevant page.</li>
+</ol>
+<p>If 48 hours pass and you haven't heard from us, email
+<a style="color:var(--green-d);display:inline" href="mailto:{esc(CONTACT_EMAIL)}?subject=Featured%20listing%20%E2%80%94%20no%20contact">{esc(CONTACT_EMAIL)}</a>
+with subject "Featured listing — no contact".</p>
+</div>
+{faq_html(faqs)}
+<p style="margin-top:28px"><a style="color:var(--green-d)" href="/">Back to the directory →</a></p>
+</div></section>"""
+    return (
+        head("Payment received — Featured Listing",
+             "Your Featured Listing payment has been received. Next steps and "
+             "expected timeline for going live on the directory.",
+             url, "", noindex=True)
+        + navbar()
+        + body
+        + footer() + SHORTLIST_JS + "</body></html>"
+    )
+
+
+def page_privacy() -> str:
+    """Extended privacy page — same shell as the inline block in main(), plus
+    outbound-comms / suppression-list / OGL / ICO sections required by the
+    PECR Reg 22 + UK GDPR Art 6(1)(f) outreach lawful-basis stack.
+
+    Sequencer will swap the inline `page_simple(...)` call in main() for a
+    `page_privacy()` call. This function is the sole source of truth for the
+    /privacy/ page content from that point on.
+    """
+    body_html = f"""<p>This site republishes business listing information from the public
+GOV.UK OZEV authorised-installer tool (Open Government Licence v3.0) so buyers can
+find OZEV-authorised commercial installers — a public-interest aggregation the
+official tool does not provide in browsable form.</p>
+<h2>Personal data</h2><p>We deliberately do <strong>not</strong> publish scraped
+personal (firstname.lastname) or free-webmail email addresses as clickable links.
+Where only such an address exists, we show a “request a quote” route instead.</p>
+<h2>Lawful basis</h2><p>Legitimate interests (helping businesses find authorised
+installers; helping installers receive relevant enquiries), balanced against the
+limited, already-public nature of the data.</p>
+<h2>Removal &amp; correction</h2><p>Any installer can have their listing corrected
+or removed, no questions asked, via <a style="color:var(--green-d)"
+href="/contact/">the contact page</a>. Requests are actioned on the next rebuild.</p>
+
+<h2>Outbound communications</h2>
+<p>We send B2B emails to publicly-listed generic mailboxes (info@, sales@,
+office@, enquiries@, hello@, admin@, mail@, contact@) at UK limited companies
+and LLPs — typically to offer optional Featured-listing upgrades to businesses
+we already list for free.</p>
+<p><strong>Legal basis.</strong> PECR Regulation 22 corporate-subscriber
+exemption (B2B email to limited companies and LLPs does not require prior
+consent), combined with UK GDPR Article 6(1)(f) — legitimate interests in
+commercial communication with publicly-listed business contacts.</p>
+<p><strong>Legitimate-Interests Assessment (LIA) summary, in plain English:</strong></p>
+<ul>
+<li><strong>Purpose.</strong> To offer optional Featured-listing upgrades to UK
+businesses we already list for free, drawn from official OZEV register data.</li>
+<li><strong>Necessity.</strong> Email is the lowest-friction channel; phone
+and post are more intrusive at the same volume.</li>
+<li><strong>Balance.</strong> Recipients are commercial entities at corporate
+mailboxes; messages are infrequent (one-shot, not sequenced); opt-out is one
+reply word; a postal address and ICO registration are provided.</li>
+</ul>
+
+<h2>Suppression list</h2>
+<p>Anyone who replies <em>"remove"</em>, <em>"unsubscribe"</em>,
+<em>"stop"</em>, or <em>"opt out"</em> — or whose listed email becomes
+unreachable — is added to a suppression file (<code>data/suppress.txt</code>)
+and is never contacted again.</p>
+<p>Suppression takes effect within 24 hours. The suppression file is
+operator-only and is not shared with third parties.</p>
+
+<h2>Data source &amp; licence</h2>
+<p>Source data is the OZEV authorised-installer register, used under
+<a style="color:var(--green-d)"
+href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open
+Government Licence v3.0</a>. Personal email addresses scraped during
+enrichment are suppressed from both the public site and the public JSON/CSV
+exports.</p>
+
+<h2>ICO contact</h2>
+<p>Recipients have the right to complain to the
+<a style="color:var(--green-d)" href="https://ico.org.uk/">Information
+Commissioner's Office</a> about how their personal data is handled.</p>"""
+    return page_simple(
+        "Privacy & Data",
+        "How this directory sources data, the lawful basis for any outbound "
+        "B2B email, the suppression list, and how to request removal.",
+        "privacy",
+        body_html,
+    )
+
+
 def write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -3973,7 +4581,7 @@ def main() -> int:
     stats = build_stats(installers)
     urls = ["/", "/calculator/", "/map/", "/data/uk-ev-installer-landscape/",
             "/about/", "/contact/", "/privacy/", "/methodology/",
-            "/glossary/"]
+            "/glossary/", "/featured/", "/studio/"]
     write(DIST / "index.html", page_index(installers))
     write(DIST / "calculator" / "index.html", page_calculator())
     write(DIST / "tools" / "uk-ev-grant-eligibility" / "index.html",
@@ -3994,6 +4602,12 @@ def main() -> int:
     _write_public_open_data(installers)
     write(DIST / "press" / "index.html", page_press())
     urls.append("/press/")
+    # === MONETIZATION_INTEGRATION_POINT START ===
+    write(DIST / "studio" / "index.html", page_studio())
+    write(DIST / "featured" / "index.html", page_featured(installers))
+    write(DIST / "featured" / "thanks" / "index.html", page_featured_thanks())
+    # /featured/thanks/ is noindex — not added to sitemap.
+    # === MONETIZATION_INTEGRATION_POINT END ===
     write(DIST / "glossary" / "index.html", page_glossary())
     write(DIST / "shortlist" / "index.html", page_shortlist())
     write(DIST / "project-pack" / "index.html", page_project_pack())
@@ -4049,22 +4663,9 @@ disclosed on the relevant pages and never affects listing inclusion or order.</p
 href="/privacy/">privacy &amp; data page</a>. Installers can request a correction
 or removal via the <a style="color:var(--green-d)" href="/contact/">contact page</a>.</p>"""))
 
-    write(DIST / "privacy" / "index.html", page_simple(
-        "Privacy & Data", "How this directory sources data, lawful basis, and how to request removal.",
-        "privacy",
-        f"""<p>This site republishes business listing information from the public
-GOV.UK OZEV authorised-installer tool (Open Government Licence v3.0) so buyers can
-find OZEV-authorised commercial installers — a public-interest aggregation the
-official tool does not provide in browsable form.</p>
-<h2>Personal data</h2><p>We deliberately do <strong>not</strong> publish scraped
-personal (firstname.lastname) or free-webmail email addresses as clickable links.
-Where only such an address exists, we show a “request a quote” route instead.</p>
-<h2>Lawful basis</h2><p>Legitimate interests (helping businesses find authorised
-installers; helping installers receive relevant enquiries), balanced against the
-limited, already-public nature of the data.</p>
-<h2>Removal &amp; correction</h2><p>Any installer can have their listing corrected
-or removed, no questions asked, via <a style="color:var(--green-d)"
-href="/contact/">the contact page</a>. Requests are actioned on the next rebuild.</p>"""))
+    # Privacy page now built by page_privacy() — the extended version with PECR
+    # outbound-comms section, suppression list, LIA summary, ICO contact.
+    write(DIST / "privacy" / "index.html", page_privacy())
 
     methodology_jsonld = (
         '<script type="application/ld+json">' + json.dumps({
