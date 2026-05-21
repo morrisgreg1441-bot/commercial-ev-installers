@@ -715,7 +715,8 @@ with OZEV or any installer. <a style="display:inline;color:#9fe6b4" href="/priva
 <a href="/guides/workplace-charging-scheme/">Workplace Charging Scheme</a>
 <a href="/guides/grant-deadlines/">Grant deadlines</a>
 <a href="/glossary/">Glossary (UK EV charging terms)</a>
-<a href="/methodology/">Methodology &amp; data</a></div>
+<a href="/methodology/">Methodology &amp; data</a>
+<a href="/press/">Press &amp; data for journalists</a></div>
 <div><h4>Regions</h4>{reg}</div></div>
 <div class="wrap" style="margin-top:34px;font-size:12.5px;border-top:1px solid #1f1f1f;padding-top:22px">
 Data source: <a href="https://www.gov.uk/electric-vehicle-chargepoint-installers" style="display:inline">GOV.UK / OZEV</a>,
@@ -3044,6 +3045,203 @@ before applying.</div>
             + footer() + SHORTLIST_JS + js + "</body></html>")
 
 
+def page_press():
+    """Press & media-resources hub. Every stat is sourced from the dated
+    May 2026 snapshot at /data/uk-ev-installer-landscape-may-2026/ so
+    journalists can cite directly from there."""
+    title = "Press & data — UK commercial EV installer landscape"
+    desc = ("Citable UK commercial EV charger installer data: regional "
+            "breakdown, coverage gaps, postcode-area rankings. May 2026 "
+            "snapshot, Open Government Licence v3.0, free to cite.")
+    url = f"{BASE_URL}/press/"
+    snap_url = f"{BASE_URL}/data/{SNAPSHOT_SLUG}/"
+
+    article_jl = {
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": title,
+        "description": desc,
+        "author": {"@type": "Organization", "name": SITE_NAME},
+        "publisher": {"@type": "Organization", "name": SITE_NAME,
+                      "url": BASE_URL},
+        "datePublished": TODAY, "dateModified": TODAY,
+        "mainEntityOfPage": url, "url": url,
+        "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    }
+    breadcrumb_jl = {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Directory",
+             "item": BASE_URL + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Press & data",
+             "item": url},
+        ],
+    }
+    jsonld = ('<script type="application/ld+json">'
+              + json.dumps(article_jl) + "</script>"
+              + '<script type="application/ld+json">'
+              + json.dumps(breadcrumb_jl) + "</script>")
+
+    twitter_og = (
+        '<meta property="og:url" content="' + url + '">'
+        '<meta property="og:site_name" content="' + esc(SITE_NAME) + '">'
+        '<meta name="twitter:card" content="summary_large_image">'
+        '<meta name="twitter:title" content="' + esc(title) + '">'
+        '<meta name="twitter:description" content="' + esc(desc) + '">'
+    )
+
+    # Citable headline stats — every figure verifiable on the snapshot page.
+    stats = [
+        ("1,132 OZEV-authorised commercial EV charger installers across the UK (May 2026).",
+         '"1,132 OZEV-authorised commercial EV charger installers operate across the UK '
+         '(Commercial EV Charger Installers UK, May 2026 snapshot, OGL v3.0)."'),
+        ("94.8% of OZEV commercial installers also do residential work; only 5.2% (59 firms) are commercial-only.",
+         '"Just 5.2% of OZEV-authorised commercial EV charger installers — 59 firms out of 1,132 — '
+         'work commercially only; the other 94.8% also serve residential customers '
+         '(Commercial EV Charger Installers UK, May 2026)."'),
+        ("North East England has 37 commercial installers — fewer than any other UK region and 5.5x fewer than the South East (203).",
+         '"The North East has 37 OZEV-authorised commercial EV charger installers, the lowest of any UK region '
+         'and roughly one-fifth of the South East total (Commercial EV Charger Installers UK, May 2026)."'),
+        ("Northern Ireland (44) and the East Midlands (46) are the next-worst-served regions.",
+         '"Outside the North East, Northern Ireland (44 installers) and the East Midlands (46) '
+         'have the thinnest commercial EV installer coverage in the UK '
+         '(Commercial EV Charger Installers UK, May 2026)."'),
+        ("The BT (Belfast) postcode area leads the UK by raw installer count with 44 firms, ahead of SA Swansea (26) and LL Wrexham (25).",
+         '"By postcode area, BT (Belfast) has the most OZEV commercial installers in the UK with 44, '
+         'ahead of SA Swansea (26) and LL Wrexham (25) (Commercial EV Charger Installers UK, May 2026)."'),
+        ("The South East accounts for 17.9% of all UK OZEV commercial installers (203 firms) — more than the bottom four regions combined.",
+         '"The South East alone hosts 17.9% of the UK’s OZEV commercial EV installers — '
+         'more than the North East, Northern Ireland, East Midlands and East of England combined '
+         '(Commercial EV Charger Installers UK, May 2026)."'),
+        ("Every UK region has at least one OZEV-authorised commercial installer, but raw counts vary by a factor of 5.5x between South East and North East.",
+         '"All 12 UK regions have at least one OZEV-authorised commercial EV charger installer, '
+         'but raw counts range from 37 in the North East to 203 in the South East '
+         '(Commercial EV Charger Installers UK, May 2026)."'),
+    ]
+    stat_blocks = "".join(
+        f'<div class="psbox"><p class="psstat">{esc(s)}</p>'
+        f'<p class="pscite"><strong>Suggested citation line:</strong> {esc(c)}</p></div>'
+        for s, c in stats
+    )
+
+    # Story angles
+    angles = [
+        ("The commercial register is mostly residential",
+         "Only 59 of the UK's 1,132 OZEV-authorised commercial installers — 5.2% — "
+         "are commercial-only. The other 94.8% are residential-first firms that also "
+         "take commercial work. For a fleet operator or facilities manager, the "
+         '"commercial installer" market is much smaller than the headline 1,132 suggests.'),
+        ("Where the UK has the worst commercial coverage",
+         "The North East has 37 OZEV-authorised commercial installers — the lowest "
+         "of any UK region and roughly a fifth of the South East's 203. Northern "
+         "Ireland (44) and the East Midlands (46) follow. With Workplace Charging "
+         "Scheme and Depot Charging Scheme deadlines in March 2027, thin local "
+         "supply matters for procurement timelines."),
+        ("Belfast is, unexpectedly, the UK's top commercial-installer postcode area",
+         "By raw postcode-area count, BT (Belfast) tops the UK with 44 OZEV-authorised "
+         "commercial installers — ahead of any London or English regional postcode. "
+         "Welsh postcodes (SA Swansea, LL Wrexham, CF Merthyr Tydfil) take three of "
+         "the next four positions. The London postcodes E (23) and W (18) appear "
+         "lower than the South East regional dominance would suggest."),
+        ("What changes with the 2026 grant shake-up",
+         "From 1 April 2026 the Workplace Charging Scheme pays up to £500 per socket "
+         "(was £350), capped at 75% of project cost and 40 sockets per applicant, "
+         "funded until 31 March 2027. The Depot Charging Scheme funds 70% of charger "
+         "and civils cost up to £1 million per organisation on the same end-date. "
+         "Regions with the fewest installers face the same Q1-2027 queue."),
+        ("The South East's structural advantage",
+         "The South East holds 17.9% of all UK OZEV commercial installers — more than "
+         "the North East, Northern Ireland, East Midlands and East of England combined. "
+         "Any policy that uses uniform per-region targets without weighting for "
+         "installer supply will hit the bottom four regions hardest."),
+    ]
+    angle_blocks = "".join(
+        f'<div class="psangle"><h3>{esc(t)}</h3><p>{esc(b)}</p></div>'
+        for t, b in angles
+    )
+
+    extra_css = """<style>
+.press-wrap h2{margin-top:42px;font-size:26px;letter-spacing:-.5px}
+.press-wrap .lede{font-size:18px;color:var(--mut);max-width:720px;margin:8px 0 28px}
+.press-wrap .psbox{background:var(--light);border:1px solid var(--bd-l);border-radius:12px;padding:18px 20px;margin:14px 0}
+.press-wrap .psstat{font-weight:700;font-size:16px;margin:0 0 8px}
+.press-wrap .pscite{font-size:14px;color:#33404f;margin:0;font-family:Georgia,serif;font-style:italic}
+.press-wrap .pscite strong{font-family:Inter,sans-serif;font-style:normal;color:var(--green-d);font-size:12px;text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:4px}
+.press-wrap .psangle{border-left:3px solid var(--green);padding:10px 0 10px 18px;margin:18px 0}
+.press-wrap .psangle h3{font-size:17px;margin:0 0 6px}
+.press-wrap .psangle p{margin:0;color:#33404f;font-size:15px}
+.press-wrap .pscontact{background:#0e1a12;border:1px solid #15301d;color:#cfe9d6;border-radius:12px;padding:18px 20px;margin:18px 0;font-size:14.5px}
+.press-wrap .pscontact a{color:#9fe6b4;font-weight:600}
+.press-wrap .use{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.press-wrap .use a{background:#fff;border:1px solid var(--bd-l);border-radius:8px;padding:12px 16px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px}
+.press-wrap .use a:hover{border-color:var(--green);color:var(--green-d)}
+</style>"""
+
+    body = f"""<section style="padding-top:30px"><div class="wrap crumb">
+<a href="/">Directory</a> › Press &amp; data</div></section>
+<section style="padding-top:0"><div class="wrap prose press-wrap">
+<h1>Press &amp; data — UK commercial EV installer landscape</h1>
+<p class="upd">Last updated {TODAY} · all figures verifiable on the dated
+<a href="/data/{SNAPSHOT_SLUG}/">May 2026 snapshot</a></p>
+<p class="lede">A media-resources hub for UK trade press, sustainability
+desks and fleet journalists. The directory is an independent one-person
+project that aggregates the public GOV.UK / OZEV authorised-installer
+register into a browsable, regionally-broken-down view, refreshed weekly.
+Every statistic on this page is computed at build time from that register
+and is free to cite under the Open Government Licence v3.0 with attribution.</p>
+
+<h2>Citable headline stats</h2>
+<p>Each figure is taken from the dated <a href="/data/{SNAPSHOT_SLUG}/">May 2026
+snapshot</a>. The italic line under each stat is a copy-pasteable citation
+phrased the way you would actually use it in a piece.</p>
+{stat_blocks}
+
+<h2>Story angles</h2>
+<p>Five framings that the data supports, written as a journalist would lead
+them. Use, rewrite, or reject as you see fit — the underlying numbers do
+not change.</p>
+{angle_blocks}
+
+<h2>Spokesperson &amp; contact</h2>
+<div class="pscontact">
+<p>The site is run by Greg, a UK-based sole trader — no PR firm, no agency.
+Happy to be quoted on the methodology, the data caveats, or the regional
+distribution. For corrections, comment requests or interview enquiries,
+email <a href="mailto:{esc(CONTACT_EMAIL)}">{esc(CONTACT_EMAIL)}</a>.</p>
+<p style="margin:8px 0 0;font-size:13.5px;color:#9fe6b4">Response time:
+typically same working day for UK trade press deadlines.</p>
+</div>
+
+<h2>Data downloads</h2>
+<p>The full underlying dataset is published as open data alongside the
+snapshot. Both files are derived from the public GOV.UK / OZEV register
+and licensed under OGL v3.0.</p>
+<div class="use">
+<a href="/data/installers.json">Download JSON →</a>
+<a href="/data/installers.csv">Download CSV →</a>
+<a href="/data/{SNAPSHOT_SLUG}/">May 2026 snapshot page →</a>
+</div>
+
+<h2>Methodology</h2>
+<p>How the dataset is built, normalised, refreshed and de-duplicated, plus
+the known limitations of the OZEV register, is documented on the
+<a href="/methodology/">methodology page</a>. The same caveats noted on
+the snapshot apply: regional figures are by registered-office postcode,
+not service area, and OZEV authorisation does not certify current trading
+status.</p>
+
+<h2>Licence &amp; attribution</h2>
+<p>All derived statistics on this page and on the snapshot are reusable
+under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+rel="nofollow noopener">Open Government Licence v3.0</a>. Suggested attribution
+when citing: <em>Commercial EV Charger Installers UK, May 2026 snapshot,
+{snap_url}</em>.</p>
+
+</div></section>"""
+
+    return (head(title, desc, url, jsonld + extra_css + twitter_og)
+            + navbar() + body + footer() + SHORTLIST_JS + "</body></html>")
+
+
 def page_simple(title, desc, slug, body_html, noindex=False):
     url = f"{BASE_URL}/{slug}/"
     return (head(title, desc, url, "", noindex) + navbar()
@@ -3794,6 +3992,8 @@ def main() -> int:
     urls.append(f"/data/{SNAPSHOT_SLUG}/")
     # Open-data downloads referenced by the snapshot page's "use this data".
     _write_public_open_data(installers)
+    write(DIST / "press" / "index.html", page_press())
+    urls.append("/press/")
     write(DIST / "glossary" / "index.html", page_glossary())
     write(DIST / "shortlist" / "index.html", page_shortlist())
     write(DIST / "project-pack" / "index.html", page_project_pack())
@@ -4094,7 +4294,7 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
                              "/data/uk-ev-installer-landscape/",
                              f"/data/{SNAPSHOT_SLUG}/") else
               "0.85" if u.startswith(("/services", "/industries")) else
-              "0.8" if u.startswith(("/guides", "/towns")) else
+              "0.8" if u.startswith(("/guides", "/towns")) or u == "/press/" else
               "0.7" if u == "/glossary/" else "0.6")
         sm.append(f"<url><loc>{BASE_URL}{u}</loc><lastmod>{now}</lastmod>"
                   f"<priority>{pr}</priority></url>")
