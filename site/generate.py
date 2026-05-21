@@ -779,7 +779,7 @@ way the official tool isn't.</p>
 <div class="stats">
 <div class="stat"><b>{n}</b><span>commercial installers</span></div>
 <div class="stat"><b>{len(regions)}</b><span>UK regions covered</span></div>
-<div class="stat"><b>£500</b><span>WCS grant / socket (from Apr 2026)</span></div>
+<div class="stat"><b>£500</b><span>WCS grant / socket (since Apr 2026)</span></div>
 <div class="stat"><b>£0</b><span>cost to use — independent</span></div></div>
 </div></section>
 
@@ -810,11 +810,34 @@ and grant before you talk to anyone.</p>
 <a class="gcard" href="/guides/ev-charging-for-fleets/"><h3>EV charging for fleets</h3>
 <p>Depot vs workplace vs destination — what each costs and which grant applies.</p></a>
 <a class="gcard" href="/guides/workplace-charging-scheme/"><h3>Workplace Charging Scheme</h3>
-<p>£350 → £500/socket from 1 Apr 2026, 75% cap, 40-socket limit, ends 31 Mar 2027.</p></a>
+<p>£500/socket since 1 Apr 2026 (was £350), 75% cap, 40-socket limit, ends 31 Mar 2027.</p></a>
 <a class="gcard" href="/guides/ev-infrastructure-grant/"><h3>EV Infrastructure Grant</h3>
-<p>The grant that pays for the expensive groundworks and DNO supply.</p></a>
+<p>Closed to new applicants 31 Mar 2026 — the Depot Charging Scheme is the 2026 replacement.</p></a>
 <a class="gcard" href="/guides/grant-deadlines/"><h3>Grant deadlines</h3>
 <p>Every live deadline and rate change on one page.</p></a>
+<a class="gcard" href="/tools/uk-ev-grant-eligibility/"><h3>Grant eligibility wizard</h3>
+<p>Answer 6 quick questions — see which UK 2026 grant(s) you qualify for.</p></a>
+<a class="gcard" href="/tools/ev-charger-cost-calculator/"><h3>Cost &amp; grant calculator</h3>
+<p>Indicative hardware, civils and DNO cost — plus WCS &amp; Depot Charging Scheme — for your project.</p></a>
+</div></div></section>
+
+<section class="sec-l"><div class="wrap">
+<h2 class="sh">Find installers by service</h2>
+<p class="lead">Same OZEV-authorised pool, four buyer lenses — pick the page
+that matches your project type.</p>
+<div class="guidegrid" style="margin-top:24px">
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/services/fleet-charging-installers/"><h3 style="color:var(--ink)">Fleet charging installers</h3>
+<p style="color:var(--mut)">Vans, HGVs, company cars. WCS + Depot Charging Scheme grant routes.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/services/workplace-charging-installers/"><h3 style="color:var(--ink)">Workplace charging installers</h3>
+<p style="color:var(--mut)">Staff and office car parks. Up to £500/socket under the WCS.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/services/depot-rapid-charging-installers/"><h3 style="color:var(--ink)">Depot rapid DC installers</h3>
+<p style="color:var(--mut)">Logistics, bus and coach depots. 70% Depot Charging Scheme funding.</p></a>
+<a class="gcard" style="background:#fff;border-color:var(--bd-l);color:var(--ink)"
+ href="/services/public-car-park-ev-installers/"><h3 style="color:var(--ink)">Public car-park installers</h3>
+<p style="color:var(--mut)">Retail, hospitality, council. Commercial / charging-as-a-service.</p></a>
 </div></div></section>"""
         + footer() + SHORTLIST_JS
         + """<script>
@@ -950,8 +973,11 @@ def page_installer(inst, by_slug, all_inst):
          "Always confirm current status directly before contracting."),
         ("Can I get a grant towards this installation?",
          "Commercial and fleet installs are frequently part-funded by the "
-         "Workplace Charging Scheme (up to £500/socket from 1 April 2026) and "
-         "the EV Infrastructure Grant. The installer applies these for you."),
+         "Workplace Charging Scheme (up to £500/socket, the rate in force since "
+         "1 April 2026) and, for fleet depots, the 2026 Depot Charging Scheme "
+         "(70% of chargepoint + civil costs, up to £1m per organisation). The "
+         "installer applies these for you. The older EV Infrastructure Grant "
+         "for Staff and Fleets closed to new applicants on 31 March 2026."),
         (f"How do I get a quote from {inst['name']}?",
          "Use the “Request a quote” button on this page, or add them to your "
          "shortlist and request quotes from several installers at once."),
@@ -985,8 +1011,10 @@ directly before contracting. <a style="color:var(--green-d)" href="/contact/">Re
 <p>Most commercial and fleet installs are. Run the numbers in the
 <a style="color:var(--green-d)" href="/calculator/">grant + cost calculator</a>, then
 read the <a style="color:var(--green-d)" href="/guides/workplace-charging-scheme/">Workplace
-Charging Scheme</a> and <a style="color:var(--green-d)" href="/guides/ev-infrastructure-grant/">EV
-Infrastructure Grant</a> guides before you commission work.</p>
+Charging Scheme</a> and <a style="color:var(--green-d)" href="/guides/ev-infrastructure-grant/">Depot
+Charging Scheme (which replaced the EV Infrastructure Grant)</a> guides, or run the
+<a style="color:var(--green-d)" href="/tools/uk-ev-grant-eligibility/">grant eligibility wizard</a>,
+before you commission work.</p>
 {faq_html(faqs)}
 </div></section>
 <section class="sec-l"><div class="wrap"><h2 class="sh">Nearest other OZEV installers</h2>
@@ -1121,7 +1149,7 @@ def page_town(slug, t):
          f"{'s' if t['count']!=1 else ''} offering commercial or fleet EV "
          f"charging installation in or around {esc(town)}."),
         (f"Is there a grant for commercial EV charging in {esc(town)}?",
-         "Yes — the Workplace Charging Scheme (up to £500/socket from 1 April "
+         "Yes — the Workplace Charging Scheme (up to £500/socket since 1 April "
          "2026, capped at 75% and 40 sockets per applicant, scheme runs to "
          "31 March 2027) applies UK-wide, including " + esc(town) +
          ". Fleet depots may also qualify for the 2026 Depot Charging Scheme "
@@ -1225,12 +1253,15 @@ def page_calculator():
          "UK price bands. Real cost depends on groundworks, DNO supply and site "
          "specifics — always get itemised quotes from OZEV-authorised installers."),
         ("What is the Workplace Charging Scheme worth?",
-         "Up to £350 per socket until 31 March 2026, rising to up to £500 per "
-         "socket from 1 April 2026, covering up to 75% of total cost, capped at "
-         "40 sockets per applicant. The scheme runs until 31 March 2027."),
+         "Up to £500 per socket since 1 April 2026 (the previous rate was £350 "
+         "per socket up to 31 March 2026), covering up to 75% of total cost, "
+         "capped at 40 sockets per applicant. The scheme runs until 31 March 2027."),
         ("Can I claim more than one grant?",
-         "Yes — the Workplace Charging Scheme and the EV Infrastructure Grant "
-         "are designed to be used together. Your installer applies both."),
+         "The Workplace Charging Scheme covers workplace sockets; the 2026 Depot "
+         "Charging Scheme covers fleet-depot chargepoints and civils. They are "
+         "not generally stacked on the same sockets — a good installer applies "
+         "whichever fits your site type. The older EV Infrastructure Grant for "
+         "Staff and Fleets closed to new applicants on 31 March 2026."),
     ]
     jl = {"@context": "https://schema.org", "@type": "WebApplication",
           "name": "EV charging grant + cost calculator",
@@ -1244,7 +1275,7 @@ def page_calculator():
                                    ("Cost calculator", "/calculator/")]))
     return (
         head("EV Charging Grant + Install Cost Calculator (UK, 2026)",
-             "Free calculator: estimate commercial/fleet EV charger install cost and your Workplace Charging Scheme grant (up to £500/socket from April 2026). Indicative UK ranges.",
+             "Free calculator: estimate commercial/fleet EV charger install cost and your Workplace Charging Scheme grant (up to £500/socket, the rate in force since April 2026). Indicative UK ranges.",
              url, jsonld)
         + navbar()
         + f"""<div class="wrap crumb"><a href="/">Directory</a> › Cost calculator</div>
@@ -1261,7 +1292,7 @@ ranges — get itemised quotes before you commit.</p>
 <div><label for="ct">Charger type</label><select id="ct">
 <option value="fast">Fast AC 7–22 kW (workplace / depot)</option>
 <option value="rapid">Rapid DC 50–100 kW</option>
-<option value="ultra">Ultra-rapid 100 kW+</option></select></div>
+<option value="ultra">Ultra-rapid 150 kW+</option></select></div>
 <div><label for="st">Site type</label><select id="st">
 <option value="wp">Workplace car park</option>
 <option value="depot">Fleet depot</option>
@@ -1272,8 +1303,8 @@ ranges — get itemised quotes before you commit.</p>
 <div class="calc-out" id="out"></div>
 </div>
 <p class="note" style="margin-top:14px">Indicative only — not a quote, not financial
-advice. WCS: up to £350/socket now, £500/socket from 1 Apr 2026, ≤75% of cost, max
-40 sockets, scheme ends 31 Mar 2027. Always confirm on
+advice. WCS: up to £500/socket since 1 Apr 2026 (was £350/socket up to 31 Mar 2026),
+≤75% of cost, max 40 sockets, scheme ends 31 Mar 2027. Always confirm on
 <a style="color:var(--green-d)" href="https://www.gov.uk/government/publications/workplace-charging-scheme-guidance-for-applicants">GOV.UK</a>.</p>
 <div class="cta-row"><a class="btn btn-g" href="/#directory">See OZEV installers who can quote this <span class="arrow">→</span></a>
 <a class="btn btn-d" href="/project-pack/">Turn this into a project pack →</a></div>
@@ -1286,7 +1317,7 @@ gr=document.getElementById('gr'),out=document.getElementById('out');
 try{var sv=JSON.parse(localStorage.getItem('evdir_project'));if(sv){
 if(sv.pc)pc.value=sv.pc;if(sv.sk)sk.value=sv.sk;if(sv.ct)ct.value=sv.ct;
 if(sv.st)st.value=sv.st;if(sv.gr!=null)gr.value=sv.gr;}}catch(e){}
-var band={fast:[1200,3000],rapid:[12000,35000],ultra:[35000,80000]};
+var band={fast:[1200,3000],rapid:[14000,35000],ultra:[35000,80000]};
 var civ={wp:[600,2500],depot:[1500,9000],dest:[800,3000]};
 function money(n){return '£'+Math.round(n).toLocaleString('en-GB');}
 function calc(){var n=Math.max(1,Math.min(200,parseInt(sk.value)||1));
@@ -1304,7 +1335,7 @@ out.innerHTML='<div>Estimated install (before grant)</div>'+
 '<div style=\"margin-top:6px\">Estimated net cost</div>'+
 '<div class=big>'+money(nlo)+' – '+money(nhi)+'</div>':
 '<div style=\"margin-top:10px\" class=muted>No WCS applied. Eligible workplaces can claim up to '+rate+'/socket.</div>')+
-'<div style=\"margin-top:12px;font-size:12.5px\" class=muted>Plus possible DNO/grid upgrade (£4,500–£50,000+ for higher-power sites) and £10–£50/charger/month for management software. Indicative only.</div>';
+'<div style=\"margin-top:12px;font-size:12.5px\" class=muted>Plus possible DNO/grid upgrade (a few hundred pounds for a small notification, into £50,000+ for LV reinforcement at higher-power sites) and £10–£50/charger/month for management software. Indicative only.</div>';
 try{localStorage.setItem('evdir_project',JSON.stringify({
 pc:(pc.value||'').trim().toUpperCase(),sk:n,ct:ct.value,st:st.value,gr:gr.value,
 lo:lo,hi:hi,grant:grant,nlo:nlo,nhi:nhi,rate:rate,sock:sock,
@@ -1497,7 +1528,7 @@ installers</a> first — your project pack assembles automatically from this dev
 <ol class="pp-q">
 <li>Itemised fixed quote, or day-rate? What's included/excluded?</li>
 <li>Is the DNO / grid-connection application included, and who manages it?</li>
-<li>Who applies for the Workplace Charging Scheme and EV Infrastructure Grant?</li>
+<li>Who applies for the Workplace Charging Scheme and (if applicable) the Depot Charging Scheme?</li>
 <li>Load management and headroom for future expansion?</li>
 <li>Warranty, SLA and fault response time?</li>
 <li>Back-office/charge-point software cost and contract length?</li>
@@ -1512,7 +1543,7 @@ Built on this device from your calculator inputs and shortlist.</p>
 var ids=window.SL.get(),D=window.__SLD||{};
 if(!P&&!ids.length){document.getElementById('pp-empty').style.display='';
 document.getElementById('pp').style.display='none';return;}
-var ctL={fast:'Fast AC 7–22 kW',rapid:'Rapid DC 50–100 kW',ultra:'Ultra-rapid 100 kW+'};
+var ctL={fast:'Fast AC 7–22 kW',rapid:'Rapid DC 50–100 kW',ultra:'Ultra-rapid 150 kW+'};
 var stL={wp:'Workplace car park',depot:'Fleet depot',dest:'Destination / customer'};
 function m(n){return '£'+Math.round(n).toLocaleString('en-GB');}
 document.getElementById('pp-date').textContent='Prepared '+(new Date().toLocaleDateString('en-GB'))+
@@ -1655,7 +1686,7 @@ load management is cheaper and grant-efficient.</p>
 <p>There are <em>two</em> live grants that matter for commercial work in 2026, and a third that recently closed. Get the names right or your finance team will reject the business case.</p>
 <h3>Workplace Charging Scheme (WCS)</h3>
 <ul>
-<li>Up to <strong>£350/socket</strong> until 31 March 2026; <strong>up to £500/socket</strong> from 1 April 2026 onwards (the rate applies to <em>installations completed on or after</em> 1 April 2026, regardless of voucher date).</li>
+<li><strong>Up to £500/socket</strong> since 1 April 2026 (rate applies to installations completed on or after that date; the previous £350/socket rate applied to completions up to 31 March 2026).</li>
 <li>Capped at <strong>75% of total purchase + installation cost</strong>.</li>
 <li>Maximum <strong>40 sockets per applicant</strong>, across all sites.</li>
 <li>Scheme funded to <strong>31 March 2027</strong> — no confirmed successor.</li>
@@ -1723,10 +1754,12 @@ GUIDES = {
         "desc": "How UK businesses specify, cost and grant-fund depot, workplace and fleet EV charging — with real price ranges and how to choose an OZEV installer.",
         "faqs": [
             ("How much does commercial EV charging cost?",
-             "Indicatively: fast AC 7–22kW units £1,200–£3,000 each installed for "
-             "basic workplace; rapid 50–100kW DC £12,000–£35,000; ultra-rapid "
-             "100kW+ £35,000–£80,000; plus civils and possible DNO/grid upgrade "
-             "(£4,500–£50,000+ at higher power). Use the calculator for a range."),
+             "Indicatively: fast AC 7–22 kW units £1,200–£3,000 each installed for "
+             "basic workplace; rapid DC 50–100 kW £14,000–£35,000 per unit; "
+             "ultra-rapid 150 kW+ £35,000–£80,000; plus civils (£600–£9,000+) and "
+             "a possible DNO/grid upgrade — a few hundred pounds for a notification "
+             "up to £50,000+ for LV reinforcement at higher power. See the costs "
+             "guide for the worked examples."),
             ("Depot, workplace or destination — what's the difference?",
              "Depot: vehicles return to base, overnight smart-charging with load "
              "balancing is cheapest. Workplace: staff/visitor parking, WCS-eligible. "
@@ -1745,10 +1778,10 @@ applications, not single sockets.</p>
 <h2>Indicative costs (UK, 2026)</h2>
 <table><tr><th>Item</th><th>Typical range</th></tr>
 <tr><td>Fast AC 7–22 kW (per socket, installed, basic workplace)</td><td>£1,200 – £3,000</td></tr>
-<tr><td>Rapid DC 50–100 kW (per unit)</td><td>£12,000 – £35,000</td></tr>
-<tr><td>Ultra-rapid 100 kW+ (per unit)</td><td>£35,000 – £80,000</td></tr>
-<tr><td>Groundworks / civils (per site)</td><td>£600 – £9,000</td></tr>
-<tr><td>DNO / grid supply upgrade</td><td>£4,500 – £50,000+</td></tr>
+<tr><td>Rapid DC 50–100 kW (per unit)</td><td>£14,000 – £35,000</td></tr>
+<tr><td>Ultra-rapid 150 kW+ (per unit)</td><td>£35,000 – £80,000</td></tr>
+<tr><td>Groundworks / civils (per site)</td><td>£600 – £9,000+</td></tr>
+<tr><td>DNO / grid supply upgrade</td><td>A few hundred £ (notification) up to £50,000+ (LV reinforcement); HV new connection can run into six and seven figures</td></tr>
 <tr><td>Charge-point management software</td><td>£10 – £50 / charger / month</td></tr></table>
 <p><a style="color:var(--green-d)" href="/calculator/">Estimate your project →</a>
 Ranges only — itemised quotes always vary by site.</p>
@@ -1763,7 +1796,7 @@ network reliance; the installer's job is the depot survey plus tariff strategy.<
 <ul><li>Have they done a DNO (grid) application for a site this size before?</li>
 <li>Is load management included, or bolted on later at cost?</li>
 <li>Who owns the charge-point management software and data?</li>
-<li>Is the quote OZEV-grant-aware (WCS <em>and</em> Infrastructure Grant applied)?</li></ul>
+<li>Is the quote OZEV-grant-aware (WCS for workplace sockets <em>and/or</em> the 2026 Depot Charging Scheme for fleet-depot chargepoints and civils)?</li></ul>
 <div class="box"><strong>Use the directory:</strong> every installer here is
 OZEV-authorised for commercial work. Shortlist three, get comparable quotes.
 <a style="color:var(--green-d)" href="/#directory">Open the directory →</a></div>
@@ -1771,15 +1804,17 @@ OZEV-authorised for commercial work. Shortlist three, get comparable quotes.
     },
     "workplace-charging-scheme": {
         "title": "The Workplace Charging Scheme (WCS) Explained — 2026",
-        "desc": "OZEV Workplace Charging Scheme: up to £500/socket from 1 April 2026, 75% cap, 40-socket limit, scheme ends 31 March 2027. Eligibility and how to claim.",
+        "desc": "OZEV Workplace Charging Scheme: up to £500/socket since 1 April 2026, 75% cap, 40-socket limit, scheme ends 31 March 2027. Eligibility and how to claim.",
         "faqs": [
             ("How much is the Workplace Charging Scheme worth?",
-             "Up to £350 per socket until 31 March 2026, then up to £500 per "
-             "socket from 1 April 2026 — covering a maximum of 75% of total "
-             "purchase and installation cost, capped at 40 sockets per applicant."),
+             "Up to £500 per socket since 1 April 2026 (the previous rate was "
+             "£350/socket for installations completed up to 31 March 2026) — "
+             "covering a maximum of 75% of total purchase and installation cost, "
+             "capped at 40 sockets per applicant."),
             ("When does the Workplace Charging Scheme end?",
-             "The scheme is currently funded to 31 March 2027. Rates improve on "
-             "1 April 2026, so there is no cost penalty to acting sooner."),
+             "The scheme is currently funded to 31 March 2027 with no confirmed "
+             "successor. Plan for the queue that typically builds ahead of a "
+             "scheme end date."),
             ("Who is eligible for the WCS?",
              "UK-registered businesses, charities and public-sector bodies with "
              "dedicated off-street parking for staff or fleet, where installation "
@@ -1795,14 +1830,15 @@ OZEV-authorised for commercial work. Shortlist three, get comparable quotes.
 <p>The Workplace Charging Scheme is an OZEV voucher that cuts the upfront cost of
 buying and installing EV chargepoint sockets at a place of work. It is claimed
 <em>through an OZEV-authorised installer</em> — you don't receive cash yourself.</p>
-<h2>What it's worth (and the 1 April 2026 change)</h2>
-<table><tr><th></th><th>Until 31 Mar 2026</th><th>From 1 Apr 2026</th></tr>
+<h2>What it's worth (current rate since 1 April 2026)</h2>
+<table><tr><th></th><th>Up to 31 Mar 2026 (historic)</th><th>Since 1 Apr 2026 (current)</th></tr>
 <tr><td>Per socket</td><td>up to £350</td><td>up to £500</td></tr>
 <tr><td>Max % of total cost</td><td>75%</td><td>75%</td></tr>
 <tr><td>Max sockets / applicant</td><td>40</td><td>40</td></tr>
 <tr><td>Scheme end date</td><td colspan="2">31 March 2027</td></tr></table>
-<p>The rate <em>rises</em> in April 2026, so quoting now and scheduling around the
-change can be worth real money. <a style="color:var(--green-d)" href="/calculator/">Model it →</a></p>
+<p>The £500/socket rate has been in force since 1 April 2026 and applies to any
+installation completed on or after that date.
+<a style="color:var(--green-d)" href="/calculator/">Model it →</a></p>
 <h2>Who is eligible</h2>
 <ul><li>UK-registered businesses, charities and public-sector organisations.</li>
 <li>Dedicated off-street parking for staff or fleet (not customer parking).</li>
@@ -1850,7 +1886,7 @@ generous than the old Infrastructure Grant for the depot use case.</p>
 <li><strong>70% funded</strong> on chargepoints and civil costs (trenching,
 cabling, electrical upgrades).</li>
 <li>Capped at <strong>£1 million per organisation</strong> across all sites.</li>
-<li>First application window: <strong>25 March – 30 June 2026</strong>.</li>
+<li>First application window: <strong>25 March – 30 June 2026</strong> (currently open).</li>
 <li>Works must be completed by <strong>31 March 2027</strong>.</li>
 <li>Aimed at fleets adopting zero-emission HGVs, vans and coaches. Doesn't fund
 vehicles or DNO reinforcement.</li>
@@ -1859,7 +1895,7 @@ vehicles or DNO reinforcement.</li>
 <h2>How it stacks with the Workplace Charging Scheme</h2>
 <p>The WCS (which is still very much open — see the
 <a style="color:var(--green-d)" href="/guides/workplace-charging-scheme/">WCS guide</a>)
-covers up to £500/socket from 1 April 2026 for workplace sites. The Depot Charging
+covers up to £500/socket (the rate in force since 1 April 2026) for workplace sites. The Depot Charging
 Scheme is the fleet-depot analogue. A good installer applies whichever scheme fits
 your site type — they are not generally stacked on the same sockets.</p>
 <div class="box">For a worked example showing a 20-van depot project's net cost
@@ -1870,17 +1906,17 @@ EV charger installation costs guide</a>.</div>
     },
     "grant-deadlines": {
         "title": "UK EV Charging Grant Deadlines & Rate Changes (2026–2027)",
-        "desc": "Every live UK EV charging grant deadline and rate change on one page: the 1 April 2026 WCS uplift to £500/socket and the 31 March 2027 scheme end date.",
+        "desc": "Every live UK EV charging grant deadline and rate change on one page: the £500/socket WCS rate in force since 1 April 2026 and the 31 March 2027 scheme end date.",
         "faqs": [
-            ("What is the most important upcoming EV grant date?",
-             "1 April 2026: the Workplace Charging Scheme per-socket contribution "
-             "rises from up to £350 to up to £500. The scheme is funded to "
-             "31 March 2027."),
-            ("Should I wait until April 2026 for the higher rate?",
-             "Not necessarily — the WCS rate applies to installations completed "
-             "on or after 1 April 2026. Apply now, schedule the install for "
-             "April or later, and avoid the queue that builds in Q1 2027 ahead "
-             "of the scheme ending."),
+            ("What is the most important live EV grant date?",
+             "31 March 2027: the Workplace Charging Scheme is currently funded "
+             "only to that date with no confirmed successor. The per-socket "
+             "contribution rose from up to £350 to up to £500 on 1 April 2026."),
+            ("What's the live grant position right now?",
+             "The Workplace Charging Scheme has been at up to £500/socket since "
+             "1 April 2026 (capped at 75% of cost, max 40 sockets per applicant) "
+             "and runs to 31 March 2027. The Depot Charging Scheme launched in "
+             "2026 and is open — first application window 25 March – 30 June 2026."),
             ("What's the most consequential 2026 grant change?",
              "The launch of the Depot Charging Scheme on 25 March 2026 — it "
              "funds 70% of chargepoint and civil costs at fleet depots, up to "
@@ -1894,15 +1930,15 @@ thousands. This tracks the live position.</p>
 <h2>Current position</h2>
 <table><tr><th>Scheme</th><th>Status / key dates</th></tr>
 <tr><td>Workplace Charging Scheme</td><td><strong>OPEN.</strong> Up to £500/socket
-from 1 Apr 2026 (was £350). ≤75% of cost, max 40 sockets per applicant.
+since 1 Apr 2026 (previously £350). ≤75% of cost, max 40 sockets per applicant.
 <strong>Scheme ends 31 Mar 2027.</strong></td></tr>
 <tr><td>Depot Charging Scheme (new, 2026)</td><td><strong>OPEN.</strong> First
-application window 25 Mar – 30 Jun 2026. Funds 70% of chargepoint + civil
-costs (trenching, cabling, electrical upgrades) up to £1m per organisation.
+application window 25 Mar – 30 Jun 2026 (currently open). Funds 70% of chargepoint
++ civil costs (trenching, cabling, electrical upgrades) up to £1m per organisation.
 Works to be completed by 31 Mar 2027.</td></tr>
 <tr><td>EV Infrastructure Grant (Staff &amp; Fleets)</td><td><strong>CLOSED to new
-applications on 31 Mar 2026.</strong> Replaced by the Depot Charging Scheme for
-fleet sites.</td></tr>
+applications on 31 Mar 2026.</strong> Claim deadline for existing vouchers was
+26 May 2026. Replaced by the Depot Charging Scheme for fleet sites.</td></tr>
 <tr><td>Chargepoint grant — flats/landlords</td><td>Open; separate scheme, relevant
 if your fleet includes employee home charging.</td></tr></table>
 <div class="disc">Maintained for general guidance — not financial or legal advice.
@@ -1921,7 +1957,7 @@ before you commit.</div>
             ("What does a commercial EV charger actually cost to install in the UK in 2026?",
              "Installed, per socket: fast AC 7–22 kW around £1,200–£3,000; rapid DC 50–100 kW around £14,000–£35,000; ultra-rapid 150 kW+ around £35,000–£80,000. Site-wide civils add £600–£9,000+ and a DNO grid upgrade can add anywhere from a few hundred pounds to £50,000+ at higher power. Software is £10–£50 per charger per month."),
             ("Is the Workplace Charging Scheme really £500 per socket now?",
-             "Yes — from 1 April 2026 the OZEV WCS pays up to £500 per socket (was £350), capped at 75% of total cost and a maximum of 40 sockets per applicant. The scheme is currently funded only to 31 March 2027."),
+             "Yes — since 1 April 2026 the OZEV WCS has paid up to £500 per socket (up from £350), capped at 75% of total cost and a maximum of 40 sockets per applicant. The scheme is currently funded only to 31 March 2027."),
             ("Is there still a grant for the civils and grid upgrade?",
              "Not as a standalone scheme. The old Staff and Fleets Infrastructure Grant closed to new applications on 31 March 2026. For fleet depots, the new Depot Charging Scheme funds 70% of chargepoints and civil works (trenching, cabling, electrical upgrades) up to £1 million per organisation, with works to be completed by 31 March 2027."),
             ("Why do DNO grid upgrades blow up so many EV projects?",
@@ -1930,12 +1966,410 @@ before you commit.</div>
              "For anything above 6–8 sockets, an OZEV-authorised end-to-end installer is usually cheapest in total cost of ownership. Brokers add a 5–15% margin but can be worth it for multi-site rollouts where you need one contract. Pure DIY (you contract the electrician, the civils firm and the DNO yourself) only makes sense if you have an in-house property team — otherwise the grant claim, G99 paperwork and warranties fall through the cracks."),
             ("What single question separates a good installer from a bad one?",
              "'Have you applied for a DNO upgrade of this size before, and can you show me a recent connection offer letter for a comparable site?' If they hesitate, walk away. Grid is where projects die."),
-            ("Should I wait until April 2026 to install for the higher grant rate?",
-             "If your installation completes on or after 1 April 2026, you get the £500/socket rate regardless of when you applied. So apply now, schedule the install for April or later, and avoid the queue that builds in Q1 2027 ahead of the scheme ending."),
+            ("Is the £500/socket WCS rate already in force?",
+             "Yes. Since 1 April 2026 every completed WCS installation has been claimed at up to £500/socket (capped at 75% of total cost, max 40 sockets per applicant). The scheme is funded only to 31 March 2027, so the practical pressure now is avoiding the queue that builds in Q1 2027 ahead of the scheme ending."),
         ],
         "body": _COSTS_GUIDE_BODY,
     },
 }
+
+
+# ---------------------------------------------------------------- services ----
+# Service-intent landing pages. The OZEV source has no per-installer sub-tag
+# for fleet/workplace/depot/public site type — every authorised installer is
+# tagged simply "Commercial" and/or "Residential". So the eligible pool for
+# all four pages is the same: every OZEV-authorised commercial installer.
+# The intro and FAQs surface that honestly rather than fabricate sub-flags.
+SERVICES = {
+    "fleet-charging-installers": {
+        "h1": "Fleet EV Charging Installers UK",
+        "audience": "fleet operators running vans, HGVs or company cars",
+        "title_tail": "Fleet EV Charging Installers UK",
+        "meta_desc": ("OZEV-authorised UK installers for fleet EV charging — vans, "
+                      "HGVs and company cars. Independent directory of {n} "
+                      "commercial installers, with Workplace Charging Scheme and "
+                      "Depot Charging Scheme grant context."),
+        "intro_html": ("<p>Fleet EV charging is its own discipline. Charging twenty vans overnight "
+                       "is not \"home chargers, twenty times over\" — it is a load-management, "
+                       "supply-sizing and back-office problem. The installer you pick has to think "
+                       "in diversity factors, G99 connection applications and OCPP back-offices, "
+                       "not single sockets.</p>"
+                       "<p>The {n} installers on this page are all <strong>OZEV-authorised for "
+                       "commercial work</strong> on the public GOV.UK list — the same authorisation "
+                       "that covers fleet depot installs. OZEV does not publish a separate \"fleet "
+                       "specialist\" sub-tag, so the right next step is to shortlist three, then "
+                       "ask each for a recent comparable fleet project. The "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/ev-charging-for-fleets/\">EV "
+                       "charging for fleets guide</a> sets out what a credible answer looks like.</p>"
+                       "<h2>Typical fleet charging scope</h2>"
+                       "<ul>"
+                       "<li><strong>Depot AC, 7–22 kW per bay</strong> — overnight charging for vans, "
+                       "cars and light commercial vehicles returning to base. Load management is "
+                       "usually mandatory: 20 × 11 kW is 220 kW of unmanaged peak.</li>"
+                       "<li><strong>Depot DC rapid, 50–150 kW</strong> — for HGVs, coaches and "
+                       "back-to-back van duty cycles. Almost always needs DNO reinforcement.</li>"
+                       "<li><strong>Mixed workplace + fleet sites</strong> — staff and pool cars "
+                       "share infrastructure; load management and tariff strategy separate "
+                       "operating cost from over-spec.</li>"
+                       "</ul>"
+                       "<h2>Grants that apply to fleet projects</h2>"
+                       "<ul>"
+                       "<li><strong>Workplace Charging Scheme (WCS)</strong> — up to £500 per socket "
+                       "(the rate in force since 1 April 2026; was £350), covering up to 75% of "
+                       "cost, capped at 40 sockets per applicant. Scheme funded to 31 March 2027. "
+                       "Eligible for off-street staff/fleet parking. See the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/workplace-charging-scheme/\">WCS "
+                       "guide</a>.</li>"
+                       "<li><strong>Depot Charging Scheme</strong> — new for 2026. Funds 70% of "
+                       "chargepoint and civil costs (trenching, cabling, electrical upgrades) at "
+                       "fleet depots, capped at £1m per organisation. First application window: "
+                       "25 March – 30 June 2026; works to be completed by 31 March 2027. Aimed at "
+                       "zero-emission HGVs, vans and coaches. See the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/ev-infrastructure-grant/\">grant "
+                       "guide</a>.</li>"
+                       "</ul>"
+                       "<h2>Questions to ask every fleet installer</h2>"
+                       "<ul>"
+                       "<li>Have you delivered a fleet depot of this socket count and power before? "
+                       "Show me a redacted recent example.</li>"
+                       "<li>Is dynamic load management baked in, or a paid add-on?</li>"
+                       "<li>Is the G99 (DNO) application included, with a separate budget line for "
+                       "DNO works?</li>"
+                       "<li>Are WCS and (where applicable) the Depot Charging Scheme shown "
+                       "explicitly on your quote?</li>"
+                       "<li>What OCPP back-office and what does it cost beyond year one?</li>"
+                       "</ul>"
+                       "<p>For worked numbers — including a 20-van depot at £83k gross / £39k net "
+                       "after the Depot Charging Scheme — see the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/ev-charger-installation-costs-uk/\">commercial "
+                       "EV charger installation costs</a> guide.</p>"),
+        "faqs": [
+            ("How do I know an installer can actually deliver a fleet depot?",
+             "OZEV authorisation is necessary but not sufficient — it covers commercial work generally, not depot scale specifically. Ask for two redacted recent depot projects of similar socket count and supply level, and ask whether load management is baked in or an add-on."),
+            ("Which grant applies to my fleet site?",
+             "If it is a workplace car park with staff and fleet parking, the Workplace Charging Scheme (up to £500/socket, the rate in force since 1 April 2026) applies. If it is a dedicated fleet depot moving zero-emission HGVs, vans or coaches, the new Depot Charging Scheme is the better fit — 70% of chargepoint and civil costs up to £1m per organisation, first window 25 March – 30 June 2026."),
+            ("Can I stack the WCS with the Depot Charging Scheme?",
+             "Not generally on the same sockets. A good installer applies whichever scheme fits each site type; mixed-use sites are split by use case in the application."),
+            ("How long does a fleet depot installation take?",
+             "On a site with adequate existing supply, 8–14 weeks from order. On a site that needs a DNO reinforcement or new transformer, lead times are 6–18 months end-to-end — the DNO works are the long pole."),
+            ("Do these installers cover the whole UK?",
+             "Most do — OZEV authorisation is national. The directory lists each installer at their registered office postcode, but service radius is wider. Confirm coverage when you ring."),
+        ],
+    },
+    "workplace-charging-installers": {
+        "h1": "Workplace EV Charging Installers UK",
+        "audience": "employers fitting staff car-park EV charging",
+        "title_tail": "Workplace EV Charging Installers UK",
+        "meta_desc": ("OZEV-authorised UK installers for workplace EV charging in "
+                      "staff and office car parks. Independent directory of {n} "
+                      "commercial installers, with Workplace Charging Scheme "
+                      "(up to £500/socket since 1 April 2026) context."),
+        "intro_html": ("<p>Workplace EV charging is the most common commercial install in the UK "
+                       "and the one the Workplace Charging Scheme (WCS) was built for. The {n} "
+                       "installers on this page are all <strong>OZEV-authorised</strong> for "
+                       "commercial work — which is the authorisation required to redeem a WCS "
+                       "voucher on your behalf.</p>"
+                       "<p>OZEV does not sub-tag the public list by site type, so this page is "
+                       "filtered to every commercial OZEV-authorised installer. Shortlist three, "
+                       "give each your voucher reference, and compare quotes with the WCS line "
+                       "shown explicitly.</p>"
+                       "<h2>Typical workplace charging scope</h2>"
+                       "<ul>"
+                       "<li><strong>Fast AC, 7–22 kW per socket</strong> — staff and visitor "
+                       "parking. 22 kW only delivers 22 kW when the supply is three-phase and the "
+                       "vehicle accepts it. Most fleet cars accept 11 kW AC; specifying 22 kW "
+                       "everywhere is usually over-spend.</li>"
+                       "<li><strong>Smart load management</strong> — even a 12-socket workplace "
+                       "can exceed an existing single-phase supply at peak.</li>"
+                       "<li><strong>OCPP-managed back-office</strong> — necessary for RFID access, "
+                       "group billing, salary-sacrifice reconciliation and switching software "
+                       "supplier without ripping the hardware out.</li>"
+                       "</ul>"
+                       "<h2>Workplace Charging Scheme — the headline rules</h2>"
+                       "<ul>"
+                       "<li>Up to <strong>£500 per socket</strong>, the rate in force since "
+                       "1 April 2026 (was £350). The rate applies to installations completed on "
+                       "or after that date, regardless of voucher application date.</li>"
+                       "<li>Capped at <strong>75% of total purchase + installation cost</strong>.</li>"
+                       "<li>Maximum <strong>40 sockets per applicant</strong>, across all sites.</li>"
+                       "<li>Scheme funded to <strong>31 March 2027</strong>; no confirmed successor.</li>"
+                       "<li>Claimed through your OZEV-authorised installer — the discount is "
+                       "applied to your invoice; the grant never touches your bank account.</li>"
+                       "</ul>"
+                       "<p>Full details on the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/workplace-charging-scheme/\">WCS "
+                       "guide</a>, or use the "
+                       "<a style=\"color:var(--green-d)\" href=\"/calculator/\">grant + cost "
+                       "calculator</a> to model your project.</p>"
+                       "<h2>What makes workplace different from depot or public</h2>"
+                       "<p>Workplace sites are staff/visitor parking — not customer parking "
+                       "(public-access retail bays are not WCS-eligible) and not depot bays "
+                       "(which are usually fleet-only and increasingly fit the Depot Charging "
+                       "Scheme instead). The installer's value-add is mostly grant administration "
+                       "plus load management — civils are typically modest because the supply "
+                       "already sits in a meter room a short trench away.</p>"
+                       "<h2>Questions to ask every workplace installer</h2>"
+                       "<ul>"
+                       "<li>Will you redeem the WCS voucher on the quote, with the discount shown "
+                       "as a separate line?</li>"
+                       "<li>Is the quote OCPP-based with no software lock-in if I switch CPMS in "
+                       "year three?</li>"
+                       "<li>What is the load-management strategy, and is it included?</li>"
+                       "<li>What is the warranty period and on-site SLA?</li>"
+                       "</ul>"),
+        "faqs": [
+            ("How much is the Workplace Charging Scheme worth in 2026?",
+             "Up to £350 per socket until 31 March 2026, then up to £500 per socket from 1 April 2026 — covering a maximum of 75% of total purchase and installation cost, capped at 40 sockets per applicant. The scheme is funded to 31 March 2027."),
+            ("Do I have to use an OZEV-authorised installer for the WCS?",
+             "Yes. The voucher is redeemed through an OZEV-authorised installer, who applies the discount to your invoice. Every installer on this page is on the public GOV.UK OZEV authorised list at the most recent refresh."),
+            ("Is customer parking eligible for the WCS?",
+             "No. The WCS is for staff and fleet off-street parking. Public-access bays at retail, hospitality and visitor car parks are not WCS-eligible — they are commercially funded."),
+            ("How long does a workplace install take?",
+             "On an existing three-phase supply, a 12-socket workplace is typically 4–8 weeks from order to commissioning. On a single-phase supply or where load management is being added across an existing distribution board, allow 8–12 weeks."),
+            ("Which kinds of organisations qualify for the WCS?",
+             "UK-registered businesses, charities and public-sector bodies with dedicated off-street parking for staff or fleet, where installation is by an OZEV-authorised installer. You must own the site or have landlord consent."),
+        ],
+    },
+    "depot-rapid-charging-installers": {
+        "h1": "Depot Rapid DC Charging Installers UK",
+        "audience": "logistics, bus and coach depots specifying DC rapid charging",
+        "title_tail": "Depot Rapid DC Charging Installers UK",
+        "meta_desc": ("OZEV-authorised UK installers for depot rapid DC EV charging "
+                      "— logistics, bus, coach and HGV depots. Independent directory "
+                      "of {n} commercial installers, with Depot Charging Scheme "
+                      "(70% funded, up to £1m) context."),
+        "intro_html": ("<p>Depot rapid DC charging is the deep end of commercial EV: 50–150 kW per "
+                       "bay, near-certain DNO reinforcement, transformer-class civils and an "
+                       "operating envelope where uptime <em>is</em> the business. The {n} "
+                       "installers on this page are all <strong>OZEV-authorised for commercial "
+                       "work</strong> — but OZEV does not publish a rapid-DC sub-tag, so ask each "
+                       "shortlisted installer specifically for a recent rapid-DC depot reference "
+                       "of similar power and socket count.</p>"
+                       "<h2>Typical depot rapid scope</h2>"
+                       "<ul>"
+                       "<li><strong>50 kW DC dual-gun units</strong> — minimum for HGV and coach "
+                       "duty cycles where a one-hour turn-around matters. Hardware around "
+                       "£10,000–£24,000 per unit; install £2,000–£5,000; civils £2,000–£6,000.</li>"
+                       "<li><strong>150 kW+ ultra-rapid units</strong> — for back-to-back HGV "
+                       "charging or partner-shared sites. Hardware £30,000–£55,000 per unit; "
+                       "civils and HV switchgear push all-in past £35,000 per unit and frequently "
+                       "to £80,000+.</li>"
+                       "<li><strong>HV connections and transformer compounds</strong> — anything "
+                       "over ~200 kW of installed capacity usually triggers an HV (11 kV) supply, "
+                       "a new transformer pad, switchgear and a metered substation arrangement.</li>"
+                       "</ul>"
+                       "<h2>Grants for depot rapid sites</h2>"
+                       "<ul>"
+                       "<li><strong>Depot Charging Scheme</strong> — 70% of chargepoint and civil "
+                       "costs (trenching, cabling, electrical upgrades) up to £1m per organisation. "
+                       "First application window: 25 March – 30 June 2026. Works to be completed "
+                       "by 31 March 2027. Aimed at fleets adopting zero-emission HGVs, vans and "
+                       "coaches. Does NOT fund the vehicles, and does NOT fund the DNO's own "
+                       "network reinforcement (which Ofgem's 2023 Access SCR rules largely "
+                       "socialise across all users).</li>"
+                       "<li><strong>Workplace Charging Scheme</strong> — applies only to "
+                       "off-street staff/fleet parking sockets, not to public-access DC rapid "
+                       "bays. On a mixed site, the AC workplace sockets can claim WCS and the "
+                       "rapid DC bays sit under the Depot Charging Scheme separately.</li>"
+                       "</ul>"
+                       "<h2>The DNO problem is the project</h2>"
+                       "<p>For depot rapid projects, the DNO connection scope is the single "
+                       "biggest cost and lead-time risk. Under Ofgem's Access SCR rules (April "
+                       "2023), the DNO absorbs the deep network reinforcement cost, but the "
+                       "customer pays for the connection works and the assets up to the meter. "
+                       "A documented case (Fleet News) saw a £640k connection drop to ~£130k "
+                       "under the new rules — but many quotes do not yet reflect this. A "
+                       "credible depot installer scopes the DNO position <em>before</em> "
+                       "quoting hardware.</p>"
+                       "<h2>Questions to ask every depot rapid installer</h2>"
+                       "<ul>"
+                       "<li>Have you commissioned a rapid DC depot of this power level before? "
+                       "Show me a redacted recent connection offer letter for a comparable site.</li>"
+                       "<li>Is the DNO budget estimate in the quote as a separate line, with the "
+                       "assumption stated, or excluded?</li>"
+                       "<li>Are you proposing an Independent Connection Provider (ICP) for the "
+                       "contestable works, and why or why not?</li>"
+                       "<li>Is the Depot Charging Scheme 70% line shown explicitly on the quote?</li>"
+                       "<li>What is the SLA on a faulty rapid unit, and what uptime do you "
+                       "contract to?</li>"
+                       "</ul>"
+                       "<p>For worked depot numbers and the DNO sub-text, see the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/ev-charger-installation-costs-uk/\">commercial "
+                       "EV charger installation costs</a> guide.</p>"),
+        "faqs": [
+            ("What does a depot rapid DC charger cost installed in 2026?",
+             "Per unit, all-in: 50–100 kW dual-gun DC rapid £14,000–£35,000 installed; 150 kW+ ultra-rapid £35,000–£80,000. A DNO supply upgrade adds anywhere from £15,000 at LV to £150,000+ for a new HV connection. Software is £10–£50 per charger per month."),
+            ("What does the Depot Charging Scheme actually fund?",
+             "Chargepoints PLUS the civil works on the customer side of the meter — trenching, cabling, electrical upgrades. 70% of those costs are funded, capped at £1m per organisation. It does NOT fund the vehicles, nor the DNO's own network reinforcement."),
+            ("When does the Depot Charging Scheme open?",
+             "The first application window is 25 March – 30 June 2026. Works to be completed by 31 March 2027. Subsequent windows have been signalled as part of a multi-year programme to 2030."),
+            ("How long does a depot rapid project take end-to-end?",
+             "Typically 6–18 months including the DNO works. The hardware install is the short part (8–12 weeks); the long pole is the DNO connection offer, acceptance, reinforcement and energisation."),
+            ("Are public-access rapid bays at a depot eligible for any grant?",
+             "Not under the Depot Charging Scheme — it is aimed at the fleet's own zero-emission vehicles. Public-access bays at retail or trunk-road sites are commercially funded."),
+        ],
+    },
+    "public-car-park-ev-installers": {
+        "h1": "Public Car Park EV Charging Installers UK",
+        "audience": "retail, hospitality and council operators of public-access car parks",
+        "title_tail": "Public Car Park EV Charging Installers UK",
+        "meta_desc": ("OZEV-authorised UK installers for public car park EV "
+                      "charging — retail, hospitality, council and visitor "
+                      "car parks. Independent directory of {n} commercial "
+                      "installers."),
+        "intro_html": ("<p>Public car-park EV charging is commercial EV's commercial frontier: the "
+                       "sockets are <em>revenue-generating</em>, so the project has to underwrite "
+                       "itself rather than rely on the grant maths that fund workplace and depot "
+                       "installs. The {n} installers on this page are all <strong>OZEV-authorised "
+                       "for commercial work</strong> on the public GOV.UK list — although OZEV does "
+                       "not publish a public-access sub-tag, so the sensible next step is to ask "
+                       "each shortlisted installer for two recent public car-park projects with "
+                       "utilisation data.</p>"
+                       "<h2>Typical public car-park scope</h2>"
+                       "<ul>"
+                       "<li><strong>Destination AC, 7–22 kW</strong> — for retail, hospitality and "
+                       "leisure sites where dwell time is 1–3 hours. Cheaper per socket, but "
+                       "revenue is constrained by the dwell.</li>"
+                       "<li><strong>Rapid DC, 50–100 kW</strong> — for trunk-road and "
+                       "high-turnover retail. Hardware £14,000–£35,000 installed per unit, plus "
+                       "DNO. Throughput is the business model.</li>"
+                       "<li><strong>Ultra-rapid DC, 150 kW+</strong> — for premium sites and "
+                       "forecourt-style hubs. £35,000–£80,000 per unit installed; usually needs HV "
+                       "and a transformer compound.</li>"
+                       "<li><strong>Contactless payment and OCPI roaming</strong> — public-access "
+                       "bays in the UK must accept contactless or open-payment systems under the "
+                       "Public Charge Point Regulations 2023; OCPI roaming lets your bays appear "
+                       "in third-party apps and broadens the revenue catchment.</li>"
+                       "</ul>"
+                       "<h2>Why grants mostly don't apply</h2>"
+                       "<p>The Workplace Charging Scheme requires off-street staff or fleet "
+                       "parking — public visitor parking is explicitly excluded. The Depot "
+                       "Charging Scheme funds depots, not public bays. So most public car-park "
+                       "projects are <strong>commercially funded</strong>: capex, or a "
+                       "charging-as-a-service contract where the operator funds the hardware and "
+                       "shares revenue.</p>"
+                       "<p>That changes the conversation. You are not optimising for \"lowest net "
+                       "capex after grant\" — you are optimising for utilisation, uptime and "
+                       "payment friction. The installer's value-add shifts to siting (where on the "
+                       "site does dwell time and visibility intersect?), payment-and-app "
+                       "integration, and uptime SLA.</p>"
+                       "<h2>Questions to ask every public car-park installer</h2>"
+                       "<ul>"
+                       "<li>Have you commissioned a public car-park site at this throughput "
+                       "before? What utilisation did it hit by month 12?</li>"
+                       "<li>Is the proposal capex or charging-as-a-service? What is the revenue "
+                       "share and term?</li>"
+                       "<li>How are contactless payment and OCPI roaming handled, and at what "
+                       "ongoing cost?</li>"
+                       "<li>What uptime do you contract to, and what is the on-site response SLA "
+                       "for a faulty rapid unit?</li>"
+                       "<li>Who owns the data — me or the back-office provider — and what happens "
+                       "to it if I switch CPMS in year three?</li>"
+                       "</ul>"
+                       "<p>For worked retail numbers and revenue commentary, see the "
+                       "<a style=\"color:var(--green-d)\" href=\"/guides/ev-charger-installation-costs-uk/\">commercial "
+                       "EV charger installation costs</a> guide.</p>"),
+        "faqs": [
+            ("Can I claim the WCS for public car-park bays?",
+             "No. The WCS is restricted to off-street staff and fleet parking. Public-access bays at retail, hospitality and visitor car parks are excluded — they are commercially funded."),
+            ("Is there any grant for public-access rapid DC bays?",
+             "Not as a standalone OZEV scheme in 2026. The Local EV Infrastructure (LEVI) Fund supports council-led on-street and destination charging via local authorities, but it is not a direct grant a private operator applies for. Most retail and hospitality car-park projects are capex or charging-as-a-service."),
+            ("What is the typical payback on a public-access rapid bay?",
+             "At a public price around 79p/kWh, around 40% utilisation, average session 30 kW: gross revenue of roughly £62,000–£80,000 per bay per year before electricity cost. Payback is typically modelled at 3–5 years; tariff differential and uptime drive the spread."),
+            ("Do public bays need to accept contactless payment?",
+             "Yes — the Public Charge Point Regulations 2023 require public-access charge points of 8 kW or above to offer contactless payment or an open payment system, and to publish pricing and 99%+ rapid-charger uptime."),
+            ("Should I buy the hardware or use charging-as-a-service?",
+             "Capex gives you the revenue and the asset, charging-as-a-service gives you no upfront cost and a revenue share. The right answer depends on your cost of capital, your forecast utilisation, and whether EV charging is core to your business or a tenant amenity."),
+        ],
+    },
+}
+
+
+def page_service(slug, spec, installers):
+    """Build a service-intent landing page. The OZEV source has no per-installer
+    sub-tag for fleet/workplace/depot/public, so the eligible pool is every
+    OZEV-authorised commercial installer. The intro surfaces this honestly."""
+    url = f"{BASE_URL}/services/{slug}/"
+    eligible = [i for i in installers if "Commercial" in i.get("services", [])]
+    feat = [i for i in eligible if i.get("featured")]
+    rest = sorted([i for i in eligible if not i.get("featured")],
+                  key=lambda x: x["name"].lower())
+    ordered = feat + rest
+    n = len(ordered)
+    coverage_note = ""
+    if n < 5:
+        coverage_note = ('<p class="note">Coverage growing — the directory '
+                         'rebuilds weekly from the official OZEV list.</p>')
+
+    cards = "".join(card(i) for i in ordered)
+
+    region_counts: dict[str, int] = {}
+    for i in eligible:
+        r = i.get("region")
+        if r and r != "N/A":
+            region_counts[r] = region_counts.get(r, 0) + 1
+    top_regions = sorted(region_counts.items(), key=lambda kv: -kv[1])[:5]
+    region_items = "".join(
+        f'<li><a style="color:var(--green-d)" href="/regions/{slugify(r)}/">'
+        f'{esc(r)}</a> — {c} OZEV-authorised commercial installer'
+        f'{"s" if c != 1 else ""}</li>'
+        for r, c in top_regions)
+    top_regions_html = ""
+    if region_items:
+        top_regions_html = (
+            f'<h2>Top regions for {esc(spec["h1"].lower())}</h2>'
+            f'<ul style="margin:12px 0 0 22px;line-height:1.7">{region_items}</ul>')
+
+    jl_list = {
+        "@context": "https://schema.org", "@type": "ItemList",
+        "name": spec["h1"], "numberOfItems": n,
+        "itemListElement": [
+            {"@type": "ListItem", "position": idx + 1,
+             "url": f"{BASE_URL}/installers/{i['_slug']}/",
+             "name": i["name"]}
+            for idx, i in enumerate(ordered[:100])]}
+    trail = [("Directory", "/"), ("Services", "/#directory"),
+             (spec["h1"], f"/services/{slug}/")]
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl_list)
+              + "</script>" + breadcrumb_jsonld(trail)
+              + faq_jsonld(spec["faqs"]))
+
+    title = f"{spec['title_tail']} — {n} Verified OZEV-Authorised Providers"
+    desc = spec["meta_desc"].format(n=n)
+    intro = spec["intro_html"].format(n=n)
+
+    return (
+        head(title, desc, url, jsonld)
+        + navbar()
+        + f"""<div class="wrap crumb"><a href="/">Directory</a> ›
+<a href="/#directory">Services</a> › {esc(spec['h1'])}</div>
+<section style="padding-top:8px"><div class="wrap">
+<h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">{esc(spec['h1'])}</h1>
+<p class="lead" style="margin-top:14px;max-width:760px">For {esc(spec['audience'])}.
+{n} OZEV-authorised commercial EV charging installers on the official GOV.UK
+list, filtered to those offering commercial work — independent, free, and
+rebuilt weekly.</p>
+<div class="prose" style="max-width:760px">{intro}</div>
+{coverage_note}
+<h2 class="sh" style="margin-top:40px">The installers</h2>
+<p class="note">{n} OZEV-authorised commercial installer{'s' if n != 1 else ''}
+shown. Featured partners are labelled and shown first; nothing else affects
+order.</p>
+<div class="grid">{cards or '<p class=muted>None indexed yet — coverage widens each refresh.</p>'}</div>
+<div class="prose" style="max-width:760px;margin-top:40px">
+{top_regions_html}
+{faq_html(spec['faqs'])}
+</div>
+<div class="cta-row" style="margin-top:22px">
+<a class="btn btn-g" href="/calculator/">Estimate cost + grant</a>
+<a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/#directory">All UK installers</a>
+</div>
+<p class="note" style="margin-top:24px">
+<a style="color:var(--green-d)" href="/">Back to home</a> ·
+<a style="color:var(--green-d)" href="/sitemap.xml">Sitemap</a>
+</p>
+</div></section>""" + footer() + SHORTLIST_JS + "</body></html>"
+    )
 
 
 def page_guide(slug, g):
@@ -1977,11 +2411,507 @@ Affiliate disclosure: links in this section may be partner links. See
     )
 
 
+# ---------------------------------------------- grant eligibility wizard ----
+def page_grant_wizard():
+    """Client-side wizard: 6 questions -> eligibility for UK 2026 charger grants.
+    Pure inline JS, no deps. Matches existing site CSS (.prose / .box / .calc /
+    .btn / .disc) so it inherits the site look without new styles."""
+    url = f"{BASE_URL}/tools/uk-ev-grant-eligibility/"
+    faqs = [
+        ("Which UK EV charger grants does the wizard cover?",
+         "Two live commercial schemes: the Workplace Charging Scheme (WCS) — up "
+         "to £500/socket since 1 April 2026, capped at 75% of cost and 40 sockets "
+         "per applicant, ending 31 March 2027 — and the 2026 Depot Charging Scheme "
+         "— 70% of chargepoint and civil costs at fleet depots, up to £1 million "
+         "per organisation. It also flags that the older EV Infrastructure Grant "
+         "for Staff and Fleets closed to new applicants on 31 March 2026."),
+        ("Is this an official eligibility check?",
+         "No. It is an indicative client-side tool based on the public scheme "
+         "rules as of May 2026. Always confirm current eligibility on GOV.UK and "
+         "with an OZEV-authorised installer before applying."),
+        ("Who is eligible for the Workplace Charging Scheme?",
+         "UK-registered businesses, charities and public-sector bodies with "
+         "dedicated off-street parking for staff or fleet (not public-access "
+         "customer parking), where installation is carried out by an OZEV-"
+         "authorised installer."),
+        ("Who is eligible for the Depot Charging Scheme?",
+         "UK fleet operators installing chargepoints at commercial fleet depots "
+         "for zero-emission vans, HGVs or coaches. It funds chargepoints plus "
+         "civils on the customer side of the meter; it does not fund vehicles "
+         "or DNO network reinforcement."),
+        ("What happened to the EV Infrastructure Grant for Staff and Fleets?",
+         "It closed to new applications on 31 March 2026. The claim deadline "
+         "for existing vouchers was 26 May 2026. For fleet sites, the Depot "
+         "Charging Scheme is the 2026 replacement."),
+    ]
+    jl = {"@context": "https://schema.org", "@type": "WebApplication",
+          "name": "UK EV charger grant eligibility wizard",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web", "url": url,
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl)
+              + "</script>" + faq_jsonld(faqs)
+              + breadcrumb_jsonld([("Directory", "/"),
+                                   ("Tools", "/#directory"),
+                                   ("Grant eligibility wizard",
+                                    "/tools/uk-ev-grant-eligibility/")]))
+    body_html = """
+<div class="wrap crumb"><a href="/">Directory</a> › Tools › Grant eligibility wizard</div>
+<section style="padding-top:8px"><div class="wrap prose">
+<h1>UK EV charger grant eligibility wizard</h1>
+<p class="upd">Indicative client-side tool · current as of May 2026 · runs entirely in your browser</p>
+<p>Answer six short questions to see which UK 2026 EV charging grants you are
+likely to qualify for. Nothing is sent anywhere — the logic runs in your browser.</p>
+
+<div class="calc" id="wiz" style="grid-template-columns:1fr">
+ <div class="full" data-step="1">
+  <label><strong>Q1.</strong> Are you a UK-registered business, charity or public-sector body?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-g btn-sm" type="button" data-a="q1=y">Yes</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q1=n" style="border:1px solid #cfd6df">No</button>
+  </div>
+ </div>
+ <div class="full" data-step="2" style="display:none">
+  <label><strong>Q2.</strong> Do you have off-street parking under your own control (or with landlord consent)?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-g btn-sm" type="button" data-a="q2=y">Yes</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q2=n" style="border:1px solid #cfd6df">No</button>
+  </div>
+ </div>
+ <div class="full" data-step="3" style="display:none">
+  <label><strong>Q3.</strong> What is the primary use of the parking / chargepoints?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-d btn-sm" type="button" data-a="q3=employee" style="border:1px solid #cfd6df">Employee parking</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q3=fleet" style="border:1px solid #cfd6df">Fleet vehicles</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q3=mixed" style="border:1px solid #cfd6df">Mixed (employee + fleet)</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q3=public" style="border:1px solid #cfd6df">Public / customer access</button>
+  </div>
+ </div>
+ <div class="full" data-step="4" style="display:none">
+  <label><strong>Q4.</strong> How many sockets are you planning to install (across all sites)?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-d btn-sm" type="button" data-a="q4=1-10" style="border:1px solid #cfd6df">1–10</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q4=11-40" style="border:1px solid #cfd6df">11–40</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q4=40+" style="border:1px solid #cfd6df">40+</button>
+  </div>
+ </div>
+ <div class="full" data-step="5" style="display:none">
+  <label><strong>Q5.</strong> Is the site a commercial fleet depot (vans / HGVs / coaches)?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-g btn-sm" type="button" data-a="q5=y">Yes</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q5=n" style="border:1px solid #cfd6df">No</button>
+  </div>
+ </div>
+ <div class="full" data-step="6" style="display:none">
+  <label><strong>Q6.</strong> When are you planning to complete the installation?</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+   <button class="btn btn-d btn-sm" type="button" data-a="q6=now" style="border:1px solid #cfd6df">Now / next few months</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q6=before2027" style="border:1px solid #cfd6df">Before 31 Mar 2027</button>
+   <button class="btn btn-d btn-sm" type="button" data-a="q6=after2027" style="border:1px solid #cfd6df">After 31 Mar 2027</button>
+  </div>
+ </div>
+ <div class="full" id="wiz-results" style="display:none"></div>
+ <div class="full" style="display:flex;gap:10px;flex-wrap:wrap">
+  <button class="btn btn-d" id="wiz-reset" type="button" style="background:#eef2f7;color:#0a0a0a">Start over</button>
+ </div>
+</div>
+
+<div class="disc" style="margin-top:18px">Indicative only — check
+<a style="color:#7a5c00;text-decoration:underline" href="https://www.gov.uk/government/publications/workplace-charging-scheme-guidance-for-applicants">GOV.UK</a>
+before applying.</div>
+
+<div class="cta-row" style="margin-top:18px">
+ <a class="btn btn-g" href="/calculator/">Estimate cost + grant →</a>
+ <a class="btn btn-d" href="/#directory" style="background:#eef2f7;color:#0a0a0a">Browse OZEV installers</a>
+</div>
+
+<h2>How this wizard decides</h2>
+<ul>
+ <li><strong>WCS:</strong> needs UK business/charity/public-sector + off-street parking + non-public use + sockets within the 40/applicant cap + installation completed by 31 Mar 2027.</li>
+ <li><strong>Depot Charging Scheme:</strong> needs a commercial fleet depot (vans/HGVs/coaches) and works completed by 31 Mar 2027. First application window 25 Mar – 30 Jun 2026 is currently open.</li>
+ <li><strong>EV Infrastructure Grant for Staff and Fleets:</strong> closed to new applicants on 31 Mar 2026; flagged for awareness only.</li>
+ <li><strong>Public / customer-access charging</strong> (retail, destination) is not eligible for WCS or the Depot Charging Scheme — it is funded commercially.</li>
+</ul>
+""" + faq_html(faqs) + """
+</div></section>
+"""
+    js = r"""
+<script>
+(function(){
+ var A={};
+ function show(step){
+  document.querySelectorAll('[data-step]').forEach(function(d){d.style.display='none';});
+  var el=document.querySelector('[data-step="'+step+'"]');
+  if(el)el.style.display='';
+ }
+ function render(){
+  var r=document.getElementById('wiz-results');
+  if(!A.q1||!A.q2||!A.q3||!A.q4||!A.q5||!A.q6){r.style.display='none';return;}
+  // Eligibility
+  var ukBody=A.q1==='y';
+  var offStreet=A.q2==='y';
+  var use=A.q3;
+  var nSockets=A.q4;
+  var isDepot=A.q5==='y';
+  var when=A.q6;
+  var cards=[];
+  // WCS
+  var wcs={t:'Workplace Charging Scheme (WCS)',cap:'Up to £500/socket, 75% of cost, max 40 sockets/applicant. Ends 31 Mar 2027.'};
+  if(!ukBody){wcs.s='no';wcs.r='Not a UK business / charity / public-sector body.';}
+  else if(!offStreet){wcs.s='no';wcs.r='Requires dedicated off-street parking under your control.';}
+  else if(use==='public'){wcs.s='no';wcs.r='Public / customer-access bays are not WCS-eligible — only staff or fleet parking.';}
+  else if(when==='after2027'){wcs.s='no';wcs.r='Scheme funding ends 31 Mar 2027 — installations completed after that date cannot claim.';}
+  else if(nSockets==='40+'){wcs.s='likely';wcs.r='Eligible, but capped at 40 sockets per applicant — apply for the first 40, fund the rest separately.';}
+  else {wcs.s='yes';wcs.r='Eligible. Apply for a voucher online; your OZEV-authorised installer deducts it from the invoice.';}
+  cards.push(wcs);
+  // Depot Charging Scheme
+  var dcs={t:'Depot Charging Scheme (2026)',cap:'70% of chargepoint + civil costs, up to £1m per organisation. Works to be completed by 31 Mar 2027.'};
+  if(!ukBody){dcs.s='no';dcs.r='Not a UK business / charity / public-sector body.';}
+  else if(!isDepot){dcs.s='no';dcs.r='Scheme is for commercial fleet depots (vans / HGVs / coaches).';}
+  else if(use==='public'){dcs.s='no';dcs.r='Public / customer-access bays are not eligible.';}
+  else if(when==='after2027'){dcs.s='no';dcs.r='Works must be completed by 31 Mar 2027.';}
+  else {dcs.s='yes';dcs.r='Likely eligible. The first application window (25 Mar – 30 Jun 2026) is currently open — move quickly.';}
+  cards.push(dcs);
+  // Infrastructure Grant (Staff & Fleets) — closed
+  cards.push({t:'EV Infrastructure Grant for Staff and Fleets',
+   cap:'CLOSED to new applications on 31 March 2026.',
+   s:'no',
+   r:'No new applications since 31 March 2026. For fleet sites, see the Depot Charging Scheme above.'});
+
+  var pill=function(s){
+   if(s==='yes')return '<span style="background:#e8f6ee;color:#15803d;border:1px solid #b6e2c4;font-weight:700;font-size:12px;padding:3px 10px;border-radius:9999px">ELIGIBLE</span>';
+   if(s==='likely')return '<span style="background:#fef7e0;color:#7a5c00;border:1px solid #f0d98a;font-weight:700;font-size:12px;padding:3px 10px;border-radius:9999px">LIKELY ELIGIBLE</span>';
+   return '<span style="background:#fbe9e9;color:#7a1a1a;border:1px solid #f0bcbc;font-weight:700;font-size:12px;padding:3px 10px;border-radius:9999px">NOT ELIGIBLE</span>';
+  };
+  var guideLink=function(t){
+   if(t.indexOf('Workplace')===0)return '/guides/workplace-charging-scheme/';
+   if(t.indexOf('Depot')===0)return '/guides/ev-infrastructure-grant/';
+   return '/guides/grant-deadlines/';
+  };
+  var html='<h2 style="margin-top:8px">Your indicative result</h2>';
+  cards.forEach(function(c){
+   html+='<div class="box" style="margin:14px 0"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px">'+
+    pill(c.s)+'<strong>'+c.t+'</strong></div>'+
+    '<p style="margin-bottom:6px"><em>'+c.cap+'</em></p>'+
+    '<p style="margin-bottom:6px">'+c.r+'</p>'+
+    '<p style="margin-bottom:0;font-size:13.5px"><a style="color:var(--green-d)" href="'+guideLink(c.t)+'">Read the '+c.t.split(' (')[0]+' guide →</a></p>'+
+    '</div>';
+  });
+  if(!ukBody){
+   html+='<div class="disc">Because you indicated this is not a UK business, charity or public-sector body, neither of the commercial schemes applies. Domestic chargepoint grants are a separate scheme and not covered here.</div>';
+  }
+  r.innerHTML=html;
+  r.style.display='';
+  r.scrollIntoView({behavior:'smooth',block:'start'});
+ }
+ function next(after){
+  // logic flow
+  if(after==='q1'){if(A.q1!=='y'){render();return;}show(2);return;}
+  if(after==='q2'){show(3);return;}
+  if(after==='q3'){show(4);return;}
+  if(after==='q4'){show(5);return;}
+  if(after==='q5'){show(6);return;}
+  if(after==='q6'){render();return;}
+ }
+ document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-a]');
+  if(!b)return;
+  var p=b.getAttribute('data-a').split('=');
+  A[p[0]]=p[1];
+  // visual mark
+  var step=b.closest('[data-step]');
+  if(step){step.querySelectorAll('[data-a]').forEach(function(x){
+   x.style.opacity=(x===b)?'1':'.55';
+   x.style.outline=(x===b)?'2px solid #15803d':'none';
+  });}
+  next(p[0]);
+ });
+ document.getElementById('wiz-reset').addEventListener('click',function(){
+  A={};document.querySelectorAll('[data-a]').forEach(function(x){x.style.opacity='';x.style.outline='';});
+  document.getElementById('wiz-results').style.display='none';
+  show(1);
+ });
+ show(1);
+})();
+</script>"""
+    return (head("UK EV Charger Grant Eligibility Wizard (2026)",
+                 "Free wizard: in 6 questions, see which UK 2026 EV charger grants you qualify for — Workplace Charging Scheme and/or the new Depot Charging Scheme. Indicative, browser-only.",
+                 url, jsonld)
+            + navbar()
+            + body_html
+            + footer() + SHORTLIST_JS + js + "</body></html>")
+
+
 def page_simple(title, desc, slug, body_html, noindex=False):
     url = f"{BASE_URL}/{slug}/"
     return (head(title, desc, url, "", noindex) + navbar()
             + f'<section style="padding-top:30px"><div class="wrap prose"><h1>{esc(title)}</h1>{body_html}</div></section>'
             + footer() + SHORTLIST_JS + "</body></html>")
+
+
+def page_cost_calculator_tool(installers):
+    """In-depth cost + grant calculator at /tools/ev-charger-cost-calculator/.
+
+    Long-tail SEO + lead-magnet tool. All math is client-side (no backend).
+    Cost bands and grant rules are sourced from guides-new/costs.md and the
+    GOV.UK changes-from-April-2026 page — no fabricated numbers.
+    """
+    url = f"{BASE_URL}/tools/ev-charger-cost-calculator/"
+    from collections import Counter
+    region_counts = Counter(
+        i["region"] for i in installers if i.get("region") not in ("N/A", "", None)
+    )
+    region_data = {
+        r: {"count": region_counts.get(r, 0), "slug": slugify(r)}
+        for r in REGIONS_ORDER
+    }
+    region_opts = "".join(
+        f'<option value="{esc(r)}">{esc(r)} ({region_data[r]["count"]} installers)</option>'
+        for r in REGIONS_ORDER
+    )
+
+    faqs = [
+        ("How much does it cost to install a commercial EV charger in the UK in 2026?",
+         "Installed, per socket: fast AC 7 kW around £1,200–£3,000; 22 kW AC "
+         "around £1,800–£3,500; rapid DC 50 kW around £14,000–£35,000. "
+         "Site-wide civils add £600–£9,000+ and a DNO grid upgrade can add "
+         "anywhere from a few hundred pounds to £50,000+ at higher power. "
+         "Figures are indicative UK 2026 ranges from public sources — confirm "
+         "with itemised installer quotes."),
+        ("Is the Workplace Charging Scheme grant £500 per socket?",
+         "Yes — from 1 April 2026 the OZEV Workplace Charging Scheme pays up "
+         "to £500 per socket (was £350), capped at 75% of total project cost "
+         "and a maximum of 40 sockets per applicant. The scheme is funded "
+         "until 31 March 2027."),
+        ("What is the Depot Charging Scheme worth?",
+         "For eligible fleet depots, the Depot Charging Scheme funds 70% of "
+         "chargepoints and civil works (trenching, cabling, electrical "
+         "upgrades) up to £1 million per organisation. Works must be "
+         "completed by 31 March 2027."),
+        ("Can public car parks claim the Workplace Charging Scheme?",
+         "No. WCS is for off-street parking for staff and fleet vehicles. "
+         "Public-access retail, customer car parks and on-street bays are "
+         "funded commercially or via separate local-authority schemes."),
+        ("Why is the DNO grid upgrade cost so variable?",
+         "A 12-socket workplace on an existing three-phase supply often only "
+         "needs a £400–£1,200 G99 notification. A 20-bay depot needing a "
+         "100 kVA upgrade is typically £15,000–£35,000. Multi-megawatt or "
+         "HV-connected sites run into six and seven figures."),
+    ]
+
+    jl = {"@context": "https://schema.org", "@type": "WebApplication",
+          "name": "EV Charger Installation Cost & Grant Calculator (UK)",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web", "url": url,
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}
+    trail = [("Directory", "/"),
+             ("EV charger cost calculator", "/tools/ev-charger-cost-calculator/")]
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl)
+              + "</script>" + faq_jsonld(faqs)
+              + breadcrumb_jsonld(trail))
+
+    region_json = json.dumps(region_data, ensure_ascii=False)
+
+    tool_css = (
+        ".tool-shell{max-width:980px;margin:0 auto}"
+        ".tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}"
+        ".tool-grid .full{grid-column:1/-1}"
+        ".tool-card{background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;padding:24px}"
+        ".tool-card label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#33404f}"
+        ".tool-card .hint{font-size:12px;color:var(--mut2);margin-top:4px}"
+        ".tool-card input,.tool-card select{width:100%;font:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--bd-l);border-radius:10px;background:#fff;color:var(--ink)}"
+        ".tool-card input:focus,.tool-card select:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.15)}"
+        ".tool-results{background:var(--light);border:1px solid var(--bd-l);border-radius:16px;padding:24px;margin-top:20px}"
+        ".tool-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px dashed var(--bd-l);gap:14px;flex-wrap:wrap}"
+        ".tool-row:last-child{border-bottom:0}"
+        ".tool-row .lbl{font-size:14px;color:#33404f}"
+        ".tool-row .val{font-size:16px;font-weight:700;color:var(--ink);text-align:right}"
+        ".tool-row .val.pos{color:var(--green-d)}"
+        ".tool-row.head{font-size:11.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--mut2);font-weight:700;border-bottom:1px solid var(--bd-l);padding-bottom:6px}"
+        ".tool-net{background:#0e1a12;color:#fff;border-radius:12px;padding:18px 20px;margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}"
+        ".tool-net .nlbl{font-size:13px;color:#9fe6b4;text-transform:uppercase;letter-spacing:.6px;font-weight:600}"
+        ".tool-net .nval{font-size:28px;font-weight:800;letter-spacing:-1px;color:#fff}"
+        ".tool-grants{margin-top:18px}"
+        ".tool-grants .g{background:#fff;border:1px solid var(--bd-l);border-left:4px solid var(--green);border-radius:10px;padding:14px 16px;margin-bottom:10px}"
+        ".tool-grants .g.muted{border-left-color:#cfd6df;opacity:.75}"
+        ".tool-grants .g b{display:block;margin-bottom:3px;font-size:14px}"
+        ".tool-grants .g span{font-size:13px;color:var(--mut)}"
+        ".tool-cta{background:var(--card-l);border:1px solid var(--bd-l);border-radius:16px;padding:22px;margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}"
+        ".tool-cta .ctxt{flex:1;min-width:240px;font-size:15px}"
+        ".tool-cta .ctxt b{color:var(--green-d)}"
+        ".tool-caveat{background:#fff8e6;border:1px solid #f0d98a;color:#7a5c00;font-size:13.5px;padding:14px 16px;border-radius:10px;margin-top:16px;line-height:1.5}"
+        ".tool-sources{font-size:12.5px;color:var(--mut);margin-top:14px;line-height:1.6}"
+        ".tool-sources a{color:var(--green-d)}"
+        "@media(max-width:680px){.tool-grid{grid-template-columns:1fr}.tool-net .nval{font-size:22px}}"
+    )
+
+    body = f"""<div class="wrap crumb"><a href="/">Directory</a> ›
+EV charger cost calculator</div>
+<section style="padding-top:8px"><div class="wrap tool-shell">
+<h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px;margin-bottom:10px">
+EV charger installation cost &amp; grant calculator</h1>
+<p class="lead" style="margin-top:6px">Estimate the all-in cost of a commercial EV
+charging install in the UK and the grants you can claim against it. Pure 2026 public
+data — no quote forms, no email gate. Sourced from the
+<a style="color:var(--green-d)" href="/guides/ev-charger-installation-costs-uk/">commercial
+EV charger installation costs guide</a>.</p>
+
+<div class="tool-card">
+<div class="tool-grid">
+<div>
+<label for="t_sockets">Number of sockets</label>
+<input id="t_sockets" type="number" min="1" max="40" value="6">
+<div class="hint">1–40. The WCS grant caps at 40 sockets per applicant.</div>
+</div>
+<div>
+<label for="t_charger">Charger type</label>
+<select id="t_charger">
+<option value="ac7">7 kW AC (single-phase, workplace standard)</option>
+<option value="ac22">22 kW AC (three-phase fast)</option>
+<option value="dc50">50 kW DC rapid</option>
+</select>
+<div class="hint">22 kW only delivers 22 kW if the supply is three-phase.</div>
+</div>
+<div>
+<label for="t_site">Site type</label>
+<select id="t_site">
+<option value="workplace">Workplace car park</option>
+<option value="depot">Fleet depot</option>
+<option value="public">Public car park (retail / customer)</option>
+<option value="mixed">Mixed-use (staff + visitor)</option>
+</select>
+</div>
+<div>
+<label for="t_dno">DNO grid upgrade likely?</label>
+<select id="t_dno">
+<option value="no">No — existing supply has headroom</option>
+<option value="unsure" selected>Unsure — assume G99 notification only</option>
+<option value="yes">Yes — supply upgrade required</option>
+</select>
+<div class="hint">Beyond a handful of 7 kW sockets, a G99 application is usually needed.</div>
+</div>
+<div class="full">
+<label for="t_region">UK region</label>
+<select id="t_region">{region_opts}</select>
+</div>
+</div>
+</div>
+
+<div class="tool-results" id="t_out" aria-live="polite"></div>
+
+<div class="tool-caveat"><strong>Indicative only — not a quote.</strong>
+Actual cost depends on a site survey: cable run length, surface reinstatement,
+existing supply headroom, DNO connection offer and CPMS choice. Always obtain
+itemised written quotes from OZEV-authorised installers before committing.
+Grant rates verified against
+<a style="color:var(--green-d)" href="https://www.gov.uk/guidance/changes-to-electric-vehicle-chargepoint-grant-schemes-from-1-april-2026">GOV.UK</a>.
+</div>
+
+<div class="tool-sources">
+<strong>Sources:</strong> Cost ranges from our
+<a href="/guides/ev-charger-installation-costs-uk/">2026 commercial EV charger
+installation costs guide</a> (aggregating GOV.UK, OZEV, Checkatrade and
+installer-published rate cards). Workplace Charging Scheme rates: GOV.UK
+guidance for changes from 1 April 2026. Depot Charging Scheme: GOV.UK
+<a href="https://find-government-grants.service.gov.uk/grants/depot-charging-scheme-1">find-government-grants service</a>.
+</div>
+
+<div class="prose" style="margin-top:46px">{faq_html(faqs)}</div>
+
+<p style="margin-top:32px;font-size:14px"><a style="color:var(--green-d)" href="/">← Back to the directory home</a></p>
+</div></section>"""
+
+    js = (
+        "<script>\n(function(){\n var REG="
+        + region_json
+        + ";\n var HW={ac7:[1200,3000],ac22:[1800,3500],dc50:[14000,35000]};\n"
+        " var CIVILS={workplace:[600,2500],depot:[1500,9000],public:[2000,6000],mixed:[1500,5000]};\n"
+        " var DNO_AC={no:[0,0],unsure:[400,1200],yes:[5000,35000]};\n"
+        " var DNO_DC={no:[0,0],unsure:[800,2000],yes:[15000,90000]};\n"
+        " var TODAY=new Date('" + TODAY + "');\n"
+        " var WCS_BUMP=new Date('2026-04-01');\n"
+        " var PER_SOCKET=(TODAY>=WCS_BUMP)?500:350;\n"
+        " var fSockets=document.getElementById('t_sockets');\n"
+        " var fCharger=document.getElementById('t_charger');\n"
+        " var fSite=document.getElementById('t_site');\n"
+        " var fDno=document.getElementById('t_dno');\n"
+        " var fRegion=document.getElementById('t_region');\n"
+        " var out=document.getElementById('t_out');\n"
+        " function money(n){return '\\u00a3'+Math.round(n).toLocaleString('en-GB');}\n"
+        " function range(lo,hi){if(lo===hi)return money(lo);return money(lo)+' \\u2013 '+money(hi);}\n"
+        " function calc(){\n"
+        "  var n=parseInt(fSockets.value,10);if(isNaN(n)||n<1)n=1;if(n>40)n=40;fSockets.value=n;\n"
+        "  var ct=fCharger.value, st=fSite.value, dno=fDno.value, region=fRegion.value;\n"
+        "  var isDC=(ct==='dc50');\n"
+        "  var hw=HW[ct], civ=CIVILS[st];\n"
+        "  var dnoBand=(isDC?DNO_DC:DNO_AC)[dno];\n"
+        "  var hwLo=n*hw[0], hwHi=n*hw[1];\n"
+        "  var civLo=civ[0], civHi=civ[1];\n"
+        "  var dnoLo=dnoBand[0], dnoHi=dnoBand[1];\n"
+        "  var grossLo=hwLo+civLo+dnoLo, grossHi=hwHi+civHi+dnoHi;\n"
+        "  var wcsEligible=!isDC && (st==='workplace'||st==='depot'||st==='mixed');\n"
+        "  var wcsSockets=Math.min(n,40);\n"
+        "  var wcsRaw=wcsEligible ? wcsSockets*PER_SOCKET : 0;\n"
+        "  var wcsLo=wcsEligible ? Math.min(wcsRaw, Math.round(grossLo*0.75)) : 0;\n"
+        "  var wcsHi=wcsEligible ? Math.min(wcsRaw, Math.round(grossHi*0.75)) : 0;\n"
+        "  var depotEligible=(st==='depot');\n"
+        "  var depotBaseLo=hwLo+civLo, depotBaseHi=hwHi+civHi;\n"
+        "  var depotLo=depotEligible ? Math.min(Math.round(depotBaseLo*0.70), 1000000) : 0;\n"
+        "  var depotHi=depotEligible ? Math.min(Math.round(depotBaseHi*0.70), 1000000) : 0;\n"
+        "  var grantLo, grantHi, grantLabel;\n"
+        "  if(depotEligible && depotLo>=wcsLo && depotHi>=wcsHi){\n"
+        "   grantLo=depotLo; grantHi=depotHi; grantLabel='Depot Charging Scheme (70%, \\u00a31m cap)';\n"
+        "  } else if(wcsEligible){\n"
+        "   grantLo=wcsLo; grantHi=wcsHi;\n"
+        "   grantLabel='Workplace Charging Scheme (\\u00a3'+PER_SOCKET+'/socket \\u00d7 '+wcsSockets+', 75% cap)';\n"
+        "  } else { grantLo=0; grantHi=0; grantLabel=null; }\n"
+        "  var netLo=Math.max(0,grossLo-grantLo), netHi=Math.max(0,grossHi-grantHi);\n"
+        "  var grantsHtml='<div class=\"tool-grants\">';\n"
+        "  grantsHtml+='<div class=\"g'+(wcsEligible?'':' muted')+'\"><b>Workplace Charging Scheme \\u2014 '+(wcsEligible?'eligible':'not eligible for this site type')+'</b><span>'+(wcsEligible ? ('Up to \\u00a3'+PER_SOCKET+'/socket \\u00d7 '+wcsSockets+' = '+money(wcsRaw)+', capped at 75% of total cost. Maximum claim against this project: '+range(wcsLo,wcsHi)+'.') : (st==='public' ? 'Public-access car parks aren\\u2019t eligible \\u2014 WCS is for off-street staff and fleet parking.' : (isDC ? 'WCS does not fund rapid DC chargers.' : 'This site type isn\\u2019t eligible.')))+'</span></div>';\n"
+        "  grantsHtml+='<div class=\"g'+(depotEligible?'':' muted')+'\"><b>Depot Charging Scheme \\u2014 '+(depotEligible?'eligible (fleet depot)':'not eligible')+'</b><span>'+(depotEligible ? ('Funds 70% of chargepoints + civil works (trenching, cabling, electrical upgrades) up to \\u00a31 million per organisation. Indicative claim against this project: '+range(depotLo,depotHi)+'.') : 'Only commercial fleet depots qualify \\u2014 not workplaces, retail or mixed-use sites.')+'</span></div>';\n"
+        "  grantsHtml+='</div>';\n"
+        "  var rd=REG[region]||{count:0,slug:''};\n"
+        "  var ctaHtml='';\n"
+        "  if(rd.slug){\n"
+        "   ctaHtml='<div class=\"tool-cta\"><div class=\"ctxt\">See <b>'+rd.count+' OZEV-authorised installers in '+region+'</b> who can quote a project of this size.</div><a class=\"btn btn-g\" href=\"/regions/'+rd.slug+'/\">Open '+region+' directory <span class=\"arrow\">\\u2192</span></a></div>';\n"
+        "  }\n"
+        "  var dnoExtra='';\n"
+        "  if(dno==='unsure'){dnoExtra=' <span style=\"color:var(--mut2);font-size:12.5px\">(G99 notification only \\u2014 confirm with installer)</span>';}\n"
+        "  else if(dno==='yes' && isDC){dnoExtra=' <span style=\"color:var(--mut2);font-size:12.5px\">(connection works; reinforcement socialised under Ofgem Access SCR)</span>';}\n"
+        "  else if(dno==='yes'){dnoExtra=' <span style=\"color:var(--mut2);font-size:12.5px\">(LV connection works; reinforcement socialised under Ofgem Access SCR)</span>';}\n"
+        "  var typeLbl={ac7:'7 kW AC',ac22:'22 kW AC',dc50:'50 kW DC rapid'}[ct];\n"
+        "  var siteLbl={workplace:'workplace',depot:'fleet depot',public:'public car park',mixed:'mixed-use'}[st];\n"
+        "  var html='';\n"
+        "  html+='<div class=\"tool-row head\"><span>Cost line</span><span>Indicative range</span></div>';\n"
+        "  html+='<div class=\"tool-row\"><span class=\"lbl\">Hardware + install \\u2014 '+n+' \\u00d7 '+typeLbl+'</span><span class=\"val\">'+range(hwLo,hwHi)+'</span></div>';\n"
+        "  html+='<div class=\"tool-row\"><span class=\"lbl\">Site civils &amp; groundworks ('+siteLbl+')</span><span class=\"val\">'+range(civLo,civHi)+'</span></div>';\n"
+        "  html+='<div class=\"tool-row\"><span class=\"lbl\">DNO grid works'+dnoExtra+'</span><span class=\"val\">'+range(dnoLo,dnoHi)+'</span></div>';\n"
+        "  html+='<div class=\"tool-row\"><span class=\"lbl\"><strong>Gross project cost (before grant)</strong></span><span class=\"val\"><strong>'+range(grossLo,grossHi)+'</strong></span></div>';\n"
+        "  if(grantLo>0||grantHi>0){html+='<div class=\"tool-row\"><span class=\"lbl\">Grant applied: '+grantLabel+'</span><span class=\"val pos\">\\u2212'+range(grantLo,grantHi)+'</span></div>';}\n"
+        "  html+='<div class=\"tool-net\"><span class=\"nlbl\">Estimated net cost after grants</span><span class=\"nval\">'+range(netLo,netHi)+'</span></div>';\n"
+        "  html+=grantsHtml; html+=ctaHtml;\n"
+        "  out.innerHTML=html;\n"
+        " }\n"
+        " [fSockets,fCharger,fSite,fDno,fRegion].forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc);});\n"
+        " calc();\n"
+        "})();\n"
+        "</script>"
+    )
+
+    return (
+        head("EV Charger Installation Cost & Grant Calculator UK (2026)",
+             "Free UK calculator: estimate commercial EV charger installation cost, "
+             "DNO upgrade, Workplace Charging Scheme grant (£500/socket from April 2026) "
+             "and Depot Charging Scheme. Indicative ranges from 2026 public data.",
+             url, jsonld)
+        + navbar()
+        + f"<style>{tool_css}</style>"
+        + body
+        + footer()
+        + SHORTLIST_JS
+        + js
+        + "</body></html>"
+    )
 
 
 def write(path: Path, content: str) -> None:
@@ -2049,6 +2979,12 @@ def main() -> int:
             "/about/", "/contact/", "/privacy/", "/methodology/"]
     write(DIST / "index.html", page_index(installers))
     write(DIST / "calculator" / "index.html", page_calculator())
+    write(DIST / "tools" / "uk-ev-grant-eligibility" / "index.html",
+          page_grant_wizard())
+    urls.append("/tools/uk-ev-grant-eligibility/")
+    write(DIST / "tools" / "ev-charger-cost-calculator" / "index.html",
+          page_cost_calculator_tool(installers))
+    urls.append("/tools/ev-charger-cost-calculator/")
     write(DIST / "map" / "index.html", page_map())
     write(DIST / "map-data.js", map_data_js(installers))
     write(DIST / "data" / "uk-ev-installer-landscape" / "index.html",
@@ -2079,6 +3015,11 @@ def main() -> int:
     for slug, g in GUIDES.items():
         write(DIST / "guides" / slug / "index.html", page_guide(slug, g))
         urls.append(f"/guides/{slug}/")
+
+    for slug, spec in SERVICES.items():
+        write(DIST / "services" / slug / "index.html",
+              page_service(slug, spec, installers))
+        urls.append(f"/services/{slug}/")
 
     write(DIST / "about" / "index.html", page_simple(
         "About & Affiliate Disclosure",
@@ -2158,6 +3099,7 @@ Removal requests are actioned on the next rebuild, no questions asked.</p>"""
         pr = ("1.0" if u == "/" else
               "0.9" if u in ("/calculator/", "/map/",
                              "/data/uk-ev-installer-landscape/") else
+              "0.85" if u.startswith("/services") else
               "0.8" if u.startswith(("/guides", "/towns")) else "0.6")
         sm.append(f"<url><loc>{BASE_URL}{u}</loc><lastmod>{now}</lastmod>"
                   f"<priority>{pr}</priority></url>")
