@@ -486,6 +486,13 @@ FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
         '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">')
 
+# Cloudflare Web Analytics — privacy-first, no cookies, one tiny beacon. The
+# only third-party script on the site. Token is per-site and PUBLIC.
+CFWA_BEACON = (
+    '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+    'data-cf-beacon=\'{"token": "3e86387c426449cb8de25c0861a97e68"}\'></script>'
+)
+
 # Shared shortlist tray + handlers (localStorage, every page, no backend).
 SHORTLIST_JS = """
 <div class="tray" id="tray"><span id="trayc">0 shortlisted</span>
@@ -549,7 +556,7 @@ def head(title, desc, canonical, jsonld="", noindex=False):
 <link rel="canonical" href="{canonical}">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}">
 <meta property="og:type" content="website"><meta name="robots" content="{robots}">{gsc}
-{FAVICON}{FONT}<style>{CSS}</style>{jsonld}</head><body>"""
+{FAVICON}{FONT}{CFWA_BEACON}<style>{CSS}</style>{jsonld}</head><body>"""
 
 
 def trust_strip():
