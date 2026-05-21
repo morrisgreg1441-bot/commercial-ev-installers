@@ -199,7 +199,38 @@ def normalize(installers: list[dict]) -> list[dict]:
     return installers
 
 
-# Town grouping (>= TOWN_MIN installers). Returns {townslug: {...}}.
+def _ordinal(n: int) -> str:
+    if 10 <= n % 100 <= 20:
+        suf = "th"
+    else:
+        suf = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suf}"
+
+
+def _safe_mean(items, key):
+    vals = []
+    for i in items:
+        try:
+            vals.append(float(i[key]))
+        except (TypeError, ValueError, KeyError):
+            pass
+    return round(sum(vals) / len(vals), 5) if vals else None
+
+
+def _haversine_mi(lat1, lon1, lat2, lon2):
+    if None in (lat1, lon1, lat2, lon2):
+        return float("inf")
+    r = 3958.7613  # mean Earth radius, miles
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2) ** 2
+         + math.cos(p1) * math.cos(p2) * math.sin(dlon / 2) ** 2)
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+# Town grouping (>= TOWN_MIN installers) + computed enrichment fields.
+# Every value below is derived from data/installers.json; no fabrication.
 def build_towns(installers):
     groups: dict[tuple, list] = {}
     for i in installers:
@@ -218,6 +249,75 @@ def build_towns(installers):
         used[s] = 1
         towns[s] = {"town": t, "region": r,
                     "items": sorted(items, key=lambda x: x["name"].lower())}
+
+    # Pre-compute enrichment fields used by page_town().
+    region_installer_totals: dict[str, int] = {}
+    for i in installers:
+        r = i.get("region")
+        if r and r != "N/A":
+            region_installer_totals[r] = region_installer_totals.get(r, 0) + 1
+    by_region: dict[str, list] = {}
+    for slug, t in towns.items():
+        by_region.setdefault(t["region"], []).append((slug, len(t["items"])))
+    region_rank = {}
+    for r, lst in by_region.items():
+        lst.sort(key=lambda x: -x[1])
+        for idx, (slug, _) in enumerate(lst, 1):
+            region_rank[slug] = idx
+    national = sorted(towns.items(), key=lambda kv: -len(kv[1]["items"]))
+    nat_rank = {slug: idx for idx, (slug, _) in enumerate(national, 1)}
+    qual_in_region = {r: len(lst) for r, lst in by_region.items()}
+
+    for slug, t in towns.items():
+        items = t["items"]
+        n = len(items)
+        n_res = sum(1 for i in items if "Residential" in i.get("services", []))
+        n_web = sum(1 for i in items
+                    if i.get("website") not in ("N/A", None, ""))
+        pc_areas = {}
+        for i in items:
+            pc = (i.get("postcode") or "").strip()
+            m = re.match(r"^([A-Z]+)", pc.upper())
+            if m:
+                pc_areas[m.group(1)] = pc_areas.get(m.group(1), 0) + 1
+        dom_area = max(pc_areas, key=pc_areas.get) if pc_areas else None
+        rt = region_installer_totals.get(t["region"], n)
+        t.update({
+            "count": n,
+            "n_residential": n_res,
+            "n_commercial_only": n - n_res,
+            "n_with_web": n_web,
+            "pct_residential": n_res / n,
+            "pct_with_web": n_web / n,
+            "region_rank": region_rank[slug],
+            "national_rank": nat_rank[slug],
+            "region_total_installers": rt,
+            "share_of_region": n / max(rt, 1),
+            "qual_towns_in_region": qual_in_region.get(t["region"], 1),
+            "postcode_area": dom_area,
+            "lat_centre": _safe_mean(items, "lat"),
+            "lon_centre": _safe_mean(items, "lon"),
+        })
+
+    # Nearest hubs cross-link (computed AFTER lat_centres are set on every town).
+    for slug, t in towns.items():
+        if t["lat_centre"] is None:
+            t["nearest_hubs"] = []
+            continue
+        cands = []
+        for o_slug, o in towns.items():
+            if o_slug == slug or o["lat_centre"] is None:
+                continue
+            d = _haversine_mi(t["lat_centre"], t["lon_centre"],
+                              o["lat_centre"], o["lon_centre"])
+            if d <= 100:
+                cands.append((d, o_slug, o))
+        cands.sort(key=lambda x: x[0])
+        t["nearest_hubs"] = [
+            {"slug": s, "town": o["town"], "region": o["region"],
+             "count": o["count"], "miles": round(d)}
+            for d, s, o in cands[:3]
+        ]
     return towns
 
 
@@ -930,50 +1030,188 @@ commercial or fleet EV charging installation across {esc(region)}.</p>
     )
 
 
+def _town_intro(t: dict) -> str:
+    """2-3 sentence intro built from data only. No fabrication — if the data
+    says nothing standout, sentence 2 is omitted entirely."""
+    n = t["count"]
+    s1 = (f"{esc(t['town'])} has {n} OZEV-authorised commercial EV installer"
+          f"{'s' if n != 1 else ''}, the {_ordinal(t['region_rank'])}-largest "
+          f"concentration in {esc(t['region'])}")
+    if t["national_rank"] <= 20:
+        s1 += f" and the {_ordinal(t['national_rank'])}-largest in the UK."
+    else:
+        s1 += "."
+
+    s2 = None
+    pct_res, pct_w = t["pct_residential"], t["pct_with_web"]
+    if t["share_of_region"] >= 0.20:
+        s2 = (f"{esc(t['town'])}'s installers account for "
+              f"{round(t['share_of_region']*100)}% of all commercial EV "
+              f"installers in {esc(t['region'])}.")
+    elif pct_res <= 0.25 and n >= 5:
+        s2 = (f"{t['n_commercial_only']} of the {n} list commercial-only work "
+              "— an unusually high share; most UK installers also do residential.")
+    elif pct_res >= 0.85 and n >= 5:
+        s2 = (f"All but {t['n_commercial_only']} also do residential work, "
+              "so most are dual-trade rather than fleet specialists.")
+    elif pct_w <= 0.40 and n >= 5:
+        s2 = (f"Only {t['n_with_web']} of the {n} publish a website — "
+              "expect to contact several by phone.")
+
+    pa = t.get("postcode_area")
+    s3 = (f"All {n} are listed by their registered office address"
+          + (f" in the {pa} postcode area" if pa else "")
+          + "; service radius is usually wider — confirm with each installer.")
+    return " ".join(p for p in (s1, s2, s3) if p)
+
+
+def _town_extra_faqs(t: dict) -> list:
+    """Extra computed FAQs. Always emits the 'nearest hub' question; emits a
+    second standout-specific FAQ only when the data warrants one."""
+    out = []
+    nh = t.get("nearest_hubs") or []
+    if nh:
+        n0 = nh[0]
+        ans = (f"{esc(n0['town'])}, {esc(n0['region'])} — about {n0['miles']} "
+               f"miles away, with {n0['count']} OZEV-authorised commercial "
+               f"installers.")
+        if n0["miles"] > 50:
+            ans += (" Most installers serve a wider radius than their office "
+                    f"postcode suggests, so the {esc(t['town'])} list may "
+                    "still be your best starting point.")
+        out.append((f"What's the nearest other commercial EV installer hub to {esc(t['town'])}?", ans))
+    else:
+        out.append((f"What's the nearest other commercial EV installer hub to {esc(t['town'])}?",
+                    f"There is no other town with three or more listed OZEV "
+                    f"commercial installers within 100 miles of {esc(t['town'])}. "
+                    f"The full {esc(t['region'])} regional list is your "
+                    "next-widest option."))
+
+    n = t["count"]
+    if t["share_of_region"] >= 0.20:
+        out.append((f"Do {esc(t['town'])}'s installers really cover that much of {esc(t['region'])}?",
+                    f"Yes — {round(t['share_of_region']*100)}% of the region's "
+                    f"{t['region_total_installers']} listings have a "
+                    f"{esc(t['town'])} office address. They typically still "
+                    f"travel across {esc(t['region'])}."))
+    elif t["pct_residential"] <= 0.25 and n >= 5:
+        out.append((f"Why are most installers in {esc(t['town'])} commercial-only?",
+                    f"We can't infer the reason from the public OZEV list — only "
+                    f"the labels. {t['n_commercial_only']} of {n} have chosen "
+                    "not to register for residential work, which is unusual."))
+    elif t["pct_with_web"] <= 0.40 and n >= 5:
+        out.append((f"Why do so few {esc(t['town'])} installers have websites?",
+                    "We don't know — many smaller electrical contractors "
+                    f"operate on referrals and phone enquiries. {t['n_with_web']} "
+                    f"of {n} listed installers publish a website."))
+    return out
+
+
 def page_town(slug, t):
     town, region, items = t["town"], t["region"], t["items"]
     url = f"{BASE_URL}/towns/{slug}/"
     cards = "".join(card(i) for i in items)
-    jl = {"@context": "https://schema.org", "@type": "ItemList",
-          "name": f"Commercial EV charger installers in {town}",
-          "numberOfItems": len(items),
-          "itemListElement": [
-              {"@type": "ListItem", "position": n + 1,
-               "url": f"{BASE_URL}/installers/{i['_slug']}/", "name": i["name"]}
-              for n, i in enumerate(items[:100])]}
+
+    intro = _town_intro(t)
+
+    # Generic 3 FAQs + computed extras
+    faqs = [
+        (f"How many OZEV-authorised commercial EV installers are in {esc(town)}?",
+         f"This directory lists {t['count']} OZEV-authorised installer"
+         f"{'s' if t['count']!=1 else ''} offering commercial or fleet EV "
+         f"charging installation in or around {esc(town)}."),
+        (f"Is there a grant for commercial EV charging in {esc(town)}?",
+         "Yes — the Workplace Charging Scheme (up to £500/socket from 1 April "
+         "2026, capped at 75% and 40 sockets per applicant, scheme runs to "
+         "31 March 2027) applies UK-wide, including " + esc(town) +
+         ". Fleet depots may also qualify for the 2026 Depot Charging Scheme "
+         "(70% of chargepoint + civil costs up to £1m per organisation). "
+         "Your installer applies them to your quote."),
+        ("How do I choose between them?",
+         "Shortlist three, then use the “request quotes” flow to ask each for "
+         "a like-for-like quote with grants applied."),
+    ] + _town_extra_faqs(t)
+
+    # JSON-LD: ItemList + Breadcrumb + FAQPage + Place
+    jl_list = {"@context": "https://schema.org", "@type": "ItemList",
+               "name": f"Commercial EV charger installers in {town}",
+               "numberOfItems": len(items),
+               "itemListElement": [
+                   {"@type": "ListItem", "position": n + 1,
+                    "url": f"{BASE_URL}/installers/{i['_slug']}/",
+                    "name": i["name"]} for n, i in enumerate(items[:100])]}
     trail = [("Directory", "/"),
              (region, f"/regions/{slugify(region)}/"),
              (town, f"/towns/{slug}/")]
-    jsonld = ('<script type="application/ld+json">' + json.dumps(jl)
-              + "</script>" + breadcrumb_jsonld(trail))
-    faqs = [
-        (f"How many OZEV-authorised commercial EV installers are in {town}?",
-         f"This directory lists {len(items)} OZEV-authorised installer"
-         f"{'s' if len(items)!=1 else ''} offering commercial or fleet EV "
-         f"charging installation in or around {town}."),
-        (f"Is there a grant for commercial EV charging in {town}?",
-         "Yes — the Workplace Charging Scheme (up to £500/socket from 1 April "
-         "2026) and the EV Infrastructure Grant apply UK-wide, including "
-         f"{town}. Your installer applies them to your quote."),
-        ("How do I choose between them?",
-         "Shortlist three, then use the “request quotes” flow to ask each for "
-         "a like-for-like quote with the grant applied."),
-    ]
+    place_jl = ""
+    if t.get("lat_centre") is not None:
+        place_jl = ('<script type="application/ld+json">' + json.dumps({
+            "@context": "https://schema.org", "@type": "Place",
+            "name": town,
+            "address": {"@type": "PostalAddress",
+                        "addressLocality": town,
+                        "addressRegion": region,
+                        "addressCountry": "GB"},
+            "geo": {"@type": "GeoCoordinates",
+                    "latitude": round(t["lat_centre"], 4),
+                    "longitude": round(t["lon_centre"], 4)},
+        }) + "</script>")
+    jsonld = ('<script type="application/ld+json">' + json.dumps(jl_list)
+              + "</script>" + breadcrumb_jsonld(trail) + faq_jsonld(faqs)
+              + place_jl)
+
+    # Nearest hubs section
+    hubs_html = ""
+    if t.get("nearest_hubs"):
+        rows = "".join(
+            f'<li><a style="color:var(--green-d)" href="/towns/{h["slug"]}/">'
+            f'{esc(h["town"])}</a> — {h["miles"]} mi · {esc(h["region"])} · '
+            f'{h["count"]} installer{"s" if h["count"]!=1 else ""}</li>'
+            for h in t["nearest_hubs"])
+        hubs_html = (f'<h2 style="font-size:22px;font-weight:700;letter-spacing:-.4px;margin-top:34px">'
+                     f'Nearest other commercial EV installer hubs</h2>'
+                     f'<ul style="margin:12px 0 0 22px;line-height:1.7">{rows}</ul>')
+    elif t.get("lat_centre") is not None:
+        hubs_html = ('<p class="muted" style="margin-top:28px;font-size:13.5px">'
+                     'No other town with three or more listed installers within '
+                     '100 miles. The regional list is your next-widest option.</p>')
+
+    # Local context
+    ctx = (f'<h2 style="font-size:22px;font-weight:700;letter-spacing:-.4px;margin-top:34px">'
+           f'Local context</h2><ul style="margin:12px 0 0 22px;line-height:1.7">')
+    if t.get("postcode_area"):
+        ctx += f"<li>Postcode area: {t['postcode_area']}</li>"
+    ctx += (f"<li>{esc(town)}'s share of {esc(region)}: {t['count']} of "
+            f"{t['region_total_installers']} "
+            f"({round(t['share_of_region']*100)}%), ranked "
+            f"{_ordinal(t['region_rank'])} of {t['qual_towns_in_region']} "
+            f"qualifying towns</li>")
+    ctx += "</ul>"
+
+    # Coverage caveat — trust-building disclosure
+    caveat = (f'<div class="box" style="margin-top:32px"><strong>About these '
+              f'addresses.</strong> All {t["count"]} installers above are shown '
+              f'at their <strong>registered office postcode</strong>, which is '
+              f'what OZEV publishes. Most service a wider area — often the '
+              f'whole of {esc(region)} and sometimes nationally. Ring or email '
+              'two or three to confirm they cover your postcode before requesting '
+              'a full quote.</div>')
+
     return (
         head(f"Commercial EV Charger Installers in {town} — OZEV Authorised",
-             f"{len(items)} OZEV-authorised commercial & fleet EV charger installers in {town} ({region}). Compare and request quotes — independent, free.",
-             url, jsonld + faq_jsonld(faqs))
+             f"{t['count']} OZEV-authorised commercial & fleet EV charger installers in {town} ({region}). Compare and request quotes — independent, free.",
+             url, jsonld)
         + navbar()
         + f"""<div class="wrap crumb"><a href="/">Directory</a> ›
 <a href="/regions/{slugify(region)}/">{esc(region)}</a> › {esc(town)}</div>
 <section style="padding-top:8px"><div class="wrap">
 <h1 style="font-size:40px;font-weight:800;letter-spacing:-1.5px">Commercial EV charger installers in {esc(town)}</h1>
-<p class="lead" style="margin-top:14px">{len(items)} OZEV-authorised installer{'s' if len(items)!=1 else ''}
-covering commercial and fleet EV charging in {esc(town)}, {esc(region)}. Shortlist
-and request quotes in one go, or estimate your grant first with the
-<a style="color:var(--green-d)" href="/calculator/">cost calculator</a>.</p>
+<p class="lead" style="margin-top:14px;max-width:760px">{intro}</p>
 <div class="grid">{cards}</div>
-<div class="prose" style="margin-top:40px;max-width:760px">{faq_html(faqs)}</div>
+{caveat}
+<div class="prose" style="margin-top:8px;max-width:760px">{ctx}{hubs_html}{faq_html(faqs)}</div>
+<div class="cta-row" style="margin-top:22px"><a class="btn btn-g" href="/calculator/">Estimate cost + grant</a>
+<a class="btn btn-o" style="border-color:#cfd6df;color:#0a0a0a" href="/#directory">All UK installers</a></div>
 </div></section>""" + footer() + SHORTLIST_JS + "</body></html>"
     )
 
@@ -1302,6 +1540,183 @@ Q['f_'+k]=el.value;localStorage.setItem('evdir_project',JSON.stringify(Q));});})
     )
 
 
+_COSTS_GUIDE_BODY = """
+<h2>Why this page exists</h2>
+<p>Most "commercial EV charger cost" pages on the open web are lead-generation
+copy with prices that haven't been updated since 2022. This one isn't. Every
+figure below is sourced to a public 2026 reference — OZEV, GOV.UK, trade press,
+manufacturer rate cards or installer-published guide prices. If a number looks
+low, it's because we've stripped marketing optimism out. If it looks high,
+it's because the worst-case (deep civils, DNO reinforcement, ultra-rapid
+hardware) is the case that quietly kills projects.</p>
+<p>We've written it for the person who has to sign the PO: fleet manager, FD,
+facilities lead. The aim is that you can take this page into a quote meeting
+and ask better questions than the salesperson is expecting.</p>
+
+<h2>Itemised costs, by charger tier (UK, 2026)</h2>
+<p>Three tiers cover almost every commercial project. Within each tier, what
+moves you to the high end of the range is usually one of three things: distance
+from the existing supply, whether you need an OCPP back-office, and whether
+the DNO has to reinforce upstream of your meter.</p>
+
+<h3>Fast AC, 7–22 kW</h3>
+<table>
+<tr><th>Item</th><th>Typical 2026 range (per socket)</th><th>What pushes you high</th></tr>
+<tr><td>Hardware (untethered, smart, OCPP 1.6J)</td><td>£550 – £1,400</td><td>22 kW three-phase + payment terminal</td></tr>
+<tr><td>Installation labour</td><td>£400 – £900</td><td>Bollards, second-fix, commissioning across multiple bays</td></tr>
+<tr><td>Cabling &amp; minor civils (per socket, shared trench)</td><td>£250 – £700</td><td>Concrete or paved car park vs. soft ground</td></tr>
+<tr><td>All-in installed, basic workplace</td><td><strong>£1,200 – £3,000</strong></td><td>Long cable runs, full reinstatement, three-phase</td></tr>
+</table>
+<p>22 kW only delivers 22 kW if your supply is three-phase and the vehicle
+accepts it. Most fleet cars (e.g. ID.3, Model 3 SR) accept 11 kW AC. Spec
+22 kW only where the duty cycle genuinely needs it — otherwise 7 kW with
+load management is cheaper and grant-efficient.</p>
+
+<h3>Rapid DC, 50–100 kW</h3>
+<table>
+<tr><th>Item</th><th>Typical 2026 range (per unit)</th><th>What pushes you high</th></tr>
+<tr><td>Hardware (dual-gun CCS/CHAdeMO, OCPP, contactless)</td><td>£10,000 – £24,000</td><td>Dual-output, payment terminal, ISO 15118 plug-and-charge</td></tr>
+<tr><td>Installation &amp; commissioning</td><td>£2,000 – £5,000</td><td>Crane lift, kerbside install, traffic management</td></tr>
+<tr><td>Civils &amp; ducting (per unit, shared trench)</td><td>£2,000 – £6,000</td><td>Long run from intake; tarmac reinstatement</td></tr>
+<tr><td>All-in installed, per unit</td><td><strong>£14,000 – £35,000</strong></td><td>New LV supply, off-grid location</td></tr>
+</table>
+
+<h3>Ultra-rapid DC, 150 kW+</h3>
+<table>
+<tr><th>Item</th><th>Typical 2026 range (per unit)</th><th>What pushes you high</th></tr>
+<tr><td>Hardware (150–350 kW, liquid-cooled cables)</td><td>£30,000 – £55,000</td><td>350 kW, dual-gun, energy storage option</td></tr>
+<tr><td>Installation &amp; commissioning</td><td>£3,000 – £8,000</td><td>HV switchgear, transformer placement</td></tr>
+<tr><td>Civils, plinths, transformer compound</td><td>£2,000 – £17,000</td><td>New HV substation on site</td></tr>
+<tr><td>All-in installed, per unit</td><td><strong>£35,000 – £80,000</strong></td><td>New HV connection, rural site</td></tr>
+</table>
+
+<h3>Site-level costs that sit on top</h3>
+<ul>
+<li><strong>Trenching:</strong> roughly £30/m in soft ground, £60–£80/m through paving or tarmac with reinstatement (Checkatrade, 2026). On a 200-bay car park, run-length is the single biggest civils variable.</li>
+<li><strong>DNO grid connection / upgrade:</strong> from a few hundred pounds for a notification on a domestic-scale upgrade to <strong>£50,000+ for an LV reinforcement</strong>, and well into seven figures (£3–5m has been cited) for a full HV connection at a logistics depot. Under Ofgem's Access SCR rules (April 2023) the DNO absorbs deep reinforcement costs — but the customer still pays for the connection works, the assets up to the meter, and any non-contestable supply works.</li>
+<li><strong>Charge-point management software (CPMS / back-office):</strong> £10–£50 per charger per month, depending on whether you need OCPI roaming, RFID/group billing, dynamic load balancing, and fleet telematics integration.</li>
+<li><strong>Maintenance &amp; warranty:</strong> budget 8–12% of hardware cost per year after the warranty period; rapid/ultra-rapid units carry the bigger long-tail bill (contactor wear, liquid-cooling pumps).</li>
+</ul>
+
+<h2>Three worked examples (real UK numbers, 2026)</h2>
+
+<h3>(a) 12-bay workplace car park — mid-sized employer, suburban</h3>
+<p>Twelve 7 kW AC sockets across two banks of six, shared cable trench, three-phase supply already at the meter room, modest groundworks, OCPP-managed.</p>
+<table>
+<tr><th>Line</th><th>£</th></tr>
+<tr><td>Hardware: 12 × 7 kW smart units @ £750</td><td>9,000</td></tr>
+<tr><td>Labour &amp; commissioning</td><td>7,200</td></tr>
+<tr><td>Civils (35 m shared trench, paved)</td><td>2,800</td></tr>
+<tr><td>Bollards, bay markings, signage</td><td>1,500</td></tr>
+<tr><td>Distribution board upgrade</td><td>2,200</td></tr>
+<tr><td>DNO notification (G99, no reinforcement)</td><td>600</td></tr>
+<tr><td>CPMS setup &amp; first year (12 × £20/mo)</td><td>2,880</td></tr>
+<tr><td><strong>Gross total</strong></td><td><strong>£26,180</strong></td></tr>
+<tr><td>WCS grant (12 sockets × £500, capped at 75%)</td><td>-6,000</td></tr>
+<tr><td><strong>Net after grant</strong></td><td><strong>£20,180</strong></td></tr>
+</table>
+<p>Payback is a function of utilisation and tariff strategy: at 4,500 kWh/socket/yr and a 10p/kWh margin vs. cost recovery, the gross margin pool is about £5,400/yr. Most workplaces don't run this as a profit centre — the real ROI is staff retention and salary-sacrifice scheme support.</p>
+
+<h3>(b) Fleet depot — 20 vans, overnight charging</h3>
+<p>20 × 11 kW AC bays, all charging in a 10-hour overnight window. The supply needs to be sized for diversified load (20 × 11 kW = 220 kW peak, but dynamic load balancing brings it down). Assume a 100 kVA LV upgrade is needed.</p>
+<table>
+<tr><th>Line</th><th>£</th></tr>
+<tr><td>Hardware: 20 × 11 kW load-managed units @ £850</td><td>17,000</td></tr>
+<tr><td>Labour &amp; commissioning</td><td>11,500</td></tr>
+<tr><td>Civils (110 m trench, mostly tarmac, reinstatement)</td><td>8,600</td></tr>
+<tr><td>New sub-main, switchgear, LV panel</td><td>14,000</td></tr>
+<tr><td>DNO LV reinforcement &amp; new connection</td><td>22,000</td></tr>
+<tr><td>Dynamic load management + CPMS year 1</td><td>6,400</td></tr>
+<tr><td>Bollards, bays, signage, fencing</td><td>3,500</td></tr>
+<tr><td><strong>Gross total</strong></td><td><strong>£83,000</strong></td></tr>
+<tr><td>Depot Charging Scheme: 70% of eligible chargepoint + civil costs (capped at £1m)</td><td>-44,000</td></tr>
+<tr><td><strong>Net after grant</strong></td><td><strong>£39,000</strong></td></tr>
+</table>
+<p>This is the case where the 2026 <a style="color:var(--green-d)" href="https://find-government-grants.service.gov.uk/grants/depot-charging-scheme-1">Depot Charging Scheme</a> transforms the maths. Before it existed, fleet operators were quoted £80k+ and walked. With 70% of chargepoints and civils funded, the same project lands inside a normal capex envelope.</p>
+
+<h3>(c) Retail park — 4 rapid DC bays, customer-facing</h3>
+<p>4 × 75 kW dual-gun DC rapids, contactless payment, MID-compliant metering, public-facing OCPI back-office. Site has spare 11 kV capacity but needs a new 500 kVA transformer pad.</p>
+<table>
+<tr><th>Line</th><th>£</th></tr>
+<tr><td>Hardware: 4 × 75 kW dual-gun rapids @ £18,500</td><td>74,000</td></tr>
+<tr><td>Installation, commissioning, traffic management</td><td>15,000</td></tr>
+<tr><td>Civils, plinths, ducting, ANPR</td><td>22,000</td></tr>
+<tr><td>HV/LV transformer &amp; switchgear</td><td>48,000</td></tr>
+<tr><td>DNO works (connection + non-contestable)</td><td>35,000</td></tr>
+<tr><td>Back-office, payment, OCPI roaming year 1</td><td>4,800</td></tr>
+<tr><td>Branding, signage, lighting</td><td>6,000</td></tr>
+<tr><td><strong>Gross total</strong></td><td><strong>£204,800</strong></td></tr>
+<tr><td>Grants applicable</td><td>0 (public-access retail not eligible for WCS or Depot Scheme)</td></tr>
+<tr><td><strong>Net</strong></td><td><strong>£204,800</strong></td></tr>
+</table>
+<p>Public retail is funded commercially. Typical revenue at 79p/kWh public price, 40% utilisation across the day at 30 kW average session, gives £62k–£80k gross/year per bay before electricity cost. Payback is usually modelled at 3–5 years; the variables that move it are tariff differential and uptime.</p>
+
+<h2>The grant maths, correctly</h2>
+<p>There are <em>two</em> live grants that matter for commercial work in 2026, and a third that recently closed. Get the names right or your finance team will reject the business case.</p>
+<h3>Workplace Charging Scheme (WCS)</h3>
+<ul>
+<li>Up to <strong>£350/socket</strong> until 31 March 2026; <strong>up to £500/socket</strong> from 1 April 2026 onwards (the rate applies to <em>installations completed on or after</em> 1 April 2026, regardless of voucher date).</li>
+<li>Capped at <strong>75% of total purchase + installation cost</strong>.</li>
+<li>Maximum <strong>40 sockets per applicant</strong>, across all sites.</li>
+<li>Scheme funded to <strong>31 March 2027</strong> — no confirmed successor.</li>
+<li>Claimed <em>through</em> an OZEV-authorised installer, who deducts it from your invoice. It never touches your bank account.</li>
+</ul>
+
+<h3>Depot Charging Scheme (new, 2026)</h3>
+<ul>
+<li>Funds <strong>70% of chargepoint and civil costs</strong> at fleet depots — including <em>trenching, cabling and electrical upgrades</em>.</li>
+<li>Capped at <strong>£1 million per organisation</strong> across all sites.</li>
+<li>First application window: <strong>25 March – 30 June 2026</strong>. Works to be completed by 31 March 2027.</li>
+<li>Aimed at fleets adopting zero-emission HGVs, vans and coaches. Does <em>not</em> fund the vehicles themselves, nor the DNO's own reinforcement costs.</li>
+</ul>
+
+<h3>What closed on 31 March 2026</h3>
+<p>The <em>Staff &amp; Fleets Infrastructure Grant</em>, the <em>Commercial Landlord Chargepoint Grant</em>, and the <em>Residential Landlord Infrastructure Grant</em> all closed to new applications on 31 March 2026. The claim deadline for existing vouchers was 26 May 2026. If a quote you're reading mentions "EV Infrastructure Grant for Staff and Fleets" as if it's still open — it isn't.</p>
+
+<h2>The DNO supply problem (the one nobody quotes upfront)</h2>
+<p>The Distribution Network Operator for your region (UKPN, SSEN, Northern Powergrid, SP Energy Networks, Electricity North West, or National Grid Electricity Distribution) is the gatekeeper on every project beyond a handful of 7 kW sockets. Three flavours of cost:</p>
+<ul>
+<li><strong>Contestable works</strong> — what a competing Independent Connection Provider (ICP) can do (cable, ducting up to the cut-out). On a real fleet project, you save 15–25% by shopping around.</li>
+<li><strong>Non-contestable works</strong> — only the DNO can do these (jointing, final connection, asset adoption). Take it or leave it.</li>
+<li><strong>Reinforcement</strong> — upgrading the network upstream. Since Ofgem's Access SCR (April 2023), DNOs socialise this cost across all users. Fleet News documented a case where this dropped a £640k project to ~£130k. Many quotes still don't reflect it.</li>
+</ul>
+<p>A 12-socket workplace on existing three-phase often needs only a £400–£1,200 G99. A 20-bay depot at 100 kVA upgrade is typically £15,000–£35,000 in connection works. A 4-bay ultra-rapid retail site with a new transformer is £30,000–£90,000+. Always get the DNO budget estimate before signing for hardware.</p>
+
+<h2>What to ask installers (with the right answers)</h2>
+<ul>
+<li><strong>"Have you applied for a DNO upgrade of this size before? Show me a recent connection offer letter for a comparable site."</strong> Right answer: yes, with two redacted examples.</li>
+<li><strong>"Is the DNO budget estimate in the quote, or excluded?"</strong> Right answer: included as a separate line, with a stated assumption.</li>
+<li><strong>"What does dynamic load management cost as an add-on vs. baked in?"</strong> Right answer: baked in.</li>
+<li><strong>"Who owns the back-office data, and what's the exit clause if I switch CPMS in year 3?"</strong> Right answer: you own the data, hardware is OCPP 1.6J/2.0.1, no lock-in.</li>
+<li><strong>"Are you OZEV-authorised, and are you applying the WCS and (if applicable) Depot Charging Scheme?"</strong> Right answer: yes, with the voucher value or 70% line shown explicitly on the quote.</li>
+<li><strong>"What's the response SLA for a faulty rapid unit, and what's the uptime guarantee?"</strong> Right answer: 4-hour remote diagnosis, 24–48h on-site for rapids, 98%+ contractual uptime.</li>
+<li><strong>"Who carries the G99 paperwork — you or me?"</strong> Right answer: them.</li>
+</ul>
+
+<h2>DIY vs. broker vs. OZEV end-to-end installer</h2>
+<table>
+<tr><th>Route</th><th>When it works</th><th>When it doesn't</th></tr>
+<tr><td><strong>DIY (you contract trades direct)</strong></td><td>You have an in-house property/facilities team and existing relationships with M&amp;E contractors. Single-site, simple supply.</td><td>Multi-site, grant-funded, or anything requiring G99.</td></tr>
+<tr><td><strong>Broker / aggregator</strong></td><td>Multi-site rollouts where you want one contract and one invoice across regions.</td><td>Single sites — you'll pay a 5–15% margin for coordination you didn't need.</td></tr>
+<tr><td><strong>OZEV-authorised end-to-end installer</strong></td><td>Most fleet and workplace projects, 6–40 sockets. They carry the grant claim, G99 paperwork, civils sub-contracts and warranty on one PO.</td><td>Mega-projects (50+ rapid bays, HV) where you need an EPC contractor with HV credentials.</td></tr>
+</table>
+<p>The honest summary: for the vast majority of UK businesses installing between 4 and 40 sockets, an OZEV-authorised end-to-end installer is cheaper in total cost of ownership than DIY <em>and</em> faster than a broker.</p>
+
+<h2>"What should this cost?" — quick decision tree</h2>
+<ul>
+<li><strong>1–6 fast AC sockets, existing supply OK:</strong> £1,500–£3,000/socket installed. WCS covers up to 75%. No DNO drama.</li>
+<li><strong>8–20 fast AC sockets, may need supply upgrade:</strong> £1,800–£4,500/socket. WCS up to £500/socket; G99 application required; £5k–£25k DNO budget on top.</li>
+<li><strong>Fleet depot 10–40 vehicles, overnight AC:</strong> £2,500–£5,500/socket installed including load mgmt. Depot Charging Scheme covers 70% of chargepoints + civils.</li>
+<li><strong>2–6 rapid DC 50–100 kW, off-street commercial:</strong> £15k–£35k/unit installed; DNO works often £15k–£50k on top. WCS not applicable for public-access bays.</li>
+<li><strong>Ultra-rapid 150 kW+, retail or trunk-road:</strong> £40k–£80k/unit; HV connection £30k–£150k+; only viable with strong utilisation forecast.</li>
+</ul>
+
+<div class="box"><strong>Use this guide with the directory.</strong> Every installer listed is OZEV-authorised for commercial work. Shortlist three, ask each the seven questions above, and compare quotes with the WCS and Depot Scheme lines shown explicitly. <a style="color:var(--green-d)" href="/#directory">Open the directory →</a> · <a style="color:var(--green-d)" href="/calculator/">Estimate cost + grant →</a></div>
+
+<div class="disc">Figures collated from public 2026 sources including GOV.UK (Workplace Charging Scheme, Depot Charging Scheme), Ofgem (Access SCR), Fleet News, Motor Transport, Checkatrade, Northern Powergrid guide prices, and installer-published rate cards. Provided for general guidance — not financial advice. Confirm current rates on GOV.UK and obtain itemised written quotes from OZEV-authorised installers before committing.</div>
+"""
+
+
 GUIDES = {
     "ev-charging-for-fleets": {
         "title": "EV Charging for Fleets: The 2026 Buyer's Guide",
@@ -1403,38 +1818,54 @@ quote <em>with the WCS applied</em> so you compare like for like.</div>
 """,
     },
     "ev-infrastructure-grant": {
-        "title": "EV Infrastructure Grant for Staff & Fleets — Explained (2026)",
-        "desc": "The OZEV EV Infrastructure Grant for staff and fleet car parks: what it funds (cabling, groundworks, DNO supply), eligibility, and how it stacks with the WCS.",
+        "title": "EV Infrastructure Grant for Fleets — What Replaced It in 2026",
+        "desc": "The OZEV EV Infrastructure Grant closed to new applications on 31 March 2026. The Depot Charging Scheme replaces it — 70% of chargepoint + civil costs, up to £1m per organisation.",
         "faqs": [
-            ("What does the EV Infrastructure Grant cover?",
-             "The supporting infrastructure — cabling, groundworks, and capacity/"
-             "DNO supply upgrades — needed for current and future chargepoints at "
-             "staff and fleet car parks. It is the grant aimed at the expensive "
-             "civils, not the chargers themselves."),
-            ("Can it be combined with the Workplace Charging Scheme?",
-             "Yes. The Infrastructure Grant is explicitly designed to be used "
-             "alongside the WCS — one funds the groundworks, the other the "
-             "sockets. A good installer applies both."),
+            ("Is the EV Infrastructure Grant still open in 2026?",
+             "No — the Staff & Fleets variant of the EV Infrastructure Grant "
+             "closed to new applications on 31 March 2026. The claim deadline "
+             "for existing vouchers was 26 May 2026."),
+            ("What replaced it?",
+             "The Depot Charging Scheme — funded 70% of chargepoint and civil "
+             "costs at fleet depots, capped at £1 million per organisation. "
+             "First application window: 25 March – 30 June 2026, works to be "
+             "completed by 31 March 2027."),
+            ("What does the Depot Charging Scheme actually fund?",
+             "Chargepoints PLUS the civil works — trenching, cabling, electrical "
+             "upgrades on the customer side of the meter. It does NOT fund the "
+             "vehicles, nor the DNO's own network reinforcement (which since "
+             "Ofgem's 2023 Access SCR reforms the DNO largely absorbs anyway)."),
         ],
         "body": """
-<h2>What it funds</h2>
-<p>The EV Infrastructure Grant helps businesses with the <em>supporting</em>
-infrastructure — cabling, groundworks and capacity upgrades — for current and
-future chargepoints at staff and fleet car parks. It is meant to be used
-alongside the Workplace Charging Scheme, not instead of it.</p>
-<h2>Why it matters</h2>
-<p>On most commercial sites the expensive part isn't the chargers — it's the
-trenching, the new supply and the DNO works. This grant attacks exactly that
-cost, which is why fleet projects that looked unaffordable often aren't once it's
-applied correctly. See the cost table in the
-<a style="color:var(--green-d)" href="/guides/ev-charging-for-fleets/">fleet guide</a>.</p>
-<h2>Eligibility in brief</h2>
-<ul><li>Small-to-medium businesses with eligible staff/fleet parking.</li>
-<li>Work delivered by an OZEV-authorised installer.</li>
-<li>Infrastructure must support a minimum number of sockets/parking bays.</li></ul>
-<div class="box">The installer applies the grant for you. Pick OZEV-authorised
-installers from the <a style="color:var(--green-d)" href="/#directory">directory</a>
-and ask specifically whether they're applying the Infrastructure Grant <em>and</em> WCS.</div>
+<h2>Important update — the grant landscape changed in 2026</h2>
+<p>If a quote you're reading still talks about the "EV Infrastructure Grant for
+Staff and Fleets" as if it's open for new applicants — it isn't. That scheme
+closed to new applications on <strong>31 March 2026</strong>, with the claim
+deadline for existing vouchers on <strong>26 May 2026</strong>.</p>
+<p>The replacement for fleet sites is the <strong>Depot Charging Scheme</strong>,
+launched in 2026 as part of a £170m multi-year programme to 2030. It is more
+generous than the old Infrastructure Grant for the depot use case.</p>
+<h2>Depot Charging Scheme — the headline facts</h2>
+<ul>
+<li><strong>70% funded</strong> on chargepoints and civil costs (trenching,
+cabling, electrical upgrades).</li>
+<li>Capped at <strong>£1 million per organisation</strong> across all sites.</li>
+<li>First application window: <strong>25 March – 30 June 2026</strong>.</li>
+<li>Works must be completed by <strong>31 March 2027</strong>.</li>
+<li>Aimed at fleets adopting zero-emission HGVs, vans and coaches. Doesn't fund
+vehicles or DNO reinforcement.</li>
+</ul>
+<p>Source: <a style="color:var(--green-d)" href="https://find-government-grants.service.gov.uk/grants/depot-charging-scheme-1">GOV.UK — Depot Charging Scheme</a>.</p>
+<h2>How it stacks with the Workplace Charging Scheme</h2>
+<p>The WCS (which is still very much open — see the
+<a style="color:var(--green-d)" href="/guides/workplace-charging-scheme/">WCS guide</a>)
+covers up to £500/socket from 1 April 2026 for workplace sites. The Depot Charging
+Scheme is the fleet-depot analogue. A good installer applies whichever scheme fits
+your site type — they are not generally stacked on the same sockets.</p>
+<div class="box">For a worked example showing a 20-van depot project's net cost
+with the Depot Charging Scheme applied (£83k gross → £39k net), see the
+<a style="color:var(--green-d)" href="/guides/ev-charger-installation-costs-uk/">commercial
+EV charger installation costs guide</a>.</div>
 """,
     },
     "grant-deadlines": {
@@ -1446,9 +1877,15 @@ and ask specifically whether they're applying the Infrastructure Grant <em>and</
              "rises from up to £350 to up to £500. The scheme is funded to "
              "31 March 2027."),
             ("Should I wait until April 2026 for the higher rate?",
-             "Not necessarily — quote now, and your installer can schedule around "
-             "the change. Waiting risks installer capacity and grid lead times; "
-             "the rate change can often be captured without delaying the project."),
+             "Not necessarily — the WCS rate applies to installations completed "
+             "on or after 1 April 2026. Apply now, schedule the install for "
+             "April or later, and avoid the queue that builds in Q1 2027 ahead "
+             "of the scheme ending."),
+            ("What's the most consequential 2026 grant change?",
+             "The launch of the Depot Charging Scheme on 25 March 2026 — it "
+             "funds 70% of chargepoint and civil costs at fleet depots, up to "
+             "£1m per organisation. For depot operators, this is a bigger deal "
+             "than the WCS uplift."),
         ],
         "body": """
 <h2>Why this page exists</h2>
@@ -1456,11 +1893,16 @@ and ask specifically whether they're applying the Infrastructure Grant <em>and</
 thousands. This tracks the live position.</p>
 <h2>Current position</h2>
 <table><tr><th>Scheme</th><th>Status / key dates</th></tr>
-<tr><td>Workplace Charging Scheme</td><td>Open. Up to £350/socket → <strong>up to
-£500/socket from 1 Apr 2026</strong>. ≤75% of cost, max 40 sockets. <strong>Scheme
-ends 31 Mar 2027.</strong></td></tr>
-<tr><td>EV Infrastructure Grant (staff &amp; fleets)</td><td>Open; designed to run
-alongside the WCS for supporting infrastructure.</td></tr>
+<tr><td>Workplace Charging Scheme</td><td><strong>OPEN.</strong> Up to £500/socket
+from 1 Apr 2026 (was £350). ≤75% of cost, max 40 sockets per applicant.
+<strong>Scheme ends 31 Mar 2027.</strong></td></tr>
+<tr><td>Depot Charging Scheme (new, 2026)</td><td><strong>OPEN.</strong> First
+application window 25 Mar – 30 Jun 2026. Funds 70% of chargepoint + civil
+costs (trenching, cabling, electrical upgrades) up to £1m per organisation.
+Works to be completed by 31 Mar 2027.</td></tr>
+<tr><td>EV Infrastructure Grant (Staff &amp; Fleets)</td><td><strong>CLOSED to new
+applications on 31 Mar 2026.</strong> Replaced by the Depot Charging Scheme for
+fleet sites.</td></tr>
 <tr><td>Chargepoint grant — flats/landlords</td><td>Open; separate scheme, relevant
 if your fleet includes employee home charging.</td></tr></table>
 <div class="disc">Maintained for general guidance — not financial or legal advice.
@@ -1471,6 +1913,27 @@ before you commit.</div>
 <a style="color:var(--green-d)" href="/calculator/">Estimate cost + grant →</a> then
 <a style="color:var(--green-d)" href="/#directory">shortlist installers →</a></p>
 """,
+    },
+    "ev-charger-installation-costs-uk": {
+        "title": "Commercial EV Charger Installation Costs UK — The Real 2026 Numbers",
+        "desc": "Itemised UK commercial EV charger installation costs for 2026 — fast AC, rapid DC and ultra-rapid — with worked fleet examples, OZEV grant maths and DNO realities.",
+        "faqs": [
+            ("What does a commercial EV charger actually cost to install in the UK in 2026?",
+             "Installed, per socket: fast AC 7–22 kW around £1,200–£3,000; rapid DC 50–100 kW around £14,000–£35,000; ultra-rapid 150 kW+ around £35,000–£80,000. Site-wide civils add £600–£9,000+ and a DNO grid upgrade can add anywhere from a few hundred pounds to £50,000+ at higher power. Software is £10–£50 per charger per month."),
+            ("Is the Workplace Charging Scheme really £500 per socket now?",
+             "Yes — from 1 April 2026 the OZEV WCS pays up to £500 per socket (was £350), capped at 75% of total cost and a maximum of 40 sockets per applicant. The scheme is currently funded only to 31 March 2027."),
+            ("Is there still a grant for the civils and grid upgrade?",
+             "Not as a standalone scheme. The old Staff and Fleets Infrastructure Grant closed to new applications on 31 March 2026. For fleet depots, the new Depot Charging Scheme funds 70% of chargepoints and civil works (trenching, cabling, electrical upgrades) up to £1 million per organisation, with works to be completed by 31 March 2027."),
+            ("Why do DNO grid upgrades blow up so many EV projects?",
+             "Because they are scoped last and quoted by a monopoly. Anything beyond a handful of 7 kW points usually needs a G99 application and often a transformer or LV reinforcement. Under Ofgem's Access SCR rules (April 2023), DNOs absorb the reinforcement cost, but the customer still pays the connection works and faces 6–18 month lead times. A good installer scopes the DNO position before quoting hardware."),
+            ("Should I go through a broker, an OZEV-authorised installer, or DIY the project?",
+             "For anything above 6–8 sockets, an OZEV-authorised end-to-end installer is usually cheapest in total cost of ownership. Brokers add a 5–15% margin but can be worth it for multi-site rollouts where you need one contract. Pure DIY (you contract the electrician, the civils firm and the DNO yourself) only makes sense if you have an in-house property team — otherwise the grant claim, G99 paperwork and warranties fall through the cracks."),
+            ("What single question separates a good installer from a bad one?",
+             "'Have you applied for a DNO upgrade of this size before, and can you show me a recent connection offer letter for a comparable site?' If they hesitate, walk away. Grid is where projects die."),
+            ("Should I wait until April 2026 to install for the higher grant rate?",
+             "If your installation completes on or after 1 April 2026, you get the £500/socket rate regardless of when you applied. So apply now, schedule the install for April or later, and avoid the queue that builds in Q1 2027 ahead of the scheme ending."),
+        ],
+        "body": _COSTS_GUIDE_BODY,
     },
 }
 
