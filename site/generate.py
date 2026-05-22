@@ -4249,9 +4249,9 @@ def page_featured(installers=None) -> str:
     faqs = [
         ("You're new — do you have any traffic yet?",
          "Honestly, no — not yet. The directory launched in May 2026. The 30-day "
-         "click-based refund exists precisely for this. You pay £99, if you don't "
-         "see 5+ outbound clicks to your listing in 30 days, you get every penny "
-         "back. We track clicks server-side. The founder rate is £99 because of "
+         "money-back guarantee exists precisely for this: you pay £99, and if "
+         "you're not happy in the first 30 days, email me and I'll refund every "
+         "penny — no questions, no forms. The founder rate is £99 because of "
          "this newness; once SEO matures the rate goes to £199 and the refund "
          "offer goes away."),
         ("How does Featured ranking work?",
@@ -4275,8 +4275,8 @@ def page_featured(installers=None) -> str:
          "flips you live — those run nightly."),
         ("What if I want to cancel?",
          "Email us. We remove the Featured badge and revert your listing to "
-         "free on the next rebuild. Refunds within 30 days under the click-based "
-         "guarantee above. After 30 days, no refunds — but you keep the slot "
+         "free on the next rebuild. Full refund within 30 days, no questions "
+         "asked. After 30 days, no refunds — but you keep the slot "
          "until your year is up."),
         ("Is this OZEV-affiliated?",
          "No. The directory is built from OZEV's public authorised-installer "
@@ -4347,9 +4347,9 @@ slot in your town before competitors do, at a price that exists once.</p>
 
     risk = """<section class="sec-l"><div class="wrap" style="max-width:820px">
 <div class="box">
-<p><strong>30-day click-based refund</strong> — if your Featured listing doesn't
-receive at least 5 outbound clicks in 30 days, full refund, no forms. We track
-clicks via the link-out and will share the number on request.</p>
+<p><strong>30-day money-back guarantee</strong> — if you're not happy with your
+Featured listing in the first 30 days, email us for a full refund. No questions,
+no forms.</p>
 <p><strong>No auto-renewal</strong> — annual plan, renewal is manual. You decide each year.</p>
 <p><strong>No commission, ever</strong> — leads land in your phone and email. We don't touch the money.</p>
 </div></div></section>"""
@@ -4385,7 +4385,7 @@ Run a trade association? Could you use a directory like this?
         head("Featured Listing — Commercial EV Installer Directory (£99 founder rate)",
              "Pin your OZEV-authorised commercial EV installer company to the top of "
              "town and region pages on the UK's independent OGL-sourced directory. "
-             "£99 for 12 months, founder rate, no subscription, 30-day click-based refund.",
+             "£99 for 12 months, founder rate, no subscription, 30-day money-back guarantee.",
              url, jsonld)
         + navbar()
         + '<div class="wrap crumb"><a href="/">Directory</a> › Featured Listing</div>'
@@ -4411,9 +4411,8 @@ def page_featured_thanks() -> str:
         ("Can I change my listing details later?",
          "Yes, anytime — email us."),
         ("What if I change my mind?",
-         "The 30-day click-based refund still applies — if your Featured "
-         "listing doesn't receive at least 5 outbound clicks in 30 days, "
-         "full refund."),
+         "The 30-day money-back guarantee still applies — email us within 30 "
+         "days and we'll refund you in full, no questions asked."),
     ]
     body = f"""<section style="padding-top:40px"><div class="wrap prose" style="max-width:720px">
 <div class="box" style="text-align:left">

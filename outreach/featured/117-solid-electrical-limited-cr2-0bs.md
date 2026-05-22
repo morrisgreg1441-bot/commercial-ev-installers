@@ -12,7 +12,7 @@ Solid Electrical Limited is one of 203 OZEV-authorised commercial installers we 
 
 I'm opening a Featured slot for Croydon and the South East region page: £99 one-time for 12 months. Founder rate, capped at 25 sales or 30 June 2026, whichever first. Pins you to #1 on the Croydon page, the South East page, and the relevant commercial-service pages, with a FEATURED PARTNER badge.
 
-I'll be straight — the directory launched in May 2026, traffic is still maturing. That's exactly why this rate is £99 and not £199. You're locking position before SEO compounds; if it doesn't compound (no 5+ clicks in 30 days), you get every penny back. I write the refund cheque, not Stripe.
+I'll be straight — the directory launched in May 2026, traffic is still maturing. That's exactly why this rate is £99 and not £199. You're locking position before SEO compounds, and it's risk-free for a month: if you're not happy in the first 30 days, email me and I'll refund every penny — no questions, no forms. I write the refund cheque, not Stripe.
 
 To claim or ask questions: https://commercial-ev-installers.pages.dev/featured/ — or reply to this email.
 
