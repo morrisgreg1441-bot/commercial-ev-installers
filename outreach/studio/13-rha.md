@@ -23,6 +23,5 @@ Thanks,
 Greg Morris
 
 —
-Greg Morris, operator, commercial-ev-installers.pages.dev
-Reply: hello@commercial-ev-installers.pages.dev
-If you'd rather not hear from me again, reply with 'remove' and you're off this list permanently. See our privacy and contact policy here: https://commercial-ev-installers.pages.dev/privacy/
+hello@commercial-ev-installers.pages.dev · commercial-ev-installers.pages.dev
+Prefer not to hear from me? Reply 'remove' and you're off this list for good. Privacy & contact: https://commercial-ev-installers.pages.dev/privacy/
