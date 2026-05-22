@@ -22,7 +22,6 @@ OUT = ROOT / "outreach" / "console.html"
 # Placeholders in the drafts that the console substitutes live, in-browser.
 NAME_PLACEHOLDER = "Greg Morris"
 EMAIL_PLACEHOLDER = "hello@commercial-ev-installers.pages.dev"
-POSTAL_PLACEHOLDER = "{POSTAL ADDRESS}"
 
 
 def parse(md: str) -> dict | None:
@@ -65,7 +64,6 @@ def main() -> int:
     page = HTML.replace("/*DATA*/null/*DATA*/", payload)
     page = page.replace("__NAME_PH__", json.dumps(NAME_PLACEHOLDER))
     page = page.replace("__EMAIL_PH__", json.dumps(EMAIL_PLACEHOLDER))
-    page = page.replace("__POSTAL_PH__", json.dumps(POSTAL_PLACEHOLDER))
     OUT.write_text(page, encoding="utf-8")
     studio = sum(1 for e in emails if e["kind"] == "Trade body")
     inst = sum(1 for e in emails if e["kind"] == "Installer")
@@ -178,10 +176,6 @@ HTML = r"""<!DOCTYPE html>
         <label>Send-from / reply email</label>
         <input id="f-email" placeholder="you@yourdomain.co.uk" autocomplete="email">
       </div>
-      <div class="full">
-        <label>Postal address (PECR requires an identifiable sender)</label>
-        <textarea id="f-postal" placeholder="e.g. 12 Example Street, Town, AB1 2CD, United Kingdom"></textarea>
-      </div>
     </div>
   </div>
 
@@ -209,7 +203,7 @@ HTML = r"""<!DOCTYPE html>
 
 <script>
 const EMAILS = /*DATA*/null/*DATA*/;
-const NAME_PH = __NAME_PH__, EMAIL_PH = __EMAIL_PH__, POSTAL_PH = __POSTAL_PH__;
+const NAME_PH = __NAME_PH__, EMAIL_PH = __EMAIL_PH__;
 const LS = "outreach-console-v1";
 
 function loadState(){ try{ return JSON.parse(localStorage.getItem(LS))||{}; }catch(e){ return {}; } }
@@ -219,10 +213,9 @@ state.fields = state.fields || {};
 state.sent = state.sent || {};
 
 const $ = id => document.getElementById(id);
-const fName=$("f-name"), fEmail=$("f-email"), fPostal=$("f-postal");
+const fName=$("f-name"), fEmail=$("f-email");
 fName.value = state.fields.name || "";
 fEmail.value = state.fields.email || "";
-fPostal.value = state.fields.postal || "";
 
 function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
@@ -232,17 +225,15 @@ function fill(raw){
   let t = raw;
   const name = fName.value.trim();
   const email = fEmail.value.trim();
-  const postal = fPostal.value.trim();
   if(name) t = t.split(NAME_PH).join(name); else missing.push("name");
   if(email) t = t.split(EMAIL_PH).join(email); else missing.push("email");
-  if(postal) t = t.split(POSTAL_PH).join(postal); else missing.push("postal address");
   return {text:t, missing};
 }
 
 // Preview HTML: highlight any still-unfilled placeholder.
 function previewHTML(filled){
   let h = esc(filled);
-  [NAME_PH, EMAIL_PH, POSTAL_PH].forEach(ph=>{
+  [NAME_PH, EMAIL_PH].forEach(ph=>{
     h = h.split(esc(ph)).join('<span class="ph">'+esc(ph)+'</span>');
   });
   return h;
@@ -333,15 +324,14 @@ function checkWarn(){
   const miss = [];
   if(!fName.value.trim()) miss.push("name");
   if(!fEmail.value.trim()) miss.push("reply email");
-  if(!fPostal.value.trim()) miss.push("postal address");
   if(miss.length){
     w.className = "warnbar show";
     w.textContent = "⚠ Fill your " + miss.join(", ") + " above — emails will go out with placeholder text until you do.";
   } else { w.className = "warnbar"; }
 }
 
-[fName, fEmail, fPostal].forEach(el=> el.addEventListener("input", ()=>{
-  state.fields = {name:fName.value, email:fEmail.value, postal:fPostal.value};
+[fName, fEmail].forEach(el=> el.addEventListener("input", ()=>{
+  state.fields = {name:fName.value, email:fEmail.value};
   saveState(state);
   checkWarn(); render();
 }));

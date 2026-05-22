@@ -26,4 +26,3 @@ Greg Morris
 Greg Morris, operator, commercial-ev-installers.pages.dev
 Reply: hello@commercial-ev-installers.pages.dev
 If you'd rather not hear from me again, reply with 'remove' and you're off this list permanently. See our privacy and contact policy here: https://commercial-ev-installers.pages.dev/privacy/
-Postal: {POSTAL ADDRESS}
