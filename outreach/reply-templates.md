@@ -76,6 +76,8 @@ Reply **same day** — speed is the single biggest lever you control.
 ### Break-up (trade body, ~day 10)
 > Hi [Name], I'll assume the timing isn't right and stop emailing — no worries at all. If a directory's ever useful, the example's here: https://commercial-ev-installers.pages.dev. All the best, Greg
 
-### Warm lead gone quiet mid-conversation
-- **+3 days:** "Hi [Name], just bumping this — any questions on the scope? Happy to jump on a quick call."
-- **+7 days:** "Hi [Name], I'll leave it with you rather than keep chasing — drop me a line whenever you're ready."
+### Warm lead gone quiet — +3 days
+> Hi [Name], just bumping this — any questions on the scope? Happy to jump on a quick call. Best, Greg
+
+### Warm lead gone quiet — +7 days
+> Hi [Name], I'll leave it with you rather than keep chasing — drop me a line whenever you're ready. Best, Greg
