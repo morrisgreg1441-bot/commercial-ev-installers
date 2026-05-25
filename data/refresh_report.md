@@ -1,149 +1,34 @@
-# Refresh report — 2026-05-18
+# Refresh report — 2026-05-25
 
 - Postcodes queried: 153
 - Postcodes with results: 148
 - Raw records parsed: 1480
-- Commercial installers (deduplicated): 1132
-- Added since last run: 134
-- Removed since last run: 3
+- Commercial installers (deduplicated): 1134
+- Added since last run: 12
+- Removed since last run: 10
 
 ## Added
-- 1 Call Electrical & Handyman Services
-- 24-7 Energy Services Limited
-- A C Lister
-- A Q Electrics Ltd
-- AC Electrical (North Wales) Ltd
-- AC Electrical and CCTV
-- ACP Electrical Ltd
-- ACT Electrical NW Ltd
-- AG Electrical NI
-- AL Technical
-- AMP Electrical Wales
-- AVU Control
-- Ace Electrics
-- Afan Electrical Ltd
-- All Charge N.I Ltd
-- Ask Mr Jones Electrical Contractors Ltd
-- Barrett Contracts Ltd
-- Bright Electrical Contractors N.W Ltd
-- Brolec Electrical Services Ltd
-- C & C Wales Electrical Solutions Ltd
-- CJM ECS Limited
-- Carter Sustainable Construction Ltd
-- Celtic Process Control Ltd
-- Centre Great Ltd
-- Clement Walker Electrical and Mechanical Solutions
-- Connect Electrical & Energy Services Ltd
-- D M Jones Electrical Gas and Plumbing Limited
-- DB North
-- Design Electrical & Energy Services Limited
-- Development Plus Ltd
-- Domestic Electrical Services Ltd T/A DomElec
-- Dragon Security & Electrical Ltd
-- ECIS ECPS T/A Euro Control Panel Specialists (ECPS) Ltd
-- EFS Systems (UK) Ltd
-- EOM (Electrical Contractors) Limited
-- Efficient Maintenance Limited
-- Electrify Wales Ltd
-- Encom Energy Ltd
-- Energise EV Ltd
-- Eureka North Wales Ltd
-- Everun Ltd
-- FSR Electrical Ltd
-- Feeney Electrical Ltd
-- Finlay Electrical Ltd
-- Flow Electrical Services T/A Flow Electrical Services Wales Ltd
-- Four Shires Electrical Engineering
-- Fox Electrical Installations Ltd
-- Future Renewables
-- G E Services (Lim) Ltd
-- G.R.D Electrical
-- Gary Lewis Electrical Services
-- Gelvin Electrics
-- Green Warmth Ltd
-- Greener Home Heating Ltd
-- Greg Palmer Electrical Services
-- HD Electrical (Bridgend)
-- HJEC Limited
-- HJT Electrical
-- Hannaby & Jones LTD
-- Heywood Electrical
-- Hunter Electrics Ltd
-- Huw Field Electrical Services Ltd
-- IWEC International Ltd t/a IWEC Electrical Services
-- Ian Ellis Electrical Services
-- Ian Jones Electrical Contractors Ltd
-- Inspect & Test Services Ltd
-- J&R Electrical (NI) Ltd t/a Alternative Energy
-- JAS Electrical
-- JJP Services Ltd
-- Jellyfish EV Ltd
-- Jones & Whitehead Ltd
-- KANE Electrical and Renewables Ltd
-- KB Electrical NI LTD
-- Lakeland Electrical Services (NI) Ltd
-- Lighting Solutions (Wales) Ltd t/a Lightning Solutions
-- Luke Electrical
-- Lynn Edwards Electrical Contractors
-- M & E Electrical (NI) Ltd
-- M Winters Electrical Ltd
-- M&M Contractors t/a M&M Contractors EUROPE Ltd
-- Mark Jones Electrical
-- Mike Morgan & Sons Electrical
-- Myhouse MOT Limited
-- N.BROWN ELECTRICAL LTD
-- NW Electrical Installations Ltd
-- Next Services Ltd
-- North Down Electrics Ltd
-- Oleco
-- P & L Electrics Ltd
-- PRUMAC ELECTRICAL
-- Paul Edwards Ymgymerwr Trydannol (Electrical Contractor)
-- Power Solutions Electrical Contractors
-- Process Automations and Calibrations Limited t/a PAC Group
-- Provolt Engineering Services
-- Purdie Electrical
-- R Lyons Electrical Ltd
-- R.E Electrical services
-- RLW Electrical & Solar Limited
-- RR Electrical Services (Wrexham)
-- Range EV Ltd T/A Range
-- Red Flame Electrical Ltd
-- Refresh Property Solutions LTD
-- Renlec Ltd
-- S Copeland Electrics
-- S.H.M Electrical Services (WALES) Ltd
-- SA3 Group Ltd
-- SPH Plumbing and Electrical Ltd
-- SSE Airtricity Energy Services NI Ltd
-- Safesparks Electrical Ltd
-- Sentor Electrical Services Ltd t/a Sentor Electrical Services
-- Serennia Engineering and Design Ltd
-- Seron Electrical Services EV Energiser & Roberts Charging Systems
-- Sheridan M&E Ltd
-- Sonny Vaughan Electrical
-- South Belfast Electrical LTD
-- Sunbeams Electrical Services Ltd
-- Surge
-- Swaffield Electrical Services
-- Switched On Electrical Services
-- TBarton Electrical Ltd
-- TJB Electricals LTD
-- TLPorter Electrical Contractor Ltd
-- Tony Price Builders
-- Trydan Will Davey Electrical & AV
-- Tullyfarm Holdings Ltd T/A Contract Services
-- VRI Electrical Ltd
-- Voltaic Energy Ltd t/a Mr Charger
-- WRB Energy Ltd
-- WTW Electrical
-- Walsh Electrical Services
-- Watts Electrical Engineering Ltd T/A Watts EV Charging
-- West Wales Electrical Contractors
-- Whitehead Building Services Ltd
-- Zone Electrical Ltd
+- Bilton Solutions Ltd
+- Brookvex Security Ltd
+- Browns Electrical Services
+- CCSS Fire & Security Limited
+- Gibson STS Limited
+- LHR Electrical Services Ltd
+- Millivolts Limited
+- NG Bailey Ltd (Engineering Leeds)
+- Sol-Lux Limited T/A Sol-Lux Electrical
+- Solar Sun and Air Limited
+- Swift Charging Limited
+- Take Charge ECO Ltd
 
 ## Removed
-- Millivolts Limited
-- Sol-Lux Limited T/A Sol-Lux Electrical
-- Swift Charging Limited
+- CJM Construction Services
+- ECO Electrical T/A Take Charge
+- Efficient Maintenance Limited
+- Lovett Electrical Installations Limited
+- Noble Electrical Services Ltd
+- RGP Electrical Limited
+- Switched On London Ltd
+- Tawny Electrical And Plumbing
+- The Freedom Group of Companies Limited
+- Woodlands Site Services
