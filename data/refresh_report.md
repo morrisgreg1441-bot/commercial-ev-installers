@@ -1,30 +1,38 @@
-# Refresh report — 2026-07-06
+# Refresh report — 2026-07-13
 
 - Postcodes queried: 153
 - Postcodes with results: 149
 - Raw records parsed: 1490
-- Commercial installers (deduplicated): 1140
-- Added since last run: 8
-- Removed since last run: 10
+- Commercial installers (deduplicated): 1138
+- Added since last run: 12
+- Removed since last run: 14
 
 ## Added
-- 7kw.Energy Ltd
-- CJM Construction Services
-- DPSS Cabling Services Ltd
-- ECO Electrical T/A Take Charge
-- Home Electrics Solutions Ltd
-- Kier Integrated Services Ltd
-- Pegasus Electrical Solutions Ltd T/A Pegasus Electrical Solutions
-- Proper Northern Services Limited T/A Proper Solar
+- Browns Electrical Services
+- Cooper & Cooper Electrical South Limited
+- E Fraser Electrical (Orkney) Ltd
+- Electracheck Services Ltd
+- Groves Electrical Services
+- JGF Electrical & Building Services Ltd
+- NG Bailey Ltd (Engineering Leeds)
+- RGP Electrical Limited
+- Richards Electrical
+- Solo Electrical (South) Ltd
+- TriEX Ltd
+- Wattsup Electrical IOW Ltd
 
 ## Removed
-- Browns Electrical Services
-- Caversham Electrical
-- Critten Electrical
-- Eclectec Ltd
-- MEB Total Ltd
-- RGP Electrical Limited
-- Take Charge ECO Ltd
-- TriEX Ltd
-- Voltaic Energy Ltd t/a Mr Charger
-- Warner Electrical Services Ltd
+- 7kw.Energy Ltd
+- Anko Ltd
+- Bilton Solutions Ltd
+- CJM Construction Services
+- Efficient Maintenance Limited
+- Gibson STS Limited
+- J.D.Singleton Electrical Contractors Ltd
+- L M Electrical Contractors Ltd T/A EVLM
+- Millivolts Limited
+- N G Bailey Facilities Services Limited
+- Parkfield Electrical
+- Pegasus Electrical Solutions Ltd T/A Pegasus Electrical Solutions
+- Qvanta Limited T/A Qvanta
+- St Lawrence Electrical Contractors
