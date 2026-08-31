@@ -1,37 +1,48 @@
-# Refresh report — 2026-08-24
+# Refresh report — 2026-08-31
 
 - Postcodes queried: 153
 - Postcodes with results: 149
 - Raw records parsed: 1490
-- Commercial installers (deduplicated): 1141
-- Added since last run: 13
-- Removed since last run: 12
+- Commercial installers (deduplicated): 1139
+- Added since last run: 17
+- Removed since last run: 19
 
 ## Added
-- A C Lister Electrical LTD
-- AB Electrical LDN Limited
-- Champion Electrics Ltd
-- D&T Electrical Services Limited
-- Encom Energy Ltd
-- Island Facility Services Ltd
-- JRP ELECTRICAL INSTALLATIONS LTD
-- MEB Total Ltd
-- Millivolts Limited
-- Plug (EV Stations) Ltd t/a Plug Charging
-- Swift Charging Limited
-- Woodlands Site Services
-- Zapcharged Limited
-
-## Removed
-- A C Lister
-- Arch Electrical Services (UK) Ltd
+- 81 Tech Ltd
+- Belfast Electrical Services Ltd
 - Bilton Solutions Ltd
 - Blounts Electrical Services Limited
-- Efficient Maintenance Limited
-- I.B. Electrical Services
-- Kier Integrated Services Ltd
+- Browns Electrical Services
+- Clement Walker Electrical and Mechanical Solutions
+- Elecbuild Electrical & Building Services Ltd
+- GSB Electrical Contractors Ltd
+- KLM Services T/A KLM Electrical Supplies Ltd
 - M&M Contractors t/a M&M Contractors EUROPE Ltd
-- MDT Electrical Ltd
+- NG Bailey Ltd (Engineering Leeds)
+- O P Services
 - P & L Electrics Ltd
-- Paul Douglas Electrical Services t/a PDES Ltd
+- P B Proctor Electrical Ltd
+- Parkfield Electrical
 - Prospark Electrical Limited
+- Sol-Lux Limited T/A Sol-Lux Electrical
+
+## Removed
+- 1CDM LTD
+- CJM Construction Services
+- Champion Electrics Ltd
+- Elecbuild Electrical & Building Services
+- Electric and Fire Ltd
+- Encom Energy Ltd
+- FPM Facility Services Ltd
+- Gelvin Electrics
+- Greener Home Heating Ltd
+- Groves Electrical Services
+- J P B Facilities Management Ltd
+- JGF Electrical & Building Services Ltd
+- N G Bailey Facilities Services Limited
+- NH Electricals Ltd
+- Penn-Ultimate Electrical
+- Perth Electrical Ltd t/a Perth Electrical
+- Power Solutions Electrical Contractors
+- Prime Electrical Services
+- South Belfast Electrical LTD
