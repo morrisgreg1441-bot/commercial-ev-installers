@@ -1,0 +1,1922 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - banner [ref=e6]:
+      - generic [ref=e8]:
+        - link "Trustpilot reviews" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img "Trustpilot reviews" [ref=e10]
+        - generic [ref=e14]:
+          - img [ref=e16]
+          - searchbox "Search for another company…" [ref=e18]
+          - searchbox [disabled] [ref=e19]
+        - link "Categories" [ref=e20] [cursor=pointer]:
+          - /url: /categories
+          - generic [ref=e21]: Categories
+        - link "Blog" [ref=e22] [cursor=pointer]:
+          - /url: /blog
+          - generic [ref=e23]: Blog
+        - button "Notifications" [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+        - link "Log in" [ref=e30] [cursor=pointer]:
+          - /url: /users/connect?redirect=%2freview%2fwww.checkatrade.com%3fsearch%3dmembership%2520leads&source_cta=header
+          - generic [ref=e31]: Log in
+        - link "For businesses" [ref=e32] [cursor=pointer]:
+          - /url: https://uk.business.trustpilot.com
+          - generic [ref=e33]: For businesses
+    - main [ref=e34]:
+      - generic [ref=e35]:
+        - navigation "Breadcrumb" [ref=e38]:
+          - list [ref=e39]:
+            - listitem [ref=e40]:
+              - link "Shopping & Fashion" [ref=e41] [cursor=pointer]:
+                - /url: /categories/shopping_fashion
+              - img [ref=e43]
+            - listitem [ref=e45]:
+              - link "Malls & Marketplaces" [ref=e46] [cursor=pointer]:
+                - /url: /categories/malls_marketplaces
+              - img [ref=e48]
+            - listitem [ref=e50]:
+              - link "Online marketplace" [ref=e51] [cursor=pointer]:
+                - /url: /categories/online_marketplace
+              - img [ref=e53]
+            - listitem [ref=e55]:
+              - link "Checkatrade.com" [disabled]
+        - generic [ref=e56]:
+          - navigation [ref=e58]:
+            - generic [ref=e59]:
+              - button "Summary" [ref=e60] [cursor=pointer]
+              - button "About" [ref=e61] [cursor=pointer]
+              - button "Reviews" [ref=e62] [cursor=pointer]
+            - generic [ref=e63]:
+              - link "Visit website" [ref=e64] [cursor=pointer]:
+                - /url: https://www.checkatrade.com
+                - generic [ref=e65]:
+                  - generic [ref=e66]: Visit website
+                  - img [ref=e68]
+              - link "Write a review" [ref=e70] [cursor=pointer]:
+                - /url: /evaluate/www.checkatrade.com
+                - generic [ref=e71]:
+                  - img [ref=e73]
+                  - generic [ref=e75]: Write a review
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - img "Banner for Checkatrade.com" [ref=e79]
+              - generic [ref=e80]:
+                - generic [ref=e82]:
+                  - link "Claimed profile January 2015 Paid Trustpilot subscription Checkatrade.com Reviews 80,802 • TrustScore 4.5 out of 5 4.6 Clickable button that opens a pop-up explaining how the Trustscore is calculated. Online marketplace Write a review Visit website" [ref=e84] [cursor=pointer]:
+                    - /url: https://www.checkatrade.com?utm_medium=company_profile&utm_source=trustpilot&utm_campaign=logo_click
+                    - img "Checkatrade.com logo" [ref=e86]
+                  - generic [ref=e87]:
+                    - generic [ref=e88]:
+                      - button "Claimed profile January 2015" [ref=e89] [cursor=pointer]:
+                        - paragraph [ref=e90]:
+                          - img [ref=e91]
+                          - text: Claimed profile
+                          - generic [ref=e94]: •
+                          - text: January 2015
+                      - button "Paid Trustpilot subscription" [ref=e95] [cursor=pointer]:
+                        - paragraph [ref=e96]: Paid Trustpilot subscription
+                    - heading "Checkatrade.com Reviews 80,802" [level=1] [ref=e97]:
+                      - generic [ref=e98]: Checkatrade.com
+                      - link "Reviews 80,802" [ref=e99] [cursor=pointer]:
+                        - generic [ref=e100]: Reviews 80,802
+                    - generic [ref=e101]:
+                      - generic [ref=e102]: •
+                      - link "TrustScore 4.5 out of 5 4.6" [ref=e103] [cursor=pointer]:
+                        - img "TrustScore 4.5 out of 5" [ref=e104]
+                        - paragraph [ref=e105]: "4.6"
+                      - button "Clickable button that opens a pop-up explaining how the Trustscore is calculated." [ref=e106] [cursor=pointer]:
+                        - img [ref=e109]
+                    - link "Online marketplace" [ref=e113] [cursor=pointer]:
+                      - /url: /categories/online_marketplace
+                    - generic [ref=e115]:
+                      - link "Write a review" [ref=e116] [cursor=pointer]:
+                        - /url: /evaluate/www.checkatrade.com
+                        - generic [ref=e117]:
+                          - img [ref=e119]
+                          - text: Write a review
+                      - link "Visit website" [ref=e121] [cursor=pointer]:
+                        - /url: https://www.checkatrade.com?utm_medium=company_profile&utm_source=trustpilot&utm_campaign=domain_click
+                        - generic [ref=e122]:
+                          - text: Visit website
+                          - img [ref=e124]
+                - generic [ref=e126]:
+                  - heading "We use technology to protect platform integrity, but we don't fact-check reviews" [level=2] [ref=e128]:
+                    - button "We use technology to protect platform integrity, but we don't fact-check reviews" [ref=e129] [cursor=pointer]:
+                      - generic [ref=e132]: We use technology to protect platform integrity, but we don't fact-check reviews
+                      - img [ref=e133]
+                  - generic [ref=e135]:
+                    - generic [ref=e136]:
+                      - generic [ref=e137]:
+                        - img [ref=e138]
+                        - heading "Review summary" [level=2] [ref=e140]
+                        - button "Tooltip" [ref=e142]:
+                          - img [ref=e143]
+                      - paragraph [ref=e146]: Created with AI, based on recent reviews
+                      - paragraph [ref=e147]:
+                        - text: Looking at 14,788 reviews, reviewers overwhelmingly had a great experience with this company. Customers frequently praise the excellent service, highlighting that jobs are completed very satisfactorily and to a high standard. Many people appreciate the staff's professionalism, politeness, and helpfulness, noting their respect for property and willingness to go the extra mile. The pricing is often …
+                        - button "See more" [ref=e148]
+                    - generic [ref=e149]:
+                      - heading "What people talk about most" [level=3] [ref=e150]
+                      - generic [ref=e151]:
+                        - button "Scroll forward" [ref=e152] [cursor=pointer]:
+                          - img [ref=e155]
+                        - generic [ref=e157]:
+                          - button "Service Users describe positive interactions with service, highlighting the efficiency, professionalism, and high... See more" [ref=e158]:
+                            - heading "Service" [level=2] [ref=e159]
+                            - paragraph [ref=e160]: Users describe positive interactions with service, highlighting the efficiency, professionalism, and high... See more
+                          - button "Staff Customers consistently note positive experiences with staff, highlighting their professionalism, efficiency,... See more" [ref=e161]:
+                            - heading "Staff" [level=2] [ref=e162]
+                            - paragraph [ref=e163]: Customers consistently note positive experiences with staff, highlighting their professionalism, efficiency,... See more
+                          - button "Price Consumers generally find the pricing to be positive, with many reviewers reporting reasonable and competitive... See more" [ref=e164]:
+                            - heading "Price" [level=2] [ref=e165]
+                            - paragraph [ref=e166]: Consumers generally find the pricing to be positive, with many reviewers reporting reasonable and competitive... See more
+                          - button "Website Reviewers highlight ambiguous aspects of the website, with some finding it easy to use for finding companies... See more" [ref=e167]:
+                            - heading "Website" [level=2] [ref=e168]
+                            - paragraph [ref=e169]: Reviewers highlight ambiguous aspects of the website, with some finding it easy to use for finding companies... See more
+                          - button "Response time Customers had positive experiences with response times, with many reviewers reporting quick and easy... See more" [ref=e170]:
+                            - heading "Response time" [level=2] [ref=e171]
+                            - paragraph [ref=e172]: Customers had positive experiences with response times, with many reviewers reporting quick and easy... See more
+                    - generic [ref=e173]:
+                      - heading "Reviews shaping this summary" [level=3] [ref=e174]
+                      - generic [ref=e175]:
+                        - button "SCROLL FORWARD" [ref=e176] [cursor=pointer]:
+                          - img [ref=e179]
+                        - generic [ref=e181]:
+                          - article [ref=e182]:
+                            - complementary "Info for Julie" [ref=e183]:
+                              - generic [ref=e184]:
+                                - generic [ref=e186]: JU
+                                - link "Julie Updated Jun 3, 2026" [ref=e187] [cursor=pointer]:
+                                  - /url: /users/63c837945d29b2001417de75
+                                  - generic [ref=e188]: Julie
+                                  - time [ref=e191]: Updated Jun 3, 2026
+                            - generic [ref=e192]:
+                              - img "Rated 5 out of 5 stars" [ref=e193]
+                              - button "Verified" [ref=e196]:
+                                - generic [ref=e197]:
+                                  - img [ref=e198]
+                                  - generic [ref=e200]: Verified
+                            - button "Thanks to Checkatrade, I was able to source a local handyman. Advice given on the website was also very much appreciated. The handyman, Dave, replaced a damaged curtain rail for us, ensuring that... See more Company replied" [ref=e201]:
+                              - paragraph [ref=e202]: Thanks to Checkatrade, I was able to source a local handyman. Advice given on the website was also very much appreciated. The handyman, Dave, replaced a damaged curtain rail for us, ensuring that... See more
+                              - generic [ref=e203]:
+                                - img [ref=e204]
+                                - paragraph [ref=e206]: Company replied
+                            - generic [ref=e208]:
+                              - generic [ref=e209]:
+                                - button "Useful" [ref=e210]:
+                                  - img [ref=e211]
+                                  - generic [ref=e213]: Useful
+                                - generic [ref=e214] [cursor=pointer]: "1"
+                              - button "Share" [ref=e215]:
+                                - img [ref=e216]
+                                - generic [ref=e218]: Share
+                              - button "Flag this review" [ref=e219] [cursor=pointer]:
+                                - img [ref=e220]
+                          - article [ref=e222]:
+                            - complementary "Info for J.P." [ref=e223]:
+                              - generic [ref=e224]:
+                                - generic [ref=e226]: J.
+                                - link "J.P. Jun 3, 2026" [ref=e227] [cursor=pointer]:
+                                  - /url: /users/62d3fa95de5efa001206f977
+                                  - generic [ref=e228]: J.P.
+                                  - time [ref=e231]: Jun 3, 2026
+                            - generic [ref=e232]:
+                              - img "Rated 5 out of 5 stars" [ref=e233]
+                              - button "Verified" [ref=e236]:
+                                - generic [ref=e237]:
+                                  - img [ref=e238]
+                                  - generic [ref=e240]: Verified
+                            - button "Used Checkatrade after failing to secure a tradesperson locally through Google. Just getting responses and no follow up, like no one wanted the job. First time using it and I was given many options... See more Company replied" [ref=e241]:
+                              - paragraph [ref=e242]: Used Checkatrade after failing to secure a tradesperson locally through Google. Just getting responses and no follow up, like no one wanted the job. First time using it and I was given many options... See more
+                              - generic [ref=e243]:
+                                - img [ref=e244]
+                                - paragraph [ref=e246]: Company replied
+                            - generic [ref=e248]:
+                              - button "Useful" [ref=e250]:
+                                - img [ref=e251]
+                                - generic [ref=e253]: Useful
+                              - button "Share" [ref=e254]:
+                                - img [ref=e255]
+                                - generic [ref=e257]: Share
+                              - button "Flag this review" [ref=e258] [cursor=pointer]:
+                                - img [ref=e259]
+                          - article [ref=e261]:
+                            - complementary "Info for Barbara Ellis" [ref=e262]:
+                              - generic [ref=e263]:
+                                - generic [ref=e265]: BE
+                                - link "Barbara Ellis Jun 4, 2026" [ref=e266] [cursor=pointer]:
+                                  - /url: /users/61aa435ea790e00012b5acc5
+                                  - generic [ref=e267]: Barbara Ellis
+                                  - time [ref=e270]: Jun 4, 2026
+                            - generic [ref=e271]:
+                              - img "Rated 5 out of 5 stars" [ref=e272]
+                              - button "Verified" [ref=e275]:
+                                - generic [ref=e276]:
+                                  - img [ref=e277]
+                                  - generic [ref=e279]: Verified
+                            - button "Finding the right tradesperson .Firstly the extremely prompt reply to my query. Then I was extremely impressed with the professional trade people recommended for us to review . We were able to read... See more Company replied" [ref=e280]:
+                              - paragraph [ref=e281]: Finding the right tradesperson .Firstly the extremely prompt reply to my query. Then I was extremely impressed with the professional trade people recommended for us to review . We were able to read... See more
+                              - generic [ref=e282]:
+                                - img [ref=e283]
+                                - paragraph [ref=e285]: Company replied
+                            - generic [ref=e287]:
+                              - button "Useful" [ref=e289]:
+                                - img [ref=e290]
+                                - generic [ref=e292]: Useful
+                              - button "Share" [ref=e293]:
+                                - img [ref=e294]
+                                - generic [ref=e296]: Share
+                              - button "Flag this review" [ref=e297] [cursor=pointer]:
+                                - img [ref=e298]
+                          - article [ref=e300]:
+                            - complementary "Info for Dave" [ref=e301]:
+                              - generic [ref=e302]:
+                                - button "Dave" [ref=e303]:
+                                  - generic [ref=e305]: DA
+                                  - img [ref=e307] [cursor=pointer]
+                                - link "Dave Jun 4, 2026" [ref=e310] [cursor=pointer]:
+                                  - /url: /users/5755d7c30000ff000a26c7b3
+                                  - generic [ref=e311]: Dave
+                                  - time [ref=e314]: Jun 4, 2026
+                            - generic [ref=e315]:
+                              - img "Rated 5 out of 5 stars" [ref=e316]
+                              - button "Verified" [ref=e319]:
+                                - generic [ref=e320]:
+                                  - img [ref=e321]
+                                  - generic [ref=e323]: Verified
+                            - button "I asked for 3 quotes to fit 3 internal doors via checkatrade. I very quickly got 3 responses from suitable tradespersons. Eventually I chose a joinery company local to me who actually quoted the best... See more Company replied" [ref=e324]:
+                              - paragraph [ref=e325]: I asked for 3 quotes to fit 3 internal doors via checkatrade. I very quickly got 3 responses from suitable tradespersons. Eventually I chose a joinery company local to me who actually quoted the best... See more
+                              - generic [ref=e326]:
+                                - img [ref=e327]
+                                - paragraph [ref=e329]: Company replied
+                            - generic [ref=e331]:
+                              - button "Useful" [ref=e333]:
+                                - img [ref=e334]
+                                - generic [ref=e336]: Useful
+                              - button "Share" [ref=e337]:
+                                - img [ref=e338]
+                                - generic [ref=e340]: Share
+                              - button "Flag this review" [ref=e341] [cursor=pointer]:
+                                - img [ref=e342]
+                    - button "See all 80,802 reviews" [ref=e345] [cursor=pointer]:
+                      - generic [ref=e346]:
+                        - text: See all 80,802 reviews
+                        - img [ref=e348]
+                    - separator [ref=e352]
+                  - generic [ref=e353]:
+                    - heading "Company details" [level=2] [ref=e354]
+                    - generic [ref=e355]:
+                      - list [ref=e356]:
+                        - listitem [ref=e357]:
+                          - text: "#85 of 204 best companies in"
+                          - link "Online marketplace" [ref=e358] [cursor=pointer]:
+                            - /url: /categories/online_marketplace
+                        - listitem [ref=e359]:
+                          - text: "#2 of 10 best companies in"
+                          - link "Internet marketing service" [ref=e360] [cursor=pointer]:
+                            - /url: /categories/internet_marketing_service
+                        - listitem [ref=e361]:
+                          - text: "#1 of 5 best companies in"
+                          - link "Review site" [ref=e362] [cursor=pointer]:
+                            - /url: /categories/review_site
+                        - listitem [ref=e363]:
+                          - text: "#2 of 10 best companies in"
+                          - link "Search engine company" [ref=e364] [cursor=pointer]:
+                            - /url: /categories/search_engine
+                        - listitem [ref=e365]:
+                          - button "Tooltip" [ref=e367]:
+                            - img [ref=e368]
+                      - generic [ref=e371]:
+                        - heading "Written by the company" [level=3] [ref=e372]
+                        - paragraph [ref=e373]:
+                          - text: Welcome to Checkatrade, the UK's premier online directory and leading destination for finding top-quality tradespeople. Our platform is expertly designed to bridge the gap between consumers and trusted, skilled professionals in the trade industry. Embark on a seamless journey to elevate your home or business with our extensive range of services. Checkatrade…
+                          - button "See more" [ref=e374]
+                      - generic [ref=e375]:
+                        - generic [ref=e376]:
+                          - heading "The Checkatrade Guarantee" [level=4] [ref=e377]
+                          - paragraph [ref=e378]: A helping hand, if things go wrong
+                          - img "A helping hand, if things go wrong" [ref=e380]
+                          - generic [ref=e381]: "When you contact or pay a trade through Checkatrade, you’re covered by the Checkatrade 12-month guarantee of up to £1,000*. How the Checkatrade Guarantee works: 1. Contact a tradesperson through Checkatrade to register your job. OR 2. Pay securely via Checkatrade Pay-no matter where you found your tradesperson**. *Other eligibility criteria and T&Cs apply. **For customers in Scotland, payment for the work must be made via Checkatrade Pay. https://www.checkatrade.com/guarantee-terms"
+                        - button "See more" [ref=e382] [cursor=pointer]:
+                          - generic [ref=e383]: See more
+                    - heading "Contact info" [level=2] [ref=e384]
+                    - list [ref=e385]:
+                      - listitem [ref=e386]:
+                        - img [ref=e387]
+                        - paragraph [ref=e390]: United Kingdom
+                      - listitem [ref=e391]:
+                        - img [ref=e392]
+                        - link "03330 146 190" [ref=e395] [cursor=pointer]:
+                          - /url: "tel: 03330 146 190"
+                      - listitem [ref=e396]:
+                        - img [ref=e397]
+                        - link "trust@checkatrade.com" [ref=e399] [cursor=pointer]:
+                          - /url: mailto:trust@checkatrade.com
+                      - listitem [ref=e400]:
+                        - img [ref=e401]
+                        - link "www.checkatrade.com" [ref=e403] [cursor=pointer]:
+                          - /url: https://www.checkatrade.com?utm_medium=company_profile&utm_source=trustpilot&utm_campaign=domain_click
+                - generic [ref=e404]:
+                  - generic [ref=e405] [cursor=pointer]:
+                    - generic [ref=e406]:
+                      - generic [ref=e407]:
+                        - paragraph [ref=e408]: "4.6"
+                        - heading "Excellent" [level=3] [ref=e409]
+                        - img "TrustScore 4.5 out of 5" [ref=e410]
+                        - paragraph [ref=e411]: 81k reviews
+                      - generic [ref=e412]:
+                        - generic [ref=e414]: 5-star
+                        - generic [ref=e418]: 4-star
+                        - generic [ref=e422]: 3-star
+                        - generic [ref=e426]: 2-star
+                        - generic [ref=e430]: 1-star
+                    - separator [ref=e433]
+                    - button "How is the TrustScore calculated?" [ref=e434]:
+                      - paragraph [ref=e436]: How is the TrustScore calculated?
+                  - generic [ref=e437]:
+                    - img [ref=e439]
+                    - generic [ref=e441]:
+                      - paragraph [ref=e442]: Asks customers to review
+                      - paragraph [ref=e443]: This company invites their customers to review, whether positive or negative
+                  - heading "Replied to 98% of negative reviews Typically replies within 24 hours May use AI-assist with replies" [level=4] [ref=e445]:
+                    - button "Replied to 98% of negative reviews Typically replies within 24 hours May use AI-assist with replies" [ref=e446] [cursor=pointer]:
+                      - generic [ref=e447]:
+                        - img [ref=e449]
+                        - generic [ref=e451]:
+                          - heading "Replied to 98% of negative reviews" [level=4] [ref=e452]
+                          - paragraph [ref=e453]: Typically replies within 24 hours
+                          - paragraph [ref=e454]: May use AI-assist with replies
+                      - img [ref=e455]
+                  - link "How this company uses Trustpilot See how their reviews and ratings are sourced, scored, and moderated." [ref=e457] [cursor=pointer]:
+                    - /url: /review/www.checkatrade.com/transparency
+                    - img [ref=e459]
+                    - generic [ref=e462]:
+                      - paragraph [ref=e463]: How this company uses Trustpilot
+                      - paragraph [ref=e464]: See how their reviews and ratings are sourced, scored, and moderated.
+                    - img [ref=e465]
+            - generic [ref=e469]:
+              - generic [ref=e470]:
+                - heading "People also looked at Tooltip" [level=2] [ref=e472]:
+                  - text: People also looked at
+                  - button "Tooltip" [ref=e474]:
+                    - img [ref=e475]
+                - generic [ref=e478]:
+                  - button "SCROLL BACK" [disabled] [ref=e479]:
+                    - img [ref=e482]
+                  - button "SCROLL FORWARD" [ref=e484] [cursor=pointer]:
+                    - img [ref=e487]
+              - generic [ref=e489]:
+                - link "MyBuilder logo MyBuilder www.mybuilder.com TrustScore 4.5 out of 5 4.3 (56k)" [ref=e492] [cursor=pointer]:
+                  - /url: /review/www.mybuilder.com
+                  - generic [ref=e495]:
+                    - img "MyBuilder logo"
+                  - heading "MyBuilder" [level=3] [ref=e496]
+                  - paragraph [ref=e497]: www.mybuilder.com
+                  - generic [ref=e498]:
+                    - img "TrustScore 4.5 out of 5" [ref=e500]
+                    - paragraph [ref=e501]: "4.3"
+                    - paragraph [ref=e502]: (56k)
+                - link "Bark logo Bark bark.com TrustScore 4 out of 5 3.9 (110k)" [ref=e505] [cursor=pointer]:
+                  - /url: /review/bark.com
+                  - generic [ref=e508]:
+                    - img "Bark logo"
+                  - heading "Bark" [level=3] [ref=e509]
+                  - paragraph [ref=e510]: bark.com
+                  - generic [ref=e511]:
+                    - img "TrustScore 4 out of 5" [ref=e513]
+                    - paragraph [ref=e514]: "3.9"
+                    - paragraph [ref=e515]: (110k)
+                - link "MyJobQuote logo MyJobQuote myjobquote.co.uk TrustScore 5 out of 5 4.8 (40k)" [ref=e518] [cursor=pointer]:
+                  - /url: /review/myjobquote.co.uk
+                  - generic [ref=e521]:
+                    - img "MyJobQuote logo"
+                  - heading "MyJobQuote" [level=3] [ref=e522]
+                  - paragraph [ref=e523]: myjobquote.co.uk
+                  - generic [ref=e524]:
+                    - img "TrustScore 5 out of 5" [ref=e526]
+                    - paragraph [ref=e527]: "4.8"
+                    - paragraph [ref=e528]: (40k)
+                - link "TrustATrader logo TrustATrader www.trustatrader.com TrustScore 4.5 out of 5 4.6 (8k)" [ref=e531] [cursor=pointer]:
+                  - /url: /review/www.trustatrader.com
+                  - generic [ref=e534]:
+                    - img "TrustATrader logo"
+                  - heading "TrustATrader" [level=3] [ref=e535]
+                  - paragraph [ref=e536]: www.trustatrader.com
+                  - generic [ref=e537]:
+                    - img "TrustScore 4.5 out of 5" [ref=e539]
+                    - paragraph [ref=e540]: "4.6"
+                    - paragraph [ref=e541]: (8k)
+                - link "Rated People logo Rated People www.ratedpeople.com TrustScore 4 out of 5 3.8 (19k)" [ref=e544] [cursor=pointer]:
+                  - /url: /review/www.ratedpeople.com
+                  - generic [ref=e547]:
+                    - img "Rated People logo"
+                  - heading "Rated People" [level=3] [ref=e548]
+                  - paragraph [ref=e549]: www.ratedpeople.com
+                  - generic [ref=e550]:
+                    - img "TrustScore 4 out of 5" [ref=e552]
+                    - paragraph [ref=e553]: "3.8"
+                    - paragraph [ref=e554]: (19k)
+                - link "Bookabuilderuk logo Bookabuilderuk bookabuilderuk.com TrustScore 3.5 out of 5 3.5 (2k)" [ref=e557] [cursor=pointer]:
+                  - /url: /review/bookabuilderuk.com
+                  - generic [ref=e560]:
+                    - img "Bookabuilderuk logo"
+                  - heading "Bookabuilderuk" [level=3] [ref=e561]
+                  - paragraph [ref=e562]: bookabuilderuk.com
+                  - generic [ref=e563]:
+                    - img "TrustScore 3.5 out of 5" [ref=e565]
+                    - paragraph [ref=e566]: "3.5"
+                    - paragraph [ref=e567]: (2k)
+                - link "Airtasker logo Airtasker www.airtasker.com TrustScore 4 out of 5 4 (16k)" [ref=e570] [cursor=pointer]:
+                  - /url: /review/www.airtasker.com
+                  - generic [ref=e573]:
+                    - img "Airtasker logo"
+                  - heading "Airtasker" [level=3] [ref=e574]
+                  - paragraph [ref=e575]: www.airtasker.com
+                  - generic [ref=e576]:
+                    - img "TrustScore 4 out of 5" [ref=e578]
+                    - paragraph [ref=e579]: "4"
+                    - paragraph [ref=e580]: (16k)
+                - link "Evri logo Evri www.evri.com TrustScore 4 out of 5 4.1 (6m)" [ref=e583] [cursor=pointer]:
+                  - /url: /review/www.evri.com
+                  - generic [ref=e586]:
+                    - img "Evri logo"
+                  - heading "Evri" [level=3] [ref=e587]
+                  - paragraph [ref=e588]: www.evri.com
+                  - generic [ref=e589]:
+                    - img "TrustScore 4 out of 5" [ref=e591]
+                    - paragraph [ref=e592]: "4.1"
+                    - paragraph [ref=e593]: (6m)
+            - generic [ref=e596]:
+              - complementary [ref=e598]:
+                - generic [ref=e599]:
+                  - generic [ref=e601]:
+                    - img [ref=e602]
+                    - generic [ref=e604]: "4.6"
+                    - button "Clickable button that opens a pop-up explaining how the Trustscore is calculated." [ref=e605] [cursor=pointer]:
+                      - img [ref=e608]
+                  - generic [ref=e611]:
+                    - generic [ref=e612]:
+                      - heading "All reviews" [level=2] [ref=e613]
+                      - paragraph [ref=e614]: (80,802)
+                    - paragraph [ref=e616]:
+                      - strong [ref=e617]: 13,843 reviews
+                      - text: in the last 12 months
+                    - link "Write a review" [ref=e618] [cursor=pointer]:
+                      - /url: /evaluate/www.checkatrade.com
+                      - generic [ref=e619]:
+                        - img [ref=e621]
+                        - text: Write a review
+                  - generic [ref=e624]:
+                    - generic "68,010 of 80,802 reviews" [ref=e625] [cursor=pointer]:
+                      - checkbox "5-star 84%" [ref=e627]
+                      - paragraph [ref=e628]: 5-star
+                      - paragraph [ref=e632]: 84%
+                    - generic "5,949 of 80,802 reviews" [ref=e633] [cursor=pointer]:
+                      - checkbox "4-star 7%" [ref=e635]
+                      - paragraph [ref=e636]: 4-star
+                      - paragraph [ref=e640]: 7%
+                    - generic "1,209 of 80,802 reviews" [ref=e641] [cursor=pointer]:
+                      - checkbox "3-star 2%" [ref=e643]
+                      - paragraph [ref=e644]: 3-star
+                      - paragraph [ref=e648]: 2%
+                    - generic "759 of 80,802 reviews" [ref=e649] [cursor=pointer]:
+                      - checkbox "2-star <1%" [ref=e651]
+                      - paragraph [ref=e652]: 2-star
+                      - paragraph [ref=e656]:
+                        - generic [ref=e657]: <1%
+                    - generic "4,875 of 80,802 reviews" [ref=e658] [cursor=pointer]:
+                      - checkbox "1-star 6%" [ref=e660]
+                      - paragraph [ref=e661]: 1-star
+                      - paragraph [ref=e665]: 6%
+                - separator [ref=e666]
+                - iframe [ref=e669]:
+                  - generic [ref=f6e3]:
+                    - link:
+                      - /url: https://www.facebook.com/VettedLtd?ref=embed_page
+                    - generic [ref=f6e8]:
+                      - generic [ref=f6e9]:
+                        - link [ref=f6e10] [cursor=pointer]:
+                          - /url: https://www.facebook.com/181928558545551?ref=embed_page
+                        - generic [ref=f6e11]:
+                          - generic [ref=f6e12]:
+                            - link "Checkatrade" [ref=f6e13] [cursor=pointer]:
+                              - /url: https://www.facebook.com/181928558545551?ref=embed_page
+                            - generic "Verified Page" [ref=f6e14]
+                          - generic [ref=f6e15]: 81,030 followers
+                      - generic [ref=f6e16]:
+                        - button "Follow Page" [ref=f6e20] [cursor=pointer]: Follow Page
+                        - link "Share" [ref=f6e22] [cursor=pointer]:
+                          - /url: /sharer/sharer.php?app_id=65206056824&u=https%3A%2F%2Fwww.facebook.com%2F181928558545551&display=popup&ref=embed_page&src=page
+                          - button "Share" [ref=f6e23]: Share
+                - separator [ref=e670]
+                - generic [ref=e671]:
+                  - link "How Trustpilot labels reviews" [ref=e672] [cursor=pointer]:
+                    - /url: https://help.trustpilot.com/s/article/About-Trustpilots-review-labels?language=en
+                  - img [ref=e673]
+              - generic [ref=e675]:
+                - generic [ref=e676]:
+                  - img [ref=e678]
+                  - generic [ref=e682]:
+                    - text: Companies on Trustpilot aren't allowed to offer incentives or pay to hide reviews. Reviews are the opinions of individual users and not of Trustpilot.
+                    - link "Read more" [ref=e683] [cursor=pointer]:
+                      - /url: https://help.trustpilot.com/s/article/How-do-we-make-sure-reviews-are-trustworthy?language=en
+                - generic [ref=e684]:
+                  - generic [ref=e686]:
+                    - img [ref=e688]
+                    - searchbox "Search by keyword..." [ref=e691]: membership leads
+                    - button [ref=e692]:
+                      - img [ref=e693]
+                  - generic [ref=e697]:
+                    - button "More filters" [ref=e698] [cursor=pointer]:
+                      - generic [ref=e699]:
+                        - paragraph [ref=e700]: More filters
+                        - img [ref=e701]
+                    - button "Most recent" [ref=e705] [cursor=pointer]:
+                      - generic [ref=e706]:
+                        - paragraph [ref=e707]: Most recent
+                        - img [ref=e708]
+                  - generic [ref=e710]:
+                    - heading "Top mentions" [level=3] [ref=e711]
+                    - generic [ref=e712]:
+                      - checkbox "Service" [ref=e713] [cursor=pointer]:
+                        - generic [ref=e714]: Service
+                      - checkbox "Recommendation" [ref=e715] [cursor=pointer]:
+                        - generic [ref=e716]: Recommendation
+                      - checkbox "Price" [ref=e717] [cursor=pointer]:
+                        - generic [ref=e718]: Price
+                      - checkbox "User experience" [ref=e719] [cursor=pointer]:
+                        - generic [ref=e720]: User experience
+                      - checkbox "Response time" [ref=e721] [cursor=pointer]:
+                        - generic [ref=e722]: Response time
+                      - checkbox "Checkout" [ref=e723] [cursor=pointer]:
+                        - generic [ref=e724]: Checkout
+                      - checkbox "Quality" [ref=e725] [cursor=pointer]:
+                        - generic [ref=e726]: Quality
+                      - checkbox "Staff" [ref=e727] [cursor=pointer]:
+                        - generic [ref=e728]: Staff
+                      - checkbox "Trust" [ref=e729] [cursor=pointer]:
+                        - generic [ref=e730]: Trust
+                      - checkbox "Solution" [ref=e731] [cursor=pointer]:
+                        - generic [ref=e732]: Solution
+                  - generic [ref=e733]:
+                    - checkbox "membership leads" [checked] [ref=e734] [cursor=pointer]:
+                      - generic [ref=e735]: membership leads
+                      - img [ref=e736]
+                    - button "Reset" [ref=e738]
+                - separator [ref=e739]
+                - generic [ref=e740]:
+                  - generic [ref=e741]:
+                    - button "May use AI-assist with repliesRead more" [ref=e743] [cursor=pointer]:
+                      - img [ref=e745]
+                      - heading "May use AI-assist with repliesRead more" [level=3] [ref=e748]
+                    - article [ref=e750]:
+                      - generic [ref=e751]:
+                        - generic [ref=e752]:
+                          - complementary "Info for Dare's Cleaning Services Ltd" [ref=e753]:
+                            - generic [ref=e754]:
+                              - generic [ref=e756]: DC
+                              - link "Dare's Cleaning Services Ltd GB • 1 review" [ref=e757] [cursor=pointer]:
+                                - /url: /users/6a29d8934a5f813db28c498e
+                                - generic [ref=e758]: Dare's Cleaning Services Ltd
+                                - generic [ref=e759]:
+                                  - generic [ref=e760]: GB
+                                  - generic [ref=e761]: •
+                                  - generic [ref=e762]: 1 review
+                          - time [ref=e764]: A day ago
+                        - generic [ref=e765]:
+                          - img "Rated 1 out of 5 stars" [ref=e767]
+                          - generic [ref=e768]:
+                            - 'link "Dare’s Cleaning Services Limited: County Court Outcome regarding Cancellation." [ref=e769] [cursor=pointer]':
+                              - /url: /reviews/6a29d8a2748b5594b3c2470d
+                              - 'heading "Dare’s Cleaning Services Limited: County Court Outcome regarding Cancellation." [level=2] [ref=e770]'
+                            - paragraph [ref=e771]:
+                              - text: Dare’s Cleaning Services Limited subscribed to Checkatrade based on the representations made regarding the enquiries provided to tradespeople through the platform.
+                              - text: During the subscription period, Dare’s Cleaning Services Limited raised concerns regarding a number of enquiries received through the service. These concerns related to overlapping contact details and enquiries which, in the view of Dare’s Cleaning Services Limited, warranted further investigation.
+                              - text: In correspondence, Checkatrade explained that some situations could arise through homeowner error and indicated that duplicate submissions could not always be completely prevented. However, Checkatrade’s later court Defence stated that its investigation had identified no duplicate, non-genuine or spam
+                              - emphasis [ref=e772]: leads
+                              - text: . Dare’s Cleaning Services Limited considered this difficult to reconcile with the earlier correspondence, and it formed part of the concerns raised throughout the dispute.
+                              - text: Dare’s Cleaning Services Limited subsequently requested cancellation of the subscription. Dare’s Cleaning Services Limited understood from Checkatrade’s correspondence that cancellation was to be dealt with by telephone. Dare’s Cleaning Services Limited requested that communications be conducted in writing by email so that a clear and verifiable record could be maintained.
+                              - text: When the matter was not resolved, Dare’s Cleaning Services Limited issued a Letter Before Action and subsequently commenced County Court proceedings.
+                              - text: Following the commencement of proceedings, Checkatrade issued a credit memo. The matter later proceeded to a Dispute Resolution Hearing before the County Court.
+                              - text: At the hearing, Checkatrade confirmed to the court that the agreement/subscription had been cancelled, that no further payments were due from Dare’s Cleaning Services Limited, and that any sums allegedly due had been written off. The court order records Checkatrade’s confirmation that the agreement/subscription had been cancelled, that no further payments were due from Dare’s Cleaning Services Limited, and that any sums allegedly due had been written off. The claim was dismissed and no order as to costs was made.
+                              - text: The purpose of the proceedings was not primarily to recover money, but to obtain certainty that the subscription had been brought to an end and that no future debt recovery action would be pursued.
+                              - text: Based on this experience, tradespeople should carefully review contractual terms, maintain detailed written records, and obtain important information and confirmations in writing wherever possible. Where agreements are discussed by telephone, it may be prudent to request written confirmation of the key terms before accepting or proceeding with any agreement.
+                              - text: This review reflects the experience of Dare’s Cleaning Services Limited and the outcome recorded in the County Court order.
+                            - generic [ref=e774]:
+                              - generic [ref=e776]: 10 June 2026
+                              - generic [ref=e778]: Unprompted review
+                        - generic [ref=e779]:
+                          - button "Useful" [ref=e781]:
+                            - img [ref=e782]
+                            - generic [ref=e784]: Useful
+                          - button "Share" [ref=e785]:
+                            - img [ref=e786]
+                            - generic [ref=e788]: Share
+                          - button "Flag this review" [ref=e789] [cursor=pointer]:
+                            - img [ref=e790]
+                        - generic [ref=e792]:
+                          - img [ref=e794]
+                          - generic [ref=e796]:
+                            - generic [ref=e797]:
+                              - img "Checkatrade.com logo" [ref=e799]
+                              - generic [ref=e800]:
+                                - paragraph [ref=e801]: Reply from Checkatrade.com
+                                - time [ref=e802]: 24 minutes ago
+                            - paragraph [ref=e803]:
+                              - text: We're sorry to hear you've been disappointed with your experience.
+                              - text: We appreciate you taking the time to share your feedback regarding your membership, the enquiries received, the cancellation process and the subsequent dispute. We understand that this has been a lengthy and frustrating matter for you.
+                              - text: Your comments will be passed on to the relevant team for review.
+                              - text: Checkatrade Team
+                    - article [ref=e805]:
+                      - generic [ref=e806]:
+                        - generic [ref=e807]:
+                          - complementary "Info for EL" [ref=e808]:
+                            - generic [ref=e809]:
+                              - generic [ref=e811]: EL
+                              - link "EL GB • 7 reviews" [ref=e812] [cursor=pointer]:
+                                - /url: /users/63d18e25ee1062001355e4dc
+                                - generic [ref=e813]: EL
+                                - generic [ref=e814]:
+                                  - generic [ref=e815]: GB
+                                  - generic [ref=e816]: •
+                                  - generic [ref=e817]: 7 reviews
+                          - time [ref=e819]: 2 days ago
+                        - generic [ref=e820]:
+                          - generic [ref=e821]:
+                            - img "Rated 1 out of 5 stars" [ref=e822]
+                            - button "Verified" [ref=e825]:
+                              - generic [ref=e826]:
+                                - img [ref=e827]
+                                - generic [ref=e829]: Verified
+                          - generic [ref=e830]:
+                            - link "Check a trade should check their customers too!" [ref=e831] [cursor=pointer]:
+                              - /url: /reviews/6a28964604db87df5eeea590
+                              - heading "Check a trade should check their customers too!" [level=2] [ref=e832]
+                            - paragraph [ref=e833]:
+                              - text: Sadly, after hearing of experiences of traders scammed by rogue customers and removing a tradesman who paid for his checkatrade
+                              - emphasis [ref=e834]: membership
+                              - text: (thankfully still had details to re contract) I have less tris in their ability to arbitrate.
+                            - generic [ref=e838]: 7 October 2025
+                        - generic [ref=e839]:
+                          - button "Useful" [ref=e841]:
+                            - img [ref=e842]
+                            - generic [ref=e844]: Useful
+                          - button "Share" [ref=e845]:
+                            - img [ref=e846]
+                            - generic [ref=e848]: Share
+                          - button "Flag this review" [ref=e849] [cursor=pointer]:
+                            - img [ref=e850]
+                        - generic [ref=e852]:
+                          - img [ref=e854]
+                          - generic [ref=e856]:
+                            - generic [ref=e857]:
+                              - img "Checkatrade.com logo" [ref=e859]
+                              - generic [ref=e860]:
+                                - paragraph [ref=e861]: Reply from Checkatrade.com
+                                - time [ref=e862]: 31 minutes ago
+                            - paragraph [ref=e863]:
+                              - text: We're sorry to hear that your confidence in Checkatrade has been affected.
+                              - text: We appreciate you taking the time to share your concerns. We understand how hearing about negative experiences can influence perceptions of the platform and the processes we have in place.
+                              - text: Checkatrade Team
+                    - article [ref=e865]:
+                      - generic [ref=e866]:
+                        - generic [ref=e867]:
+                          - complementary "Info for Liam D" [ref=e868]:
+                            - generic [ref=e869]:
+                              - generic [ref=e871]: LD
+                              - link "Liam D GB • 4 reviews" [ref=e872] [cursor=pointer]:
+                                - /url: /users/659afeacf044460011e58356
+                                - generic [ref=e873]: Liam D
+                                - generic [ref=e874]:
+                                  - generic [ref=e875]: GB
+                                  - generic [ref=e876]: •
+                                  - generic [ref=e877]: 4 reviews
+                          - time [ref=e879]: Jun 4, 2026
+                        - generic [ref=e880]:
+                          - img "Rated 1 out of 5 stars" [ref=e882]
+                          - generic [ref=e883]:
+                            - link "This company harass previous customers" [ref=e884] [cursor=pointer]:
+                              - /url: /reviews/6a219841591c52e575c94ba9
+                              - heading "This company harass previous customers" [level=2] [ref=e885]
+                            - paragraph [ref=e886]:
+                              - text: This company harass previous customers. I cancelled our
+                              - emphasis [ref=e887]: membership
+                              - text: over a year ago, they made this difficult citing i had to call in a specific time window. I did, but they conveniently had no record and wanted to charge another 12 months. I cancelled the DD. I email complaints, never had a single reply to many emails but received many calls from different staff going over the same script. At the end of the day, they just want you to pay for poor service and a poor
+                              - emphasis [ref=e888]: leads
+                              - text: pool.
+                              - text: A year later still the calls. They ask you to confirm your details whilst calling from a mobile number. They said "you will keep getting these calls till you talk to us". I explained that their lack to response to many emails is poor as is the continuous harassment
+                              - text: Avoid like the plague, they put nothing in writing and have staff being rude and unprofessional, I again complained about an employees tone and attitude, no reply nor response. It seems its an acceptable cutlure for this business.
+                            - generic [ref=e890]:
+                              - generic [ref=e892]: 4 June 2026
+                              - generic [ref=e894]: Unprompted review
+                        - generic [ref=e895]:
+                          - generic [ref=e896]:
+                            - button "Useful" [ref=e897]:
+                              - img [ref=e898]
+                              - generic [ref=e900]: Useful
+                            - generic [ref=e901] [cursor=pointer]: "1"
+                          - button "Share" [ref=e902]:
+                            - img [ref=e903]
+                            - generic [ref=e905]: Share
+                          - button "Flag this review" [ref=e906] [cursor=pointer]:
+                            - img [ref=e907]
+                        - generic [ref=e909]:
+                          - img [ref=e911]
+                          - generic [ref=e913]:
+                            - generic [ref=e914]:
+                              - img "Checkatrade.com logo" [ref=e916]
+                              - generic [ref=e917]:
+                                - paragraph [ref=e918]: Reply from Checkatrade.com
+                                - time [ref=e919]: 7 days ago
+                            - paragraph [ref=e920]:
+                              - text: We're sorry to hear how frustrated and disappointed you've been with your experience.
+                              - text: We understand your concerns regarding the cancellation process, communication, and the contact you've continued to receive. We appreciate you taking the time to share this feedback, and we're sorry to hear you feel your previous complaints weren't addressed.
+                              - text: Your comments will be passed on to the relevant team for review.
+                              - text: Checkatrade Team
+                    - article [ref=e922]:
+                      - generic [ref=e923]:
+                        - generic [ref=e924]:
+                          - complementary "Info for Bradley Candelin" [ref=e925]:
+                            - generic [ref=e926]:
+                              - generic [ref=e928]: BC
+                              - link "Bradley Candelin GB • 1 review" [ref=e929] [cursor=pointer]:
+                                - /url: /users/6a1ad14a6142ad4cf72fa9ad
+                                - generic [ref=e930]: Bradley Candelin
+                                - generic [ref=e931]:
+                                  - generic [ref=e932]: GB
+                                  - generic [ref=e933]: •
+                                  - generic [ref=e934]: 1 review
+                          - time [ref=e936]: May 30, 2026
+                        - generic [ref=e937]:
+                          - img "Rated 1 out of 5 stars" [ref=e939]
+                          - generic [ref=e940]:
+                            - link "SCAM ARTISTS" [ref=e941] [cursor=pointer]:
+                              - /url: /reviews/6a1ad15042ce1ec1699ae0ed
+                              - heading "SCAM ARTISTS" [level=2] [ref=e942]
+                            - paragraph [ref=e943]:
+                              - text: SCAM ARTISTS, tradesmen do not bother you will get
+                              - emphasis [ref=e944]: leads
+                              - text: for about a month tops then will get 2/3
+                              - emphasis [ref=e945]: leads
+                              - text: which are tyre kickers for the rest of your term .
+                              - text: You are also stuck in a 12 month contract which you can’t get out of and they get you stuck in an auto renewal which if u were to cancel you get threats of ballifs ect.
+                              - text: I tried reaching out to my accountant manager regarding an issue with my account , called 5 times and can’t get hold of anyone.
+                              - text: They generate fake
+                              - emphasis [ref=e946]: leads
+                              - text: and 95% of
+                              - emphasis [ref=e947]: leads
+                              - text: are battle to the lowest bid .
+                              - text: If you yourself are a tradesmen save yourself time and money and steer clear of all these sites .
+                              - text: 0/10
+                            - generic [ref=e949]:
+                              - generic [ref=e951]: 30 May 2026
+                              - generic [ref=e953]: Unprompted review
+                        - generic [ref=e954]:
+                          - generic [ref=e955]:
+                            - button "Useful" [ref=e956]:
+                              - img [ref=e957]
+                              - generic [ref=e959]: Useful
+                            - generic [ref=e960] [cursor=pointer]: "1"
+                          - button "Share" [ref=e961]:
+                            - img [ref=e962]
+                            - generic [ref=e964]: Share
+                          - button "Flag this review" [ref=e965] [cursor=pointer]:
+                            - img [ref=e966]
+                        - generic [ref=e968]:
+                          - img [ref=e970]
+                          - generic [ref=e972]:
+                            - generic [ref=e973]:
+                              - img "Checkatrade.com logo" [ref=e975]
+                              - generic [ref=e976]:
+                                - paragraph [ref=e977]: Reply from Checkatrade.com
+                                - time [ref=e978]: Jun 2, 2026
+                            - paragraph [ref=e979]:
+                              - text: We're sorry to hear how disappointed you've been with your membership experience. We understand your frustrations around lead quality, account support, and communication, particularly if you've felt unable to get the help you needed.
+                              - text: We appreciate you taking the time to share your feedback. Your comments will be passed on to the relevant team for review, as we're always looking at ways to improve the experience for our members.
+                              - text: Checkatrade Team
+                    - article [ref=e981]:
+                      - generic [ref=e982]:
+                        - generic [ref=e983]:
+                          - complementary "Info for Steve" [ref=e984]:
+                            - generic [ref=e985]:
+                              - generic [ref=e987]: ST
+                              - link "Steve GB • 5 reviews" [ref=e988] [cursor=pointer]:
+                                - /url: /users/6307933b1202440013ed66b2
+                                - generic [ref=e989]: Steve
+                                - generic [ref=e990]:
+                                  - generic [ref=e991]: GB
+                                  - generic [ref=e992]: •
+                                  - generic [ref=e993]: 5 reviews
+                          - time [ref=e995]: May 30, 2026
+                        - generic [ref=e996]:
+                          - img "Rated 1 out of 5 stars" [ref=e998]
+                          - generic [ref=e999]:
+                            - link "Terrible service from cheakatrade since…" [ref=e1000] [cursor=pointer]:
+                              - /url: /reviews/6a1a61458497fcf53c2e45a4
+                              - heading "Terrible service from cheakatrade since…" [level=2] [ref=e1001]
+                            - paragraph [ref=e1002]:
+                              - text: Terrible service from cheakatrade since being taken over by the new greedy company they allow blackmail reviews then dont support you when challenging them.
+                              - text: This platform used to give the customer the right to search for trades now it simply takes the customers details and gives the
+                              - emphasis [ref=e1003]: leads
+                              - text: to whoever is paying them the most money my price plan was around £200 a month and in the end I wasn't even getting 1 lead a week and when I did the client would not respond or awnser my calls then I was told its now around £300 a month for the new package with guaranteed
+                              - emphasis [ref=e1004]: leads
+                              - text: up to 160 so its now basically £25 a lead.
+                              - text: I went on holiday for 1 month and asked if they could freeze my account only to be told no but your expected
+                              - emphasis [ref=e1005]: leads
+                              - text: will carry oversized basically i have paid near £600 for the month and i come back and no phone calls or
+                              - emphasis [ref=e1006]: leads
+                              - text: coming in to be told you have had over the expected amount and you have around 40 left for the last 5 months but i should be getting double lleads this month then the same blindsiding speach comes out about overall performance qnd maybe you should try new areas of work i dont want to change areas i just want to get my moneys worth.
+                              - text: What a scam company this is im definitely leaving in October when my contract runs out I hope it goes bust in the future.
+                              - text: This is from a near 9 year member.
+                            - generic [ref=e1008]:
+                              - generic [ref=e1010]: 30 May 2026
+                              - generic [ref=e1012]: Unprompted review
+                        - generic [ref=e1013]:
+                          - generic [ref=e1014]:
+                            - button "Useful" [ref=e1015]:
+                              - img [ref=e1016]
+                              - generic [ref=e1018]: Useful
+                            - generic [ref=e1019] [cursor=pointer]: "1"
+                          - button "Share" [ref=e1020]:
+                            - img [ref=e1021]
+                            - generic [ref=e1023]: Share
+                          - button "Flag this review" [ref=e1024] [cursor=pointer]:
+                            - img [ref=e1025]
+                        - generic [ref=e1027]:
+                          - img [ref=e1029]
+                          - generic [ref=e1031]:
+                            - generic [ref=e1032]:
+                              - img "Checkatrade.com logo" [ref=e1034]
+                              - generic [ref=e1035]:
+                                - paragraph [ref=e1036]: Reply from Checkatrade.com
+                                - time [ref=e1037]: Jun 2, 2026
+                            - paragraph [ref=e1038]:
+                              - text: We're sorry to hear how disappointed you've been with your membership experience, especially after being with Checkatrade for nearly nine years.
+                              - text: We understand your frustrations around leads, account management, reviews, and the value you've received from your membership. We appreciate you taking the time to share such detailed feedback, and we'll make sure your comments are passed on to the relevant team for review.
+                              - text: Checkatrade Team
+                    - article [ref=e1040]:
+                      - generic [ref=e1041]:
+                        - generic [ref=e1042]:
+                          - complementary "Info for James" [ref=e1043]:
+                            - link "James GB • 1 review" [ref=e1046] [cursor=pointer]:
+                              - /url: /users/6a16d7a6dd910cae68750126
+                              - generic [ref=e1047]: James
+                              - generic [ref=e1048]:
+                                - generic [ref=e1049]: GB
+                                - generic [ref=e1050]: •
+                                - generic [ref=e1051]: 1 review
+                          - time [ref=e1053]: May 27, 2026
+                        - generic [ref=e1054]:
+                          - img "Rated 1 out of 5 stars" [ref=e1056]
+                          - generic [ref=e1057]:
+                            - link "Terrible customer service" [ref=e1058] [cursor=pointer]:
+                              - /url: /reviews/6a16d7cf1d446ede364c95ba
+                              - heading "Terrible customer service" [level=2] [ref=e1059]
+                            - paragraph [ref=e1060]:
+                              - text: I’ve had a terrible experience with Checkatrade. All I seem to get are spam calls and poor-quality
+                              - emphasis [ref=e1061]: leads
+                              - text: that go nowhere. Their customer service is also extremely disappointing — they constantly promise callbacks, but nobody ever follows up. It feels very unprofessional and frustrating, especially when you’re paying for a service that’s supposed to help your business grow. I wouldn’t recommend them based on my experience.
+                            - generic [ref=e1063]:
+                              - generic [ref=e1065]: 27 May 2026
+                              - generic [ref=e1067]: Unprompted review
+                        - generic [ref=e1068]:
+                          - generic [ref=e1069]:
+                            - button "Useful" [ref=e1070]:
+                              - img [ref=e1071]
+                              - generic [ref=e1073]: Useful
+                            - generic [ref=e1074] [cursor=pointer]: "1"
+                          - button "Share" [ref=e1075]:
+                            - img [ref=e1076]
+                            - generic [ref=e1078]: Share
+                          - button "Flag this review" [ref=e1079] [cursor=pointer]:
+                            - img [ref=e1080]
+                        - generic [ref=e1082]:
+                          - img [ref=e1084]
+                          - generic [ref=e1086]:
+                            - generic [ref=e1087]:
+                              - img "Checkatrade.com logo" [ref=e1089]
+                              - generic [ref=e1090]:
+                                - paragraph [ref=e1091]: Reply from Checkatrade.com
+                                - time [ref=e1092]: May 29, 2026
+                            - paragraph [ref=e1093]:
+                              - text: We’re sorry to hear you’ve been disappointed with your experience. We understand how frustrating it must be when leads don’t meet your expectations and you feel communication from the team has fallen short.
+                              - text: We never want members to feel ignored, especially when they’ve been promised a callback. Your feedback regarding lead quality and customer service is important.
+                              - text: Checkatrade Team
+                    - article [ref=e1095]:
+                      - generic [ref=e1096]:
+                        - generic [ref=e1097]:
+                          - complementary "Info for Clive Long" [ref=e1098]:
+                            - link "Clive Long GB • 1 review" [ref=e1101] [cursor=pointer]:
+                              - /url: /users/6a0e2479dd910c4cd16c3712
+                              - generic [ref=e1102]: Clive Long
+                              - generic [ref=e1103]:
+                                - generic [ref=e1104]: GB
+                                - generic [ref=e1105]: •
+                                - generic [ref=e1106]: 1 review
+                          - time [ref=e1108]: May 21, 2026
+                        - generic [ref=e1109]:
+                          - img "Rated 1 out of 5 stars" [ref=e1111]
+                          - generic [ref=e1112]:
+                            - link "Avoid Checkatrade. its become a Scam." [ref=e1113] [cursor=pointer]:
+                              - /url: /reviews/6a0e2497159ce0576b63e904
+                              - heading "Avoid Checkatrade. its become a Scam." [level=2] [ref=e1114]
+                            - paragraph [ref=e1115]:
+                              - text: To all Trades People.
+                              - text: Not Happy with the way Checkatrade is changing. You never charged for
+                              - emphasis [ref=e1116]: leads
+                              - text: before; it was simply based on reviews and postcode buy ins.
+                              - text: But now Checkatrade has turned to greedy. Also 90% of the
+                              - emphasis [ref=e1117]: leads
+                              - text: are useless and rubbish, these clients so called, don’t even respond. You can call and text them, it seems these are fake and you are forcing trades people buy
+                              - emphasis [ref=e1118]: leads
+                              - text: in addition.
+                              - text: I will be complaining about the way you are doing or running this on all the possible social media sites, I’m sure I’m not the only trades person that fee like this.
+                              - text: You have set a limit on
+                              - emphasis [ref=e1119]: leads
+                              - text: and increased the prices. This is complete become a scam.
+                              - text: The other day I mistakenly bought a lead and the client did even respond or answer the call. that is hard earned money down the drain. You guys are extorting trades hard earned money as much as you can.
+                              - text: I have made a mistake to renew. Its not going g to continue though.
+                              - text: Thank you.
+                              - text: Clive
+                            - generic [ref=e1121]:
+                              - generic [ref=e1123]: 20 May 2026
+                              - generic [ref=e1125]: Unprompted review
+                        - generic [ref=e1126]:
+                          - generic [ref=e1127]:
+                            - button "Useful" [ref=e1128]:
+                              - img [ref=e1129]
+                              - generic [ref=e1131]: Useful
+                            - generic [ref=e1132] [cursor=pointer]: "2"
+                          - button "Share" [ref=e1133]:
+                            - img [ref=e1134]
+                            - generic [ref=e1136]: Share
+                          - button "Flag this review" [ref=e1137] [cursor=pointer]:
+                            - img [ref=e1138]
+                        - generic [ref=e1140]:
+                          - img [ref=e1142]
+                          - generic [ref=e1144]:
+                            - generic [ref=e1145]:
+                              - img "Checkatrade.com logo" [ref=e1147]
+                              - generic [ref=e1148]:
+                                - paragraph [ref=e1149]: Reply from Checkatrade.com
+                                - time [ref=e1150]: May 27, 2026
+                            - paragraph [ref=e1151]:
+                              - text: We’re sorry to hear how frustrated and disappointed you feel, Clive. We understand your concerns around leads, pricing, and renewals, especially when you feel you’re not getting value from the service.
+                              - text: We know it’s frustrating when customers don’t respond after you’ve paid for a lead, and we appreciate you taking the time to share this feedback openly. Your comments around lead quality and communication have been noted.
+                              - text: If you’d like to discuss your membership or concerns further, please get in touch with us by phone or through our website and the team can review your account with you.
+                              - text: Checkatrade Team
+                    - article [ref=e1153]:
+                      - generic [ref=e1154]:
+                        - generic [ref=e1155]:
+                          - complementary "Info for Bradley" [ref=e1156]:
+                            - generic [ref=e1157]:
+                              - generic [ref=e1159]: BR
+                              - link "Bradley GB • 1 review" [ref=e1160] [cursor=pointer]:
+                                - /url: /users/6a0d8bda5f73f91224b92150
+                                - generic [ref=e1161]: Bradley
+                                - generic [ref=e1162]:
+                                  - generic [ref=e1163]: GB
+                                  - generic [ref=e1164]: •
+                                  - generic [ref=e1165]: 1 review
+                          - time [ref=e1167]: May 20, 2026
+                        - generic [ref=e1168]:
+                          - img "Rated 1 out of 5 stars" [ref=e1170]
+                          - generic [ref=e1171]:
+                            - link "Awful service" [ref=e1172] [cursor=pointer]:
+                              - /url: /reviews/6a0d8c01ba1d93619abcc635
+                              - heading "Awful service" [level=2] [ref=e1173]
+                            - paragraph [ref=e1174]:
+                              - text: Awful service. We have been with check a trade for a number of years. We tried to cancel and was advised to do so via email. They have now auto renewed our subscription for the year and are not allowing to cancel as they are now saying this isn't the correct method. On top of this any trade trying to gain work from check trade I think we had 2
+                              - emphasis [ref=e1175]: leads
+                              - text: in 4 years. Waste of money.
+                            - generic [ref=e1177]:
+                              - generic [ref=e1179]: 20 May 2026
+                              - generic [ref=e1181]: Unprompted review
+                        - generic [ref=e1182]:
+                          - button "Useful" [ref=e1184]:
+                            - img [ref=e1185]
+                            - generic [ref=e1187]: Useful
+                          - button "Share" [ref=e1188]:
+                            - img [ref=e1189]
+                            - generic [ref=e1191]: Share
+                          - button "Flag this review" [ref=e1192] [cursor=pointer]:
+                            - img [ref=e1193]
+                        - generic [ref=e1195]:
+                          - img [ref=e1197]
+                          - generic [ref=e1199]:
+                            - generic [ref=e1200]:
+                              - img "Checkatrade.com logo" [ref=e1202]
+                              - generic [ref=e1203]:
+                                - paragraph [ref=e1204]: Reply from Checkatrade.com
+                                - time [ref=e1205]: May 27, 2026
+                            - paragraph [ref=e1206]:
+                              - text: We’re sorry to hear how disappointed you’ve been with your experience. We can understand how frustrating this must feel, particularly around the cancellation process and your concerns about the value of your membership.
+                              - text: This isn’t the experience we’d want for our members, especially those who’ve been with us for a number of years. We’d encourage you to get in touch with the team directly by phone or through our website so your account and the renewal concerns can be reviewed properly.
+                              - text: Checkatrade Team
+                    - article [ref=e1208]:
+                      - generic [ref=e1209]:
+                        - generic [ref=e1210]:
+                          - complementary "Info for Chris Cranston" [ref=e1211]:
+                            - generic [ref=e1212]:
+                              - generic [ref=e1214]: CC
+                              - link "Chris Cranston GB • 4 reviews" [ref=e1215] [cursor=pointer]:
+                                - /url: /users/5dfa1b78bc44db7d6f14386d
+                                - generic [ref=e1216]: Chris Cranston
+                                - generic [ref=e1217]:
+                                  - generic [ref=e1218]: GB
+                                  - generic [ref=e1219]: •
+                                  - generic [ref=e1220]: 4 reviews
+                          - time [ref=e1222]: May 20, 2026
+                        - generic [ref=e1223]:
+                          - img "Rated 1 out of 5 stars" [ref=e1225]
+                          - generic [ref=e1226]:
+                            - link "I have never known such an incompetent…" [ref=e1227] [cursor=pointer]:
+                              - /url: /reviews/6a0d6ec2d5ddf69913f154af
+                              - heading "I have never known such an incompetent…" [level=2] [ref=e1228]
+                            - paragraph [ref=e1229]:
+                              - text: I have never known such an incompetent company than Checkatrade. They wrongly signed me up using incorrect details. My account has never been set up correctly and can't be changed for the correct details.
+                              - text: I have been in contact with them for months and they have still not sorted this out. They are more than happy to take the money each month though!
+                              - text: Please do not use Checkatrade - they are quick to set you up and take your money but the after sales does not exist!
+                              - text: I would almost go as far assaying they are fraudulent - taking money from an account not associated with the
+                              - emphasis [ref=e1230]: membership
+                              - text: .
+                            - generic [ref=e1232]:
+                              - generic [ref=e1234]: 20 May 2026
+                              - generic [ref=e1236]: Unprompted review
+                        - generic [ref=e1237]:
+                          - generic [ref=e1238]:
+                            - button "Useful" [ref=e1239]:
+                              - img [ref=e1240]
+                              - generic [ref=e1242]: Useful
+                            - generic [ref=e1243] [cursor=pointer]: "1"
+                          - button "Share" [ref=e1244]:
+                            - img [ref=e1245]
+                            - generic [ref=e1247]: Share
+                          - button "Flag this review" [ref=e1248] [cursor=pointer]:
+                            - img [ref=e1249]
+                        - generic [ref=e1251]:
+                          - img [ref=e1253]
+                          - generic [ref=e1255]:
+                            - generic [ref=e1256]:
+                              - img "Checkatrade.com logo" [ref=e1258]
+                              - generic [ref=e1259]:
+                                - paragraph [ref=e1260]: Reply from Checkatrade.com
+                                - time [ref=e1261]: May 26, 2026
+                            - paragraph [ref=e1262]:
+                              - text: We’re sorry to hear how frustrating this experience has been for you. We can understand why you’d be upset, especially after trying to get the account details corrected over a long period of time.
+                              - text: This clearly isn’t the level of service we’d want you to receive, and we appreciate you taking the time to share your feedback. We’d encourage you to contact the team directly by phone or through our website so this can be reviewed properly and looked into further.
+                              - text: Checkatrade Team
+                    - article [ref=e1264]:
+                      - generic [ref=e1265]:
+                        - generic [ref=e1266]:
+                          - complementary "Info for Tradesmen" [ref=e1267]:
+                            - generic [ref=e1268]:
+                              - generic [ref=e1270]: TR
+                              - link "Tradesmen GB • 1 review" [ref=e1271] [cursor=pointer]:
+                                - /url: /users/6a09878698a7929fec512eda
+                                - generic [ref=e1272]: Tradesmen
+                                - generic [ref=e1273]:
+                                  - generic [ref=e1274]: GB
+                                  - generic [ref=e1275]: •
+                                  - generic [ref=e1276]: 1 review
+                          - time [ref=e1278]: May 17, 2026
+                        - generic [ref=e1279]:
+                          - generic [ref=e1280]:
+                            - img "Rated 1 out of 5 stars" [ref=e1281]
+                            - button "Verified" [ref=e1284]:
+                              - generic [ref=e1285]:
+                                - img [ref=e1286]
+                                - generic [ref=e1288]: Verified
+                          - generic [ref=e1289]:
+                            - link "No leads" [ref=e1290] [cursor=pointer]:
+                              - /url: /reviews/6a0987870e0df7f046ed3b25
+                              - heading "No leads" [level=2] [ref=e1291]:
+                                - text: "No"
+                                - emphasis [ref=e1292]: leads
+                            - paragraph [ref=e1293]:
+                              - text: "No"
+                              - emphasis [ref=e1294]: leads
+                              - text: ", not worth the money"
+                            - generic [ref=e1298]: 12 May 2026
+                        - generic [ref=e1299]:
+                          - button "Useful" [ref=e1301]:
+                            - img [ref=e1302]
+                            - generic [ref=e1304]: Useful
+                          - button "Share" [ref=e1305]:
+                            - img [ref=e1306]
+                            - generic [ref=e1308]: Share
+                          - button "Flag this review" [ref=e1309] [cursor=pointer]:
+                            - img [ref=e1310]
+                        - generic [ref=e1312]:
+                          - img [ref=e1314]
+                          - generic [ref=e1316]:
+                            - generic [ref=e1317]:
+                              - img "Checkatrade.com logo" [ref=e1319]
+                              - generic [ref=e1320]:
+                                - paragraph [ref=e1321]: Reply from Checkatrade.com
+                                - time [ref=e1322]: May 18, 2026
+                            - paragraph [ref=e1323]:
+                              - text: We’re sorry to hear this. If the leads coming through aren’t turning into real work, we understand why it wouldn’t feel worth the cost.
+                              - text: Different areas and trades can see very different levels of demand and conversion, but we know that doesn’t help if it’s not working for your business.
+                              - text: If you’d like, we can take a look at your account setup, the types of leads you’re receiving, and whether anything can be improved.
+                              - text: "You can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: Checkatrade Team
+                    - generic [ref=e1324]:
+                      - button "Dismiss" [ref=e1325] [cursor=pointer]:
+                        - img [ref=e1327]
+                      - paragraph [ref=e1329]: See if a website is trustworthy without leaving the page
+                      - link "Get Chrome extension" [ref=e1332] [cursor=pointer]:
+                        - /url: https://chrome.google.com/webstore/detail/trustpilot-reviews-rating/dimkjjladgaekdlfebknbaooicmfalke?utm_source=trustpilot&utm_medium=cpp_promotion&utm_campaign=cpp_promotion
+                        - generic [ref=e1333]: Get Chrome extension
+                    - article [ref=e1335]:
+                      - generic [ref=e1336]:
+                        - generic [ref=e1337]:
+                          - complementary "Info for Jessica" [ref=e1338]:
+                            - generic [ref=e1339]:
+                              - generic [ref=e1341]: JE
+                              - link "Jessica GB • 2 reviews" [ref=e1342] [cursor=pointer]:
+                                - /url: /users/68e8d93951e793b17309ecb8
+                                - generic [ref=e1343]: Jessica
+                                - generic [ref=e1344]:
+                                  - generic [ref=e1345]: GB
+                                  - generic [ref=e1346]: •
+                                  - generic [ref=e1347]: 2 reviews
+                          - time [ref=e1349]: May 16, 2026
+                        - generic [ref=e1350]:
+                          - img "Rated 1 out of 5 stars" [ref=e1352]
+                          - generic [ref=e1353]:
+                            - link "As a tradesperson- If I could rate 0 I would !" [ref=e1354] [cursor=pointer]:
+                              - /url: /reviews/6a078d9362e855f85bb37863
+                              - heading "As a tradesperson- If I could rate 0 I would !" [level=2] [ref=e1355]
+                            - paragraph [ref=e1356]:
+                              - text: As a tradesperson, my experience with Checkatrade has been very disappointing. The company only seems to care about money rather than supporting the tradespeople who actually pay for the service. The fees are expensive, constantly increasing, and they try to take payments even when they’re not supposed to.
+                              - text: Another major issue is that they always seem to believe the customer no matter what. If a client refuses to pay after work has been completed, Checkatrade don’t properly support the tradesperson or help resolve the issue fairly. Honest businesses are left out of pocket while customers can make complaints without much evidence.
+                              - text: It also feels like almost anyone can get accepted onto the platform now, which completely lowers the quality of the service. They allow huge numbers of tradespeople in the same area and trade, creating massive competition. The
+                              - emphasis [ref=e1357]: leads
+                              - text: you are paying for are being sent to loads of other businesses at the same time, meaning you only have a very slim chance of actually winning the job. In the end, tradespeople are spending large amounts of money for very little return.
+                              - text: Overall, Checkatrade seems far more interested in making money from tradespeople than actually helping genuine businesses succeed. I wouldn’t recommend it to any serious tradesperson.
+                            - generic [ref=e1359]:
+                              - generic [ref=e1361]: 27 April 2026
+                              - generic [ref=e1363]: Unprompted review
+                        - generic [ref=e1364]:
+                          - button "Useful" [ref=e1366]:
+                            - img [ref=e1367]
+                            - generic [ref=e1369]: Useful
+                          - button "Share" [ref=e1370]:
+                            - img [ref=e1371]
+                            - generic [ref=e1373]: Share
+                          - button "Flag this review" [ref=e1374] [cursor=pointer]:
+                            - img [ref=e1375]
+                        - generic [ref=e1377]:
+                          - img [ref=e1379]
+                          - generic [ref=e1381]:
+                            - generic [ref=e1382]:
+                              - img "Checkatrade.com logo" [ref=e1384]
+                              - generic [ref=e1385]:
+                                - paragraph [ref=e1386]: Reply from Checkatrade.com
+                                - time [ref=e1387]: May 18, 2026
+                            - paragraph [ref=e1388]:
+                              - text: Thanks for taking the time to share this. It’s clear you’ve put a lot of thought into your experience, and we understand why you’re frustrated.
+                              - text: We appreciate your concerns around pricing, lead competition, and the level of support you feel tradespeople receive. Leads are shared with multiple businesses to give homeowners choice, but we understand that if the return isn’t there, it can feel like poor value.
+                              - text: We also recognise your point around disputes with customers. We do try to review situations fairly and based on the information available, but we appreciate it can feel difficult when there’s disagreement over payment or work completed.
+                              - text: Your feedback around lead quality, competition in certain areas, and how the platform has changed over time is important, particularly from experienced tradespeople using the service day to day.
+                              - text: "If you’d like to discuss your account or concerns further, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: Checkatrade Team
+                    - article [ref=e1390]:
+                      - generic [ref=e1391]:
+                        - generic [ref=e1392]:
+                          - complementary "Info for Lewis Jones" [ref=e1393]:
+                            - link "Lewis Jones GB • 13 reviews" [ref=e1396] [cursor=pointer]:
+                              - /url: /users/644d41b5a8852400122d013a
+                              - generic [ref=e1397]: Lewis Jones
+                              - generic [ref=e1398]:
+                                - generic [ref=e1399]: GB
+                                - generic [ref=e1400]: •
+                                - generic [ref=e1401]: 13 reviews
+                          - time [ref=e1403]: May 15, 2026
+                        - generic [ref=e1404]:
+                          - img "Rated 1 out of 5 stars" [ref=e1406]
+                          - generic [ref=e1407]:
+                            - link "SPAM LEADS!!" [ref=e1408] [cursor=pointer]:
+                              - /url: /reviews/6a06c7636fc0a989fc4aaefc
+                              - heading "SPAM LEADS!!" [level=2] [ref=e1409]:
+                                - text: SPAM
+                                - emphasis [ref=e1410]: LEADS
+                                - text: "!!"
+                            - paragraph [ref=e1411]:
+                              - text: SPAM
+                              - emphasis [ref=e1412]: LEADS
+                              - text: "!!! STAY AWAY FROM THIS COMPANY!!!"
+                              - text: I received £4,500 worth of spam
+                              - emphasis [ref=e1413]: leads
+                              - text: who were not real customers looking for work. I have good evidence that these
+                              - emphasis [ref=e1414]: leads
+                              - text: were spam
+                              - emphasis [ref=e1415]: leads
+                              - text: and Checktrade do not care or want to know, they just want my money.
+                              - text: They call me everyday, send me emails - but no one wants to discuss the spam
+                              - emphasis [ref=e1416]: leads
+                              - text: with me.
+                              - text: They hire an agency in south Africa to do all their payment chasing so they have no idea about my business and are clueless when I bring up this problem to them. I have to ring the sales line to speak to someone in the UK - but they have no authority and say "someone will give you a call" - no one has ever called me from Checkatrade to discuss this complaint. The only calls I get are calls from South Africa asking me to pay or they are sending Bailiffs round.
+                              - text: I would highly Recommend you stay as far away from Checkatrade as possible - Awful company, 0 morals
+                            - generic [ref=e1418]:
+                              - generic [ref=e1420]: 15 May 2026
+                              - generic [ref=e1422]: Unprompted review
+                        - generic [ref=e1423]:
+                          - generic [ref=e1424]:
+                            - button "Useful" [ref=e1425]:
+                              - img [ref=e1426]
+                              - generic [ref=e1428]: Useful
+                            - generic [ref=e1429] [cursor=pointer]: "3"
+                          - button "Share" [ref=e1430]:
+                            - img [ref=e1431]
+                            - generic [ref=e1433]: Share
+                          - button "Flag this review" [ref=e1434] [cursor=pointer]:
+                            - img [ref=e1435]
+                        - generic [ref=e1437]:
+                          - img [ref=e1439]
+                          - generic [ref=e1441]:
+                            - generic [ref=e1442]:
+                              - img "Checkatrade.com logo" [ref=e1444]
+                              - generic [ref=e1445]:
+                                - paragraph [ref=e1446]: Reply from Checkatrade.com
+                                - time [ref=e1447]: May 15, 2026
+                            - paragraph [ref=e1448]:
+                              - text: We can see how frustrated you are, especially if you feel the leads you’ve received haven’t been genuine and you’ve struggled to get a proper discussion around it.
+                              - text: That’s clearly not the experience you expected.
+                              - text: We do take concerns around suspicious or low-quality leads seriously, and if you’ve got evidence you believe supports that, it’s something we’d want reviewed properly. We also understand your frustration around repeated contact regarding payments while feeling your concerns haven’t been addressed.
+                              - text: Our support teams work from the same systems and processes regardless of location, but we appreciate that you’ve found communication difficult and feel like you haven’t had clear answers.
+                              - text: This is something that needs a proper review rather than going back and forth.
+                              - text: "You can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website with the details and evidence you’ve mentioned
+                              - text: We’ll make sure it’s looked into by the relevant team.
+                              - text: Checkatrade Team
+                    - article [ref=e1450]:
+                      - generic [ref=e1451]:
+                        - generic [ref=e1452]:
+                          - complementary "Info for Adam" [ref=e1453]:
+                            - link "Adam GB • 1 review" [ref=e1456] [cursor=pointer]:
+                              - /url: /users/6a06bfc22c172742d2912be6
+                              - generic [ref=e1457]: Adam
+                              - generic [ref=e1458]:
+                                - generic [ref=e1459]: GB
+                                - generic [ref=e1460]: •
+                                - generic [ref=e1461]: 1 review
+                          - time [ref=e1463]: May 15, 2026
+                        - generic [ref=e1464]:
+                          - img "Rated 1 out of 5 stars" [ref=e1466]
+                          - generic [ref=e1467]:
+                            - link "If you’re considering checkerTrade" [ref=e1468] [cursor=pointer]:
+                              - /url: /reviews/6a06bfc9506983c7221c9325
+                              - heading "If you’re considering checkerTrade" [level=2] [ref=e1469]
+                            - paragraph [ref=e1470]:
+                              - text: If you’re considering checkerTrade, be very cautious. They offer the first month free, but you’ll only get five
+                              - emphasis [ref=e1471]: leads
+                              - text: . After that, if you want more
+                              - emphasis [ref=e1472]: leads
+                              - text: ", you have to pay nearly £900 for a"
+                              - emphasis [ref=e1473]: membership
+                              - text: . Please do not sign up most of the
+                              - emphasis [ref=e1474]: leads
+                              - text: are fake, often just one person creating multiple fake
+                              - emphasis [ref=e1475]: leads
+                              - text: ". Once you sign up, their contact center is mostly offshore in Africa and mainly you will get called from and they will pass your number down to scammers along with your information . Please be advised: do not join checkerTrade. It’s a waste of time and money, and it leaves you vulnerable to scams."
+                            - generic [ref=e1477]:
+                              - generic [ref=e1479]: 1 May 2026
+                              - generic [ref=e1481]: Unprompted review
+                        - generic [ref=e1482]:
+                          - generic [ref=e1483]:
+                            - button "Useful" [ref=e1484]:
+                              - img [ref=e1485]
+                              - generic [ref=e1487]: Useful
+                            - generic [ref=e1488] [cursor=pointer]: "3"
+                          - button "Share" [ref=e1489]:
+                            - img [ref=e1490]
+                            - generic [ref=e1492]: Share
+                          - button "Flag this review" [ref=e1493] [cursor=pointer]:
+                            - img [ref=e1494]
+                        - generic [ref=e1496]:
+                          - img [ref=e1498]
+                          - generic [ref=e1500]:
+                            - generic [ref=e1501]:
+                              - img "Checkatrade.com logo" [ref=e1503]
+                              - generic [ref=e1504]:
+                                - paragraph [ref=e1505]: Reply from Checkatrade.com
+                                - time [ref=e1506]: May 15, 2026
+                            - paragraph [ref=e1507]:
+                              - text: We’re sorry to hear you feel this way, but we do need to clarify a few points.
+                              - text: Leads are genuine customer enquiries submitted through the platform, and we take any concerns around suspicious or duplicate activity seriously. We also do not share customer or tradesperson details with scammers or third parties in the way you’ve described.
+                              - text: Our support teams are there to assist members regardless of location, and all staff work from the same systems and processes.
+                              - text: Membership options, lead volumes, and pricing vary depending on the package selected, and these should be clearly explained during sign-up. If you feel something was miscommunicated or your experience hasn’t matched what was discussed, we’d want to understand that properly.
+                              - text: "You can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll take a closer look at your concerns.
+                              - text: Checkatrade Team
+                    - article [ref=e1509]:
+                      - generic [ref=e1510]:
+                        - generic [ref=e1511]:
+                          - complementary "Info for D Frankland" [ref=e1512]:
+                            - generic [ref=e1513]:
+                              - generic [ref=e1515]: DF
+                              - link "D Frankland GB • 1 review" [ref=e1516] [cursor=pointer]:
+                                - /url: /users/63c446896503ee0012e9b18b
+                                - generic [ref=e1517]: D Frankland
+                                - generic [ref=e1518]:
+                                  - generic [ref=e1519]: GB
+                                  - generic [ref=e1520]: •
+                                  - generic [ref=e1521]: 1 review
+                          - time [ref=e1523]: May 14, 2026
+                        - generic [ref=e1524]:
+                          - img "Rated 1 out of 5 stars" [ref=e1526]
+                          - generic [ref=e1527]:
+                            - link "Trades people be warned" [ref=e1528] [cursor=pointer]:
+                              - /url: /reviews/6a05ff12a0dfcedd9f64cab0
+                              - heading "Trades people be warned" [level=2] [ref=e1529]
+                            - paragraph [ref=e1530]:
+                              - text: Trades people be warned
+                              - text: I have been a member for 10 years and will never be signing up again.
+                              - text: When I joined the site was great I would be inundated with calls and emails and it accounted for 80% of my work at an affordable price too.
+                              - text: Now over the last 5 years they have introduced lots of new features that seem to have taken away all the calls and emails and are pushing you to make contact with customers through their website chat. Since all that has happened I am now getting hardly any calls and Checkatrade accounts for 20% work load for the year and 50% of
+                              - emphasis [ref=e1531]: leads
+                              - text: either don’t reply or are just budgeting and researching.
+                              - text: I joined because it was a good concept as just a simple local directory that people could leave honest reviews about trades and it worked. Now they have introduced Checkatrade quoting, invoicing, payments, chat, don’t show my actual number or town I’m from and they now guarantee my work great but this all comes at a premium price.
+                              - text: I wasn’t prepared to use any of these services because I started my business because I wanted to work for myself not Checkatrade so if you are not using Checkatrade services then you won’t be getting any work out of it.
+                              - text: Now that I’m trying to leave and have told them countless times that I’m leaving they have auto renewed and are trying to lock me in for another 12 months even though I never signed a contract. So they left me no option but to cancel my direct debit and in return they blocked my profile from view on their website great I thought but now I get 5 calls a day from them trying to get close to £3,000 from me for a service I don’t want or that they don’t provide. There’s no cooling off period no email to cancel no early termination and when they phone a month before renewal to see if you are happy with the service and if you are staying and you say no I’m leaving I don’t want your services anymore apparently that’s not cancelling. I need to phone a different number between 9-5 Monday to Friday to cancel and that is the only way to cancel.
+                              - text: My advice is don’t sign up and waste your money you will do better with google adds and it will cost you less and you can turn it on and off to suit and work to a budget that works for you.
+                            - generic [ref=e1533]:
+                              - generic [ref=e1535]: 14 May 2026
+                              - generic [ref=e1537]: Unprompted review
+                        - generic [ref=e1538]:
+                          - generic [ref=e1539]:
+                            - button "Useful" [ref=e1540]:
+                              - img [ref=e1541]
+                              - generic [ref=e1543]: Useful
+                            - generic [ref=e1544] [cursor=pointer]: "1"
+                          - button "Share" [ref=e1545]:
+                            - img [ref=e1546]
+                            - generic [ref=e1548]: Share
+                          - button "Flag this review" [ref=e1549] [cursor=pointer]:
+                            - img [ref=e1550]
+                        - generic [ref=e1552]:
+                          - img [ref=e1554]
+                          - generic [ref=e1556]:
+                            - generic [ref=e1557]:
+                              - img "Checkatrade.com logo" [ref=e1559]
+                              - generic [ref=e1560]:
+                                - paragraph [ref=e1561]: Reply from Checkatrade.com
+                                - time [ref=e1562]: May 15, 2026
+                            - paragraph [ref=e1563]:
+                              - text: After 10 years with us, we can understand why this feels so frustrating, especially when you’ve seen such a big change in how the platform works over time.
+                              - text: It’s clear that what originally worked well for your business no longer feels like the right fit, particularly around lead quality, customer engagement, and the direction of the platform. We appreciate you taking the time to explain that in detail.
+                              - text: We also understand your concerns around renewal and cancellation. Our memberships are fixed-term business agreements, and cancellation requests do need to follow the process outlined in the membership terms. Cancelling a Direct Debit itself does not cancel the agreement, which is why contact may continue regarding the outstanding balance.
+                              - text: That said, it’s important you feel the process is clear and that your concerns are being properly heard.
+                              - text: "If you’d like this reviewed further, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll take a proper look at the account history and the concerns you’ve raised.
+                              - text: Checkatrade Team
+                    - article [ref=e1565]:
+                      - generic [ref=e1566]:
+                        - generic [ref=e1567]:
+                          - complementary "Info for Shaun Kidd" [ref=e1568]:
+                            - generic [ref=e1569]:
+                              - generic [ref=e1571]: SK
+                              - link "Shaun Kidd GB • 3 reviews" [ref=e1572] [cursor=pointer]:
+                                - /url: /users/60c898bc99e71c001a80ceff
+                                - generic [ref=e1573]: Shaun Kidd
+                                - generic [ref=e1574]:
+                                  - generic [ref=e1575]: GB
+                                  - generic [ref=e1576]: •
+                                  - generic [ref=e1577]: 3 reviews
+                          - time [ref=e1579]: May 12, 2026
+                        - generic [ref=e1580]:
+                          - img "Rated 1 out of 5 stars" [ref=e1582]
+                          - generic [ref=e1583]:
+                            - link "Hi everyone hope you get to read this…" [ref=e1584] [cursor=pointer]:
+                              - /url: /reviews/6a035d6fadff41ecb7ebd75b
+                              - heading "Hi everyone hope you get to read this…" [level=2] [ref=e1585]
+                            - paragraph [ref=e1586]:
+                              - text: Hi everyone hope you get to read this message all the way through. Just to let you know that checker trade is doing some scams at the moment and I think everyone should be aware of these as I’ve been in the trade for many years and this is the worst of the worst be aware they’re calling you up telling you that they are doing these great deals for more
+                              - emphasis [ref=e1587]: leads
+                              - text: for tradesmen then before you know it they are taken £500 out of your account without you knowing then automatically it new with a £4500 bill every month. This is a contract you cannot get out of when you call them up and explain to them about my rights of the 14 days they tell you a point blank there’s nothing you can do about it however as we all know the law states you should have 14 days to cancel even when you take on a very small job for anyone they have the rights of 14 days calling off but these are not giving you the chance. They automatically connecting you to a contract which you cannot get out of be aware this is a very big scan by checker trade would not recommend them to no one be lucky.
+                            - generic [ref=e1589]:
+                              - generic [ref=e1591]: 12 May 2026
+                              - generic [ref=e1593]: Unprompted review
+                        - generic [ref=e1594]:
+                          - button "Useful" [ref=e1596]:
+                            - img [ref=e1597]
+                            - generic [ref=e1599]: Useful
+                          - button "Share" [ref=e1600]:
+                            - img [ref=e1601]
+                            - generic [ref=e1603]: Share
+                          - button "Flag this review" [ref=e1604] [cursor=pointer]:
+                            - img [ref=e1605]
+                        - generic [ref=e1607]:
+                          - img [ref=e1609]
+                          - generic [ref=e1611]:
+                            - generic [ref=e1612]:
+                              - img "Checkatrade.com logo" [ref=e1614]
+                              - generic [ref=e1615]:
+                                - paragraph [ref=e1616]: Reply from Checkatrade.com
+                                - time [ref=e1617]: May 13, 2026
+                            - paragraph [ref=e1618]:
+                              - text: We’re sorry to hear you feel this way, but we do need to clarify a few things here.
+                              - text: Our memberships are business-to-business agreements, and the terms, pricing, and renewal details are outlined during sign-up. Different products and lead packages are available depending on the type of service selected, but no charges should be taken without an agreement being in place.
+                              - text: The 14-day consumer cooling-off period you’ve referenced applies to consumer contracts and doesn’t apply in the same way to business-to-business membership agreements.
+                              - text: That said, if you believe something has been miscommunicated or charged incorrectly on your account, we’d want to look into it properly rather than leave concerns unresolved.
+                              - text: "You can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll review the details of your account and the agreement with you.
+                              - text: Checkatrade Team
+                    - article [ref=e1620]:
+                      - generic [ref=e1621]:
+                        - generic [ref=e1622]:
+                          - complementary "Info for Arpad Berecki" [ref=e1623]:
+                            - generic [ref=e1624]:
+                              - generic [ref=e1626]: AB
+                              - link "Arpad Berecki GB • 2 reviews" [ref=e1627] [cursor=pointer]:
+                                - /url: /users/61749d217f369f0012840388
+                                - generic [ref=e1628]: Arpad Berecki
+                                - generic [ref=e1629]:
+                                  - generic [ref=e1630]: GB
+                                  - generic [ref=e1631]: •
+                                  - generic [ref=e1632]: 2 reviews
+                          - time [ref=e1634]: May 12, 2026
+                        - generic [ref=e1635]:
+                          - img "Rated 2 out of 5 stars" [ref=e1637]
+                          - generic [ref=e1638]:
+                            - link "I am still using their services as a…" [ref=e1639] [cursor=pointer]:
+                              - /url: /reviews/6a0316f9afe7ad7b3230494b
+                              - heading "I am still using their services as a…" [level=2] [ref=e1640]
+                            - paragraph [ref=e1641]:
+                              - text: I am still using their services as a tradesman, but only because I couldn't cancel.
+                              - text: To be fair I did have some jobs come through but by far not enough to compensate for over £400 a month that I'm paying them.
+                              - text: Be ready to have to chase any work that comes through, I would say approximately 70% of the
+                              - emphasis [ref=e1642]: leads
+                              - text: I text in the app never actually reply.
+                              - text: The app itself has bugs like infinite loading of chat window etc which I tried to have sorted a few times (even changed my phone) but I was told that it's all good on their end.
+                              - text: I acknowledge that other tradesmen had success with the platform but I wish I never signed up.
+                            - generic [ref=e1644]:
+                              - generic [ref=e1646]: 12 May 2026
+                              - generic [ref=e1648]: Unprompted review
+                        - generic [ref=e1649]:
+                          - button "Useful" [ref=e1651]:
+                            - img [ref=e1652]
+                            - generic [ref=e1654]: Useful
+                          - button "Share" [ref=e1655]:
+                            - img [ref=e1656]
+                            - generic [ref=e1658]: Share
+                          - button "Flag this review" [ref=e1659] [cursor=pointer]:
+                            - img [ref=e1660]
+                        - generic [ref=e1662]:
+                          - img [ref=e1664]
+                          - generic [ref=e1666]:
+                            - generic [ref=e1667]:
+                              - img "Checkatrade.com logo" [ref=e1669]
+                              - generic [ref=e1670]:
+                                - paragraph [ref=e1671]: Reply from Checkatrade.com
+                                - time [ref=e1672]: May 13, 2026
+                            - paragraph [ref=e1673]:
+                              - text: Thanks for sharing this. It sounds like you’ve had a mixed experience, but ultimately the service hasn’t delivered enough value for the cost involved.
+                              - text: We understand your frustration around lead conversion, especially if a large number of enquiries aren’t responding after initial contact. If you’re paying that level monthly, you need to feel the work coming through is worthwhile.
+                              - text: We also hear your concerns around the app itself. Issues like loading problems and messaging glitches make it harder to manage work properly, especially if you’ve already tried troubleshooting your side.
+                              - text: We appreciate you acknowledging that different tradespeople can have different experiences, but it’s clear this setup hasn’t worked well for your business.
+                              - text: "If you’d like to discuss this further or have the issues reviewed again, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll take a closer look at your account and the concerns you’ve raised.
+                              - text: Checkatrade Team
+                    - article [ref=e1675]:
+                      - generic [ref=e1676]:
+                        - generic [ref=e1677]:
+                          - complementary "Info for Paul" [ref=e1678]:
+                            - generic [ref=e1679]:
+                              - button "Paul" [ref=e1680]:
+                                - generic [ref=e1682]: PA
+                                - img [ref=e1684] [cursor=pointer]
+                              - link "Paul GB • 38 reviews" [ref=e1687] [cursor=pointer]:
+                                - /url: /users/5e4d6bff68c4b9ad92cd167d
+                                - generic [ref=e1688]: Paul
+                                - generic [ref=e1689]:
+                                  - generic [ref=e1690]: GB
+                                  - generic [ref=e1691]: •
+                                  - generic [ref=e1692]: 38 reviews
+                          - time [ref=e1694]: May 11, 2026
+                        - generic [ref=e1695]:
+                          - img "Rated 1 out of 5 stars" [ref=e1697]
+                          - generic [ref=e1698]:
+                            - link "As a tradesman I pay a yearly…" [ref=e1699] [cursor=pointer]:
+                              - /url: /reviews/6a02346a91f36d9330e0f7f4
+                              - heading "As a tradesman I pay a yearly…" [level=2] [ref=e1700]
+                            - paragraph [ref=e1701]:
+                              - text: As a tradesman I pay a yearly subscription but now Checkatrade have started charging for
+                              - emphasis [ref=e1702]: leads
+                              - text: too. Absolutely scandalous.
+                            - generic [ref=e1704]:
+                              - generic [ref=e1706]: 11 May 2026
+                              - generic [ref=e1708]: Unprompted review
+                        - generic [ref=e1709]:
+                          - button "Useful" [ref=e1711]:
+                            - img [ref=e1712]
+                            - generic [ref=e1714]: Useful
+                          - button "Share" [ref=e1715]:
+                            - img [ref=e1716]
+                            - generic [ref=e1718]: Share
+                          - button "Flag this review" [ref=e1719] [cursor=pointer]:
+                            - img [ref=e1720]
+                        - generic [ref=e1722]:
+                          - img [ref=e1724]
+                          - generic [ref=e1726]:
+                            - generic [ref=e1727]:
+                              - img "Checkatrade.com logo" [ref=e1729]
+                              - generic [ref=e1730]:
+                                - paragraph [ref=e1731]: Reply from Checkatrade.com
+                                - time [ref=e1732]: May 12, 2026
+                            - paragraph [ref=e1733]:
+                              - text: We understand why this feels frustrating, especially if you’ve seen changes to how the service works over time.
+                              - text: Different products and lead options are designed to give tradespeople more flexibility in how they receive work, but we appreciate that if the value isn’t there for your business, it’s going to feel difficult to justify.
+                              - text: We’d really like to understand what’s been happening on your account and whether the setup you’re on is the right fit for the type of work you want.
+                              - text: "If you’re open to it, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We can then go through it properly with you.
+                              - text: Checkatrade Team
+                    - article [ref=e1735]:
+                      - generic [ref=e1736]:
+                        - generic [ref=e1737]:
+                          - complementary "Info for Steven Drury" [ref=e1738]:
+                            - link "Steven Drury GB • 1 review" [ref=e1741] [cursor=pointer]:
+                              - /url: /users/69ff79537919057589252cd1
+                              - generic [ref=e1742]: Steven Drury
+                              - generic [ref=e1743]:
+                                - generic [ref=e1744]: GB
+                                - generic [ref=e1745]: •
+                                - generic [ref=e1746]: 1 review
+                          - time [ref=e1748]: May 9, 2026
+                        - generic [ref=e1749]:
+                          - img "Rated 1 out of 5 stars" [ref=e1751]
+                          - generic [ref=e1752]:
+                            - link "Shame zero stars isn’t an option" [ref=e1753] [cursor=pointer]:
+                              - /url: /reviews/69ff795c8298efb290d0ccad
+                              - heading "Shame zero stars isn’t an option" [level=2] [ref=e1754]
+                            - paragraph [ref=e1755]:
+                              - text: Shame zero stars isn’t an option, been desperately waiting to cancel my
+                              - emphasis [ref=e1756]: membership
+                              - text: for months as they wouldn’t let me turn off the auto renewal until a month before. The second I got my renewal reminder I called to cancel and they won’t provide any written confirmation it’s been done! Don’t trust them one bit, used to be brilliant when I joined but a complete waste of time and money these days. Wouldn’t recommend them to traders or customers anymore. I really hope everyone leaves in droves and I know plenty of people that are. Recording all phone calls and fully expecting to have to report them if they don’t action this cancellation.
+                            - generic [ref=e1758]:
+                              - generic [ref=e1760]: 9 May 2026
+                              - generic [ref=e1762]: Unprompted review
+                        - generic [ref=e1763]:
+                          - generic [ref=e1764]:
+                            - button "Useful" [ref=e1765]:
+                              - img [ref=e1766]
+                              - generic [ref=e1768]: Useful
+                            - generic [ref=e1769] [cursor=pointer]: "3"
+                          - button "Share" [ref=e1770]:
+                            - img [ref=e1771]
+                            - generic [ref=e1773]: Share
+                          - button "Flag this review" [ref=e1774] [cursor=pointer]:
+                            - img [ref=e1775]
+                        - generic [ref=e1777]:
+                          - img [ref=e1779]
+                          - generic [ref=e1781]:
+                            - generic [ref=e1782]:
+                              - img "Checkatrade.com logo" [ref=e1784]
+                              - generic [ref=e1785]:
+                                - paragraph [ref=e1786]: Reply from Checkatrade.com
+                                - time [ref=e1787]: May 12, 2026
+                            - paragraph [ref=e1788]:
+                              - text: We can understand why you’re frustrated, especially if you’ve been waiting to cancel and don’t feel confident the request has been processed properly.
+                              - text: Renewal and cancellation windows are part of the membership terms, but once a cancellation request has been actioned, you should absolutely receive clear confirmation and not be left worrying about it.
+                              - text: We’d really like to get this checked for you so you have certainty around the status of your membership and cancellation request.
+                              - text: "The best thing to do is call us on 020 3974 1990 so the team can:"
+                              - text: Confirm whether the cancellation has been processed
+                              - text: Check any notes linked to your account
+                              - text: Make sure you receive the right confirmation
+                              - text: We appreciate this has caused unnecessary stress, and we’d like to help clear it up properly.
+                              - text: Checkatrade Team
+                    - article [ref=e1790]:
+                      - generic [ref=e1791]:
+                        - generic [ref=e1792]:
+                          - complementary "Info for FUAT ARI" [ref=e1793]:
+                            - link "FUAT ARI GB • 2 reviews" [ref=e1796] [cursor=pointer]:
+                              - /url: /users/66f543f083419334d40df653
+                              - generic [ref=e1797]: FUAT ARI
+                              - generic [ref=e1798]:
+                                - generic [ref=e1799]: GB
+                                - generic [ref=e1800]: •
+                                - generic [ref=e1801]: 2 reviews
+                          - time [ref=e1803]: May 8, 2026
+                        - generic [ref=e1804]:
+                          - img "Rated 1 out of 5 stars" [ref=e1806]
+                          - generic [ref=e1807]:
+                            - link "Total waste for beginners!" [ref=e1808] [cursor=pointer]:
+                              - /url: /reviews/69fd0529113853938165b60f
+                              - heading "Total waste for beginners!" [level=2] [ref=e1809]
+                            - paragraph [ref=e1810]:
+                              - text: I recently joined Checkatrade as a new trader but it was a complete disappointment. Despite the high monthly
+                              - emphasis [ref=e1811]: membership
+                              - text: fees, the
+                              - emphasis [ref=e1812]: leads
+                              - text: I received were mostly rubbish and low quality.
+                              - text: On top of that, the prices I quoted (after their commissions) were never accepted by customers, so no jobs came through. They took way more money from me than I earned. I ended up in total loss.
+                              - text: New starters — stay away! Don’t waste your money and time on this platform.
+                            - generic [ref=e1814]:
+                              - generic [ref=e1816]: 7 May 2026
+                              - generic [ref=e1818]: Unprompted review
+                        - generic [ref=e1819]:
+                          - generic [ref=e1820]:
+                            - button "Useful" [ref=e1821]:
+                              - img [ref=e1822]
+                              - generic [ref=e1824]: Useful
+                            - generic [ref=e1825] [cursor=pointer]: "3"
+                          - button "Share" [ref=e1826]:
+                            - img [ref=e1827]
+                            - generic [ref=e1829]: Share
+                          - button "Flag this review" [ref=e1830] [cursor=pointer]:
+                            - img [ref=e1831]
+                        - generic [ref=e1833]:
+                          - img [ref=e1835]
+                          - generic [ref=e1837]:
+                            - generic [ref=e1838]:
+                              - img "Checkatrade.com logo" [ref=e1840]
+                              - generic [ref=e1841]:
+                                - paragraph [ref=e1842]: Reply from Checkatrade.com
+                                - time [ref=e1843]: May 12, 2026
+                            - paragraph [ref=e1844]:
+                              - text: We’re sorry to hear your first experience as a new member has been so disappointing.
+                              - text: Starting out, you need leads that give you a real chance of winning work. If the enquiries coming through aren’t the right quality, or aren’t converting once costs are factored in, we understand why that would feel like poor value.
+                              - text: We’d like to understand what’s happened on your account and whether the setup, categories, or locations are affecting the leads you’re receiving.
+                              - text: "If you’re open to it, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll take a proper look and talk through what’s been coming through.
+                              - text: Checkatrade Team
+                    - article [ref=e1846]:
+                      - generic [ref=e1847]:
+                        - generic [ref=e1848]:
+                          - complementary "Info for Micken Patel" [ref=e1849]:
+                            - generic [ref=e1850]:
+                              - generic [ref=e1852]: MP
+                              - link "Micken Patel GB • 11 reviews" [ref=e1853] [cursor=pointer]:
+                                - /url: /users/625f165a33f4c20012ee8347
+                                - generic [ref=e1854]: Micken Patel
+                                - generic [ref=e1855]:
+                                  - generic [ref=e1856]: GB
+                                  - generic [ref=e1857]: •
+                                  - generic [ref=e1858]: 11 reviews
+                          - time [ref=e1860]: Updated May 12, 2026
+                        - generic [ref=e1861]:
+                          - img "Rated 1 out of 5 stars" [ref=e1863]
+                          - generic [ref=e1864]:
+                            - link "Terrible service for traders" [ref=e1865] [cursor=pointer]:
+                              - /url: /reviews/69fce35c94e08b23d4f60d4e
+                              - heading "Terrible service for traders" [level=2] [ref=e1866]
+                            - paragraph [ref=e1867]:
+                              - text: Terrible service for traders,
+                              - text: Highly recommend not to use Checkatrade under any circumstances.
+                              - text: "0"
+                              - emphasis [ref=e1868]: leads
+                              - text: ", time wasting, better waiting for paint to dry and waiting for a lead."
+                            - generic [ref=e1870]:
+                              - generic [ref=e1872]: 7 May 2026
+                              - generic [ref=e1874]: Unprompted review
+                        - generic [ref=e1875]:
+                          - button "Useful" [ref=e1877]:
+                            - img [ref=e1878]
+                            - generic [ref=e1880]: Useful
+                          - button "Share" [ref=e1881]:
+                            - img [ref=e1882]
+                            - generic [ref=e1884]: Share
+                          - button "Flag this review" [ref=e1885] [cursor=pointer]:
+                            - img [ref=e1886]
+                        - generic [ref=e1888]:
+                          - img [ref=e1890]
+                          - generic [ref=e1892]:
+                            - generic [ref=e1893]:
+                              - img "Checkatrade.com logo" [ref=e1895]
+                              - generic [ref=e1896]:
+                                - paragraph [ref=e1897]: Reply from Checkatrade.com
+                                - time [ref=e1898]: May 12, 2026
+                            - paragraph [ref=e1899]:
+                              - text: We’re sorry to hear you feel this way. That’s clearly not the experience we want for tradespeople using the platform.
+                              - text: We’d really like to understand what’s gone wrong and where the service has fallen short for you.
+                              - text: "If you’re open to it, you can:"
+                              - text: Call us on 020 3974 1990, or
+                              - text: Contact us through our website
+                              - text: We’ll take a proper look and see how we can help.
+                              - text: Checkatrade Team
+                  - navigation "Pagination" [ref=e1901]:
+                    - generic "Previous page":
+                      - generic: Previous
+                    - link "Page number 1":
+                      - /url: /review/www.checkatrade.com?search=membership%20leads
+                      - generic: "1"
+                    - link "Page number 2" [ref=e1902] [cursor=pointer]:
+                      - /url: /review/www.checkatrade.com?page=2&search=membership%20leads
+                      - generic [ref=e1903]: "2"
+                    - img [ref=e1905]
+                    - link "Next page" [ref=e1907] [cursor=pointer]:
+                      - /url: /review/www.checkatrade.com?page=2&search=membership%20leads
+                      - generic [ref=e1908]: Next page
+                - generic [ref=e1910]:
+                  - heading "The Trustpilot Experience" [level=3] [ref=e1911]:
+                    - text: The Trustpilot
+                    - generic [ref=e1912]:
+                      - text: Experience
+                      - img [ref=e1913]
+                  - heading "We're open to all" [level=4] [ref=e1916]:
+                    - button "We're open to all" [ref=e1917] [cursor=pointer]:
+                      - text: We're open to all
+                      - img [ref=e1918]
+                  - heading "We champion verified reviews" [level=4] [ref=e1921]:
+                    - button "We champion verified reviews" [ref=e1922] [cursor=pointer]:
+                      - text: We champion verified reviews
+                      - img [ref=e1923]
+                  - heading "We fight fake reviews" [level=4] [ref=e1926]:
+                    - button "We fight fake reviews" [ref=e1927] [cursor=pointer]:
+                      - text: We fight fake reviews
+                      - img [ref=e1928]
+                  - heading "We show the latest reviews" [level=4] [ref=e1931]:
+                    - button "We show the latest reviews" [ref=e1932] [cursor=pointer]:
+                      - text: We show the latest reviews
+                      - img [ref=e1933]
+                  - heading "We encourage constructive feedback" [level=4] [ref=e1936]:
+                    - button "We encourage constructive feedback" [ref=e1937] [cursor=pointer]:
+                      - text: We encourage constructive feedback
+                      - img [ref=e1938]
+                  - heading "We verify reviewers" [level=4] [ref=e1941]:
+                    - button "We verify reviewers" [ref=e1942] [cursor=pointer]:
+                      - text: We verify reviewers
+                      - img [ref=e1943]
+                  - heading "We advocate against bias" [level=4] [ref=e1946]:
+                    - button "We advocate against bias" [ref=e1947] [cursor=pointer]:
+                      - text: We advocate against bias
+                      - img [ref=e1948]
+                  - link "Take a closer look" [ref=e1950] [cursor=pointer]:
+                    - /url: /trust
+                    - generic [ref=e1951]: Take a closer look
+    - contentinfo [ref=e1952]:
+      - generic [ref=e1954]:
+        - img "Trustpilot reviews" [ref=e1956]
+        - paragraph [ref=e1958]:
+          - text: This site is protected by reCAPTCHA. We collect device and interaction signals for security purposes as described in our
+          - link "Privacy Policy" [ref=e1959] [cursor=pointer]:
+            - /url: https://corporate.trustpilot.com/legal/for-reviewers/privacy-policy
+          - text: .
+        - generic [ref=e1960]:
+          - heading "Choose country" [level=3] [ref=e1961]
+          - generic [ref=e1964]:
+            - term [ref=e1965] [cursor=pointer]:
+              - button "United Kingdom" [ref=e1966]:
+                - generic [ref=e1968]: United Kingdom
+                - img [ref=e1970]
+            - definition
+        - generic [ref=e1972]:
+          - heading "About" [level=3] [ref=e1973]
+          - list [ref=e1974]:
+            - listitem [ref=e1975]:
+              - link "About us" [ref=e1976] [cursor=pointer]:
+                - /url: https://corporate.trustpilot.com
+            - listitem [ref=e1977]:
+              - link "Jobs" [ref=e1978] [cursor=pointer]:
+                - /url: https://business.trustpilot.com/jobs
+            - listitem [ref=e1979]:
+              - link "Contact" [ref=e1980] [cursor=pointer]:
+                - /url: https://uk.trustpilot.com/contact
+            - listitem [ref=e1981]:
+              - link "Blog" [ref=e1982] [cursor=pointer]:
+                - /url: https://uk.trustpilot.com/blog
+            - listitem [ref=e1983]:
+              - link "How Trustpilot works" [ref=e1984] [cursor=pointer]:
+                - /url: https://corporate.trustpilot.com/trust
+            - listitem [ref=e1985]:
+              - link "Press" [ref=e1986] [cursor=pointer]:
+                - /url: https://corporate.trustpilot.com/press
+            - listitem [ref=e1987]:
+              - link "Investor Relations" [ref=e1988] [cursor=pointer]:
+                - /url: https://corporate.trustpilot.com/investors
+            - listitem [ref=e1989]:
+              - link "Download the Trustpilot iOS app" [ref=e1990] [cursor=pointer]:
+                - /url: https://apps.apple.com/app/trustpilot-reviews-ratings/id1608392803
+                - img "Download the Trustpilot iOS app" [ref=e1991]
+        - generic [ref=e1992]:
+          - heading "Community" [level=3] [ref=e1993]
+          - list [ref=e1994]:
+            - listitem [ref=e1995]:
+              - link "Trust in reviews" [ref=e1996] [cursor=pointer]:
+                - /url: https://corporate.trustpilot.com/trust
+            - listitem [ref=e1997]:
+              - link "Help Center" [ref=e1998] [cursor=pointer]:
+                - /url: https://help.trustpilot.com/s?language=en
+            - listitem [ref=e1999]:
+              - link "Log in" [ref=e2000] [cursor=pointer]:
+                - /url: https://uk.trustpilot.com/users/connect
+            - listitem [ref=e2001]:
+              - link "Sign up" [ref=e2002] [cursor=pointer]:
+                - /url: https://uk.trustpilot.com/users/connect?signup=True
+        - generic [ref=e2003]:
+          - heading "Businesses" [level=3] [ref=e2004]
+          - list [ref=e2005]:
+            - listitem [ref=e2006]:
+              - link "Trustpilot Business" [ref=e2007] [cursor=pointer]:
+                - /url: https://uk.business.trustpilot.com
+            - listitem [ref=e2008]:
+              - link "Products" [ref=e2009] [cursor=pointer]:
+                - /url: https://uk.business.trustpilot.com/features
+            - listitem [ref=e2010]:
+              - link "Plans & Pricing" [ref=e2011] [cursor=pointer]:
+                - /url: https://uk.business.trustpilot.com/pricing
+            - listitem [ref=e2012]:
+              - link "Business Login" [ref=e2013] [cursor=pointer]:
+                - /url: https://businessapp.b2b.trustpilot.com/?locale=en-gb
+            - listitem [ref=e2014]:
+              - link "Blog for Business" [ref=e2015] [cursor=pointer]:
+                - /url: https://uk.business.trustpilot.com/blog
+            - listitem [ref=e2016]:
+              - link "Data Solutions" [ref=e2017] [cursor=pointer]:
+                - /url: https://uk.business.trustpilot.com/datasolutions
+        - generic [ref=e2018]:
+          - heading "Follow us on" [level=3] [ref=e2019]
+          - list [ref=e2020]:
+            - listitem [ref=e2021]:
+              - link "Facebook" [ref=e2022] [cursor=pointer]:
+                - /url: https://www.facebook.com/Trustpilot/
+                - img [ref=e2023]
+            - listitem [ref=e2025]:
+              - link "X" [ref=e2026] [cursor=pointer]:
+                - /url: https://x.com/Trustpilot
+                - img [ref=e2027]
+            - listitem [ref=e2029]:
+              - link "Instagram" [ref=e2030] [cursor=pointer]:
+                - /url: https://www.instagram.com/trustpilot/
+                - img [ref=e2031]
+            - listitem [ref=e2033]:
+              - link "LinkedIn" [ref=e2034] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/trustpilot/
+                - img [ref=e2035]
+            - listitem [ref=e2037]:
+              - link "Youtube" [ref=e2038] [cursor=pointer]:
+                - /url: https://www.youtube.com/c/trustpilotreviews
+                - img [ref=e2039]
+        - generic [ref=e2041]:
+          - list [ref=e2042]:
+            - listitem [ref=e2043]:
+              - link "Legal" [ref=e2044] [cursor=pointer]:
+                - /url: https://uk.legal.trustpilot.com
+            - listitem [ref=e2045]:
+              - link "Privacy Policy" [ref=e2046] [cursor=pointer]:
+                - /url: https://uk.legal.trustpilot.com/end-user-privacy-terms
+            - listitem [ref=e2047]:
+              - link "Terms & Conditions" [ref=e2048] [cursor=pointer]:
+                - /url: https://uk.legal.trustpilot.com/for-reviewers/end-user-terms-and-conditions
+            - listitem [ref=e2049]:
+              - link "Guidelines for Reviewers" [ref=e2050] [cursor=pointer]:
+                - /url: https://uk.legal.trustpilot.com/for-reviewers/guidelines-for-reviewers
+            - listitem [ref=e2051]:
+              - link "System status" [ref=e2052] [cursor=pointer]:
+                - /url: https://status.trustpilot.com/
+            - listitem [ref=e2053]:
+              - button "Manage cookies" [ref=e2054]
+            - listitem [ref=e2055]:
+              - link "Modern Slavery Statement" [ref=e2056] [cursor=pointer]:
+                - /url: https://uk.legal.trustpilot.com/for-everyone/modern-slavery-and-human-trafficking-statement
+          - generic [ref=e2057]: © 2026 Trustpilot, Inc. All rights reserved.
+  - alert [ref=e2058]
+  - dialog "Here’s how we use cookies" [ref=e2061]:
+    - generic [ref=e2062]:
+      - generic [ref=e2063]:
+        - generic:
+          - heading "Here’s how we use cookies" [level=2] [ref=e2064]
+          - generic [ref=e2065]:
+            - text: Trustpilot and our partners use certain necessary cookies stored on your device to deliver our services.
+            - text: "We’d also like to use additional cookies to:"
+            - list [ref=e2066]:
+              - listitem [ref=e2067]: Enhance your experience
+              - listitem [ref=e2068]: Provide social media features
+              - listitem [ref=e2069]: Analyze, monitor, and improve our services
+              - listitem [ref=e2070]: Show personalized content and ads, depending on your settings
+            - text: If you choose
+            - strong [ref=e2071]: Accept all
+            - text: ", you consent to our use of additional cookies for these purposes. If you choose"
+            - strong [ref=e2072]: Reject all
+            - text: ", we won’t use additional cookies for these purposes."
+            - text: You can change or withdraw consent at any time in
+            - strong [ref=e2073]: Manage cookies
+            - text: . Learn more in our
+            - link "Cookie Policy" [active] [ref=e2074] [cursor=pointer]:
+              - /url: "https://legal.trustpilot.com/for-everyone/cookie-policy "
+            - text: .
+      - generic [ref=e2076]:
+        - button "Manage cookies, Opens the preference center dialog" [ref=e2077] [cursor=pointer]: Manage cookies
+        - generic [ref=e2078]:
+          - button "Reject all" [ref=e2079] [cursor=pointer]
+          - button "Accept all" [ref=e2080] [cursor=pointer]

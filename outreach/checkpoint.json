@@ -1,0 +1,11 @@
+{
+  "venture": "EV Installers",
+  "updated": "2026-07-27",
+  "send_today": 25,
+  "remaining": 364,
+  "note": "Seeded by Morning Desk setup. 364-email batch (45 trade body, 319 installer) was built 22 May; reconcile what has actually been sent. Work replies first (reply-console + reply-templates), then continue the installer batch. EV agent: run /checkpoint to set real numbers.",
+  "open": [
+    "C:\\Users\\greg\\Desktop\\ev-directory\\outreach\\console.html",
+    "C:\\Users\\greg\\Desktop\\ev-directory\\outreach\\reply-console.html"
+  ]
+}
