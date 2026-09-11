@@ -9,8 +9,12 @@ name: Weekly data refresh
 # rebuilds it on every push, so the repo stays small and churn-free.
 
 on:
-  schedule:
-    - cron: "0 6 * * 1"
+  # Weekly refresh disabled 11 Sep 2026: the project is closed and the domain
+  # commercialevinstallers.co.uk is no longer registered, so this was rebuilding
+  # data nobody reads. Left in place, commented out, so it can be revived by
+  # uncommenting rather than rewritten from scratch.
+  # schedule:
+  #   - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions:
